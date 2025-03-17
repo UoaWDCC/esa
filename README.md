@@ -24,7 +24,7 @@ Navigate to the project root and install dependencies:
 pnpm install
 ```
 
-Create a `.env` file with the following attributes:
+Create a `.env` file at the root directory with the following attributes:
 ```
 # Payload and DB stuff
 DATABASE_URI=
