@@ -19,13 +19,16 @@
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
+    "@tailwindcss/postcss": "^4.0.14",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.2.2",
     "payload": "latest",
+    "postcss": "^8.5.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "sharp": "0.32.6"
+    "sharp": "0.32.6",
+    "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -39,7 +42,7 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0",
-    "pnpm": "^9"
+    "pnpm": "^10"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
