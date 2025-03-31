@@ -30,12 +30,11 @@ Create a `.env` file at the root directory with the following attributes:
 DATABASE_URI=
 PAYLOAD_SECRET=
 
-# Cloudflare R2 stuff
-R2_ACCESS_KEY_ID=
-R2_SECRET_ACCESS_KEY=
-R2_BUCKET=
-R2_ACCOUNT_ID=
-R2_ENDPOINT=https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com
+# S3
+S3_BUCKET=
+S3_ACCESS_KEY_ID=
+S3_SECRET_ACCESS_KEY=
+S3_REGION=
 ```
 
 Finally, run the project:
