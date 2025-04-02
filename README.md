@@ -42,3 +42,6 @@ Finally, run the project:
 pnpm dev
 ```
 
+## Our Members are:
+- Owen
+
