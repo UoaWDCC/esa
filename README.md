@@ -50,3 +50,4 @@ pnpm dev
 - Daniel
 - Jos 🤫
 - Charles
+- Henry
