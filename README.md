@@ -44,9 +44,8 @@ pnpm dev
 
 ## Our Members are:
 - Owen
+- Kieran
 - Joseph
 - Daniel
 - Jos 🤫
 - Charles
-
-
