@@ -46,4 +46,7 @@ pnpm dev
 - Owen
 - Joseph
 - Daniel
+- Jos 🤫
+- Charles
+
 
