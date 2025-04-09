@@ -44,6 +44,7 @@ pnpm dev
 
 ## Our Members are:
 - Owen
+- Maternus
 - Kieran
 - Joseph
 - Daniel
