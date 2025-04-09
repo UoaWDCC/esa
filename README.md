@@ -48,6 +48,9 @@ pnpm dev
 ```
 
 ## Our Members are:
-
 - Owen
+- Joseph
+- Daniel
+- Jos 🤫
+- Charles
 - Jey Cin
