@@ -32,7 +32,7 @@ export default function Card() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             key="card"
-            className="relative flex flex-col items-center bg-neutral-800 p-8 text-white rounded-lg scale-125"
+            className="font-main relative flex flex-col items-center bg-eerie-black p-8 text-white rounded-lg scale-125 border border-spring-green shadow-2xl"
           >
             <motion.div
               whileHover={{ scale: 1.3 }}
@@ -53,12 +53,13 @@ export default function Card() {
 
             <div className="flex flex-col items-center my-4 text-center">
               <h1 className="text-2xl font-semibold ">Henry Gao</h1>
-              <p className="text-lime-400 text-xs">Auckland, New Zealand</p>
+              <p className="text-spring-green text-xs">Auckland, New Zealand</p>
             </div>
 
-            <p className="text-xs text-neutral-400 mb-4 text-center">
+            <p className="text-xs text-timberwolf text-center">
               "Full-stack developer and retired gamer"
             </p>
+            <p className="text-sm text-timberwolf mt-[-0.4rem] mb-5 text-center font-mono">._.</p>
 
             <div className="flex flex-col gap-2 w-full">
               {links.map((link) => (
@@ -67,7 +68,7 @@ export default function Card() {
                   href={link.link}
                   rel="noopener noreferrer"
                   key={link.text}
-                  className="bg-neutral-700 w-full text-center rounded-md py-1 text-sm font-semibold tracking-wide hover:cursor-pointer"
+                  className="bg-gray w-full text-center rounded-md py-1 text-sm font-semibold tracking-wide hover:cursor-pointer border border-spring-green"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.8 }}
                 >
@@ -84,7 +85,7 @@ export default function Card() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             key="button"
-            className="absolute text-white bottom-7 right-10 hover:cursor-pointer bg-neutral-800 px-6 py-1 rounded-xl tracking-wide font-semibold scale-125"
+            className="font-main absolute text-white bottom-7 right-10 hover:cursor-pointer bg-neutral-800 px-6 py-1 rounded-xl font-semibold scale-125 border border-spring-green"
             onClick={() => setIsCardVisible(true)}
           >
             Open

@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme inline {
+  --color-timberwolf: #D0D0D0;
+  --color-eerie-black: #171717;
+  --color-gray: #7C7C7C;
+  --color-spring-green: #35FF69;
+  --font-main: var(--font-shadows-into-light);
+}
