@@ -20,8 +20,21 @@ const links = [
   },
 ]
 
-export default function Card() {
+export default function Card({ showList }: { showList: boolean }) {
   const [isCardVisible, setIsCardVisible] = useState(true)
+
+  const containerVariants = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const linkVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0 },
+  }
 
   return (
     <>
@@ -32,7 +45,7 @@ export default function Card() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             key="card"
-            className="font-main relative flex flex-col items-center bg-eerie-black p-8 text-white rounded-lg scale-125 border border-spring-green shadow-2xl"
+            className="font-main min-w-64 relative flex flex-col items-center bg-eerie-black p-8 text-white rounded-lg scale-125 border border-spring-green shadow-2xl"
           >
             <motion.div
               whileHover={{ scale: 1.3 }}
@@ -56,26 +69,30 @@ export default function Card() {
               <p className="text-spring-green text-xs">Auckland, New Zealand</p>
             </div>
 
-            <p className="text-xs text-timberwolf text-center">
-              "Full-stack developer and retired gamer"
-            </p>
+            <p className="text-xs text-timberwolf text-center">"Simplicity is beauty"</p>
             <p className="text-sm text-timberwolf mt-[-0.4rem] mb-5 text-center font-mono">._.</p>
 
-            <div className="flex flex-col gap-2 w-full">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={showList ? 'visible' : 'hidden'}
+              className="flex flex-col gap-2 w-full"
+            >
               {links.map((link) => (
                 <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.8 }}
                   target="_blank"
                   href={link.link}
                   rel="noopener noreferrer"
                   key={link.text}
                   className="bg-gray w-full text-center rounded-md py-1 text-sm font-semibold tracking-wide hover:cursor-pointer border border-spring-green"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.8 }}
+                  variants={linkVariants}
                 >
                   {link.text}
                 </motion.a>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         ) : (
           <motion.button

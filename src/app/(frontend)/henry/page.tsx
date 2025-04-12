@@ -15,6 +15,7 @@ const shadowsIntoLight = Shadows_Into_Light({
 
 export default function Page() {
   const [loading, setLoading] = useState(true)
+  const [showList, setShowList] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,8 +40,13 @@ export default function Page() {
             exit={{ opacity: 0, scale: 0 }}
             key="container"
             className="flex justify-center items-center relative w-full h-full bg-[url(/assets/babyme.jpg)] bg-cover bg-center rounded-3xl p-12"
+            onAnimationStart={() => {
+              setTimeout(() => {
+                setShowList(true)
+              }, 300)
+            }}
           >
-            <Card />
+            <Card showList={showList} />
           </motion.div>
         ) : null}
       </AnimatePresence>
