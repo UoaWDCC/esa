@@ -23,6 +23,7 @@ const links = [
 export default function Card({ showList }: { showList: boolean }) {
   const [isCardVisible, setIsCardVisible] = useState(true)
 
+  // Controls delays between links animating in
   const containerVariants = {
     visible: {
       transition: {
@@ -31,6 +32,7 @@ export default function Card({ showList }: { showList: boolean }) {
     },
   }
 
+  // Tells framer what the initial hidden state for each link looks like and and the final visible state looks like
   const linkVariants = {
     hidden: { opacity: 0, x: 100 },
     visible: { opacity: 1, x: 0 },

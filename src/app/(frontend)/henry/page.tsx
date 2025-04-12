@@ -39,7 +39,7 @@ export default function Page() {
             transition={{ duration: 1.5 }}
             exit={{ opacity: 0, scale: 0 }}
             key="container"
-            className="flex justify-center items-center relative w-full h-full bg-[url(/assets/babyme.jpg)] bg-cover bg-center rounded-3xl p-12"
+            className="flex justify-center items-center relative w-full h-full bg-[url(/assets/babyme.jpg)] bg-cover bg-center rounded-3xl p-12 border border-spring-green"
             onAnimationStart={() => {
               setTimeout(() => {
                 setShowList(true)
