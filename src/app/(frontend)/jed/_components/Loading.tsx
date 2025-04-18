@@ -6,6 +6,7 @@ export default function LoadingThreeDotsPulse() {
   const dotVariants = {
     pulse: {
       scale: [1, 1.5, 1],
+      opacity: [0.5, 1, 0.5],
       transition: {
         duration: 1.2,
         repeat: Infinity,
@@ -17,20 +18,20 @@ export default function LoadingThreeDotsPulse() {
   return (
     <motion.div
       animate="pulse"
-      transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
+      transition={{ staggerChildren: 0.2 }}
       exit={{ opacity: 0, scale: 0 }}
-      className="flex justify-center items-center gap-[20px]"
+      className="flex justify-center items-center gap-4"
     >
       <motion.div
-        className="w-[20px] h-[20px] rounded-[50%] bg-spring-green will-change-transform"
+        className="w-4 h-4 rounded-full bg-spring-green will-change-transform shadow-md shadow-spring-green/20"
         variants={dotVariants}
       />
       <motion.div
-        className="w-[20px] h-[20px] rounded-[50%] bg-spring-green will-change-transform"
+        className="w-4 h-4 rounded-full bg-spring-green will-change-transform shadow-md shadow-spring-green/20"
         variants={dotVariants}
       />
       <motion.div
-        className="w-[20px] h-[20px] rounded-[50%] bg-spring-green will-change-transform"
+        className="w-4 h-4 rounded-full bg-spring-green will-change-transform shadow-md shadow-spring-green/20"
         variants={dotVariants}
       />
     </motion.div>

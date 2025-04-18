@@ -8,15 +8,15 @@ import { IoIosClose } from 'react-icons/io'
 const links = [
   {
     text: 'Github',
-    link: 'https://github.com/hgao080',
+    link: 'https://github.com/jgan807',
   },
   {
     text: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/henry-ming-gao/',
+    link: 'https://www.linkedin.com/in/jedrexgannaban/',
   },
   {
     text: 'Instagram',
-    link: 'https://www.instagram.com/ming._.tofu/',
+    link: 'https://www.instagram.com/jedrexangelo/',
   },
 ]
 
@@ -59,20 +59,22 @@ export default function Card({ showList }: { showList: boolean }) {
             </motion.div>
 
             <Image
-              src="https://static-cdn.jtvnw.net/jtv_user_pictures/c5a9df33-4e9e-4df6-8dba-c3746041b95e-profile_image-300x300.png"
+              src="https://media.licdn.com/dms/image/v2/D4E03AQGK-QcIwx5UWw/profile-displayphoto-shrink_800_800/B4EZTGKn2qHcAc-/0/1738491464128?e=1750291200&v=beta&t=pKoFUVrQGYu51s_st5o-ZMzZlENte9UrSYhZZUwQbtA"
               width={80}
               height={80}
-              alt="Henry's Profile Image"
+              alt="Jed's Profile Image"
               className="rounded-full"
             />
 
             <div className="flex flex-col items-center my-4 text-center">
-              <h1 className="text-2xl font-semibold ">Henry Gao</h1>
+              <h1 className="text-2xl font-semibold ">Jedrex Gannaban</h1>
               <p className="text-spring-green text-xs">Auckland, New Zealand</p>
             </div>
 
-            <p className="text-xs text-timberwolf text-center">"Simplicity is beauty"</p>
-            <p className="text-sm text-timberwolf mt-[-0.4rem] mb-5 text-center font-mono">._.</p>
+            <p className="text-xs text-timberwolf text-center">I love POKEMON!!!!</p>
+            <p className="text-sm text-timberwolf mt-[-0.4rem] mb-5 text-center font-mono">
+              ٩(- ̮̮̃-̃)۶
+            </p>
 
             <motion.div
               variants={containerVariants}

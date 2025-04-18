@@ -5,7 +5,7 @@ import Card from './_components/Card'
 import LoadingThreeDotsPulse from './_components/Loading'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Shadows_Into_Light } from 'next/font/google'
-
+import '../styles.css'
 const shadowsIntoLight = Shadows_Into_Light({
   weight: '400',
   subsets: ['latin'],
