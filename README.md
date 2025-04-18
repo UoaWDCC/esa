@@ -57,3 +57,4 @@ pnpm dev
 - Charles
 - Jey Cin
 - Henry
+- Jedrex
