@@ -12,3 +12,5 @@ const memberSchema = new Schema({
         unique: true,
     }
 });
+
+export default mongoose.models.Member || mongoose.model("Member", memberSchema);;
