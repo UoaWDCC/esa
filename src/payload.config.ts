@@ -11,6 +11,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Members } from './collections/Members'
 import storage from '@/collections/Storage'
+import { Component } from 'react'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -20,6 +21,15 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+    components: {
+      views: {
+        csvUpload: {
+          Component: "@/app/(payload)/views/CSVUploadView.tsx",
+          path: "/csv-upload",
+          exact: true,
+        },
+      },
     },
   },
   collections: [Users, Media, Members],
