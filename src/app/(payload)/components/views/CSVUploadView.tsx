@@ -3,6 +3,7 @@ import type { AdminViewServerProps } from 'payload'
 import { DefaultTemplate } from '@payloadcms/next/templates'
 import { Gutter } from '@payloadcms/ui'
 import React from 'react'
+import { redirect } from 'next/navigation'
 
 export default function CSVUploadView({
   initPageResult,
@@ -14,12 +15,7 @@ export default function CSVUploadView({
   } = initPageResult
 
   if (!user) {
-    return (
-      <div>
-        <p>You must be logged in to view this page.</p>
-        <a href="/admin/login">Login</a>
-      </div>
-    )
+    redirect('/admin/login')
   }
   return (
     <DefaultTemplate
