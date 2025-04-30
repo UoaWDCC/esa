@@ -24,11 +24,14 @@ export default buildConfig({
     components: {
       views: {
         csvUpload: {
-          Component: "@/app/(payload)/views/CSVUploadView.tsx",
+          Component: "@/app/(payload)/components/views/CSVUploadView.tsx",
           path: "/csv-upload",
           exact: true,
         },
       },
+      afterNavLinks: [
+        "@/app/(payload)/components/CSVUploadLink.tsx"
+      ],
     },
   },
   collections: [Users, Media, Members],
