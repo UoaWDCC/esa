@@ -1,9 +1,18 @@
 import type { AdminViewServerProps } from 'payload'
-export default function CSVUploadView({ initPageResult }: AdminViewServerProps) {
+
+import { DefaultTemplate } from '@payloadcms/next/templates'
+import { Gutter } from '@payloadcms/ui'
+import React from 'react'
+
+export default function CSVUploadView({
+  initPageResult,
+  params,
+  searchParams,
+}: AdminViewServerProps) {
   const {
-      req: { user },
-    } = initPageResult
-  
+    req: { user },
+  } = initPageResult
+
   if (!user) {
     return (
       <div>
@@ -12,14 +21,25 @@ export default function CSVUploadView({ initPageResult }: AdminViewServerProps) 
       </div>
     )
   }
-
   return (
-    <div>
-    <h1>Upload CSV</h1>
-    <form method="POST" encType="multipart/form-data">
-        <input type="file" name="csvFile" accept=".csv" />
-        <button type="submit">Upload</button>
-    </form>
-    </div>
+    <DefaultTemplate
+      i18n={initPageResult.req.i18n}
+      locale={initPageResult.locale}
+      params={params}
+      payload={initPageResult.req.payload}
+      permissions={initPageResult.permissions}
+      searchParams={searchParams}
+      user={initPageResult.req.user || undefined}
+      visibleEntities={initPageResult.visibleEntities}
+    >
+      <Gutter>
+        <h1>CSV Upload</h1>
+        <p>Upload your CSV file here.</p>
+        <form method="POST" encType="multipart/form-data">
+          <input type="file" name="file" accept=".csv" required />
+          <button type="submit">Upload</button>
+        </form>
+      </Gutter>
+    </DefaultTemplate>
   )
 }
