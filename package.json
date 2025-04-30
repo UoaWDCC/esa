@@ -23,6 +23,7 @@
     "@tailwindcss/postcss": "^4.0.14",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
+    "mongoose": "^8.14.1",
     "next": "15.2.2",
     "payload": "^3.28.1",
     "postcss": "^8.5.3",
