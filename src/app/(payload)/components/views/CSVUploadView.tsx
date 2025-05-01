@@ -31,7 +31,7 @@ export default function CSVUploadView({
       <Gutter>
         <h1>CSV Upload</h1>
         <p>Upload your CSV file here.</p>
-        <form method="POST" encType="multipart/form-data">
+        <form method="POST" encType="multipart/form-data" action="/api/members/csv-upload">
           <input type="file" name="file" accept=".csv" required />
           <button type="submit">Upload</button>
         </form>
