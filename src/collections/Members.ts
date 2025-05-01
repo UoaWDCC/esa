@@ -21,8 +21,12 @@ export const Members: CollectionConfig = {
 
         const file = req.file;
 
+        if (!req.user) {
+          return Response.json({ message: 'Unauthorised user' }, { status: 401 });
+        }
+
         if (!file) {
-          return Response.json({ message: 'No file uploaded' });
+          return Response.json({ message: 'No file uploaded' }, { status: 400 });
         }
 
         // Parse the CSV file as an array of Member objects. Assume there are headers in the CSV file.
@@ -43,7 +47,7 @@ export const Members: CollectionConfig = {
           )
         );
 
-        return Response.json({ message: 'CSV file uploaded and members created successfully' });
+        return Response.json({ message: 'CSV file uploaded and members created successfully' }, { status: 200 });
       }
     },
   ],
