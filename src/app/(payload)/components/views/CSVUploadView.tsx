@@ -1,8 +1,7 @@
-import type { AdminViewServerProps } from 'payload'
-
 import { DefaultTemplate } from '@payloadcms/next/templates'
 import { Gutter } from '@payloadcms/ui'
-import React from 'react'
+import { AdminViewServerProps } from 'payload'
+import CSVForm from '../CSVForm'
 import { redirect } from 'next/navigation'
 
 export default function CSVUploadView({
@@ -10,13 +9,15 @@ export default function CSVUploadView({
   params,
   searchParams,
 }: AdminViewServerProps) {
-  const {
-    req: { user },
-  } = initPageResult
+  const { req: { user } } = initPageResult
 
   if (!user) {
-    redirect('/admin/login')
+    return (
+      redirect('/admin/login')
+    )
   }
+
+  
   return (
     <DefaultTemplate
       i18n={initPageResult.req.i18n}
@@ -29,12 +30,7 @@ export default function CSVUploadView({
       visibleEntities={initPageResult.visibleEntities}
     >
       <Gutter>
-        <h1>CSV Upload</h1>
-        <p>Upload your CSV file here.</p>
-        <form method="POST" encType="multipart/form-data" action="/api/members/csv-upload">
-          <input type="file" name="file" accept=".csv" required />
-          <button type="submit">Upload</button>
-        </form>
+        <CSVForm />
       </Gutter>
     </DefaultTemplate>
   )

@@ -1,5 +1,8 @@
 import type { CollectionConfig } from 'payload';
 import { addDataAndFileToRequest } from 'payload'
+import { Member } from '@/payload-types';
+
+import Papa from 'papaparse';
 
 export const Members: CollectionConfig = {
   slug: 'members',
@@ -22,14 +25,26 @@ export const Members: CollectionConfig = {
           return Response.json({ message: 'No file uploaded' });
         }
 
-        console.log('Received file:', {
-          filename: file.name,
-          mimetype: file.mimetype,
-          size: file.size,
+        // Parse the CSV file as an array of Member objects. Assume there are headers in the CSV file.
+        const csvString = file.data.toString('utf-8');
+        const result = Papa.parse(csvString, {
+          header: true,
+          skipEmptyLines: true,
         });
+        const csvData = result.data as Member[];
 
-        return Response.json({ message: 'CSV file uploaded successfully' });
-      },
+        // Save each member to the database
+        await Promise.all(
+          csvData.map((row) =>
+            req.payload.create({
+              collection: 'members',
+              data: row,
+            })
+          )
+        );
+
+        return Response.json({ message: 'CSV file uploaded and members created successfully' });
+      }
     },
   ],
   fields: [
