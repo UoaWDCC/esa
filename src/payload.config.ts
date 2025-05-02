@@ -13,6 +13,7 @@ import Events from './collections/Events'
 import { Members } from './collections/Members'
 import { Execs } from './collections/Execs'
 import storage from '@/collections/Storage'
+import { Sponsors } from './collections/Sponsors'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,7 +35,7 @@ export default buildConfig({
       afterNavLinks: ['@/app/(payload)/components/CSVUploadLink.tsx'],
     },
   },
-  collections: [Users, Media, Events, Members, Execs],
+  collections: [Users, Media, Sponsors, Events, Members, Execs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
