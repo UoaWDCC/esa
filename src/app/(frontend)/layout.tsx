@@ -22,7 +22,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           {/* replace empty container with footer component*/}
           <p>footer</p>
         </>
-
       </body>
     </html>
   )
