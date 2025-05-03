@@ -3,7 +3,7 @@ import Sponsors from './_components/Sponsors'
 
 export default function page() {
   return (
-    <div className="mt-8">
+    <div className="">
       <Sponsors />
     </div>
   )

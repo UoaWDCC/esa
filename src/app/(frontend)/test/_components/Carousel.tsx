@@ -18,7 +18,6 @@ export default function Carousel({ sponsors }: SponsorProps) {
       <div className="whitespace-nowrap">
         <SponsorBubbles sponsors={sponsors} />
         <SponsorBubbles sponsors={sponsors} />
-        <SponsorBubbles sponsors={sponsors} />
       </div>
     </div>
   )
