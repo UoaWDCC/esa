@@ -28,22 +28,21 @@ export default function SponsorBubbles() {
   }, [])
 
   return (
-    <div className="h-[23rem] inline-block" ref={containerRef}>
+    <div className="h-[24rem] inline-block" ref={containerRef}>
       {sponsors.map((sponsor) => {
         const size = 90 * sponsor.scale
 
         return (
           <div
-            className="grid-item rounded-full overflow-hidden bg-white"
+            className="grid-item rounded-full"
             style={{ width: `${size}px`, height: `${size}px` }}
             key={sponsor.name}
           >
             <Image
               src={sponsor.logo}
-              width={400}
-              height={400}
+              fill={true}
               alt="Brand Logo"
-              className="select-none object-fill object-center"
+              className="select-none rounded-full object-fill"
             />
           </div>
         )
