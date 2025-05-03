@@ -2,10 +2,10 @@
 
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
-import { Sponsor } from '@/payload-types'
+import { SponsorParsed } from '@/types/parsers/parseSponsors'
 
 export interface SponsorProps {
-  sponsors: Sponsor[]
+  sponsors: SponsorParsed[]
 }
 
 export default function SponsorBubbles({ sponsors }: SponsorProps) {
@@ -21,7 +21,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
           // Initialize Packery (Used for packing in the circles together)
           new Packery(containerRef.current, {
             itemSelector: '.grid-item', // Class name for items
-            gutter: 15, // Space between items
+            gutter: 20, // Space between items
             horizontal: true, // Enable horizontal layout
           })
         }
@@ -32,7 +32,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
   }, [])
 
   return (
-    <div className="h-[28rem] inline-block ml-4" ref={containerRef}>
+    <div className="h-[24rem] inline-block ml-4" ref={containerRef}>
       {sponsors.map((sponsor) => {
         const size = 90 * sponsor.importance
 
@@ -46,7 +46,6 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
               src={sponsor.logo.url}
               fill={true}
               alt={sponsor.logo.alt || 'Brand logo'}
-              unoptimized={true} // Remove this after swapping over to JPEG for optimizations. SVGs don't need to be optimized
               className="select-none rounded-full object-fill"
             />
           </div>
