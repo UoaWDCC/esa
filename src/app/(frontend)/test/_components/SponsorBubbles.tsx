@@ -1,23 +1,27 @@
 'use client'
 
 import Image from 'next/image'
-import { sponsors } from '../sponsors'
 import { useEffect, useRef } from 'react'
+import { Sponsor } from '@/payload-types'
 
-export default function SponsorBubbles() {
+export interface SponsorProps {
+  sponsors: Sponsor[]
+}
+
+export default function SponsorBubbles({ sponsors }: SponsorProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Import Packery client side as needs client functionality. As any as idk how to deal with TypeScript error as Paackery wasn't made for TypeScript
+    // Import Packery client side as needs client functionality. As any as idk how to deal with TypeScript error as Packery wasn't made for TypeScript
     import('packery' as any)
       .then((PackeryModule) => {
         const Packery = PackeryModule.default
 
         if (containerRef.current) {
-          // Initialize Packery
+          // Initialize Packery (Used for packing in the circles together)
           new Packery(containerRef.current, {
             itemSelector: '.grid-item', // Class name for items
-            gutter: 10, // Space between items
+            gutter: 15, // Space between items
             horizontal: true, // Enable horizontal layout
           })
         }
@@ -28,20 +32,21 @@ export default function SponsorBubbles() {
   }, [])
 
   return (
-    <div className="h-[24rem] inline-block" ref={containerRef}>
+    <div className="h-[28rem] inline-block ml-4" ref={containerRef}>
       {sponsors.map((sponsor) => {
-        const size = 90 * sponsor.scale
+        const size = 90 * sponsor.importance
 
         return (
           <div
             className="grid-item rounded-full"
             style={{ width: `${size}px`, height: `${size}px` }}
-            key={sponsor.name}
+            key={sponsor.id}
           >
             <Image
-              src={sponsor.logo}
+              src={sponsor.logo.url}
               fill={true}
-              alt="Brand Logo"
+              alt={sponsor.logo.alt || 'Brand logo'}
+              unoptimized={true} // Remove this after swapping over to JPEG for optimizations. SVGs don't need to be optimized
               className="select-none rounded-full object-fill"
             />
           </div>
