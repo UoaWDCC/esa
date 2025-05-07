@@ -23,7 +23,7 @@ export default function CSVForm() {
   
     return (
       <div>
-        <h1>CSV Upload</h1>
+        <h1>Member CSV Upload</h1>
         <p>Upload your CSV file here.</p>
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
