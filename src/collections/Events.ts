@@ -25,24 +25,24 @@ const Events: CollectionConfig = {
       required: true
     },
     {
-      name: "start-time",
+      name: "startTime",
       label: "Event Starting Time",
       type: "text",
       required: true,
     },
     {
-      name: "end-time",
+      name: "endTime",
       label: "Event Ending Time",
       type: "text",
     },
     {
-      name: "member-price",
+      name: "memberPrice",
       label: "Member Price",
       type: "number",
       required: true,
     },
     {
-      name: "non-member-price",
+      name: "nonMemberPrice",
       label: "Non-Member Price",
       type: "number",
       required: true,
