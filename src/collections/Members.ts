@@ -108,7 +108,7 @@ export const Members: CollectionConfig = {
     },
     {
       name: 'email',
-      type: 'email',
+      type: 'text', // TODO: check if we want this to be text or email type. some people filled in the form wrong, so the csv is incorrect
       required: true,
     },
     {
