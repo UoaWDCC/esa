@@ -14,7 +14,7 @@ export default function CSVForm() {
         if (response.ok) {
           alert('CSV file uploaded successfully!')
         } else {
-          alert('Failed to upload the CSV. Please try again')
+          alert('Failed to upload some rows in the CSV file')
         }
       } catch (error) {
         alert('An error occurred while uploading the file.')
