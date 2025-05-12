@@ -157,9 +157,20 @@ export interface Media {
  */
 export interface Member {
   id: string;
-  name: string;
+  timestamp: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  phone?: string | null;
+  studentID?: string | null;
+  upi?: string | null;
+  yearOfStudy?: string | null;
+  ethnicity?: string | null;
+  convincedByCommitteeMember?: string | null;
+  membershipCardNumber?: string | null;
+  membershipPayment?: string | null;
+  paymentScreenshotLink?: string | null;
+  referrerName?: string | null;
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -263,9 +274,20 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "members_select".
  */
 export interface MembersSelect<T extends boolean = true> {
-  name?: T;
+  timestamp?: T;
+  firstName?: T;
+  lastName?: T;
   email?: T;
-  phone?: T;
+  studentID?: T;
+  upi?: T;
+  yearOfStudy?: T;
+  ethnicity?: T;
+  convincedByCommitteeMember?: T;
+  membershipCardNumber?: T;
+  membershipPayment?: T;
+  paymentScreenshotLink?: T;
+  referrerName?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }
