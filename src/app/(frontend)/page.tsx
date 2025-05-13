@@ -3,8 +3,9 @@ import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
 import { fileURLToPath } from 'url'
-
 import config from '@/payload.config'
+import Footer from 'src/components/navigation/footer';
+
 // import './styles.css'
 
 export default async function HomePage() {
@@ -48,12 +49,7 @@ export default async function HomePage() {
           </a>
         </div>
       </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
+      <Footer />
     </div>
   )
 }
