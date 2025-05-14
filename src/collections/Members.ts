@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: false,
+    hidden: true, 
   },
   access: {
     read: () => true,
@@ -108,7 +108,7 @@ export const Members: CollectionConfig = {
     },
     {
       name: 'email',
-      type: 'text', // TODO: check if we want this to be text or email type. some people filled in the form wrong, so the csv is incorrect
+      type: 'text',
       required: true,
     },
     {
