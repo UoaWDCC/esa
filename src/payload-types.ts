@@ -68,6 +68,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    members: Member;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -76,6 +77,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    members: MembersSelect<false> | MembersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -151,6 +153,29 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "members".
+ */
+export interface Member {
+  id: string;
+  timestamp: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  studentID?: string | null;
+  upi?: string | null;
+  yearOfStudy?: string | null;
+  ethnicity?: string | null;
+  convincedByCommitteeMember?: string | null;
+  membershipCardNumber?: string | null;
+  membershipPayment?: string | null;
+  paymentScreenshotLink?: string | null;
+  referrerName?: string | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -163,6 +188,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'members';
+        value: string | Member;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -239,6 +268,28 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "members_select".
+ */
+export interface MembersSelect<T extends boolean = true> {
+  timestamp?: T;
+  firstName?: T;
+  lastName?: T;
+  email?: T;
+  studentID?: T;
+  upi?: T;
+  yearOfStudy?: T;
+  ethnicity?: T;
+  convincedByCommitteeMember?: T;
+  membershipCardNumber?: T;
+  membershipPayment?: T;
+  paymentScreenshotLink?: T;
+  referrerName?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
