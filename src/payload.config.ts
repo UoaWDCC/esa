@@ -10,6 +10,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import Events from './collections/Events'
+import { Members } from './collections/Members'
 import storage from '@/collections/Storage'
 
 const filename = fileURLToPath(import.meta.url)
@@ -21,8 +22,20 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      views: {
+        csvUpload: {
+          Component: "@/app/(payload)/components/views/CSVUploadView.tsx",
+          path: "/csv-upload",
+          exact: true,
+        },
+      },
+      afterNavLinks: [
+        "@/app/(payload)/components/CSVUploadLink.tsx"
+      ],
+    },
   },
-  collections: [Users, Media, Events],
+  collections: [Users, Media, Events, Members],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
