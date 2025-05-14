@@ -11,6 +11,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import Events from './collections/Events'
 import { Members } from './collections/Members'
+import { Execs } from './collections/Execs'
 import storage from '@/collections/Storage'
 
 const filename = fileURLToPath(import.meta.url)
@@ -25,17 +26,15 @@ export default buildConfig({
     components: {
       views: {
         csvUpload: {
-          Component: "@/app/(payload)/components/views/CSVUploadView.tsx",
-          path: "/csv-upload",
+          Component: '@/app/(payload)/components/views/CSVUploadView.tsx',
+          path: '/csv-upload',
           exact: true,
         },
       },
-      afterNavLinks: [
-        "@/app/(payload)/components/CSVUploadLink.tsx"
-      ],
+      afterNavLinks: ['@/app/(payload)/components/CSVUploadLink.tsx'],
     },
   },
-  collections: [Users, Media, Events, Members],
+  collections: [Users, Media, Events, Members, Execs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -47,7 +46,7 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    storage
+    storage,
     // storage-adapter-placeholder
   ],
 })
