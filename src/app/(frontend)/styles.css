@@ -1,3 +1,4 @@
+@import "tailwindcss";
 :root {
   --font-mono: 'Roboto Mono', monospace;
 }
