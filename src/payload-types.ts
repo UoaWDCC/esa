@@ -70,6 +70,7 @@ export interface Config {
     media: Media;
     events: Event;
     members: Member;
+    execs: Exec;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -80,6 +81,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     members: MembersSelect<false> | MembersSelect<true>;
+    execs: ExecsSelect<false> | ExecsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -195,6 +197,53 @@ export interface Member {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "execs".
+ */
+export interface Exec {
+  id: string;
+  /**
+   * Full name of the executive
+   */
+  name: string;
+  /**
+   * Ethinicity of the executive
+   */
+  ethnicity: string;
+  /**
+   * Role held by the executive
+   */
+  role: string;
+  /**
+   * Degree of the executive
+   */
+  degree: string;
+  /**
+   * Image of the executive
+   */
+  image: string | Media;
+  /**
+   * Short biography of the executive
+   */
+  about: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -215,6 +264,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'members';
         value: string | Member;
+      } | null)
+    | ({
+        relationTo: 'execs';
+        value: string | Exec;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -327,6 +380,20 @@ export interface MembersSelect<T extends boolean = true> {
   paymentScreenshotLink?: T;
   referrerName?: T;
   notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "execs_select".
+ */
+export interface ExecsSelect<T extends boolean = true> {
+  name?: T;
+  ethnicity?: T;
+  role?: T;
+  degree?: T;
+  image?: T;
+  about?: T;
   updatedAt?: T;
   createdAt?: T;
 }
