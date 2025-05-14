@@ -9,6 +9,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import Events from './collections/Events'
 import { Members } from './collections/Members'
 import storage from '@/collections/Storage'
 
@@ -34,7 +35,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Users, Media, Members],
+  collections: [Users, Media, Events, Members],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
