@@ -10,7 +10,7 @@ import SponsorBubbles, { SponsorProps } from './SponsorBubbles'
 
 export default function Carousel({ sponsors }: SponsorProps) {
   const [emblaRef] = useEmblaCarousel({ loop: true, watchDrag: false }, [
-    AutoScroll({ speed: 2, stopOnMouseEnter: true, stopOnInteraction: false, startDelay: 200 }),
+    AutoScroll({ speed: 1.2, stopOnMouseEnter: true, stopOnInteraction: false, startDelay: 200 }),
   ])
 
   return (
