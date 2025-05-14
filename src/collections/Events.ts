@@ -22,29 +22,53 @@ const Events: CollectionConfig = {
       name: "date",
       label: "Date",
       type: "date",
+      admin: {
+        date: {
+          pickerAppearance: 'dayOnly',
+          displayFormat: 'EEEE d MMMM yyyy'
+        },
+      },
       required: true
     },
     {
       name: "startTime",
       label: "Event Starting Time",
-      type: "text",
+      type: "date",
+      admin: {
+        date: {
+          pickerAppearance: 'timeOnly',
+          displayFormat: 'hh:mm a'
+        },
+      },
       required: true,
     },
     {
       name: "endTime",
       label: "Event Ending Time",
-      type: "text",
+      type: "date",
+      admin: {
+        date: {
+          pickerAppearance: 'timeOnly',
+          displayFormat: 'hh:mm a'
+        },
+      },
     },
     {
       name: "memberPrice",
       label: "Member Price",
       type: "number",
+      admin: {
+        step: 0.01,
+      },
       required: true,
     },
     {
       name: "nonMemberPrice",
       label: "Non-Member Price",
       type: "number",
+      admin: {
+        step: 0.01,
+      },
       required: true,
     },
     {
