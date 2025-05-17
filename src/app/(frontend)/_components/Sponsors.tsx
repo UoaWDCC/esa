@@ -10,14 +10,14 @@ export default async function Sponsors() {
 
   return (
     <div className="bg-[#0C1E34] text-white py-12">
-      <div className="flex flex-col items-center">
-        <p className="w-[17rem] text-center tracking-widest font-medium leading-none">
+      <div className="flex flex-col items-center gap-2 mb-12 text-xl">
+        <Link href="/sponsors" className="font-bold bg-[#A92622] px-4 py-1 rounded-2xl">
+          Our Sponsors
+        </Link>
+        <p className="w-[28rem] text-center font-medium leading-none">
           Enjoy discounts? As uni students we understand, that's why we've sponsored up for you.
           Take a look at ESA's sponsors!
         </p>
-        <Link href="/sponsors" className="mt-4 mb-12 font-bold text-xl underline tracking-widest">
-          Our Sponsors
-        </Link>
       </div>
       <Carousel sponsors={sponsors ?? []} />
     </div>

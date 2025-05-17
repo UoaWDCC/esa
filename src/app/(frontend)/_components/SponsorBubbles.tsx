@@ -32,21 +32,22 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
   }, [])
 
   return (
-    <div className="h-[24rem] inline-block ml-4" ref={containerRef}>
+    <div className="h-[24rem] inline-block ml-4 select-none" ref={containerRef}>
       {sponsors.map((sponsor) => {
         const size = 90 * sponsor.importance
 
         return (
           <div
-            className="grid-item rounded-full"
+            className="grid-item relative rounded-full select-none"
             style={{ width: `${size}px`, height: `${size}px` }}
             key={sponsor.id}
           >
             <Image
               src={sponsor.logo.url}
-              fill={true}
+              height={size}
+              width={size}
               alt={sponsor.logo.alt || 'Brand logo'}
-              className="select-none rounded-full object-fill"
+              className="select-none rounded-full"
             />
           </div>
         )
