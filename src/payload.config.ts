@@ -48,6 +48,7 @@ export default buildConfig({
   plugins: [
     payloadCloudPlugin(),
     storage,
+    storage,
     // storage-adapter-placeholder
   ],
 })
