@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Reservoir Grunge";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/RESEGRG_.TTF") format("truetype")
+}
+
+@font-face {
+  font-family: "Smeltex Medium";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/Smeltex-Medium.otf") format("truetype")
+}
+
+@font-face {
+  font-family: "Super Jellyfish";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/Super-Jellyfish.ttf") format("truetype")
+}
+
+@theme {
+  --font-reservoir-grunge: "Reservoir Grunge", sans-serif;
+  --font-smeltex-medium: "Smeltex Medium", sans-serif;
+  --font-super-jellyfish: "Super Jellyfish", sans-serif;
+  --color-text-primary: #EBE9E6;
+}

@@ -38,7 +38,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
 
         return (
           <div
-            className="grid-item relative rounded-full select-none"
+            className="grid-item relative rounded-full select-none overflow-hidden"
             style={{ width: `${size}px`, height: `${size}px` }}
             key={sponsor.id}
           >
@@ -47,7 +47,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
               height={size}
               width={size}
               alt={sponsor.logo.alt || 'Brand logo'}
-              className="select-none rounded-full"
+              className="select-none scale-105"
             />
           </div>
         )

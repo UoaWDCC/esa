@@ -13,7 +13,7 @@ export default async function HomePage() {
 
       <div className="w-full bg-red-100">place component 2 here and remove background colour</div>
 
-      <div className="w-full">
+      <div className="w-full bg-[#161514]">
         <Sponsors />
       </div>
     </div>
