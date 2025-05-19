@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -68,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    sponsor: Sponsor;
     events: Event;
     members: Member;
     execs: Exec;
@@ -79,6 +81,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    sponsor: SponsorSelect<false> | SponsorSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     members: MembersSelect<false> | MembersSelect<true>;
     execs: ExecsSelect<false> | ExecsSelect<true>;
@@ -154,6 +157,20 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor".
+ */
+export interface Sponsor {
+  id: string;
+  _order?: string;
+  name: string;
+  logo: string | Media;
+  deal?: string | null;
+  importance: number;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -258,6 +275,10 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
+        relationTo: 'sponsor';
+        value: string | Sponsor;
+      } | null)
+    | ({
         relationTo: 'events';
         value: string | Event;
       } | null)
@@ -344,6 +365,19 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor_select".
+ */
+export interface SponsorSelect<T extends boolean = true> {
+  _order?: T;
+  name?: T;
+  logo?: T;
+  deal?: T;
+  importance?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
