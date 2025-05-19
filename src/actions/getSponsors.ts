@@ -11,7 +11,7 @@ export const getSponsors = async () => {
     collection: 'sponsor',
     depth: 1,
     pagination: false,
-    sort: 'name',
+    sort: '_order',
   })
 
   return sponsors.docs

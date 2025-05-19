@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Sponsors: CollectionConfig = {
   slug: 'sponsor',
+  orderable: true,
   fields: [
     {
       name: 'name',

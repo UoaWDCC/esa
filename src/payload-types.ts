@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -163,6 +164,7 @@ export interface Media {
  */
 export interface Sponsor {
   id: string;
+  _order?: string;
   name: string;
   logo: string | Media;
   deal?: string | null;
@@ -369,6 +371,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "sponsor_select".
  */
 export interface SponsorSelect<T extends boolean = true> {
+  _order?: T;
   name?: T;
   logo?: T;
   deal?: T;

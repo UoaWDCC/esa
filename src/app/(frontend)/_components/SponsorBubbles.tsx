@@ -21,6 +21,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
           // Initialize Packery (Used for packing in the circles together)
           new Packery(containerRef.current, {
             itemSelector: '.grid-item', // Class name for items
+            stamp: '.stamp',
             gutter: 20, // Space between items
             horizontal: true, // Enable horizontal layout
           })
@@ -32,13 +33,13 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
   }, [])
 
   return (
-    <div className="h-[24rem] inline-block ml-4 select-none" ref={containerRef}>
+    <div className="relative h-[24rem] inline-block ml-4 select-none" ref={containerRef}>
       {sponsors.map((sponsor) => {
         const size = 90 * sponsor.importance
 
         return (
           <div
-            className="grid-item relative rounded-full select-none overflow-hidden"
+            className={`grid-item rounded-full select-none absolute overflow-hidden ${sponsor.name === 'SaigonChill' ? 'stamp top-0 left-15' : ''}`}
             style={{ width: `${size}px`, height: `${size}px` }}
             key={sponsor.id}
           >
