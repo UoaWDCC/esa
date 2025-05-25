@@ -1,11 +1,11 @@
-import Introduction from "./_components/Introduction";
+import WhoAreWe from './_components/WhoAreWe'
 
 export default function Page() {
-    return (
-        <>
-        <div className="flex items-center justify-center min-h-screen bg-gray-200">
-          <Introduction />
-        </div>
-        </>
-    )
-  }
+  return (
+    <>
+      <div className="flex items-center justify-center min-h-screen bg-black">
+        <WhoAreWe />
+      </div>
+    </>
+  )
+}
