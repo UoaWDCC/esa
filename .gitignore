@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+# we are using pnpm so we don't need npm package-lock
+package-lock.json
 
 /.idea/*
 !/.idea/runConfigurations
