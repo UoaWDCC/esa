@@ -3,7 +3,7 @@ import Sponsors from './_components/Sponsors'
 
 export default async function HomePage() {
   return (
-    <div className="">
+    <div className="text-primary-grey">
       {/* page content */}
       <div className="w-full bg-amber-100">
         place landing component here and remove background colour
