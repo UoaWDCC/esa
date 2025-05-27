@@ -2,7 +2,7 @@
 
 export default async function ContactPage() {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full lg:flex-row flex-col">
 
         {/* page content */}
         <div className="w-full bg-amber-800">
