@@ -1,40 +1,20 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+// import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 export default function WhoAreWe() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const imgRef = useRef<HTMLImageElement | null>(null)
+  // const [isLoaded, setIsLoaded] = useState(false)
+  // const imgRef = useRef<HTMLImageElement | null>(null)
 
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.innerHTML = `
-      @font-face {
-        font-family: 'smeltex-bold';
-        src: url('/fonts/Smeltex-Bold.otf) format('opentype');
-      }
-
-      @font-face {
-        font-family: 'smeltex-medium';
-        src: url('/fonts/Smeltex-Medium.otf) format('opentype');
-      }
-
-      @font-face {
-        font-family: 'resevoir-grunge';
-        src: url('/fonts/resevoirgrunge.ttf) format('truetype');
-      }
-    `
-
-    document.head.appendChild(style)
-
-    if (imgRef.current && imgRef.current.complete) {
-      setIsLoaded(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (imgRef.current && imgRef.current.complete) {
+  //     setIsLoaded(true)
+  //   }
+  // }, [])
 
   return (
     <>
-      <div className="relative w-fit h-fit">
+      <div className="relative">
         {/* top left frame*/}
         <Image
           src="/assets/frame.png"
@@ -64,13 +44,13 @@ export default function WhoAreWe() {
             <div className="relative left-8 top-8">
               {/* {!isLoaded ? <div className="text-xs text-black">loading...</div> : null} */}
               <Image
-                ref={imgRef}
+                // ref={imgRef}
                 src="/assets/team_photo.png"
                 alt="team photo"
                 width={220}
                 height={220}
-                onLoad={() => setIsLoaded(true)}
-                className={`${isLoaded ? 'block' : 'hidden'}`}
+                // onLoad={() => setIsLoaded(true)}
+                // className={`${isLoaded ? 'block' : 'hidden'}`}
               />
             </div>
 
@@ -87,7 +67,6 @@ export default function WhoAreWe() {
             <div className="relative left-75 bottom-75 w-40 h-10 rounded-lg bg-[#871F1B]">
               <div
                 className="text-center text-2xl text-white"
-                style={{ fontFamily: 'smeltex-bold' }}
               >
                 Who are we?
               </div>
@@ -95,22 +74,19 @@ export default function WhoAreWe() {
 
             {/* description */}
             <div
-              className="relative left-75 bottom-70 text-sm text-black text-center font-medium w-43"
-              style={{ fontFamily: 'smeltex-medium' }}
+              className="relative left-75 bottom-70 w-43 text-sm text-black text-center font-medium"
             >
               ESA Social Club is your go-to community for fun, connection, and a little friendly
               competition.
             </div>
             <div
-              className="relative left-75 bottom-65 text-black text-xs w-60"
-              style={{ fontFamily: 'resevoir-grunge' }}
+              className="relative left-75 bottom-65 w-60 text-black text-xs"
             >
               Whether you're here to smash it at sports day, chill at pool night, or game it out at
               arcade night — we've got you.
             </div>
             <div
-              className="relative left-75 bottom-60 text-black text-xs w-60"
-              style={{ fontFamily: 'resevoir-grunge' }}
+              className="relative left-75 bottom-60 w-60 text-black text-xs"
             >
               ESA firmly believes that university life is not just about academic studies...but it's
               also about having fun, and meeting new friends!
