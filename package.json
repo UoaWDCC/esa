@@ -15,6 +15,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@payloadcms/db-mongodb": "^3.38.0",
     "@payloadcms/next": "^3.38.0",
     "@payloadcms/payload-cloud": "^3.38.0",
@@ -34,8 +35,10 @@
     "postcss": "^8.5.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-hook-form": "^7.56.4",
     "sharp": "0.32.6",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.7",
+    "zod": "^3.25.30"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
