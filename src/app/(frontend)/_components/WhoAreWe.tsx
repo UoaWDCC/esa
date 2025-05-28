@@ -56,38 +56,28 @@ export default function WhoAreWe() {
 
             {/* arrow */}
             <Image
-              src="/assets/arrow.png" 
-              alt="arrow" 
-              width={85} 
+              src="/assets/arrow.png"
+              alt="arrow"
+              width={85}
               height={85}
-              className="relative left-40 bottom-50" 
+              className="relative left-40 bottom-50"
             />
 
             {/* title */}
             <div className="relative left-75 bottom-75 w-40 h-10 rounded-lg bg-[#871F1B]">
-              <div
-                className="text-center text-2xl text-white"
-              >
-                Who are we?
-              </div>
+              <div className="text-center text-2xl text-white">Who are we?</div>
             </div>
 
             {/* description */}
-            <div
-              className="relative left-75 bottom-70 w-43 text-sm text-black text-center font-medium"
-            >
+            <div className="relative left-75 bottom-70 w-43 text-sm text-black text-center font-medium">
               ESA Social Club is your go-to community for fun, connection, and a little friendly
               competition.
             </div>
-            <div
-              className="relative left-75 bottom-65 w-60 text-black text-xs"
-            >
+            <div className="relative left-75 bottom-65 w-60 text-black text-xs">
               Whether you're here to smash it at sports day, chill at pool night, or game it out at
               arcade night — we've got you.
             </div>
-            <div
-              className="relative left-75 bottom-60 w-60 text-black text-xs"
-            >
+            <div className="relative left-75 bottom-60 w-60 text-black text-xs">
               ESA firmly believes that university life is not just about academic studies...but it's
               also about having fun, and meeting new friends!
             </div>

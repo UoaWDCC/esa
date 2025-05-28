@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles.css'
+import 'src/styles/global.css'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -12,7 +12,17 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <>
+          {/* replace empty container with nav bar component*/}
+          <p>navbar</p>
+        </>
+
         <main>{children}</main>
+
+        <>
+          {/* replace empty container with footer component*/}
+          <p>footer</p>
+        </>
       </body>
     </html>
   )

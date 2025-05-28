@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -68,6 +69,10 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    sponsor: Sponsor;
+    events: Event;
+    members: Member;
+    execs: Exec;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -76,6 +81,10 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    sponsor: SponsorSelect<false> | SponsorSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
+    members: MembersSelect<false> | MembersSelect<true>;
+    execs: ExecsSelect<false> | ExecsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -151,6 +160,107 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor".
+ */
+export interface Sponsor {
+  id: string;
+  _order?: string;
+  name: string;
+  logo: string | Media;
+  deal?: string | null;
+  importance: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: string;
+  name: string;
+  location: string;
+  date: string;
+  startTime: string;
+  endTime?: string | null;
+  memberPrice: number;
+  nonMemberPrice: number;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "members".
+ */
+export interface Member {
+  id: string;
+  timestamp: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  studentID?: string | null;
+  upi?: string | null;
+  yearOfStudy?: string | null;
+  ethnicity?: string | null;
+  convincedByCommitteeMember?: string | null;
+  membershipCardNumber?: string | null;
+  membershipPayment?: string | null;
+  paymentScreenshotLink?: string | null;
+  referrerName?: string | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "execs".
+ */
+export interface Exec {
+  id: string;
+  /**
+   * Full name of the executive
+   */
+  name: string;
+  /**
+   * Ethinicity of the executive
+   */
+  ethnicity: string;
+  /**
+   * Role held by the executive
+   */
+  role: string;
+  /**
+   * Degree of the executive
+   */
+  degree: string;
+  /**
+   * Image of the executive
+   */
+  image: string | Media;
+  /**
+   * Short biography of the executive
+   */
+  about: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -163,6 +273,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'sponsor';
+        value: string | Sponsor;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: string | Event;
+      } | null)
+    | ({
+        relationTo: 'members';
+        value: string | Member;
+      } | null)
+    | ({
+        relationTo: 'execs';
+        value: string | Exec;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -239,6 +365,71 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsor_select".
+ */
+export interface SponsorSelect<T extends boolean = true> {
+  _order?: T;
+  name?: T;
+  logo?: T;
+  deal?: T;
+  importance?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  name?: T;
+  location?: T;
+  date?: T;
+  startTime?: T;
+  endTime?: T;
+  memberPrice?: T;
+  nonMemberPrice?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "members_select".
+ */
+export interface MembersSelect<T extends boolean = true> {
+  timestamp?: T;
+  firstName?: T;
+  lastName?: T;
+  email?: T;
+  studentID?: T;
+  upi?: T;
+  yearOfStudy?: T;
+  ethnicity?: T;
+  convincedByCommitteeMember?: T;
+  membershipCardNumber?: T;
+  membershipPayment?: T;
+  paymentScreenshotLink?: T;
+  referrerName?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "execs_select".
+ */
+export interface ExecsSelect<T extends boolean = true> {
+  name?: T;
+  ethnicity?: T;
+  role?: T;
+  degree?: T;
+  image?: T;
+  about?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
