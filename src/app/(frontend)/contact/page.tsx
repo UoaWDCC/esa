@@ -1,3 +1,4 @@
+import ContactForm from "@/app/(frontend)/contact/_components/ContactForm";
 
 
 export default async function ContactPage() {
@@ -9,8 +10,8 @@ export default async function ContactPage() {
             place map component and remove background colour
          </div>
 
-        <div className="w-full bg-blue-800">
-            place form component and remove background colour
+        <div className="w-full bg-blue-500">
+            <ContactForm />
         </div>
 
     </div>
