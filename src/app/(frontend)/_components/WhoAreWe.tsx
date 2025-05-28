@@ -15,16 +15,16 @@ export default function WhoAreWe() {
   return (
     <>
       <div className="relative">
-        {/* top left frame*/}
+        {/* bottom right frame*/}
         <Image
           src="/assets/frame.png"
           alt="top left frame"
           width={60}
           height={60}
-          className="absolute -bottom-9 -right-6"
+          className="absolute -bottom-9 left-145"
         />
 
-        {/* bottom right frame */}
+        {/* top left frame */}
         <Image
           src="/assets/frame.png"
           alt="bottom right frame"
@@ -36,7 +36,7 @@ export default function WhoAreWe() {
         {/* main box component */}
         <div className="flex h-88 w-150 rounded-[5em] bg-[#ebe9e6]">
           {/* background */}
-          <div className="absolute inset-0 bg-[url('/assets/liquid_marbling_background.png')] bg-cover bg-center opacity-9" />
+          <div className="absolute inset-0 bg-[url('/assets/liquid_marbling_background.png')] bg-cover bg-center opacity-9 w-150 rounded-[5em]" />
 
           {/* foreground */}
           <div className="relative flex flex-col items-center">
