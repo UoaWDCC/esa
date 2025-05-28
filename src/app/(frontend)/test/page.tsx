@@ -1,3 +1,5 @@
+import WhoAreWe from "../_components/WhoAreWe";
+
 const test = () => {
     return ( 
         <div className="bg-[#161514] p-8">
@@ -19,6 +21,8 @@ const test = () => {
                 <p className="text-primary-white lg:text-primary-red">Media Query</p>
                 <p className="text-primary-white lg:text-primary-red">Media Query</p>
             </div>
+
+            <WhoAreWe></WhoAreWe>
         </div>
      );
 }

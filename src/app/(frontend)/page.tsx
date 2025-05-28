@@ -1,5 +1,6 @@
 import React from 'react'
 import Sponsors from './_components/Sponsors'
+import WhoAreWe from './_components/WhoAreWe'
 
 export default async function HomePage() {
   return (
@@ -9,7 +10,9 @@ export default async function HomePage() {
         place landing component here and remove background colour
       </div>
 
-      <div className="w-full bg-blue-100">place component 1 here and remove background colour</div>
+      <div className="flex flex-col items-center w-full bg-blue-100">
+        <WhoAreWe />
+      </div>
 
       <div className="w-full bg-red-100">place component 2 here and remove background colour</div>
 
