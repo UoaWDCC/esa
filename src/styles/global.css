@@ -24,14 +24,23 @@
   src: url("/fonts/Super-Jellyfish.ttf") format("truetype")
 }
 
+@font-face {
+  font-family: "RobotoMono Regular";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/RobotoMono-Regular.ttf") format("truetype")
+}
+
 @theme {
   --font-reservoir-grunge: "Reservoir Grunge", sans-serif;
   --font-smeltex-medium: "Smeltex Medium", sans-serif;
   --font-super-jellyfish: "Super Jellyfish", sans-serif;
+  --font-roboto-mono: "RobotoMono Regular", monospace;
 
   --color-primary-red: #D3312A; /* red */
   --color-primary-white: #EBE9E6; /* white */
   --color-primary-grey: #161514; /* dark grey */
+  --color-primary-grey-light: #404040; /* light grey */
   --color-primary-blue: #0C1E34; /* dark blue */
 
   --color-accent: #FFC857; /* yellow */
