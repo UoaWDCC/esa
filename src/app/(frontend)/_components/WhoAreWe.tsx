@@ -40,7 +40,7 @@ export default function WhoAreWe() {
 
           {/* foreground */}
           <div className="relative flex flex-col items-center">
-            {/* team photo with placeholder*/}
+            {/* team photo */}
             <div className="relative left-8 top-8">
               {/* {!isLoaded ? <div className="text-xs text-black">loading...</div> : null} */}
               <Image
