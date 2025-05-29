@@ -1,8 +1,8 @@
-import WhoAreWe from "../_components/WhoAreWe";
+
 
 const test = () => {
     return ( 
-        <div className="bg-[#161514] p-8">
+        <div className="bg-[#161514] p-8 text-primary-white">
             <h1>Heading 1</h1>
             <h2>Heading 2</h2>
             <h3>Heading 3</h3>
@@ -22,7 +22,10 @@ const test = () => {
                 <p className="text-primary-white lg:text-primary-red">Media Query</p>
             </div>
 
-            <WhoAreWe></WhoAreWe>
+            <div className="mt-5">
+                <p>if you want to test any components, you can place them here</p>
+            </div>
+
         </div>
      );
 }
