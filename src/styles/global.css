@@ -1,1 +1,81 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Reservoir Grunge";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/RESEGRG_.TTF") format("truetype")
+}
+
+@font-face {
+  font-family: "Smeltex Medium";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/Smeltex-Medium.otf") format("truetype")
+}
+
+@font-face {
+  font-family: "Super Jellyfish";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/Super-Jellyfish.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "RobotoMono Regular";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/RobotoMono-Regular.ttf") format("truetype")
+}
+
+@theme {
+  --font-reservoir-grunge: "Reservoir Grunge", sans-serif;
+  --font-smeltex-medium: "Smeltex Medium", sans-serif;
+  --font-super-jellyfish: "Super Jellyfish", sans-serif;
+  --font-roboto-mono: "RobotoMono Regular", monospace;
+
+  --color-primary-red: #D3312A; /* red */
+  --color-primary-white: #EBE9E6; /* white */
+  --color-primary-grey: #161514; /* dark grey */
+  --color-primary-grey-light: #404040; /* light grey */
+  --color-primary-blue: #0C1E34; /* dark blue */
+
+  --color-accent: #FFC857; /* yellow */
+  --color-accent-light: #FFDC94; /* light yellow */
+  --color-accent-dark: #BE8715; /* dark yellow */
+}
+
+/* default global styles */
+:root {
+  font-family: var(--font-smeltex-medium);
+  color: var(--color-primary-white);
+  background-color: var(--color-primary-grey);
+  margin: 0;
+  padding: 0;
+  font-size: clamp(0.8rem, 1vw + 0.5rem, 1.25rem); /* minmum size, perferred size, maximum size */ --radius: 0.625rem; --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --card: oklch(1 0 0); --card-foreground: oklch(0.145 0 0); --popover: oklch(1 0 0); --popover-foreground: oklch(0.145 0 0); --primary: oklch(0.205 0 0); --primary-foreground: oklch(0.985 0 0); --secondary: oklch(0.97 0 0); --secondary-foreground: oklch(0.205 0 0); --muted: oklch(0.97 0 0); --muted-foreground: oklch(0.556 0 0); --accent: oklch(0.97 0 0); --accent-foreground: oklch(0.205 0 0); --destructive: oklch(0.577 0.245 27.325); --border: oklch(0.922 0 0); --input: oklch(0.922 0 0); --ring: oklch(0.708 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
+}
+
+h1 {
+  font-family: var(--font-reservoir-grunge);
+  font-size: clamp(2rem, 5vw + 1rem, 5rem); /* minmum size, perferred size, maximum size */
+  color: var(--color-primary-red);
+}
+
+h2 {
+  font-family: var(--font-reservoir-grunge);
+  font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem); /* minmum size, perferred size, maximum size */
+}
+
+h3 {
+  font-family: var(--font-reservoir-grunge);
+  font-size: clamp(1rem, 1vw + 1rem, 1.75rem); /* minmum size, perferred size, maximum size */
+}
+
+/* SHADCN STUFF DO NOT WORRY ABOUT IT!! */
+
+@theme inline {
+  --color-destructive: var(--destructive);
+}

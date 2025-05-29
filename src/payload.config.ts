@@ -9,7 +9,11 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import Events from './collections/Events'
+import { Members } from './collections/Members'
+import { Execs } from './collections/Execs'
 import storage from '@/collections/Storage'
+import { Sponsors } from './collections/Sponsors'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -20,8 +24,18 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      views: {
+        csvUpload: {
+          Component: '@/app/(payload)/components/views/CSVUploadView.tsx',
+          path: '/csv-upload',
+          exact: true,
+        },
+      },
+      afterNavLinks: ['@/app/(payload)/components/CSVUploadLink.tsx'],
+    },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Sponsors, Events, Members, Execs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -33,7 +47,8 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    storage
+    storage,
+    storage,
     // storage-adapter-placeholder
   ],
 })

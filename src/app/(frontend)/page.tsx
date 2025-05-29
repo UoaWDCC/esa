@@ -1,22 +1,15 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
 import React from 'react'
-import { fileURLToPath } from 'url'
+import Image from 'next/image'
 import config from '@/payload.config'
-import Footer from 'src/components/navigation/footer' // ✅ adjust if needed
+import Footer from 'src/components/navigation/footer'
+import Sponsors from './_components/Sponsors'
+import WhoAreWe from './_components/WhoAreWe'
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  const user = null // Replace with actual user fetching logic if needed
 
   return (
     <>
-      {/* Content wrapper */}
       <div className="home">
         <div className="content">
           <picture>
@@ -35,7 +28,7 @@ export default async function HomePage() {
           <div className="links">
             <a
               className="admin"
-              href={payloadConfig.routes.admin}
+              href={config.routes.admin}
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -51,8 +44,30 @@ export default async function HomePage() {
             </a>
           </div>
         </div>
+
+        <div className="text-primary-grey">
+          {/* page content */}
+          <div className="w-full">
+            {/* Replace with actual landing component */}
+            place landing component here
+          </div>
+
+          <div className="flex flex-col items-center w-full">
+            <WhoAreWe />
+          </div>
+
+          <div className="w-full">
+            {/* Replace with actual second component */}
+            place component 2 here
+          </div>
+
+          <div className="w-full bg-[#161514]">
+            <Sponsors />
+          </div>
+
+          <Footer />
+        </div>
       </div>
-      <Footer />
     </>
   )
 }
