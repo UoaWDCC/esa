@@ -10,7 +10,7 @@ export default async function Sponsors() {
   const sponsors = parseSponsors(await getSponsors())
 
   return (
-    <div className="text-text-primary py-12">
+    <div className="text-primary-white py-12">
       <div className="flex flex-col items-center gap-5 mb-12 ">
         <div className="relative">
           <Link
@@ -28,7 +28,7 @@ export default async function Sponsors() {
               unoptimized={true}
               className=""
             />
-            <p className="font-super-jellyfish translate-y-[-0.2rem]">CLICK FOR MORE DETAILS!</p>
+            <p className="font-super-jellyfish translate-y-[-0.2rem] text-[1rem]">CLICK FOR MORE DETAILS!</p>
           </div>
         </div>
 

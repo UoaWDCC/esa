@@ -1,7 +1,7 @@
 import 'src/styles/global.css'
 
 export const metadata = {
-  description: 'Placeholder layout for not-found.tsx functionality and compatibility with next.js',
+  description: 'Placeholder layout for not-found.tsx functionality',
   title: 'Functioality Placeholder',
 }
 
