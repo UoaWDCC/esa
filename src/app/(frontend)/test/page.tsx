@@ -1,24 +1,10 @@
-<<<<<<< HEAD
-import WhoAreWe from '../_components/WhoAreWe'
-
 const test = () => {
   return (
-    <div className="bg-[#161514] p-8">
+    <div className="bg-[#161514] p-8 text-primary-white">
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>
       <h3>Heading 3</h3>
       <p>Paragraph</p>
-=======
-
-
-const test = () => {
-    return ( 
-        <div className="bg-[#161514] p-8 text-primary-white">
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
-            <h3>Heading 3</h3>
-            <p>Paragraph</p>
->>>>>>> e544cc152ffcca2dd57a3678b10721d1a6590018
 
       <p className="text-primary-white mt-5">Text Primary White</p>
       <p className="text-primary-grey bg-primary-white">Text Primary Grey</p>
@@ -34,18 +20,11 @@ const test = () => {
         <p className="text-primary-white lg:text-primary-red">Media Query</p>
       </div>
 
-<<<<<<< HEAD
-      <WhoAreWe></WhoAreWe>
+      <div className="mt-5">
+        <p>if you want to test any components, you can place them here</p>
+      </div>
     </div>
   )
-=======
-            <div className="mt-5">
-                <p>if you want to test any components, you can place them here</p>
-            </div>
-
-        </div>
-     );
->>>>>>> e544cc152ffcca2dd57a3678b10721d1a6590018
 }
 
 export default test
