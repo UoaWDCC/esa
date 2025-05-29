@@ -33,7 +33,7 @@ const WhyJoin = () => {
         alt="Background"
         fill
         layout="reponsive"
-        className="absolute brightness-35 object-cover scale-130"
+        className="absolute brightness-35 object-cover scale-140"
       />
       {/* Content overlay */}
       <div id="content" className="relative inset-x-30 inset-y-40">
