@@ -33,7 +33,7 @@ const WhyJoin = () => {
         alt="Background"
         fill
         layout="reponsive"
-        className="absolute brightness-35 object-cover"
+        className="absolute brightness-35 object-cover scale-130"
       />
       {/* Content overlay */}
       <div id="content" className="relative inset-x-30 inset-y-40">
@@ -49,14 +49,14 @@ const WhyJoin = () => {
 
         {/* Body Text One*/}
         <div id="body-text-one" className="mt-30 max-w-[784px]">
-          <p className="text-white text-2xl font-sans-serif">
+          <p className="text-white text-2xl">
             We&apos;re doing things our way - fresh events, fun people, and a vibe that feels like
             your favourite hangout spot. Kinda new, kinda nostalgic, always a good time.
           </p>
         </div>
         {/* Body Text Two*/}
         <div id="body-text-two" className="mt-6 max-w-[760px]">
-          <p className="text-white text-2xl font-black">
+          <p className="text-white text-2xl">
             Lorem ipsum dolor sit amet consecutetur. Elementum gravida egestas id consecutetur
             volutpat id nec consecutetur. Pretium pellentesque a consecutetur urna
           </p>
@@ -64,7 +64,6 @@ const WhyJoin = () => {
 
         {/* Join button */}
         <div id="join-button" className="mt-8">
-          {/* BG COLOUR NEEDS TO BE FIXED. I have NO idea why bg-accent is white (wrong) but bg-accent-light is correct */}
           <button className="bg-accent text-black rounded-3xl px-6 py-1 font-roboto-mono hover:bg-accent-light cursor-pointer transition">
             Join The ESA Family!
           </button>

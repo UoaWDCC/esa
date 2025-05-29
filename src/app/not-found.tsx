@@ -8,13 +8,13 @@ export default function notFound() {
       <div className="flex space-x-6 text-white">
         {' '}
         {/* Links to other pages for navigation */}
-        <Link href="/home" className="hover:underline">
+        <Link href="/" className="hover:underline">
           Go to Home
         </Link>
         <Link href="/" className="hover:underline">
           About Us
         </Link>
-        <Link href="/" className="hover:underline">
+        <Link href="/contact" className="hover:underline">
           Contact
         </Link>
       </div>
