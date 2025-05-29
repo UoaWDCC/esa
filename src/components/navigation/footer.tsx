@@ -6,14 +6,22 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Centered Grid Layout */}
         <div className="flex justify-center">
+          
           <div className="grid grid-cols-1 md:grid-flow-col md:auto-cols-max gap-x-20 gap-y-4">
             {/* Column 1: Social Media */}
-            <div className="flex flex-col items-center md:items-start mt-4 md:mt-6">
-              <h3 className="text-base font-semibold mb-1">Follow Us!</h3>
-              <div className="flex space-x-4 text-2xl">
-                <FaFacebookF className="hover:text-gray-400 cursor-pointer" />
-                <FaInstagram className="hover:text-gray-400 cursor-pointer" />
-                <FaLinkedinIn className="hover:text-gray-400 cursor-pointer" />
+            <div className="flex flex-col items-center mt-4 md:mt-6">
+              <h3 className="text-sm font-semibold mb-2">Follow Us!</h3>
+
+              <div className="flex space-x-2">
+                <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
+                  <FaFacebookF className="text-sm" />
+                </div>
+                <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
+                  <FaInstagram className="text-sm" />
+                </div>
+                <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
+                  <FaLinkedinIn className="text-sm" />
+                </div>
               </div>
             </div>
 
