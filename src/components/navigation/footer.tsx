@@ -14,7 +14,7 @@ function Footer() {
           {/* Column 1: Social Media */}
           <div className="flex flex-col mt-4 md:mt-6 md:ml-15">
             <div className="flex flex-col items-center">
-              <h3 className="text-sm font-lg mb-1 text-center">Follow Us!</h3>
+              <h6 className="text-sm font-sm mb-1 text-center">Follow Us!</h6>
               <div className="flex space-x-2">
                 <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
                   <FaFacebookF className="text-xl" />
@@ -30,11 +30,11 @@ function Footer() {
           </div>
 
           {/* Grouped Columns 2–4 */}
-          <div className="flex flex-col md:flex-row gap-x-35 mt-6 md:mt-0">
+          <div className="flex flex-col md:flex-row md:gap-x-25 mt-6 md:mt-0 md:mr-65">
             
             {/* Column 2 */}
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-base font-semibold mb-1">Heading</h3>
+              <h6 className="text-sm font-sm mb-1">Heading</h6>
               <ul className="space-y-1 text-sm text-center md:text-left">
                 <li>Marketing</li>
                 <li>About Us</li>
@@ -45,7 +45,7 @@ function Footer() {
 
             {/* Column 3 */}
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-base font-semibold mb-1">Heading</h3>
+              <h6 className="text-sm font-sm mb-1">Heading</h6>
               <ul className="space-y-1 text-sm text-center md:text-left">
                 <li>Gallery</li>
                 <li>Events</li>
@@ -55,7 +55,7 @@ function Footer() {
 
             {/* Column 4 */}
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-base font-semibold mb-1">Contact Us</h3>
+              <h6 className="text-sm font-sm mb-1">Contact Us</h6>
               <ul className="space-y-1 text-sm text-center md:text-left">
                 <li>Contact 1</li>
                 <li>Contact option 2</li>
@@ -69,10 +69,21 @@ function Footer() {
 
         {/* Bottom Row */}
         <div className="flex flex-col md:flex-row items-center justify-between text-xs text-white">
-          <p className="mb-4 md:mb-0 font-lg">© Eastern Students Association 2025</p>
-          <div className="flex items-center gap-2">
-            <span className="text-white font-semibold text-lg">
-              Eastern Students Association
+          <p className="mb-4 md:mb-0">© Eastern Students Association 2025</p>
+
+          <div className="flex items-center gap-3">
+            <div className="bg-white rounded-full p-0.25 md:p-0.5">
+            <img
+              src="/assets/esa_logo.png"
+              alt="ESA Logo"
+              className="h-[1.5rem] md:h-[2rem] object-contain"
+            />
+            </div>
+            <span
+              style={{ fontFamily: 'Reservoir Grunge' }}
+              className="text-lg text-white leading-tight text-center md:text-right"
+            >
+              Eastern Students<br />Association
             </span>
           </div>
         </div>
