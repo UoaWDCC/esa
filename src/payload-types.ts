@@ -164,7 +164,7 @@ export interface Media {
  */
 export interface Sponsor {
   id: string;
-  _order?: string | null;
+  _order?: string;
   name: string;
   logo: string | Media;
   deal?: string | null;
