@@ -65,7 +65,7 @@ function Footer() {
         </div>
 
         {/* Divider Line */}
-        <hr className="border-t border-white my-8" />
+        <hr className="border-t border-white mt-10 mb-4" />
 
         {/* Bottom Row */}
         <div className="flex flex-col md:flex-row items-center justify-between text-xs text-white">
