@@ -1,6 +1,7 @@
 import React from 'react'
 import Sponsors from './_components/Sponsors'
 import WhoAreWe from './_components/WhoAreWe'
+import WhyJoin from './_components/WhyJoin'
 
 export default async function HomePage() {
   return (
@@ -19,6 +20,11 @@ export default async function HomePage() {
       <div className="w-full bg-[#161514]">
         <Sponsors />
       </div>
+      <div className="w-full bg-[#161514]">
+        <WhyJoin />
+      </div>
+      <div className="w-full bg-[#161514] min-h-[100px] text-white">Replace with component 5</div>
+      {/* place component 4 here and remove background colour */}
     </div>
   )
 }
