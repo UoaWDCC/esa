@@ -11,12 +11,9 @@ export default async function HomePage() {
         place landing component here and remove background colour
       </div>
 
-      <div className="flex flex-col items-center w-full">
+      <div className="flex flex-col items-center w-full p-12">
         <WhoAreWe />
       </div>
-
-      <div className="w-full bg-red-100">place component 2 here and remove background colour</div>
-
       <div className="w-full bg-[#161514]">
         <Sponsors />
       </div>
