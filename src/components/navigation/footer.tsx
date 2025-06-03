@@ -57,8 +57,8 @@ function Footer() {
             <div className="flex flex-col items-center md:items-start">
               <h6 className="font-sm mb-1">Contact Us</h6>
               <ul className="space-y-1">
-                <li>Contact 1</li>
-                <li>Contact option 2</li>
+                <li><Link href="/" className="hover:underline">Contact 1</Link></li>
+                <li><Link href="/" className="hover:underline">Contact option 2</Link></li>
               </ul>
             </div>
           </div>
