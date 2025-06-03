@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SponsorParsed } from '@/types/parsers/parseSponsors'
 
 export interface SponsorProps {
@@ -10,6 +10,21 @@ export interface SponsorProps {
 
 export default function SponsorBubbles({ sponsors }: SponsorProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [baseSize, setBaseSize] = useState(60)
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 1024) {
+        setBaseSize(60)
+      } else {
+        setBaseSize(90)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     // Import Packery client side as needs client functionality. As any as idk how to deal with TypeScript error as Packery wasn't made for TypeScript
@@ -30,12 +45,12 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
       .catch((error) => {
         console.error('Failed to load Packery:', error)
       })
-  }, [])
+  }, [baseSize])
 
   return (
     <div className="relative h-[24rem] inline-block ml-4 select-none" ref={containerRef}>
       {sponsors.map((sponsor) => {
-        const size = 90 * sponsor.importance
+        const size = baseSize * sponsor.importance
 
         return (
           <div
@@ -48,7 +63,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
               height={size}
               width={size}
               alt={sponsor.logo.alt || 'Brand logo'}
-              className="select-none scale-105"
+              className="scale-105 select-none"
             />
           </div>
         )
