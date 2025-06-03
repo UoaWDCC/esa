@@ -8,7 +8,6 @@ function Footer() {
     <hr className="border-t border-white w-full" />
 
     <div className="max-w-6xl mx-auto px-4 mt-8">
-
         {/* Layout with Column 1 separated */}
         <div className="flex flex-col md:flex-row justify-between">
           
@@ -31,12 +30,12 @@ function Footer() {
           </div>
 
           {/* Grouped Columns 2–4 */}
-          <div className="flex flex-col md:flex-row md:gap-x-25 mt-6 md:mt-0 md:mr-65">
+          <div className="flex flex-col md:flex-row md:gap-x-25 mt-6 md:mt-0 md:mr-65 text-sm text-center md:text-left">
             
             {/* Column 2 */}
             <div className="flex flex-col items-center md:items-start">
-              <h6 className="text-sm font-sm mb-1">Heading</h6>
-              <ul className="space-y-1 text-sm text-center md:text-left">
+              <h6 className="font-medium mb-1">Heading</h6>
+              <ul className="space-y-1">
                 <li><Link href="/" className="hover:underline">Marketing</Link></li>
                 <li><Link href="/" className="hover:underline">About Us</Link></li>
                 <li><Link href="/" className="hover:underline">Text filler</Link></li>
@@ -46,8 +45,8 @@ function Footer() {
 
             {/* Column 3 */}
             <div className="flex flex-col items-center md:items-start">
-              <h6 className="text-sm font-sm mb-1">Heading</h6>
-              <ul className="space-y-1 text-sm text-center md:text-left">
+              <h6 className="font-medium mb-1">Heading</h6>
+              <ul className="space-y-1">
                 <li><Link href="/" className="hover:underline">Gallery</Link></li>
                 <li><Link href="/" className="hover:underline">Events</Link></li>
                 <li><Link href="/" className="hover:underline">Text filler</Link></li>
@@ -56,8 +55,8 @@ function Footer() {
 
             {/* Column 4 */}
             <div className="flex flex-col items-center md:items-start">
-              <h6 className="text-sm font-sm mb-1">Contact Us</h6>
-              <ul className="space-y-1 text-sm text-center md:text-left">
+              <h6 className="font-sm mb-1">Contact Us</h6>
+              <ul className="space-y-1">
                 <li>Contact 1</li>
                 <li>Contact option 2</li>
               </ul>
