@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import Link from 'next/link';
 
 function Footer() {
   return (
@@ -36,10 +37,10 @@ function Footer() {
             <div className="flex flex-col items-center md:items-start">
               <h6 className="text-sm font-sm mb-1">Heading</h6>
               <ul className="space-y-1 text-sm text-center md:text-left">
-                <li>Marketing</li>
-                <li>About Us</li>
-                <li>Text filler</li>
-                <li>Text filler</li>
+                <li><Link href="/" className="hover:underline">Marketing</Link></li>
+                <li><Link href="/" className="hover:underline">About Us</Link></li>
+                <li><Link href="/" className="hover:underline">Text filler</Link></li>
+                <li><Link href="/" className="hover:underline">Text filler</Link></li>
               </ul>
             </div>
 
