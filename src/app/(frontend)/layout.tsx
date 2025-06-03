@@ -1,5 +1,6 @@
 import React from 'react'
 import 'src/styles/global.css'
+import Footer from '../../components/navigation/Footer'
 import Navbar from '../../components/navigation/Navbar'
 
 export const metadata = {
@@ -20,8 +21,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <main>{children}</main>
 
         <>
-          {/* replace empty container with footer component*/}
-          <p>footer</p>
+          <Footer />
         </>
       </body>
     </html>

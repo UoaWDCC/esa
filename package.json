@@ -41,6 +41,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.4",
+    "react-icons": "^5.5.0",
     "sharp": "^0.32.6",
     "swc": "^1.0.11",
     "tailwind-merge": "^3.3.0",
