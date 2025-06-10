@@ -9,7 +9,9 @@ export default function CSVDownload() {
             return;
         }
         const data = await res.json();
-        const members = data.docs
+        
+        // Remove id, createdAt, and updatedAt fields from each member
+        const members = data.docs.map(({ id, createdAt, updatedAt, ...rest }: any) => rest);
 
         // Check whether any members were returned
         if (!Array.isArray(members) || members.length === 0) {
