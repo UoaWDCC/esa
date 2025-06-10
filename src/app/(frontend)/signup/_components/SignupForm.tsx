@@ -15,6 +15,7 @@ export default function SignupForm() {
         }
     }
 
+    // Takes in the form and creates a new member in the database.
     async function createMember(form: HTMLFormElement) {
         const data = {
             timestamp: new Date().toISOString(),
