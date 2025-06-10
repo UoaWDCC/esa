@@ -7,6 +7,15 @@ export default function SignupForm() {
         event.preventDefault();
         const form = event.currentTarget;
 
+        try {
+            await createMember(form);
+            alert("Signup successful!");
+        } catch (error: any) {
+            alert(error.message);
+        }
+    }
+
+    async function createMember(form: HTMLFormElement) {
         const data = {
             timestamp: new Date().toISOString(),
             firstName: form.firstName.value,
@@ -26,16 +35,17 @@ export default function SignupForm() {
         const response = await fetch('/api/members', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });
 
-        if (response.ok) {
-            alert("Signup successful!");
-        } else {
-            alert("Signup failed. Member already exists or an error occurred.");
+        if (!response.ok) {
+            const error = await response.json().catch(() => ({}));
+            throw new Error(error.message || "Signup failed. Member already exists or an error occurred.");
         }
+
+        return response;
     }
 
     return (
