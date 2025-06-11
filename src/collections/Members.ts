@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: true, 
+    hidden: false, 
   },
   access: {
     read: () => true,
@@ -105,6 +105,17 @@ export const Members: CollectionConfig = {
       name: 'lastName',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'gender',
+      type: 'select',
+      options: [
+        { label: 'male', value: 'male' },
+        { label: 'female', value: 'female' },
+        { label: 'other', value: 'other' },
+        { label: 'prefer not to say', value: 'prefer not to say' }
+      ],
+      defaultValue: 'prefer not to say',
     },
     {
       name: 'email',

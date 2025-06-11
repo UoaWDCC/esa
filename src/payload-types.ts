@@ -198,6 +198,7 @@ export interface Member {
   timestamp: string;
   firstName: string;
   lastName: string;
+  gender?: ('male' | 'female' | 'other' | 'prefer not to say') | null;
   email: string;
   studentID?: string | null;
   upi?: string | null;
@@ -403,6 +404,7 @@ export interface MembersSelect<T extends boolean = true> {
   timestamp?: T;
   firstName?: T;
   lastName?: T;
+  gender?: T;
   email?: T;
   studentID?: T;
   upi?: T;
