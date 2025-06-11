@@ -107,6 +107,17 @@ export const Members: CollectionConfig = {
       required: true,
     },
     {
+      name: 'gender',
+      type: 'select',
+      options: [
+        { label: 'male', value: 'male' },
+        { label: 'female', value: 'female' },
+        { label: 'other', value: 'other' },
+        { label: 'prefer not to say', value: 'prefer not to say' }
+      ],
+      defaultValue: 'prefer not to say',
+    },
+    {
       name: 'email',
       type: 'text',
       required: true,

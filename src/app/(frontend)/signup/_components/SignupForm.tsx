@@ -61,6 +61,21 @@ export default function SignupForm() {
                     <input type="text" id="lastName" name="lastName" required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
                 </div>
                 <div className="mb-4">
+                    <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
+                    <select
+                        id="gender"
+                        name="gender"
+                        defaultValue="prefer not to say"
+                        required
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    >
+                        <option value="prefer not to say" className="text-black">Prefer not to say</option>
+                        <option value="male" className="text-black">Male</option>
+                        <option value="female" className="text-black">Female</option>
+                        <option value="other" className="text-black">Other</option>
+                    </select>
+                </div>
+                <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                     <input
                         type="email"
