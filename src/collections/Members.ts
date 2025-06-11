@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: false, 
+    hidden: true, 
   },
   access: {
     read: () => true,
