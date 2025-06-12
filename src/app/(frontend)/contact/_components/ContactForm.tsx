@@ -86,7 +86,7 @@ export default function ContactForm() {
                                 <FormControl>
                                     <Textarea
                                         placeholder="Write your message"
-                                        className="min-h-[148px] text-base bg-transparent border border-primary-white rounded-xl placeholder:text-primary-white px-4 py-2"
+                                        className="h-[148px] overflow-y-auto text-base bg-transparent border border-primary-white rounded-xl placeholder:text-primary-white px-4 py-2"
                                         {...field}
                                     />
                                 </FormControl>
