@@ -32,7 +32,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="w-full max-w-2xl mx-auto text-center text-primary-white px-4 bg-transparent flex flex-col items-center">
+        <div className="w-full mx-auto text-center text-primary-white bg-transparent flex flex-col items-center">
             <h3 className="underline underline-offset-4 mb-2">
                 Let’s have a chat!
             </h3>
