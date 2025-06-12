@@ -32,7 +32,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="w-full max-w-xl mx-auto text-center text-primary-white px-4 bg-transparent flex flex-col items-center">
+        <div className="w-full max-w-2xl mx-auto text-center text-primary-white px-4 bg-transparent flex flex-col items-center">
             <h3 className="underline underline-offset-4 mb-2">
                 Let’s have a chat!
             </h3>
@@ -44,7 +44,7 @@ export default function ContactForm() {
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4 w-full max-w-md px-5"
+                    className="space-y-4 w-full max-w-lg px-5"
                 >
                     <FormField
                         control={form.control}
@@ -106,14 +106,14 @@ export default function ContactForm() {
                 </form>
             </Form>
 
-            <div className="mt-7 px-5 text-xs text-left w-full max-w-md">
+            <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
                 <div className="flex px-3 border-b border-primary-white justify-between">
-                    <span className="max-w-md">Email</span>
-                    <span className="max-w-md">sdkfj@asadljcf.com</span>
+                    <span className="max-w-lg">Email</span>
+                    <span className="max-w-lg">sdkfj@asadljcf.com</span>
                 </div>
                 <div className="flex px-3 border-b border-primary-white justify-between mt-2">
-                    <span className="max-w-md">Contact number</span>
-                    <span className="max-w-md">90812 2134</span>
+                    <span className="max-w-lg">Contact number</span>
+                    <span className="max-w-lg">90812 2134</span>
                 </div>
             </div>
         </div>
