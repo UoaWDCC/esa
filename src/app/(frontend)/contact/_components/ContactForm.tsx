@@ -97,7 +97,7 @@ export default function ContactForm() {
                     <div className="flex justify-end mt-1">
                         <button
                             type="submit"
-                            className="flex items-center gap-x-2 text-xs bg-accent-light text-black font-semibold rounded-full px-4 py-2 hover:brightness-110 transition"
+                            className="flex items-center gap-x-2 text-xs bg-accent text-black font-semibold rounded-full px-4 py-2 hover:brightness-110 transition"
                         >
                             Send
                             <ArrowUp className="size-3" />
