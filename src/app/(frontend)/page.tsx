@@ -1,12 +1,13 @@
-import React from 'react'
-import Sponsors from './_components/Sponsors'
+import React from 'react';
+import Sponsors from './_components/Sponsors';
+import Hero from '@/app/(frontend)/_components/Hero'
 
 export default async function HomePage() {
   return (
     <div className="">
       {/* page content */}
       <div className="w-full bg-amber-100">
-        place landing component here and remove background colour
+        <Hero />
       </div>
 
       <div className="w-full bg-blue-100">place component 1 here and remove background colour</div>

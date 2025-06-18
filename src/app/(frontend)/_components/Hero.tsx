@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-const HomePage = () => {
+const Hero = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Black Background */}
@@ -38,4 +38,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default Hero
