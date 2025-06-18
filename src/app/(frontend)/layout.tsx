@@ -1,5 +1,7 @@
 import React from 'react'
 import 'src/styles/global.css'
+import Footer from '../../components/navigation/Footer'
+import Navbar from '../../components/navigation/Navbar'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -13,15 +15,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <html lang="en">
       <body>
         <>
-          {/* replace empty container with nav bar component*/}
-          <p>navbar</p>
+          <Navbar />
         </>
 
         <main>{children}</main>
 
         <>
-          {/* replace empty container with footer component*/}
-          <p>footer</p>
+          <Footer />
         </>
       </body>
     </html>

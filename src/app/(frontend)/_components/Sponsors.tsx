@@ -10,7 +10,7 @@ export default async function Sponsors() {
   const sponsors = parseSponsors(await getSponsors())
 
   return (
-    <div className="text-text-primary py-12">
+    <div className="py-12 text-primary-white">
       <div className="flex flex-col items-center gap-5 mb-12 ">
         <div className="relative">
           <Link
@@ -19,7 +19,7 @@ export default async function Sponsors() {
           >
             Our Sponsors
           </Link>
-          <div className="absolute flex items-center right-[-16.25rem] top-[-2.2rem] gap-1.5">
+          <div className="absolute items-center right-[-16.25rem] top-[-2.2rem] gap-1.5 hidden lg:flex">
             <Image
               width={90}
               height={90}
@@ -32,7 +32,7 @@ export default async function Sponsors() {
           </div>
         </div>
 
-        <p className="w-[32rem] text-center text-xl/tight font-smeltex-medium tracking-[0.15em]">
+        <p className="w-[80%] text-center text-base/tight font-smeltex-medium tracking-[0.15em] lg:text-lg/tight lg:w-[28.5rem]">
           Enjoy discounts? As uni students we understand, that's why we've sponsored up for you.
           Take a look at ESA's sponsors!
         </p>

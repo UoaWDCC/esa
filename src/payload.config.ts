@@ -19,6 +19,9 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  routes: {
+    admin: '/admin',
+  },
   admin: {
     user: Users.slug,
     importMap: {
@@ -31,8 +34,13 @@ export default buildConfig({
           path: '/csv-upload',
           exact: true,
         },
+        csvDownload: {
+          Component: '@/app/(payload)/components/views/CSVDownloadView.tsx',
+          path: '/csv-download',
+          exact: true,
+        },
       },
-      afterNavLinks: ['@/app/(payload)/components/CSVUploadLink.tsx'],
+      afterNavLinks: ['@/app/(payload)/components/CSVUploadLink.tsx', '@/app/(payload)/components/CSVDownloadLink.tsx'],
     },
   },
   collections: [Users, Media, Sponsors, Events, Members, Execs],
