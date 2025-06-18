@@ -1,14 +1,16 @@
-import React from 'react'
-import Sponsors from './_components/Sponsors'
+import React from 'react';
+import Sponsors from './_components/Sponsors';
+import Hero from '@/app/(frontend)/_components/Hero'
 import WhoAreWe from './_components/WhoAreWe'
 import WhyJoin from './_components/WhyJoin'
+
 
 export default async function HomePage() {
   return (
     <div className="text-primary-grey">
       {/* page content */}
       <div className="w-full bg-amber-100">
-        place landing component here and remove background colour
+        <Hero />
       </div>
 
       <div className="flex flex-col items-center w-full p-12">
