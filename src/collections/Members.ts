@@ -147,6 +147,7 @@ export const Members: CollectionConfig = {
     {
       name: 'ethnicity',
       type: 'text',
+      required: true,
     },
     {
       name: 'convincedByCommitteeMember',

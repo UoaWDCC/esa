@@ -198,12 +198,12 @@ export interface Member {
   timestamp: string;
   firstName: string;
   lastName: string;
-  gender?: ('male' | 'female' | 'other' | 'prefer not to say') | null;
+  gender: 'male' | 'female' | 'other' | 'prefer not to say';
   email: string;
   studentID?: string | null;
   upi?: string | null;
-  yearOfStudy?: string | null;
-  ethnicity?: string | null;
+  yearOfStudy: '1st Year' | '2nd Year' | '3rd Year' | '4th Year+';
+  ethnicity: string;
   convincedByCommitteeMember?: string | null;
   membershipCardNumber?: string | null;
   membershipPayment?: string | null;
