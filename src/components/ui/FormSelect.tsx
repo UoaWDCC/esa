@@ -16,6 +16,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
             <div className="mb-4">
                 <select
                     ref={ref}
+                    defaultValue={placeholder ? "" : undefined}
                     className={clsx(
                         "border border-white rounded-2xl p-1 px-3 bg-transparent text-white",
                         className
@@ -23,10 +24,11 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
                     {...rest}
                 >
                     {placeholder && (
-                        <option value="" disabled hidden>
+                        <option value="" disabled className="text-gray-500">
                             {placeholder}
                         </option>
                     )}
+
                     {options.map((option) => (
                         <option key={option.value} value={option.value} className="text-black">
                             {option.label}
