@@ -6,7 +6,7 @@ export const signupSchema = z.object({
     timestamp: z.date(),
     firstName: z.string(),
     lastName: z.string(),
-    gender: z.enum(["male", "female", "other", "prefer not to say"]).default("prefer not to say"),
+    gender: z.enum(["male", "female", "other", "prefer not to say"]),
     email: z.string().email("Invalid email address"),
     studentID: z.string().regex(/^\d{9}$/, "Student ID must be a 9-digit number").optional(),
     upi: z.string().regex(/^[a-z]{4}\d{3}$/, "UPI must be 4 lowercase letters followed by 3 digits").optional(),
@@ -19,3 +19,5 @@ export const signupSchema = z.object({
     referrerName: z.string().optional(),
     notes: z.string().optional(),
 });
+
+export type SignupInput = z.infer<typeof signupSchema>;
