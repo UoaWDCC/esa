@@ -115,6 +115,7 @@ export const Members: CollectionConfig = {
         { label: 'other', value: 'other' },
         { label: 'prefer not to say', value: 'prefer not to say' }
       ],
+      required: true,
       defaultValue: 'prefer not to say',
     },
     {
