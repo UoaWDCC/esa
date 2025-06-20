@@ -1,6 +1,6 @@
 import React from 'react'
 import 'src/styles/global.css'
-import Footer from '../../components/navigation/Footer'
+import Footer from '../../components/navigation/footer'
 import Navbar from '../../components/navigation/Navbar'
 
 export const metadata = {
