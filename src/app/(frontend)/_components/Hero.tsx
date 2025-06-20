@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Black Background */}
-      <div className="absolute inset-0 bg-black"></div>
+      <div className="absolute inset-0"></div>
 
       {/* Background Image covering full screen with zoom */}
       <div className="absolute inset-0 h-screen bg-cover bg-center bg-no-repeat bg-[url('/images/HeroPageImage.png')] transform scale-100 transition-transform duration-500 ease-in-out"></div>

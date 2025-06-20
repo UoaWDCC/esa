@@ -1,3 +1,5 @@
+import TextMarquee from "@/app/(frontend)/_components/TextMarquee";
+
 const test = () => {
   return (
     <div className="bg-[#161514] p-8 text-primary-white">
@@ -22,6 +24,8 @@ const test = () => {
 
       <div className="mt-5">
         <p>if you want to test any components, you can place them here</p>
+          <TextMarquee text={"📍 University of Auckland"} bgColor={"bg-primary-red-800 -rotate-6"} textColor={"text-primary-red-800"} textBg={"bg-white"} />
+          <TextMarquee text={"Established in 1998"} textBg={"bg-primary-red-800 "} bgColor={"bg-white rotate-6"} />
       </div>
     </div>
   )
