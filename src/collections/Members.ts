@@ -10,6 +10,7 @@ export const Members: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => true,
   },
   endpoints: [
     {
