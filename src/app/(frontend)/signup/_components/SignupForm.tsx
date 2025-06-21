@@ -27,7 +27,6 @@ export default function SignupForm() {
     // For now it just creates the member in the database. In the future, it will also handle the payment process.
     const onSubmit = async (data: SignupInput) => {
         try {
-            await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate a delay for the submission
             await createMember(data);
             alert("Signup successful!");
             reset();
