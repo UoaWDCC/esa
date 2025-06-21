@@ -10,6 +10,7 @@ export const Members: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => true,
   },
   endpoints: [
     {
@@ -107,6 +108,18 @@ export const Members: CollectionConfig = {
       required: true,
     },
     {
+      name: 'gender',
+      type: 'select',
+      options: [
+        { label: 'male', value: 'male' },
+        { label: 'female', value: 'female' },
+        { label: 'other', value: 'other' },
+        { label: 'prefer not to say', value: 'prefer not to say' }
+      ],
+      required: true,
+      defaultValue: 'prefer not to say',
+    },
+    {
       name: 'email',
       type: 'text',
       required: true,
@@ -123,11 +136,19 @@ export const Members: CollectionConfig = {
     },
     {
       name: 'yearOfStudy',
-      type: 'text',
+      type: 'select',
+      options: [
+        { label: '1st Year', value: '1st Year' },
+        { label: '2nd Year', value: '2nd Year' },
+        { label: '3rd Year', value: '3rd Year' },
+        { label: '4th Year+', value: '4th Year+' }
+      ],
+      required: true,
     },
     {
       name: 'ethnicity',
       type: 'text',
+      required: true,
     },
     {
       name: 'convincedByCommitteeMember',
