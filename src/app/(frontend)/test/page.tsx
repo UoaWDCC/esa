@@ -1,4 +1,4 @@
-import TextMarquee from "@/app/(frontend)/_components/TextMarquee";
+import TextMarquee from "@/app/(frontend)/(home)/_components/TextMarquee";
 
 const test = () => {
   return (

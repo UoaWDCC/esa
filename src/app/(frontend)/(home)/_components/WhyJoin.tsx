@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 
 // Import global styles (including Tailwind)
-import 'src/styles/global.css'
+import '@/styles/global.css'
 
 // SVG for the title box decoration
 const heading_svg = (
