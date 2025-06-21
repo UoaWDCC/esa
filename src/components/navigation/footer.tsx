@@ -74,7 +74,7 @@ function Footer() {
           <div className="flex items-center gap-3">
             <div className="bg-white rounded-full p-0.25 md:p-0.5">
             <img
-              src="/assets/esa_logo.png"
+              src="/images/logo/esa_logo.png"
               alt="ESA Logo"
               className="h-[1.5rem] md:h-[2rem] object-contain"
             />

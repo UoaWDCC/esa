@@ -11,7 +11,7 @@ export default function Navbar() {
         CONTACT
       </Link>
       <Link href="/" className="w-10 h-10 flex items-center justify-center">
-        <img src="/assets/esa_logo.png" alt="sd" />
+        <img src="/images/logo/esa_logo.png" alt="sd" />
       </Link>
       <Link href="/events" className="hover:text-primary-grey">
         EVENTS
