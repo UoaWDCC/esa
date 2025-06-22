@@ -4,27 +4,20 @@ import { useForm } from "react-hook-form";
 import { ContactInput, contactSchema } from "@/lib/zod/schema/contactInput";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import ArrowUp from "@/components/icons/ArrowUp";
+import FormInput from "@/components/ui/FormInput";
+import FormTextarea from "@/components/ui/FormTextArea";
+import {Button} from "@/components/ui/Button";
 
 export default function ContactForm() {
     const [sent, setSent] = useState(false);
 
-    const form = useForm<ContactInput>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm<ContactInput>({
         resolver: zodResolver(contactSchema),
-        defaultValues: {
-            name: "",
-            email: "",
-            message: "",
-        },
     });
 
     async function onSubmit(values: ContactInput) {
@@ -41,70 +34,35 @@ export default function ContactForm() {
                 form below or send us an email or a call!
             </p>
 
-            <Form {...form}>
-                <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-4 w-full max-w-lg px-5"
-                >
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Input
-                                        placeholder="Enter your name"
-                                        {...field}
-                                        className="h-[45px] text-base bg-transparent border border-primary-white rounded-full placeholder:text-primary-white px-4"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Input
-                                        placeholder="Enter your email"
-                                        {...field}
-                                        className="h-[45px] text-base bg-transparent border border-primary-white rounded-full placeholder:text-primary-white px-4"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Textarea
-                                        placeholder="Write your message"
-                                        className="h-[148px] overflow-y-auto text-base bg-transparent border border-primary-white rounded-xl placeholder:text-primary-white px-4 py-2"
-                                        {...field}
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <div className="flex justify-end mt-1">
-                        <button
-                            type="submit"
-                            className="flex items-center gap-x-2 text-xs bg-accent text-black rounded-full px-4 py-2 hover:brightness-110 transition"
-                        >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full max-w-lg px-5">
+                <FormInput
+                    placeholder="Enter your name"
+                    {...register("name")}
+                    error={errors.name}
+                    className="w-full"
+                />
+                <FormInput
+                    placeholder="Enter your email"
+                    {...register("email")}
+                    error={errors.email}
+                    className="w-full"
+                />
+                <FormTextarea
+                    placeholder="Write your message"
+                    {...register("message")}
+                    error={errors.message}
+                    className="w-full"
+                />
+                <Button type="submit" disabled={isSubmitting} className="flex flex-row items-center gap-x-2">
+                    {isSubmitting ? "Submitting..." : (
+                        <>
                             Send
                             <ArrowUp className="size-3" />
-                        </button>
-                    </div>
-                </form>
-            </Form>
+                        </>
+                    )}
+
+                </Button>
+            </form>
 
             <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
                 <div className="flex px-3 border-b border-primary-white justify-between">

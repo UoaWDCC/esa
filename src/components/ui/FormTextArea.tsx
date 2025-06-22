@@ -4,7 +4,6 @@ import clsx from "clsx";
 
 interface FormTextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     className?: string;
-    name: string;
     error?: FieldError;
 }
 
