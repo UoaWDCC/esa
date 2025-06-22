@@ -1,95 +1,124 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import {FaFacebookF, FaInstagram, FaTiktok} from 'react-icons/fa';
 import Link from 'next/link';
+import Image from "next/image";
 
 function Footer() {
+
+  const socialLinks = [
+    {
+      href: "https://www.facebook.com/EasternStudentsAssociation/",
+      icon: FaFacebookF,
+      label: "Facebook"
+    },
+    {
+      href: "https://www.instagram.com/esaaagram/?hl=en",
+      icon: FaInstagram,
+      label: "Instagram"
+    },
+    {
+      href: "https://www.tiktok.com/@uoaesa",
+      icon: FaTiktok,
+      label: "TikTok"
+    }
+  ];
+
+  const footerColumns = [
+    {
+      heading: "Heading 1",
+      links: [
+        { label: "Marketing", href: "/marketing" },
+        { label: "About Us", href: "/about" },
+        { label: "filler", href: "/" },
+        { label: "filler", href: "/" },
+      ],
+    },
+    {
+      heading: "Heading 2",
+      links: [
+        { label: "Gallery", href: "/gallery" },
+        { label: "Events", href: "/events" },
+        { label: "filler", href: "/" },
+      ],
+    },
+    {
+      heading: "Contact Us",
+      links: [
+        { label: "Contact 1", href: "/contact" },
+        { label: "Contact Option 2", href: "/" },
+      ],
+    },
+  ];
+
   return (
-    <footer className="bg-[#141212] text-white w-full pt-10 pb-6">
-    {/* Top full-width divider */}
-    <hr className="border-t border-white w-full" />
-
-    <div className="max-w-6xl mx-auto px-4 mt-8">
-        {/* Layout with Column 1 separated */}
-        <div className="flex flex-col md:flex-row justify-between">
-          
-          {/* Column 1: Social Media */}
-          <div className="flex flex-col mt-4 md:mt-6 md:ml-15">
-            <div className="flex flex-col items-center">
-              <h6 className="text-sm font-sm mb-1 text-center">Follow Us!</h6>
-              <div className="flex space-x-2">
-                <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
-                  <FaFacebookF className="text-xl" />
-                </div>
-                <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
-                  <FaInstagram className="text-xl" />
-                </div>
-                <div className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition">
-                  <FaLinkedinIn className="text-xl" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Grouped Columns 2–4 */}
-          <div className="flex flex-col md:flex-row md:gap-x-25 mt-6 md:mt-0 md:mr-65 text-sm text-center md:text-left">
-            
-            {/* Column 2 */}
-            <div className="flex flex-col items-center md:items-start">
-              <h6 className="font-medium mb-1">Heading</h6>
-              <ul className="space-y-1">
-                <li><Link href="/" className="hover:underline">Marketing</Link></li>
-                <li><Link href="/" className="hover:underline">About Us</Link></li>
-                <li><Link href="/" className="hover:underline">Text filler</Link></li>
-                <li><Link href="/" className="hover:underline">Text filler</Link></li>
-              </ul>
-            </div>
-
-            {/* Column 3 */}
-            <div className="flex flex-col items-center md:items-start">
-              <h6 className="font-medium mb-1">Heading</h6>
-              <ul className="space-y-1">
-                <li><Link href="/" className="hover:underline">Gallery</Link></li>
-                <li><Link href="/" className="hover:underline">Events</Link></li>
-                <li><Link href="/" className="hover:underline">Text filler</Link></li>
-              </ul>
-            </div>
-
-            {/* Column 4 */}
-            <div className="flex flex-col items-center md:items-start">
-              <h6 className="font-sm mb-1">Contact Us</h6>
-              <ul className="space-y-1">
-                <li><Link href="/" className="hover:underline">Contact 1</Link></li>
-                <li><Link href="/" className="hover:underline">Contact option 2</Link></li>
-              </ul>
-            </div>
+    <footer className="bg-primary-grey border-t border-white text-white w-full py-6 mx-auto px-4">
+      {/* Layout with Column 1 separated */}
+      <div className="flex flex-col md:flex-row justify-between">
+        {/* Column 1: Social Media */}
+        <div className="flex flex-col md:ml-15 justify-center items-center">
+          <p className="text-sm mb-1 opacity-75">Follow Us!</p>
+          <div className="flex space-x-2">
+            {socialLinks.map(({ href, icon: Icon, label }, index) => (
+              <Link
+                key={index}
+                href={href}
+                target="_blank"
+                aria-label={label}
+                className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition"
+              >
+                <Icon className="text-xl" />
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* Divider Line */}
-        <hr className="border-t border-white mt-10 mb-4" />
+        {/* Grouped Columns 2–4 */}
+        <div className="flex flex-col md:flex-row gap-x-25 gap-y-2 mt-6 md:mt-0 w-full justify-center text-sm text-center md:text-left">
+            {footerColumns.map((col, colIndex) => (
+              <div key={colIndex} className="flex flex-col items-center md:items-start">
+                <p className="text-sm mb-1 opacity-75">{col.heading}</p>
+                <ul className="space-y-1">
+                  {col.links.map(({ label, href }, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link href={href} className="hover:underline">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+        </div>
+      </div>
 
-        {/* Bottom Row */}
-        <div className="flex flex-col md:flex-row items-center justify-between text-xs text-white">
-          <p className="mb-4 md:mb-0">© Eastern Students Association 2025</p>
+      {/* Divider Line */}
+      <hr className="border-t border-white mt-10 mb-4" />
 
-          <div className="flex items-center gap-3">
-            <div className="bg-white rounded-full p-0.25 md:p-0.5">
-            <img
+      {/* Bottom Row */}
+      <div className="flex flex-col md:flex-row items-center justify-between text-xs text-white">
+        <p className="mb-4 md:mb-0">&copy; Eastern Students Association 2025</p>
+
+        <div className="flex items-center gap-3">
+          <div className="bg-white rounded-full p-0.25 md:p-0.5">
+            <Image
               src="/images/logo/esa_logo.png"
               alt="ESA Logo"
-              className="h-[1.5rem] md:h-[2rem] object-contain"
+              height={36}
+              width={44}
+              className="object-contain"
             />
-            </div>
-            <span
-              style={{ fontFamily: 'Reservoir Grunge' }}
-              className="text-lg text-white leading-tight text-center md:text-right"
-            >
-              Eastern Students<br />Association
-            </span>
           </div>
+          <span
+            style={{ fontFamily: 'Reservoir Grunge' }}
+            className="text-lg text-white leading-tight text-center"
+          >
+            Eastern Students
+            <br />
+            Association
+          </span>
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
 export default Footer;

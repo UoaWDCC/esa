@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default async function ContactPage() {
   return (
-    <div className="w-full flex flex-col md:flex-row justify-center lg:justify-around lg:items-center mt-[15vh] lg:px-30 gap-10 lg:gap-0">
+    <div className="w-full flex flex-col md:flex-row justify-center lg:justify-around lg:items-center mt-[15vh] px-10 mb-6 lg:px-30 gap-10 lg:gap-0">
       <div className="relative w-full lg:w-[35%] flex items-center justify-center">
           <Image
               src="/images/contact-us-image.png"

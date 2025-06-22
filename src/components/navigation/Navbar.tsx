@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -11,7 +12,12 @@ export default function Navbar() {
         CONTACT
       </Link>
       <Link href="/" className="w-10 h-10 flex items-center justify-center">
-        <img src="/images/logo/esa_logo.png" alt="sd" />
+          <Image
+              src="/images/logo/esa_logo.png"
+              alt="ESA Logo"
+              height={50}
+              width={60}
+          />
       </Link>
       <Link href="/events" className="hover:text-primary-grey">
         EVENTS
