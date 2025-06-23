@@ -28,7 +28,7 @@ const Hero = () => {
                 width={100}
                 height={100}
             />
-            <div className="transform -translate-y-5 ">
+            <div className="transform -translate-y-5 lg:-translate-y-[55%] md:-translate-y-[50%]">
               {/* Subtitle */}
               <p className="text-white text-lg md:text-xl mb-6 font-smeltex-medium max-w-md">
                 Your go-to university social club.
