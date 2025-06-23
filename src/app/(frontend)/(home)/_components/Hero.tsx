@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="absolute inset-0 h-screen bg-cover bg-center bg-no-repeat bg-[url('/images/home/HeroPageImage.png')] transform scale-100 transition-transform duration-500 ease-in-out">
 
           {/* Hero Section */}
-          <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 text-center">
+          <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 md:px-8 xl:px-20 text-center">
             <Image
               className="w-full h-auto hidden md:block"
               src="/images/HeroTitle.svg"
@@ -21,16 +21,16 @@ const Hero = () => {
               width={100}
               height={100}
             />
-              <Image
-                  className="w-full h-auto block md:hidden"
-                  src="/images/home/HeroTitleMobile.svg"
-                  alt=""
-                  width={100}
-                  height={100}
-              />
-            <div className="transform -translate-y-5 sm:-translate-y-15">
+            <Image
+                className="w-full h-auto block md:hidden"
+                src="/images/home/HeroTitleMobile.svg"
+                alt=""
+                width={100}
+                height={100}
+            />
+            <div className="transform -translate-y-5 lg:-translate-y-[55%] md:-translate-y-[50%]">
               {/* Subtitle */}
-              <p className="text-white text-xl md:text-2xl mb-6 font-smeltex-medium max-w-md">
+              <p className="text-white text-lg md:text-xl mb-6 font-smeltex-medium max-w-md">
                 Your go-to university social club.
               </p>
                 <Button href="/signup" size="lg">
