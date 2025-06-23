@@ -13,16 +13,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body>
-        <>
-          <Navbar />
-        </>
-
-        <main>{children}</main>
-
-        <>
-          <Footer />
-        </>
+      <body className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="grow">{children}</main>
+        <Footer />
       </body>
     </html>
   )

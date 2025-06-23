@@ -1,9 +1,9 @@
 import React from 'react';
-import Sponsors from './_components/Sponsors';
-import Hero from '@/app/(frontend)/_components/Hero'
-import WhoAreWe from './_components/WhoAreWe'
-import WhyJoin from './_components/WhyJoin'
-import TextMarquee from "@/app/(frontend)/_components/TextMarquee";
+import Sponsors from '@/app/(frontend)/(home)/_components/Sponsors';
+import Hero from '@/app/(frontend)/(home)/_components/Hero'
+import WhoAreWe from '@/app/(frontend)/(home)/_components/WhoAreWe'
+import WhyJoin from '@/app/(frontend)/(home)/_components/WhyJoin'
+import TextMarquee from "@/app/(frontend)/(home)/_components/TextMarquee";
 
 
 export default async function HomePage() {
@@ -18,7 +18,7 @@ export default async function HomePage() {
                     bgColor="bg-primary-red-800"
                     textBg="bg-white"
                     textColor="text-primary-red-800"
-                    wrapperClassName="-rotate-8 md:-rotate-3 origin-left scale-105 "
+                    wrapperClassName="-rotate-8 md:-rotate-3 origin-left scale-105"
                 />
                 <TextMarquee
                     text={"Established in 1998"}

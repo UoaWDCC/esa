@@ -73,11 +73,11 @@ export default function WhoAreWe() {
               competition.
             </p>
             <p className="self-start text-sm tracking-[0.15em] text-black w-86">
-              Whether you're here to smash it at sports day, chill at pool night, or game it out at
-              arcade night — we've got you.
+              Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at
+              arcade night — we&apos;ve got you.
             </p>
             <p className="self-start text-sm tracking-[0.15em] text-black w-88">
-              ESA firmly believes that university life is not just about academic studies...but it's
+              ESA firmly believes that university life is not just about academic studies...but it&apos;s
               also about having fun, and meeting new friends!
             </p>
           </div>

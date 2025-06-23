@@ -3,7 +3,8 @@ import React from 'react'
 import Image from 'next/image'
 
 // Import global styles (including Tailwind)
-import 'src/styles/global.css'
+import '@/styles/global.css'
+import {Button} from "@/components/ui/Button";
 
 // SVG for the title box decoration
 const heading_svg = (
@@ -29,7 +30,7 @@ const WhyJoin = () => {
     <div id="root" className="relative min-h-[1043px] overflow-hidden">
       {/* Background Image using Next.js Image component */}
       <Image
-        src="/assets/why_join.jpg"
+        src="/images/home/HeroPageImage.jpg"
         alt="Background"
         fill
         layout="reponsive"
@@ -64,14 +65,14 @@ const WhyJoin = () => {
 
         {/* Join button */}
         <div id="join-button" className="mt-8">
-          <button className="bg-accent text-black rounded-3xl px-6 py-1 font-roboto-mono hover:bg-accent-light cursor-pointer transition">
-            Join The ESA Family!
-          </button>
+          <Button href="/signup">
+            Join the ESA Family!
+          </Button>
         </div>
       </div>
       {/*Film Strip image right-hand side of the page */}
       <Image
-        src="/assets/film_strip.png"
+        src="/images/home/film_strip.png"
         alt="Film Strip"
         width="758"
         height="1072"
