@@ -54,7 +54,7 @@ function Footer() {
       {/* Layout with Column 1 separated */}
       <div className="flex flex-col md:flex-row justify-between">
         {/* Column 1: Social Media */}
-        <div className="flex flex-col md:ml-15 justify-center items-center">
+        <div className="flex flex-col justify-center items-center order-2 md:order-first md:ml-15">
           <p className="text-sm mb-1 opacity-75">Follow Us!</p>
           <div className="flex space-x-2">
             {socialLinks.map(({ href, icon: Icon, label }, index) => (
@@ -72,9 +72,9 @@ function Footer() {
         </div>
 
         {/* Grouped Columns 2–4 */}
-        <div className="flex flex-col md:flex-row gap-x-25 gap-y-2 mt-6 md:mt-0 w-full justify-center text-sm text-center md:text-left">
+        <div className="flex flex-wrap justify-center gap-x-25 gap-y-6 mt-6 w-full text-sm text-center md:text-left">
             {footerColumns.map((col, colIndex) => (
-              <div key={colIndex} className="flex flex-col items-center md:items-start">
+              <div key={colIndex} className="flex flex-col items-start text-left">
                 <p className="text-sm mb-1 opacity-75">{col.heading}</p>
                 <ul className="space-y-1">
                   {col.links.map(({ label, href }, linkIndex) => (
