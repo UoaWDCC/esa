@@ -39,15 +39,15 @@ const WhyJoin = () => {
         alt="Why Join Background"
         fill
         layout="reponsive"
-        className="absolute brightness-30 object-cover scale-180 origin-center"
+        className="absolute origin-center object-cover scale-180 brightness-30 "
       />
       {/* Content overlay */}
-      <div id="content" className="relative origin-center mt-[10vw] mx-[10vw] w-[80vw]">
+      <div id="content" className="relative my-[20vw] mx-[10vw] w-[80vw]">
         {/* Heading SVG */}
         {heading_svg}
 
         {/* Body Text One*/}
-        <div id="body-text-one" className="mt-[3vh]">
+        <div id="body-text-one" className="mt-[6vh]">
           <p className="text-white text-lg font-smeltex-medium">
             We&apos;re doing things our way - fresh events, fun people, and a vibe that feels like
             your favourite hangout spot. Kinda new, kinda nostalgic, always a good time.
@@ -62,23 +62,20 @@ const WhyJoin = () => {
         </div>
 
         {/* Join button */}
-        <div
-          id="join-button"
-          className="relative flex flex-col items-center mx-auto mt-[4.5vh] mb-[10vh]"
-        >
+        <div id="join-button" className="flex flex-col items-center mx-auto mt-[4.5vh]">
           <Button href="/signup" className="px-8 py-3.25">
             Join the ESA Family!
           </Button>
         </div>
       </div>
-      {/*Film Strip image right-hand side of the page */}
+      {/*Film Strip image right-hand side of the page, Only visible on desktop*/}
       <Image
         src="/images/home/film_strip.png"
         alt="Film Strip"
         width="758"
         height="1072"
         layout=""
-        className="absolute hidden 2xl:block right-0 -top-[29px] origin-top-right"
+        className="absolute hidden xl:block right-0 -top-[29px] origin-top-right"
       />
     </div>
   )
