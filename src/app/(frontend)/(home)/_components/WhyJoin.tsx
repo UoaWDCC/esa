@@ -9,21 +9,18 @@ import { Button } from '@/components/ui/Button'
 const WhyJoin = () => {
   return (
     // Root container with background image and content overlay
-    <div id="root" className="relative min-h-[65vh] min-w-[375] overflow-hidden">
+    <div id="root" className="relative min-h-[65vh] min-w-[375px] overflow-hidden">
       {/* Background Image using Next.js Image component */}
       <Image
         src="/images/home/HeroPageImage.jpg"
         alt="Why Join Background"
         fill
-        layout="reponsive"
         className="absolute origin-center object-cover scale-180 brightness-30 "
       />
       {/* Content overlay */}
       <div id="content" className="relative my-[20vw] mx-[10vw] w-[80vw]">
         {/* Heading SVG */}
-        <div id="Heading" className="relative w-[80vw] h-auto">
-          <Image src="WhyJoinESA.svg" alt="Heading Decoration" width="616" height="196" />
-        </div>
+        <Image src="WhyJoinESA.svg" alt="Heading Decoration" width="616" height="196" />
         {/* Body Text One*/}
         <div id="body-text-one" className="mt-[6vh]">
           <p className="text-white text-lg font-smeltex-medium">
@@ -52,7 +49,6 @@ const WhyJoin = () => {
         alt="Film Strip"
         width="758"
         height="1072"
-        layout=""
         className="absolute hidden 2xl:block right-0 -top-[29px] origin-top-right"
       />
     </div>
