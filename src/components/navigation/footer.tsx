@@ -72,7 +72,7 @@ function Footer() {
         </div>
 
         {/* Grouped Columns 2–4 */}
-        <div className="flex flex-wrap justify-center gap-x-25 gap-y-6 mt-6 w-full text-sm text-center md:text-left">
+        <div className="flex flex-wrap justify-center gap-x-10 md:gap-x-25 gap-y-6 mt-6 w-full text-sm text-center md:text-left">
             {footerColumns.map((col, colIndex) => (
               <div key={colIndex} className="flex flex-col items-start text-left">
                 <p className="text-sm mb-1 opacity-75">{col.heading}</p>
