@@ -17,9 +17,8 @@ export default function SignupForm() {
         resolver: zodResolver(signupSchema),
         defaultValues: {
             timestamp: new Date(),
-            membershipPayment: "Bank Transferred",
-            // Can probably set this once we implement the payment system.
-            paymentScreenshotLink: "",
+            membershipPayment: "Stripe",
+            paymentScreenshotLink: "N/A",
         },
     });
     
@@ -27,32 +26,26 @@ export default function SignupForm() {
     // For now it just creates the member in the database. In the future, it will also handle the payment process.
     const onSubmit = async (data: SignupInput) => {
         try {
-            await createMember(data);
-            alert("Signup successful!");
+            const response = await fetch('/api/payment/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+
+            const result = await response.json()
+            console.log("Payment session result:", result)
+
+            if (!response.ok) throw new Error(result.message || "Failed to start payment")
+
+            window.location.href = result.url // TODO: Change this 
+        
             reset();
         } catch (error: any) {
             alert(error.message);
         }
     };
-
-    // Takes in the validated form data and creates a new member in the database.
-    const createMember = async (data: SignupInput) => {
-
-        const response = await fetch('/api/members', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-            const error = await response.json().catch(() => ({}));
-            throw new Error(error.message || "Signup failed. Member already exists or an error occurred.");
-        }
-
-        return response;
-    }
 
     return (
         <div>
