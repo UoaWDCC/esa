@@ -9,7 +9,7 @@ import 'src/styles/global.css'
 
 export default function Events() {
   return (
-    <section className="px-6 md:px-16 pb-20 text-white">
+    <section className="px-6 md:px-16 pb-20 text-white h-[1043px]">
       {/* page title */}
       <div className="relative">
         <Image
