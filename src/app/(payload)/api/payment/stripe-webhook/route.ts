@@ -1,7 +1,8 @@
 import Stripe from 'stripe'
-import payload from 'payload'
 import { signupSchema } from '@/lib/zod/schema/signupInput'
 import { Member } from '@/payload-types'
+import { getPayload } from 'payload'
+import payloadConfig from '@payload-config'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-06-30.basil',
@@ -67,6 +68,8 @@ export async function POST(req: Request) {
     }
 
     try {
+      const payload = await getPayload({ config: payloadConfig })
+
       await payload.create({
         collection: 'members',
         data: memberData,
