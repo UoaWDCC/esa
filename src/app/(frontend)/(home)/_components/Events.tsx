@@ -9,7 +9,7 @@ import 'src/styles/global.css'
 
 export default function Events() {
   return (
-    <section className="px-6 md:px-16 pb-20 text-white h-[1043px]">
+    <section className="relative px-6 md:px-16 pb-20 text-white h-[1043px]">
       {/* page title */}
       <div className="relative w-fit mx-auto mt-14">
         <Image
@@ -38,7 +38,7 @@ export default function Events() {
       
 
       {/* upcoming slots */}
-      <div className="mt-[52px] space-y-[46px] flex flex-col items-center">
+      <div className="mt-[52px] space-y-[46px] flex flex-col items-center relative z-10">
         <EventCard
           bgSrc="/assets/latest_strip.png"
           title="Coming soon"
@@ -58,7 +58,7 @@ export default function Events() {
       </div>
 
       {/* latest header */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center relative z-10">
         <div className="mt-[81px] mb-4 bg-[#871F1B] text-white text-2xl font-reservoir-grunge px-4.5 py-2 rounded-2xl inline-block">
           Latest&nbsp;Event:
         </div>
@@ -71,8 +71,24 @@ export default function Events() {
           day="10"
         />
       </div>
-      
 
+      <Image
+        src="/images/home/events_star.png"
+        alt="Background Star"
+        width="409"
+        height="800"
+        layout=""
+        className="absolute left-0 top-[210px] z-0"
+      />
+      
+      <Image
+        src="/images/home/film_strip_events.png"
+        alt="Film Strip"
+        width="194"
+        height="1502"
+        layout=""
+        className="absolute left-0 -top-[29px] z-0"
+      />
       
     </section>
   )

@@ -40,16 +40,19 @@ export default function EventCard({
     <div className="flex items-center gap-4">
       {/* banner background */}
       <div className="relative min-w-[968px] h-[182px] rounded-[3rem] overflow-hidden">
-        <Image
-          src={bgSrc}
-          alt=""
-          width={1000}
-          height={200}
-          className={clsx(
-            'object-contain w-full h-full rounded-[3rem] transition-opacity relative z-0',
-            disabled && 'blur-sm brightness-110'
-          )}
-        />
+        <div className="absolute inset-0 rounded-[3rem] bg-[#161514] z-0">
+          <Image
+            src={bgSrc}
+            alt=""
+            width={1000}
+            height={200}
+            className={clsx(
+              'object-contain w-full h-full rounded-[3rem] transition-opacity',
+              disabled && 'blur-sm brightness-110'
+            )}
+          />
+        </div>
+
         
         <div className="absolute inset-0 z-10 rounded-[3rem] ring-4 ring-[#871F1B] ring-offset-0 ring-inset pointer-events-none" />
 
