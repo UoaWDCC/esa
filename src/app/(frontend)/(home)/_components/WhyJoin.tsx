@@ -21,7 +21,7 @@ const WhyJoin = () => {
       <div id="content" className="relative z-10 my-[15vh] mx-[10vw] w-[80vw] lg:mb-[23vh]">
         {/* Heading SVG */}
         <Image
-          src="WhyJoinESA.svg"
+          src="images/home/WhyJoinESA.svg"
           alt="WhyJoinESA svg"
           width="616"
           height="196"
