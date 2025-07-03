@@ -18,7 +18,7 @@ const WhyJoin = () => {
         className="absolute origin-center object-cover scale-180 brightness-20 lg:scale-140"
       />
       {/* Content overlay */}
-      <div id="content" className="relative z-10 my-[15vh] mx-[10vw] w-[80vw] lg:mb-[25vh]">
+      <div id="content" className="relative z-10 my-[15vh] mx-[10vw] w-[80vw] lg:mb-[23vh]">
         {/* Heading SVG */}
         <Image
           src="WhyJoinESA.svg"
@@ -36,7 +36,7 @@ const WhyJoin = () => {
         </div>
         {/* Body Text Two*/}
         <div id="body-text-two" className="mt-[3vh] lg:w-[50vw] max-w-[1000px]">
-          <p className="text-white text-lg lg:text-xl ">
+          <p className="text-white text-lg lg:text-xl">
             Lorem ipsum dolor sit amet consecutetur. Elementum gravida egestas id consecutetur
             volutpat id nec consecutetur. Pretium pellentesque a consecutetur urna
           </p>
