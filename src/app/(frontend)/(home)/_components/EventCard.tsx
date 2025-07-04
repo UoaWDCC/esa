@@ -60,7 +60,7 @@ export default function EventCard({
         <div className="absolute inset-0 flex items-center justify-center-left p-20">
           {locked && (
             <Image
-              src="/assets/lock.png"
+              src="/images/home/lock.png"
               alt="locked"
               width={48}
               height={48}

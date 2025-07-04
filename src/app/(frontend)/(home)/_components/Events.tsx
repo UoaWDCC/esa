@@ -13,7 +13,7 @@ export default function Events() {
       {/* page title */}
       <div className="relative w-fit mx-auto mt-14">
         <Image
-          src="/assets/events_title.png"
+          src="/images/home/events_title.png"
           alt="Events"
           width={456}
           height={116}
@@ -21,14 +21,14 @@ export default function Events() {
         />
 
         <Image
-          src="/assets/frame.png"
+          src="/images/home/frame.png"
           alt="top left frame"
           width={60}
           height={60}
           className="absolute -top-5 -left-14 scale-x-[-1] scale-y-[-1] w-[20%] md:w-[15%] -rotate-18"
         />
         <Image
-          src="/assets/frame.png"
+          src="/images/home/frame.png"
           alt="bottom right frame"
           width={60}
           height={60}
@@ -40,7 +40,7 @@ export default function Events() {
       {/* upcoming slots */}
       <div className="mt-[52px] space-y-[46px] flex flex-col items-center relative z-10">
         <EventCard
-          bgSrc="/assets/latest_strip.png"
+          bgSrc="/images/home/latest_strip.png"
           title="Coming soon"
           month="Mnth"
           day="XX"
@@ -48,7 +48,7 @@ export default function Events() {
           disabled   /* ← blur & brighten */
         />
         <EventCard
-          bgSrc="/assets/latest_strip.png"
+          bgSrc="/images/home/latest_strip.png"
           title="Coming soon"
           month="Mnth"
           day="XX"
@@ -65,7 +65,7 @@ export default function Events() {
 
         {/* event card */}
         <EventCard
-          bgSrc="/assets/latest_strip.png"
+          bgSrc="/images/home/latest_strip.png"
           title=""
           month="May"
           day="10"
