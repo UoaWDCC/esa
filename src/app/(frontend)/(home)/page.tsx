@@ -3,6 +3,7 @@ import Sponsors from '@/app/(frontend)/(home)/_components/Sponsors';
 import Hero from '@/app/(frontend)/(home)/_components/Hero'
 import WhoAreWe from '@/app/(frontend)/(home)/_components/WhoAreWe'
 import WhyJoin from '@/app/(frontend)/(home)/_components/WhyJoin'
+import Events from '@/app/(frontend)/(home)/_components/Events';
 import TextMarquee from "@/app/(frontend)/(home)/_components/TextMarquee";
 
 
@@ -38,8 +39,9 @@ export default async function HomePage() {
         <div className="w-full bg-[#161514]">
             <WhyJoin/>
         </div>
-        <div className="w-full bg-[#161514] min-h-[100px] text-white">Replace with component 5</div>
-        {/* place component 4 here and remove background colour */}
+        <div className="w-full bg-[#161514]">
+            <Events/>
+        </div>
     </div>
   )
 }
