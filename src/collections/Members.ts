@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: true, 
+    hidden: false, 
   },
   access: {
     read: () => true,
@@ -106,27 +106,27 @@ export const Members: CollectionConfig = {
         let canCreate = false;
         let errorMessage = '';
 
-        let transactionId: string | number | null = null;
-        try {
-          // Start a transaction
-          transactionId = await req.payload.db.beginTransaction();
+        // // Start a transaction
+        // let transactionId: string | number | null = await req.payload.db.beginTransaction();
 
-          // Attempt to create the member. Note that this does not actually create the member in the database
-          // until the transaction is committed.
-          await req.payload.create({
-            collection: 'members',
-            data: data,
-          })
+        // if (!transactionId) {
+        //   throw new Error('Failed to start transaction');
+        // }
 
-          canCreate = true;
-        } catch (err: any) {
-          errorMessage = err.message;
-        }
+        // try {
+        //   // Attempt to create the member. Note that this does not actually create the member in the database
+        //   // until the transaction is committed.
+        //   await req.payload.create({
+        //     collection: 'members',
+        //     data: data,
+        //   })
 
-        // Rollback the transaction to ensure no changes are made to the database
-        if (transactionId != null) {
-          req.payload.db.rollbackTransaction(transactionId);
-        }
+        //   canCreate = true;
+        //   await req.payload.db.rollbackTransaction(transactionId);
+        // } catch (err: any) {
+        //   errorMessage = err.message;
+        //   await req.payload.db.rollbackTransaction(transactionId);
+        // }
 
         if (canCreate) {
           return Response.json({ canCreate: true }, { status: 200 });
