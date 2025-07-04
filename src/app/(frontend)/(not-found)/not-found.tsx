@@ -9,13 +9,13 @@ export default function notFound() {
         {' '}
         {/* Links to other pages for navigation */}
         <Link href="/public" className="hover:underline">
-          Go to Home
+          Home Page
         </Link>
         <Link href="/public" className="hover:underline">
           About Us
         </Link>
         <Link href="/contact" className="hover:underline">
-          Contact
+          Contact Us
         </Link>
       </div>
     </div>
