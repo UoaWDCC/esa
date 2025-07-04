@@ -10,6 +10,7 @@ export async function POST(req: Request) {
 
     // Use req.nextUrl.origin for absolute URLs (app router)
     // Fallback to env var if needed
+    // TODO: Change this t onot require .env probably
     const origin = (req as any).nextUrl?.origin || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
     const session = await stripe.checkout.sessions.create({
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
           product_data: {
             name: 'ESA Year Membership',
           },
-          unit_amount: 500, // NZD 5.00
+          unit_amount: 500, // NZD 5.00. Will need to change this to account for the tax
         },
         quantity: 1,
       }],

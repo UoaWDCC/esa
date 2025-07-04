@@ -24,8 +24,10 @@ export async function POST(req: Request) {
   let event: Stripe.Event
 
   try {
+    // Read the raw body from the request
     const rawBody = await req.arrayBuffer()
 
+    // Construct the event using the raw body and signature
     event = stripe.webhooks.constructEvent(
       Buffer.from(rawBody).toString(),
       signature,
@@ -36,12 +38,21 @@ export async function POST(req: Request) {
     return new Response(`Webhook Error: ${err.message}`, { status: 400 })
   }
 
+  // Handle the event type for checkout session completion
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
     const metadata = session.metadata
 
+    // Make sure metadata exists
+    if (!metadata) {
+      console.error('[Stripe Webhook] Missing metadata')
+      return new Response('Missing metadata', { status: 400 })
+    }
+
+    // Validate and parse the metadata using the signup schema, ensuring the timestamp is a date object - not a string
     const parseResult = signupSchema.safeParse({
       ...metadata,
+      timestamp: new Date(metadata.timestamp),
     })
 
     if (!parseResult.success) {
@@ -49,6 +60,8 @@ export async function POST(req: Request) {
       return new Response('Invalid member data', { status: 400 })
     }
 
+    // Cast the parsed data to the Member type, excluding the id and timestamps
+    // This is safe because we validated the data against the schema
     const memberData: Omit<Member, 'id' | 'createdAt' | 'updatedAt'> = {
       timestamp: new Date(parseResult.data.timestamp).toISOString(),
       firstName: parseResult.data.firstName,
@@ -68,6 +81,7 @@ export async function POST(req: Request) {
     }
 
     try {
+      // Store the member data in Payload
       const payload = await getPayload({ config: payloadConfig })
 
       await payload.create({
