@@ -9,7 +9,7 @@ import 'src/styles/global.css'
 
 export default function Events() {
   return (
-    <section className="relative px-6 md:px-16 pb-20 text-white h-[1043px]">
+    <section className="relative px-6 md:px-16 text-white h-[1043px]">
       {/* page title */}
       <div className="relative w-fit mx-auto mt-14">
         <Image
@@ -78,16 +78,7 @@ export default function Events() {
         width="409"
         height="800"
         layout=""
-        className="absolute left-0 top-[210px] z-0"
-      />
-      
-      <Image
-        src="/images/home/film_strip_events.png"
-        alt="Film Strip"
-        width="194"
-        height="1502"
-        layout=""
-        className="absolute left-0 -top-[29px] z-0"
+        className="absolute left-0 top-20 z-0"
       />
       
     </section>

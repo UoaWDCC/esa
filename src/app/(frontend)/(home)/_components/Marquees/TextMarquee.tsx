@@ -6,7 +6,7 @@ interface TextMarqueeProps {
     bgColor: string;
     textBg: string;
     textColor?: string;
-    wrapperClassName?: string; // 👈 optional
+    wrapperClassName?: string;
 }
 
 export default function TextMarquee({ text, bgColor, textBg, textColor, wrapperClassName }: TextMarqueeProps) {
