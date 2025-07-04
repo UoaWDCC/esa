@@ -90,6 +90,51 @@ export const Members: CollectionConfig = {
         return Response.json({ message: 'CSV file uploaded and members created successfully' }, { status: 200 });
       }
     },
+    {
+      path: '/can-create',
+      method: 'post',
+      handler: async (req) => {
+        await addDataAndFileToRequest(req);
+
+        if (!req.user) {
+          return Response.json({ message: 'Unauthorised user' }, { status: 401 });
+        }
+
+        // Cast data to Member type
+        const data = req.data as Member;
+
+        let canCreate = false;
+        let errorMessage = '';
+
+        let transactionId: string | number | null = null;
+        try {
+          // Start a transaction
+          transactionId = await req.payload.db.beginTransaction();
+
+          // Attempt to create the member. Note that this does not actually create the member in the database
+          // until the transaction is committed.
+          await req.payload.create({
+            collection: 'members',
+            data: data,
+          })
+
+          canCreate = true;
+        } catch (err: any) {
+          errorMessage = err.message;
+        }
+
+        // Rollback the transaction to ensure no changes are made to the database
+        if (transactionId != null) {
+          req.payload.db.rollbackTransaction(transactionId);
+        }
+
+        if (canCreate) {
+          return Response.json({ canCreate: true }, { status: 200 });
+        } else {
+          return Response.json({ canCreate: false, error: errorMessage }, { status: 400 });
+        }
+      }
+    }
   ],
   fields: [
     {

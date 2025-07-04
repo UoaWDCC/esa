@@ -21,10 +21,38 @@ export default function SignupForm() {
             paymentScreenshotLink: "N/A",
         },
     });
-    
+
+    const checkCanCreate = async (data: SignupInput) => {
+        try {
+            const response = await fetch('/api/members/can-create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            return result.canCreate;
+        } catch (error: any) {
+            console.error("Error checking if member can be created:", error);
+            alert(error.message);
+            return false;
+        }
+    }
+
     // This function handles the form submission (upon clicking the "Continue to Payment" button).
     // For now it just creates the member in the database. In the future, it will also handle the payment process.
     const onSubmit = async (data: SignupInput) => {
+        // Check if the member can be created
+        const canCreate = await checkCanCreate(data);
+        if (!canCreate) {
+            alert("You have already signed up for the ESA membership for this year. If you think this is a mistake, please contact us.");
+            return;
+        }
+
+        // If the member can be created, proceed to create the payment session
         try {
             const response = await fetch('/api/payment/create-checkout-session', {
                 method: 'POST',
