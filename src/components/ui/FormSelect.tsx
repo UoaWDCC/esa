@@ -1,9 +1,10 @@
 import { SelectHTMLAttributes, forwardRef } from "react";
 import { FieldError } from "react-hook-form";
-import clsx from "clsx";
+import {cn} from "@/lib/utils";
 
 interface FormSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "children"> {
     className?: string;
+    label?: string;
     name: string;
     error?: FieldError;
     options: Array<{ value: string; label: string }>;
@@ -11,14 +12,17 @@ interface FormSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 
 }
 
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
-    ({ className, error, options, placeholder, ...rest }, ref) => {
+    ({ className, label, error, options, placeholder, ...rest }, ref) => {
         return (
             <div className="mb-4">
+                <label className="block mb-1 font-medium px-3">
+                    {label}
+                </label>
                 <select
                     ref={ref}
                     defaultValue={placeholder ? "" : undefined}
-                    className={clsx(
-                        "border border-white rounded-2xl p-1 px-3 bg-transparent text-white",
+                    className={cn(
+                        "border border-white rounded-2xl py-1.5 px-3 bg-transparent ",
                         className
                     )}
                     {...rest}
