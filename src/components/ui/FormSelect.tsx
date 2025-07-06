@@ -1,8 +1,8 @@
-import { SelectHTMLAttributes, forwardRef } from "react";
-import { FieldError } from "react-hook-form";
-import {cn} from "@/lib/utils";
+import { SelectHTMLAttributes, forwardRef } from 'react';
+import { FieldError } from 'react-hook-form';
+import { cn } from '@/lib/utils';
 
-interface FormSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "children"> {
+interface FormSelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
     className?: string;
     label?: string;
     name: string;
@@ -15,15 +15,13 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
     ({ className, label, error, options, placeholder, ...rest }, ref) => {
         return (
             <div className="mb-4">
-                <label className="block mb-1 font-medium px-3">
-                    {label}
-                </label>
+                <label className="block mb-1 font-medium px-3">{label}</label>
                 <select
                     ref={ref}
-                    defaultValue={placeholder ? "" : undefined}
+                    defaultValue={placeholder ? '' : undefined}
                     className={cn(
-                        "border border-white rounded-2xl py-1.5 px-3 bg-transparent ",
-                        className
+                        'border border-white rounded-2xl py-1.5 px-3 bg-transparent',
+                        className,
                     )}
                     {...rest}
                 >
@@ -42,8 +40,8 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
                 {error && <p className="text-red-500 text-sm">{error.message}</p>}
             </div>
         );
-    }
+    },
 );
 
-FormSelect.displayName = "FormSelect";
+FormSelect.displayName = 'FormSelect';
 export default FormSelect;
