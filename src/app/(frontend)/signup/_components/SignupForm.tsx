@@ -10,6 +10,7 @@ import FormSelect from '@/components/ui/FormSelect';
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ArrowUp from '@/components/icons/ArrowUp';
 
 export default function SignupForm() {
     const [step, setStep] = useState(1);
@@ -216,10 +217,11 @@ export default function SignupForm() {
                                 />
                                 <Button
                                     type="submit"
-                                    className="w-fit mx-auto"
+                                    className="w-fit mx-auto flex items-center gap-x-2"
                                     disabled={isSubmitting}
                                 >
                                     Continue to Payment
+                                    <ArrowUp className="size-3" />
                                 </Button>
                             </div>
                         </motion.div>
