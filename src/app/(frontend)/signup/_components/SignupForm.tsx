@@ -13,11 +13,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function SignupForm() {
     const [step, setStep] = useState(1);
+    const Arr = ['', ''];
 
     const {
         register,
         handleSubmit,
-        watch,
         trigger,
         formState: { errors, isSubmitting },
         reset,
@@ -60,7 +60,7 @@ export default function SignupForm() {
     };
 
     return (
-        <div className="flex justify-center p-4">
+        <div className="flex flex-col justify-center p-4">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="border-white border rounded-4xl flex items-center justify-center"
@@ -212,6 +212,7 @@ export default function SignupForm() {
                                     {...register('notes')}
                                     error={errors.notes}
                                     className="w-full placeholder:text-gray"
+                                    rows={1}
                                 />
                                 <Button
                                     type="submit"
@@ -225,6 +226,14 @@ export default function SignupForm() {
                     )}
                 </AnimatePresence>
             </form>
+            <div className="flex flex-row mt-2 gap-2 justify-center">
+                {Arr.map((_, index) => (
+                    <div
+                        key={index}
+                        className={`rounded-full w-3 h-3 ${step === index + 1 ? 'bg-primary-red-800' : 'bg-white'}`}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
