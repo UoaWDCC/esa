@@ -74,10 +74,10 @@ export default function SignupForm() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 30 }}
                             transition={{ duration: 0.3 }}
-                            className="flex pl-20 pr-5 w-fit"
+                            className="flex pl-10 md:pl-20 pr-2 md:pr-5 w-fit"
                         >
                             <div className="py-10">
-                                <div className="flex justify-between gap-x-15">
+                                <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
                                         label="First Name"
                                         placeholder="Enter Here"
@@ -100,7 +100,7 @@ export default function SignupForm() {
                                     error={errors.email}
                                     className="w-full placeholder:text-gray"
                                 />
-                                <div className="flex justify-between">
+                                <div className="md:flex md:justify-between">
                                     <FormSelect
                                         label="Year of Study"
                                         placeholder="Choose Dropdown"
@@ -131,7 +131,7 @@ export default function SignupForm() {
                                 />
                             </div>
 
-                            <div className="flex justify-end items-center pl-5">
+                            <div className="flex justify-end items-center pl-2 md:pl-5">
                                 <button
                                     type="button"
                                     className="h-fit hover:cursor-pointer"
@@ -145,7 +145,7 @@ export default function SignupForm() {
                                         if (valid) setStep(2);
                                     }}
                                 >
-                                    <ChevronRight size={45} />
+                                    <ChevronRight className="w-10 h-10 md:w-[45px] md:h-[45px]" />
                                 </button>
                             </div>
                         </motion.div>
@@ -158,17 +158,17 @@ export default function SignupForm() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -30 }}
                             transition={{ duration: 0.3 }}
-                            className="flex w-fit items-center pl-5 pr-20"
+                            className="flex w-fit items-center pl-2 md:pl-5 pr-10 md:pr-20"
                         >
                             <button
                                 type="button"
-                                className="hover:cursor-pointer h-fit pr-5"
+                                className="hover:cursor-pointer h-fit pr-2 md:pr-5"
                                 onClick={() => setStep(1)}
                             >
-                                <ChevronLeft size={45} />
+                                <ChevronLeft className="w-10 h-10 md:w-[45px] md:h-[45px]" />
                             </button>
                             <div className="flex flex-col justify-center py-10">
-                                <div className="flex justify-between gap-x-15">
+                                <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
                                         label="Ethnicity"
                                         placeholder="Enter Here"
