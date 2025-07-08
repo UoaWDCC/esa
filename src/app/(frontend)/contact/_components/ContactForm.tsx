@@ -72,7 +72,7 @@ export default function ContactForm() {
             <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
                 <div className="flex px-3 border-b border-primary-white justify-between">
                     <span className="max-w-lg">Email</span>
-                    <span className="max-w-lg">sdkfj@asadljcf.com</span>
+                    <span className="max-w-lg">uoaesa@gmail.com</span>
                 </div>
                 <div className="flex px-3 border-b border-primary-white justify-between mt-2">
                     <span className="max-w-lg">Contact number</span>
