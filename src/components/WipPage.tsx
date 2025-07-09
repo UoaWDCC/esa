@@ -32,10 +32,10 @@ export default function WipPage() {
             {/* Links to other pages */}
             <div className="flex space-x-6 text-primary-white tracking-widest">
                 {' '}
-                <Link href="/public" className="hover:underline mx-5">
+                <Link href="/" className="hover:underline mx-5">
                     Go Home
                 </Link>
-                <Link href="/public" className="hover:underline mx-5">
+                <Link href="/about-us" className="hover:underline mx-5">
                     About Us
                 </Link>
                 <Link href="/contact" className="hover:underline mx-5">
