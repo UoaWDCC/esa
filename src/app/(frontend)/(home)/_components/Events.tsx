@@ -1,13 +1,67 @@
 // Import React and Next.js Image component
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import EventCard from './EventCard'
 
 // Import global styles (including Tailwind)
 import 'src/styles/global.css'
 
+interface Event {
+  _id: string
+  title: string
+  day: string
+  month: string
+  date: string
+  image: string | null
+}
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 export default function Events() {
+  const [events, setEvents] = React.useState<Event[]>([])
+
+  // fetch the events from payload on component mount
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const response = await fetch('/api/events', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(
+            error.message || 'Failed to fetch events',
+        );
+      } else {
+        const data = await response.json();
+
+        // map payload.docs to Event[]
+        const mappedEvents: Event[] = (data.docs || []).map((doc: any) => {
+          const dateObj = new Date(doc.date);
+          return {
+            _id: doc._id,
+            title: doc.name,
+            day: dateObj.getUTCDate().toString().padStart(2, '0'),
+            month: MONTHS[dateObj.getUTCMonth()],
+            date: doc.date,
+            image: doc.image,
+          }
+        });
+        setEvents(mappedEvents);
+        console.log('Fetched events:', mappedEvents);
+      }
+
+      return response;
+    };
+
+    fetchEvents();
+  }, []);
+    
+
   return (
     <section className="relative px-6 md:px-16 text-white h-[1043px]">
       {/* page title */}
@@ -66,9 +120,9 @@ export default function Events() {
         {/* event card */}
         <EventCard
           bgSrc="/images/home/latest_strip.png"
-          title=""
-          month="May"
-          day="10"
+          title={events[0]?.title || "XX"}
+          month={events[0]?.month || "XX"}
+          day={events[0]?.day || "XX"}
         />
       </div>
 

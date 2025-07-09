@@ -1,11 +1,10 @@
 'use client'
 import Image from 'next/image'
-import clsx from 'clsx'
 
 // date square
 function DateBadge({ month, day }: { month: string; day: string }) {
   return (
-    <div className="flex flex-col items-center min-h-[182px] min-w-[187px] rounded-3xl bg-[#871F1B]">
+    <div className="flex flex-col items-center w-full h-full max-h-[182px] max-w-[187px] rounded-3xl bg-[#871F1B] aspect-[16/9]">
       <span className="text-white text-[27px] font-reservoir-grunge leading-none p-5">{month}</span>
       <span className="text-white text-[79px] font-reservoir-grunge leading-none">{day}</span>
     </div>
@@ -37,46 +36,45 @@ export default function EventCard({
   disabled = false,
 }: Props) {
   return (
-    <div className="flex items-center gap-4">
-      {/* banner background */}
-      <div className="relative min-w-[968px] h-[182px] rounded-[3rem] overflow-hidden">
-        <div className="absolute inset-0 rounded-[3rem] bg-[#161514] z-0">
+    <div className="flex items-center gap-4 w-full max-w-[968px] h-[182px] text-black">
+      {/* Photo with border */}
+      <div className="relative flex-1 h-full rounded-[2.5rem] overflow-hidden border-4 border-red-900">
+        <div className="overflow-hidden w-full h-full">
           <Image
             src={bgSrc}
             alt=""
-            width={1000}
-            height={200}
-            className={clsx(
-              'object-contain w-full h-full rounded-[3rem] transition-opacity',
-              disabled && 'blur-sm brightness-110'
-            )}
+            fill
+            className={`object-cover w-full h-full transition-opacity scale-110${disabled ? ' blur-sm brightness-110' : ''} rounded-[3rem]`}
+            style={{}}
           />
         </div>
+        {locked ? (
+          <div className="absolute inset-0 w-full h-full z-50">
+            <div className="grid-cols-[0.3fr_1fr] grid items-center gap-4 px-[10%] w-full h-full">
+              <Image
+                src="/images/home/lock.png"
+                alt="locked"
+                width={48}
+                height={48}
+                className="md:w-[77px]"
+              />
+              <h3 className="leading-none">Coming Soon</h3>
+            </div>
+          </div>
+        ) :
+        (
+          <div className='absolute inset-0 w-full h-full flex items-center justify-center z-50'>
+            <h3 className="leading-none">{title}</h3>
+          </div>
+        )}
 
-        
-        <div className="absolute inset-0 z-10 rounded-[3rem] ring-4 ring-[#871F1B] ring-offset-0 ring-inset pointer-events-none" />
 
-
-        <div className="absolute inset-0 flex items-center justify-center-left p-20">
-          {locked && (
-            <Image
-              src="/images/home/lock.png"
-              alt="locked"
-              width={48}
-              height={48}
-              className="md:w-[77px] -mt-4"
-            />
-          )}
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center gap-6">
-          {locked && (
-            <h3 className="text-black text-[42px] font-reservoir-grunge leading-none">{"Coming Soon"}</h3>
-          )}
-        </div>
       </div>
 
-      {/* date */}
-      <DateBadge month={month} day={day} />
+      {/* DateBadge */}
+      <div className="h-full flex items-center bg-green-300">
+        <DateBadge month={month} day={day} />
+      </div>
     </div>
   )
 }
