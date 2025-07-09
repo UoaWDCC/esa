@@ -17,7 +17,7 @@ export default function WhoAreWe() {
       <div className="relative">
         {/* bottom right frame*/}
         <Image
-          src="/assets/frame.png"
+          src="/images/home/frame.png"
           alt="top left frame"
           width={60}
           height={60}
@@ -26,23 +26,23 @@ export default function WhoAreWe() {
 
         {/* top left frame */}
         <Image
-          src="/assets/frame.png"
+          src="/images/home/frame.png"
           alt="bottom right frame"
           width={60}
           height={60}
-          className="absolute -top-5 -left-9 scale-x-[-1] scale-y-[-1] w-[12%] md:w-[7.5%] -rotate-18"
+          className="absolute -top-9 -left-[1rem] md:-top-5 md:-left-9 scale-x-[-1] scale-y-[-1] w-[12%] md:w-[7.5%] -rotate-14 md:-rotate-18"
         />
 
         {/* main box component */}
         <div className="flex items-center justify-center gap-11 py-9 px-10 rounded-[5em] bg-[#ebe9e6]">
           {/* background */}
-          <div className="absolute inset-0 bg-[url('/assets/liquid_marbling_background.png')] bg-cover bg-center opacity-7 rounded-[5em]" />
+          <div className="absolute inset-0 bg-[url('/images/home/liquid_marbling_background.png')] bg-cover bg-center opacity-7 rounded-[5em]" />
 
           {/* Who are we image */}
           <div className="relative items-center hidden md:flex">
             <Image
               // ref={imgRef}
-              src="/assets/team_photo.png"
+              src="/images/home/team_photo.png"
               alt="team photo"
               width={320}
               height={320}
@@ -59,7 +59,7 @@ export default function WhoAreWe() {
               </div>
               {/* arrow */}
               <Image
-                src="/assets/arrow.png"
+                src="/images/home/arrow.png"
                 alt="arrow"
                 width={105}
                 height={105}
@@ -68,15 +68,22 @@ export default function WhoAreWe() {
             </div>
 
             {/* description */}
-            <p className="w-56 mb-4 font-medium text-center text-black text-base/tight">
+            <p className="w-56 mb-4 font-medium text-center text-black text-base/tight bg">
               ESA Social Club is your go-to community for fun, connection, and a little friendly
               competition.
             </p>
+            <div className="md:hidden relative w-90 flex justify-center px-4">
+              <img
+                src="/images/home/who_are_we_mobile.png"
+                alt="team photo"
+                className="w-full h-auto max-w-full object-contain"
+              />
+            </div>
             <p className="self-start text-sm tracking-[0.15em] text-black w-86">
               Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at
               arcade night — we&apos;ve got you.
             </p>
-            <p className="self-start text-sm tracking-[0.15em] text-black w-88">
+            <p className="self-start text-sm tracking-[0.15em] text-black w-88 hidden md:block">
               ESA firmly believes that university life is not just about academic studies...but it&apos;s
               also about having fun, and meeting new friends!
             </p>
