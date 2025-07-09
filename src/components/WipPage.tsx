@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 import FrogBackground from './backgrounds/FrogBackground';
+
 export default function WipPage() {
     return (
         <div className="flex flex-col min-h-screen items-center justify-center text-center px-4">
@@ -19,21 +19,10 @@ export default function WipPage() {
                 </p>
             </div>
 
-            <hr className="my-4 border-t border-white-600 max-w-sm w-80 h-px" />
-
             {/* Links to other pages */}
-            <div className="flex space-x-6 text-primary-white tracking-widest">
-                {' '}
-                <Link href="/" className="hover:underline mx-5">
-                    Go Home
-                </Link>
-                <Link href="/about-us" className="hover:underline mx-5">
-                    About Us
-                </Link>
-                <Link href="/contact" className="hover:underline mx-5">
-                    Contact Us
-                </Link>
-            </div>
+            <Button className="mt-5" href="/" size="default">
+                Return to Homepage
+            </Button>
         </div>
     );
 }
