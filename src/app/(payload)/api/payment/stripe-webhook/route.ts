@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(
       Buffer.from(rawBody).toString(),
       signature,
-      webhookSecret
+      webhookSecret,
     )
   } catch (err: any) {
     console.error('[Stripe Webhook] Signature verification failed:', err.message)
@@ -39,8 +39,8 @@ export async function POST(req: Request) {
   }
 
   // Handle the event type for checkout session completion
-  if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.Checkout.Session
+  if (event.type === 'payment_intent.succeeded') {
+    const session = event.data.object as Stripe.PaymentIntent
     const metadata = session.metadata
 
     // Make sure metadata exists
