@@ -1,70 +1,38 @@
-"use server"
 import Image from 'next/image'
 import EventCard from './EventCard'
-import { getPayload } from '@/lib/payload'
-import { Event } from '@/payload-types'
-
-type EventData = {
-  _id: string;
-  title: string;
-  day: string;
-  month: string;
-  date: string;
-  image: string;
-  locked: boolean;
-  disabled: boolean;
-};
+import { getEvents } from '@/actions/getEvents'
+import parseEvents from '@/types/parsers/parseEvents'
+import { EventData } from '@/types/EventData'
 
 export default async function Events() {
+  const parsedEvents = parseEvents(await getEvents());
 
   const lockedEvents: EventData[] = [];
   const upcomingEvents: EventData[] = [];
   const pastEvents: EventData[] = [];
-  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-  const getEvents = async () => {
-    const payload = await getPayload();
-    const events = await payload.find({
-      collection: "events",
-      pagination: false,
-    });
-    console.log("Events fetched:", events.docs);
-    return events.docs as Event[];
-  };
 
   // Sort by date ascending, then take the first 10
-  const docs = (await getEvents()).slice() 
-                                  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-                                  .slice(0, 10);
+  const docs = parsedEvents
+  .slice()
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  .slice(0, 10);
+
 
   // Get today's date at midnight (UTC)
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
-  (docs || []).forEach((doc: any) => {
-    const dateObj = new Date(doc.date);
-    const isLocked = doc.isLocked || false;
-    const eventData = {
-      _id: doc._id,
-      title: doc.name,
-      day: dateObj.getDate().toString().padStart(2, '0'),
-      month: MONTHS[dateObj.getMonth()],
-      date: doc.date,
-      image: doc.photo?.url || "/images/home/latest_strip.png", // temporary default image
-      locked: isLocked,
-      disabled: isLocked,
-    };
+  docs.forEach((doc) => {
+    const dateObj = new Date(doc.date)
 
-    if (dateObj >= today) { // if upcoming event
-      upcomingEvents.push(eventData);
-
-      if (isLocked) { // if the upcoming event is locked
-        lockedEvents.push(eventData);
-      }
-    } else { // if past event (don't care if its locked or not)
-      pastEvents.push(eventData);
+    if (dateObj >= today) { // Upcoming event
+      upcomingEvents.push(doc)
+      if (doc.locked) lockedEvents.push(doc) // If the event is locked, add it to lockedEvents
+    } else {
+      pastEvents.push(doc) // Past event
     }
-  });
+  })
 
   return (
     <section className="relative px-6 md:px-16 text-white h-[1043px]">
