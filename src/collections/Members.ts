@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: false, 
+    hidden: true,
   },
   access: {
     read: () => true,
@@ -103,31 +103,31 @@ export const Members: CollectionConfig = {
         // Cast data to Member type
         const data = req.data as Member;
 
-        let canCreate = false;
+        let canCreate = true;
         let errorMessage = '';
 
-        // // Start a transaction
-        // let transactionId: string | number | null = await req.payload.db.beginTransaction();
+        // Check whether there is a duplicate email. 
+        const existingMembers = await req.payload.find({
+          collection: 'members',
+          where: {
+            email: { equals: data.email }
+          }
+        });
 
-        // if (!transactionId) {
-        //   throw new Error('Failed to start transaction');
-        // }
+        // If there are members with the same email, check if the year in the timestamp is the same.
+        if (existingMembers.totalDocs !== 0) {
+          const existingMember = existingMembers.docs[0] as Member;
 
-        // try {
-        //   // Attempt to create the member. Note that this does not actually create the member in the database
-        //   // until the transaction is committed.
-        //   await req.payload.create({
-        //     collection: 'members',
-        //     data: data,
-        //   })
+          const existingYear = new Date(existingMember.timestamp).getFullYear();
+          const newYear = new Date(data.timestamp).getFullYear();
 
-        //   canCreate = true;
-        //   await req.payload.db.rollbackTransaction(transactionId);
-        // } catch (err: any) {
-        //   errorMessage = err.message;
-        //   await req.payload.db.rollbackTransaction(transactionId);
-        // }
-
+          // Check if the year of the existing member matches the year of the new member
+          if (existingMember.email === data.email && existingYear === newYear) {
+            errorMessage = 'A member with this email already exists for this year.';
+            canCreate = false;
+          }
+        }
+        
         if (canCreate) {
           return Response.json({ canCreate: true }, { status: 200 });
         } else {
@@ -220,4 +220,46 @@ export const Members: CollectionConfig = {
       type: 'textarea',
     },
   ],
+  hooks: {
+    // Ensure that duplicate emails are not allowed within the same year
+    // This hook runs before creating or updating a member
+    beforeChange: [
+      async ({ data, req, operation }) => {
+        if (operation === 'create' || operation === 'update') {
+          const { email, timestamp } = data;
+
+          if (!email || !timestamp) return;
+
+          const year = new Date(timestamp).getFullYear();
+
+          // Search for existing member with the same email and year
+          const existing = await req.payload.find({
+            collection: 'members',
+            where: {
+              and: [
+                { email: { equals: email } },
+                {
+                  timestamp: {
+                    greater_than_equal: `${year}-01-01T00:00:00.000Z`,
+                    less_than: `${year + 1}-01-01T00:00:00.000Z`
+                  }
+                }
+              ]
+            }
+          });
+
+          const isUpdate = operation === 'update' && data?.id;
+
+          if (
+            existing.docs.length > 0 &&
+            (!isUpdate || existing.docs[0].id !== data.id)
+          ) {
+            throw new Error(
+              `A member with email "${email}" has already registered in ${year}.`
+            );
+          }
+        }
+      }
+    ]
+  }
 };
