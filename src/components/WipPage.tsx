@@ -1,20 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
+import FrogBackground from './backgrounds/FrogBackground';
 export default function WipPage() {
     return (
         <div className="flex flex-col min-h-screen items-center justify-center text-center px-4">
-            {/* Stupid fat froggy */}
-            <Image
-                src="/images/mascot-frog.png"
-                alt="Mascot Frog"
-                className="absolute bottom-0 left-0"
-                width={800}
-                height={800}
-                style={{ pointerEvents: 'none' }}
-            />
+            <FrogBackground />
 
-            {/* Title/text */}
+            {/* Title/body text */}
             <h3 className="text-primary-red p-2"> Work In Progress </h3>
 
             <div className="w-full mx-auto text-center text-primary-white bg-transparent flex flex-col items-center tracking-widest">
