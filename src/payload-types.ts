@@ -186,6 +186,8 @@ export interface Event {
   memberPrice: number;
   nonMemberPrice: number;
   description?: string | null;
+  photo?: (string | null) | Media;
+  isLocked?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -393,6 +395,8 @@ export interface EventsSelect<T extends boolean = true> {
   memberPrice?: T;
   nonMemberPrice?: T;
   description?: T;
+  photo?: T;
+  isLocked?: T;
   updatedAt?: T;
   createdAt?: T;
 }

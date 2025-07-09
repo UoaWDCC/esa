@@ -4,9 +4,9 @@ import Image from 'next/image'
 // date square
 function DateBadge({ month, day }: { month: string; day: string }) {
   return (
-    <div className="flex flex-col items-center w-full h-full max-h-[182px] max-w-[187px] rounded-3xl bg-[#871F1B] aspect-[16/9]">
-      <span className="text-white text-[27px] font-reservoir-grunge leading-none p-5">{month}</span>
-      <span className="text-white text-[79px] font-reservoir-grunge leading-none">{day}</span>
+    <div className="flex flex-col items-center justify-center w-full h-full max-h-[182px] max-w-[187px] rounded-[2rem] bg-[#871F1B] aspect-[16/9]">
+      <span className="text-white text-2xl sm:text-[20px] md:text-[27px] font-reservoir-grunge leading-none p-5">{month}</span>
+      <span className="text-white text-5xl sm:text-[59px] md:text-[79px] font-reservoir-grunge leading-none">{day}</span>
     </div>
   )
 }
@@ -36,9 +36,9 @@ export default function EventCard({
   disabled = false,
 }: Props) {
   return (
-    <div className="flex items-center gap-4 w-full max-w-[968px] h-[182px] text-black">
+    <div className="flex items-center gap-4 w-full max-w-[968px] md:h-[182px] sm:-[150px] h-[130px] text-black">
       {/* Photo with border */}
-      <div className="relative flex-1 h-full rounded-[2.5rem] overflow-hidden border-4 border-red-900">
+      <div className="relative flex-1 h-full rounded-[2rem] overflow-hidden border-4 border-red-900">
         <div className="overflow-hidden w-full h-full">
           <Image
             src={bgSrc}
@@ -72,7 +72,7 @@ export default function EventCard({
       </div>
 
       {/* DateBadge */}
-      <div className="h-full flex items-center bg-green-300">
+      <div className="h-full w-[30%] flex items-center">
         <DateBadge month={month} day={day} />
       </div>
     </div>
