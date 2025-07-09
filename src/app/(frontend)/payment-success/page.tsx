@@ -1,3 +1,4 @@
+import FrogBackground from '@/components/backgrounds/FrogBackground'
 import Link from 'next/link'
 import React from 'react'
 import Stripe from 'stripe'
@@ -30,6 +31,7 @@ export default async function PaymentSuccessPage({
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
+      <FrogBackground />
       {status === 'succeeded' && (
         <>
           <meta httpEquiv="refresh" content="5;url=/" />
