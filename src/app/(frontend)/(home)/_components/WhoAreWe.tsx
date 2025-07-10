@@ -13,15 +13,15 @@ export default function WhoAreWe() {
   // }, [])
 
   return (
-    <>
-      <div className="relative">
+    <div className="w-full flex justify-center md:w-auto">
+      <div className="relative w-full">
         {/* bottom right frame*/}
         <Image
           src="/images/home/frame.png"
           alt="top left frame"
           width={60}
           height={60}
-          className="absolute -bottom-10 -right-2 w-[12%] md:w-[7.5%]"
+          className="absolute -bottom-10 -right-4 w-[12%] md:w-[7.5%]"
         />
 
         {/* top left frame */}
@@ -30,13 +30,13 @@ export default function WhoAreWe() {
           alt="bottom right frame"
           width={60}
           height={60}
-          className="absolute -top-9 -left-[1rem] md:-top-5 md:-left-9 scale-x-[-1] scale-y-[-1] w-[12%] md:w-[7.5%] -rotate-14 md:-rotate-18"
+          className="absolute -top-5 -left-9 scale-x-[-1] scale-y-[-1] w-[12%] md:w-[7.5%] -rotate-14 md:-rotate-18"
         />
 
         {/* main box component */}
-        <div className="flex items-center justify-center gap-11 py-9 px-10 rounded-[5em] bg-[#ebe9e6]">
+        <div className="flex items-center justify-center gap-11 py-9 px-10 rounded-[3.5em] md:rounded-[5em] bg-[#ebe9e6]">
           {/* background */}
-          <div className="absolute inset-0 bg-[url('/images/home/liquid_marbling_background.png')] bg-cover bg-center opacity-7 rounded-[5em]" />
+          <div className="absolute inset-0 bg-[url('/images/home/liquid_marbling_background.png')] bg-cover bg-center opacity-7 rounded-[3.5em] md:rounded-[5em]" />
 
           {/* Who are we image */}
           <div className="relative items-center hidden md:flex">
@@ -76,20 +76,22 @@ export default function WhoAreWe() {
               <img
                 src="/images/home/who_are_we_mobile.png"
                 alt="team photo"
-                className="w-full h-auto max-w-full object-contain"
+                className="w-[90%] h-auto max-w-full object-contain"
               />
             </div>
-            <p className="self-start text-sm tracking-[0.15em] text-black w-86">
-              Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at
-              arcade night — we&apos;ve got you.
-            </p>
-            <p className="self-start text-sm tracking-[0.15em] text-black w-88 hidden md:block">
-              ESA firmly believes that university life is not just about academic studies...but it&apos;s
-              also about having fun, and meeting new friends!
-            </p>
+            <div className='w-[80%] md:w-88'>
+              <p className="self-start text-sm tracking-[0.15em] text-black md:mb-4">
+                Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at
+                arcade night — we&apos;ve got you.
+              </p>
+              <p className="self-start text-sm tracking-[0.15em] text-black hidden md:block">
+                ESA firmly believes that university life is not just about academic studies...but it&apos;s
+                also about having fun, and meeting new friends!
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
