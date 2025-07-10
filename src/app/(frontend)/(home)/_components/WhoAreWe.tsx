@@ -21,7 +21,7 @@ export default function WhoAreWe() {
           alt="top left frame"
           width={60}
           height={60}
-          className="absolute -bottom-10 -right-4 w-[12%] md:w-[7.5%]"
+          className="absolute -bottom-10 -right-4 min-[490px]:-bottom-18 md:-bottom-10 w-[12%] md:w-[7.5%]"
         />
 
         {/* top left frame */}
@@ -30,7 +30,7 @@ export default function WhoAreWe() {
           alt="bottom right frame"
           width={60}
           height={60}
-          className="absolute -top-5 -left-9 scale-x-[-1] scale-y-[-1] w-[12%] md:w-[7.5%] -rotate-14 md:-rotate-18"
+          className="absolute -top-5 -left-9 min-[490px]:-top-14 md:-top-5 scale-x-[-1] scale-y-[-1] w-[12%] md:w-[7.5%] -rotate-14 md:-rotate-18"
         />
 
         {/* main box component */}
