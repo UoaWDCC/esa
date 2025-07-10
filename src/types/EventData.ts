@@ -5,6 +5,7 @@ export type EventData = {
     month: string;
     date: string;
     image: string;
+    imageAlt: string;
     locked: boolean;
     disabled: boolean;
   };

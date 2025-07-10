@@ -7,9 +7,8 @@ import { EventData } from '@/types/EventData'
 export default async function Events() {
   const parsedEvents = parseEvents(await getEvents());
 
-  const lockedEvents: EventData[] = [];
   const upcomingEvents: EventData[] = [];
-  const pastEvents: EventData[] = [];
+  const pastEvents: EventData[] = []; // Stored as list incase we want to show more than one past event later
 
 
   // Sort by date ascending, then take the first 10
@@ -28,7 +27,6 @@ export default async function Events() {
 
     if (dateObj >= today) { // Upcoming event
       upcomingEvents.push(doc)
-      if (doc.locked) lockedEvents.push(doc) // If the event is locked, add it to lockedEvents
     } else {
       pastEvents.push(doc) // Past event
     }
@@ -67,6 +65,7 @@ export default async function Events() {
           <EventCard
             key={event._id}
             bgSrc={event.image}
+            bgAlt={event.imageAlt}
             title={event.title}
             month={event.month}
             day={event.day}
@@ -84,6 +83,7 @@ export default async function Events() {
         {pastEvents[0] && (
           <EventCard
             bgSrc={pastEvents[0].image}
+            bgAlt={pastEvents[0].imageAlt}
             title={pastEvents[0].title}
             month={pastEvents[0].month}
             day={pastEvents[0].day}

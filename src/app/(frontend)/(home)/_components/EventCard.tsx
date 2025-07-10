@@ -15,6 +15,8 @@ function DateBadge({ month, day }: { month: string; day: string }) {
 interface Props {
   // background banner image */
   bgSrc: string
+  // background image alt text
+  bgAlt: string
   // card title 
   title: string
   // month abbreviation
@@ -29,6 +31,7 @@ interface Props {
 
 export default function EventCard({
   bgSrc,
+  bgAlt,
   title,
   month,
   day,
@@ -36,15 +39,15 @@ export default function EventCard({
   disabled = false,
 }: Props) {
   return (
-    <div className="flex items-center gap-4 w-full max-w-[968px] md:h-[182px] sm:-[150px] h-[130px] text-black">
+    <div className="flex items-center gap-4 w-full max-w-[968px] md:h-[182px] sm:-[150px] h-[130px] text-black bg-accent-light">
       {/* Photo with border */}
-      <div className="relative flex-1 h-full rounded-[2rem] overflow-hidden border-4 border-red-900">
+      <div className="relative flex-1 h-full rounded-[2rem] overflow-hidden border-4 border-red-900 w-full">
         <div className="overflow-hidden w-full h-full">
           <Image
             src={bgSrc}
-            alt=""
+            alt={bgAlt}
             fill
-            className={`object-cover w-full h-full transition-opacity scale-110${disabled ? ' blur-sm brightness-110' : ''} rounded-[3rem]`}
+            className={`object-cover w-full h-full transition-opacity scale-110${disabled ? ' blur-sm brightness-110' : ''}`}
             style={{}}
           />
         </div>
@@ -72,7 +75,7 @@ export default function EventCard({
       </div>
 
       {/* DateBadge */}
-      <div className="h-full w-[30%] flex items-center">
+      <div className="h-full w-[30%] md:w-auto flex items-center">
         <DateBadge month={month} day={day} />
       </div>
     </div>
