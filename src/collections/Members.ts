@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: true,
+    hidden: false,
   },
   access: {
     read: () => true,
@@ -95,10 +95,6 @@ export const Members: CollectionConfig = {
       method: 'post',
       handler: async (req) => {
         await addDataAndFileToRequest(req);
-
-        if (!req.user) {
-          return Response.json({ message: 'Unauthorised user' }, { status: 401 });
-        }
 
         // Cast data to Member type
         const data = req.data as Member;
