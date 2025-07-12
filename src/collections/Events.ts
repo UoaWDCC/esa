@@ -75,7 +75,21 @@ const Events: CollectionConfig = {
       name: "description",
       label: "Event Description",
       type: "textarea",
-    }
+    },
+    {
+      name: 'photo',
+      label: 'Event Photo',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      displayPreview: true,
+    },
+    {
+      name: "isLocked",
+      label: "Lock Event",
+      type: "checkbox",
+      required: false,
+    },
   ]
 }
 
