@@ -68,14 +68,16 @@ export default function WhoAreWe() {
             </div>
 
             {/* description */}
-            <p className="w-56 mb-4 font-medium text-center text-black text-base/tight bg">
+            <p className="w-[80%] md:w-56 mb-4 font-medium text-center text-black text-base/tight bg">
               ESA Social Club is your go-to community for fun, connection, and a little friendly
               competition.
             </p>
             <div className="md:hidden relative w-90 flex justify-center px-4">
-              <img
+              <Image
                 src="/images/home/who_are_we_mobile.png"
                 alt="team photo"
+                width={100}
+                height={100}
                 className="w-[90%] h-auto max-w-full object-contain"
               />
             </div>
