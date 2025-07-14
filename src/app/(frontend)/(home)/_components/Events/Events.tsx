@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import EventCard from './EventCard'
 import { getEvents } from '@/actions/getEvents'
 import parseEvents from '@/types/parsers/parseEvents'
@@ -37,10 +36,11 @@ export default async function Events() {
 
       {/* upcoming slots */}
       <div className="mt-[52px] space-y-[46px] flex flex-col relative z-10">
-        {upcomingEvents.slice(0, 2).map(event => (
+        {upcomingEvents.slice(0, 2).map((event, index) => (
           <EventCard
             key={event._id}
             event={event}
+            even={index % 2 === 0}
           />
         ))}
       </div>

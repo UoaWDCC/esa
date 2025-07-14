@@ -17,9 +17,10 @@ const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 
 interface EventCardProps {
   event: EventData;
+  even?: boolean;
 }
 
-export default function EventCard({ event }: EventCardProps) {
+export default function EventCard({ event, even }: EventCardProps) {
     const date = new Date(event.date);
     return (
         // <div className="flex items-center gap-4 w-full max-w-[968px] md:h-[182px] sm:-[150px] h-[130px] text-black bg-accent-light">
@@ -63,7 +64,7 @@ export default function EventCard({ event }: EventCardProps) {
         //   </div>
         // </div>
         <div className="w-full flex flex-col md:flex-row gap-x-5">
-            <div className="flex gap-x-5 justify-center">
+            <div className={`flex gap-x-5 justify-center ${even ? "flex-row-reverse md:flex-row" : "flex-row"}`}>
                 <div className="flex flex-col">
                     <h4>{days[date.getDay()]}</h4>
                     <h4>
