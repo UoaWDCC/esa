@@ -77,6 +77,10 @@ h3 {
   font-size: clamp(1rem, 1vw + 1rem, 1.75rem); /* minmum size, perferred size, maximum size */
 }
 
+h4 {
+  font-size: clamp(1rem, 1vw + 2rem, 1.75rem);
+}
+
 /* SHADCN STUFF DO NOT WORRY ABOUT IT!! */
 
 @theme inline {

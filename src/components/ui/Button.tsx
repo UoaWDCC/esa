@@ -4,17 +4,18 @@ import { VariantProps, cva } from 'class-variance-authority';
 import Link from "next/link";
 
 const buttonVariants = cva(
-    "bg-accent text-black rounded-3xl hover:cursor-pointer transition",
+    "rounded-3xl hover:cursor-pointer transition",
     {
         variants: {
             variant: {
-                default: "font-roboto-mono hover:bg-accent-light",
+                default: "bg-accent text-black font-roboto-mono hover:bg-accent-light",
+                clear: "text-primary-white border border-primary-white hover:bg-primary-white hover:text-black"
                 // add more variants here, such as dark, disabled, destructive etc etc
             },
             size: {
                 // change size of buttons here
                 default: "px-6 py-2",
-                sm: "",
+                sm: "px-3 py-1",
                 lg: "px-8 py-2 text-2xl"
             },
         },

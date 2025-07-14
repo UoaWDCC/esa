@@ -34,43 +34,13 @@ export default async function Events() {
 
   return (
     <section className="relative px-6 md:px-16 text-white h-[1043px]">
-      {/* page title */}
-      <div className="relative w-fit mx-auto mt-14">
-        <Image
-          src="/images/home/events_title.png"
-          alt="Events"
-          width={456}
-          height={116}
-          className="object-contain object-top"
-        />
-        <Image
-          src="/images/home/frame.png"
-          alt="top left frame"
-          width={60}
-          height={60}
-          className="absolute -top-5 -left-14 scale-x-[-1] scale-y-[-1] w-[20%] md:w-[15%] -rotate-18"
-        />
-        <Image
-          src="/images/home/frame.png"
-          alt="bottom right frame"
-          width={60}
-          height={60}
-          className="absolute -bottom-4 -right-10 w-[20%] md:w-[15%]"
-        />
-      </div>
 
       {/* upcoming slots */}
-      <div className="mt-[52px] space-y-[46px] flex flex-col items-center relative z-10">
+      <div className="mt-[52px] space-y-[46px] flex flex-col relative z-10">
         {upcomingEvents.slice(0, 2).map(event => (
           <EventCard
             key={event._id}
-            bgSrc={event.image}
-            bgAlt={event.imageAlt}
-            title={event.title}
-            month={event.month}
-            day={event.day}
-            locked={event.locked}
-            disabled={event.disabled}
+            event={event}
           />
         ))}
       </div>
@@ -82,24 +52,10 @@ export default async function Events() {
         </div>
         {pastEvents[0] && (
           <EventCard
-            bgSrc={pastEvents[0].image}
-            bgAlt={pastEvents[0].imageAlt}
-            title={pastEvents[0].title}
-            month={pastEvents[0].month}
-            day={pastEvents[0].day}
-            locked={pastEvents[0].locked}
-            disabled={pastEvents[0].disabled}
+            event={pastEvents[0]}
           />
         )}
       </div>
-
-      <Image
-        src="/images/home/events_star.png"
-        alt="Background Star"
-        width={409}
-        height={800}
-        className="absolute left-0 top-20 z-0"
-      />
     </section>
   )
 }
