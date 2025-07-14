@@ -3,7 +3,7 @@ import Sponsors from '@/app/(frontend)/(home)/_components/Sponsors';
 import Hero from '@/app/(frontend)/(home)/_components/Hero'
 import WhoAreWe from '@/app/(frontend)/(home)/_components/WhoAreWe'
 import WhyJoin from '@/app/(frontend)/(home)/_components/WhyJoin'
-import Events from '@/app/(frontend)/(home)/_components/Events';
+import Events from '@/app/(frontend)/(home)/_components/Events/Events';
 import TextMarquee from "@/app/(frontend)/(home)/_components/Marquees/TextMarquee";
 import PlainMarquee from "@/app/(frontend)/(home)/_components/Marquees/PlainMarquee";
 
