@@ -7,5 +7,6 @@ export type EventData = {
     locked: boolean;
     disabled: boolean;
     description: string;
+    signUpForm: string;
   };
   

@@ -27,6 +27,7 @@ export default function parseEvents(events: Event[]): EventData[] {
       locked: isLocked,
       disabled: isLocked,
       description: doc.description || "",
+      signUpForm: doc.signUpForm
     }
   })
 }

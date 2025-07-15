@@ -22,7 +22,7 @@ export default function EventCard({ event, even }: EventCardProps) {
                         {(date.getMonth() + 1).toString().padStart(2, '0')}.
                         {date.getFullYear().toString().slice(-2)}
                     </h4>
-                    <Button variant="clear" size="sm" className="whitespace-nowrap">
+                    <Button variant="clear" size="sm" className="whitespace-nowrap" href={event.signUpForm}>
                         Sign up Here
                     </Button>
                 </div>
