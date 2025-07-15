@@ -34,7 +34,7 @@ export default async function Events() {
   })
 
   return (
-      <section className="relative px-6 md:px-[8%] text-white pb-24 overflow-hidden">
+      <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
           {/* background image layer */}
           <div className="hidden md:block absolute inset-0 bg-[url(/images/home/paperbackground.png)] bg-cover bg-center opacity-50" />
 

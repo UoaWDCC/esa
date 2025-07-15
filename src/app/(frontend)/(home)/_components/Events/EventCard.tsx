@@ -66,21 +66,30 @@ export default function EventCard({ event, even }: EventCardProps) {
                         Sign up Here
                     </Button>
                 </div>
-                <div className="w-[200px] md:w-[246px]">
+                <div className="relative w-[200px] md:w-[246px]">
                     <Image
                         src={event.image}
                         alt={event.imageAlt}
                         height={356}
                         width={246}
-                        className="aspect-[178/123] rounded-3xl"
+                        className={`aspect-[178/123] rounded-3xl ${event.locked ? 'blur-sm' : ''}`}
                     />
-                {/* TODO add lock for locked events */}
+
+                    {event.locked && (
+                        <Image
+                            src="/images/home/lock.png"
+                            alt="Locked"
+                            width={60}
+                            height={60}
+                            className="absolute inset-0 m-auto z-10"
+                        />
+                    )}
                 </div>
             </div>
             <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0">
-                <h4>{event.title}</h4>
-                <hr />
-                <p>{event.description}</p>
+                <h4>{!event.locked ? event.title : "Locked Event"}</h4>
+                <hr/>
+                <p>{!event.locked ? event.description : "This is a locked upcoming event, come back another time to find out what it is! 👀"}</p>
             </div>
         </div>
     );
