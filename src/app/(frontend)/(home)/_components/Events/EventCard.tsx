@@ -3,16 +3,6 @@ import Image from 'next/image'
 import {EventData} from "@/types/EventData";
 import {Button} from "@/components/ui/Button";
 
-// date square
-function DateBadge({ month, day }: { month: string; day: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center w-full h-full max-h-[182px] max-w-[187px] rounded-[2rem] bg-[#871F1B] aspect-[16/9]">
-      <span className="text-white text-2xl sm:text-[20px] md:text-[27px] font-reservoir-grunge leading-none p-5">{month}</span>
-      <span className="text-white text-5xl sm:text-[59px] md:text-[79px] font-reservoir-grunge leading-none">{day}</span>
-    </div>
-  )
-}
-
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 interface EventCardProps {
@@ -84,6 +74,7 @@ export default function EventCard({ event, even }: EventCardProps) {
                         width={246}
                         className="aspect-[178/123] rounded-3xl"
                     />
+                {/* TODO add lock for locked events */}
                 </div>
             </div>
             <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0">

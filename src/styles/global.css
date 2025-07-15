@@ -38,6 +38,7 @@
   --font-roboto-mono: "RobotoMono Regular", monospace;
 
   --color-primary-red: #D3312A; /* red */
+  --color-primary-red-400: #871F1B; /* Slightly Darker red */
   --color-primary-red-800: #651714; /* Dark red */
   --color-primary-white: #EBE9E6; /* white */
   --color-primary-grey: #161514; /* dark grey */
