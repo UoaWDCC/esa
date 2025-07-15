@@ -64,7 +64,6 @@
 h1 {
   font-family: var(--font-reservoir-grunge);
   font-size: clamp(2rem, 5vw + 1rem, 5rem); /* minmum size, perferred size, maximum size */
-  color: var(--color-primary-red);
 }
 
 h2 {

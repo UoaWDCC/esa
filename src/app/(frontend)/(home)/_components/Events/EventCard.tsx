@@ -63,8 +63,8 @@ export default function EventCard({ event, even }: EventCardProps) {
         //     <DateBadge month={month} day={day} />
         //   </div>
         // </div>
-        <div className="w-full flex flex-col md:flex-row gap-x-5">
-            <div className={`flex gap-x-5 justify-center ${even ? "flex-row-reverse md:flex-row" : "flex-row"}`}>
+        <div className="w-fit md:w-full flex flex-col md:flex-row gap-x-5">
+            <div className={`flex gap-x-5 justify-center items-center ${even ? "flex-row-reverse md:flex-row" : "flex-row"}`}>
                 <div className="flex flex-col">
                     <h4>{days[date.getDay()]}</h4>
                     <h4>
@@ -86,7 +86,7 @@ export default function EventCard({ event, even }: EventCardProps) {
                     />
                 </div>
             </div>
-            <div className="flex flex-col w-full gap-y-3">
+            <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0">
                 <h4>{event.title}</h4>
                 <hr />
                 <p>{event.description}</p>
