@@ -38,7 +38,6 @@ export default async function Events() {
           {/* background image layer */}
           <div className="hidden md:block absolute inset-0 bg-[url(/images/home/paperbackground.png)] bg-cover bg-center opacity-50" />
 
-
           <div className="hidden md:block absolute top-0 right-0 p-4 z-10 -rotate-[9deg] -translate-y-50 translate-x-30 w-[70vw] max-w-[900px] aspect-square opacity-40">
               <Image
                   src="/images/logo/esa_graffiti_logo.png"
