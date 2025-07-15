@@ -39,7 +39,7 @@ export default function EventCard({
   disabled = false,
 }: Props) {
   return (
-    <div className="flex items-center gap-4 w-full max-w-[968px] md:h-[182px] sm:-[150px] h-[130px] text-black">
+    <div className="flex items-center gap-4 w-full max-w-[968px] md:h-[182px] sm:-[150px] h-[130px] text-black bg-accent-light">
       {/* Photo with border */}
       <div className="relative flex-1 h-full rounded-[2rem] overflow-hidden border-4 border-red-900 w-full">
         <div className="overflow-hidden w-full h-full">
