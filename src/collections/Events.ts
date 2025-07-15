@@ -90,6 +90,12 @@ const Events: CollectionConfig = {
       type: "checkbox",
       required: false,
     },
+    {
+      name: "signUpForm",
+      label: "Sign Up Form Link",
+      type: "text",
+      required: true
+    }
   ]
 }
 

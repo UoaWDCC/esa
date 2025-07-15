@@ -1,6 +1,7 @@
 'use client'
 // import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Title from "@/components/ui/Title";
 
 export default function WhoAreWe() {
   // const [isLoaded, setIsLoaded] = useState(false)
@@ -54,9 +55,9 @@ export default function WhoAreWe() {
           <div className="z-10 flex flex-col items-center gap-4">
             <div className="relative">
               {/* title */}
-              <div className="text-center text-white bg-[#871F1B] px-4 py-1.5 rounded-xl text-2xl font-reservoir-grunge">
+              <Title className="bg-primary-red-400">
                 Who are we?
-              </div>
+              </Title>
               {/* arrow */}
               <Image
                 src="/images/home/arrow.png"

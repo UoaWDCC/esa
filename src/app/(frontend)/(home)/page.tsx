@@ -3,7 +3,7 @@ import Sponsors from '@/app/(frontend)/(home)/_components/Sponsors';
 import Hero from '@/app/(frontend)/(home)/_components/Hero'
 import WhoAreWe from '@/app/(frontend)/(home)/_components/WhoAreWe'
 import WhyJoin from '@/app/(frontend)/(home)/_components/WhyJoin'
-import Events from '@/app/(frontend)/(home)/_components/Events';
+import Events from '@/app/(frontend)/(home)/_components/Events/Events';
 import TextMarquee from "@/app/(frontend)/(home)/_components/Marquees/TextMarquee";
 import PlainMarquee from "@/app/(frontend)/(home)/_components/Marquees/PlainMarquee";
 
@@ -14,19 +14,19 @@ export default async function HomePage() {
           {/* page content */}
           <div className="relative w-full text-white">
               <Hero/>
-              <div className="absolute bottom-0 left-0 w-full z-50 md:translate-y-30">
+              <div className="absolute bottom-0 left-0 w-full z-50 -translate-y-15 md:-translate-0">
                   <TextMarquee
                       text={"📍 University of Auckland"}
                       bgColor="bg-primary-red-800"
                       textBg="bg-white"
                       textColor="text-primary-red-800"
-                      wrapperClassName="-rotate-8 md:-rotate-3 origin-left scale-105"
+                      wrapperClassName="skew-y-10 md:skew-y-6 origin-left"
                   />
                   <TextMarquee
                       text={"Established in 1998"}
                       textBg="bg-primary-red-800"
                       bgColor="bg-white"
-                      wrapperClassName="rotate-8 md:rotate-3 origin-right scale-105 -translate-y-13"
+                      wrapperClassName="-skew-y-6 md:-skew-y-3 origin-right scale-105 -translate-y-13"
                   />
               </div>
           </div>
