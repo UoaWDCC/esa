@@ -6,13 +6,15 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "generate:sitemap": "next-sitemap --config next-sitemap.config.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -35,6 +37,7 @@
     "graphql": "^16.11.0",
     "lucide-react": "^0.511.0",
     "next": "^15.3.2",
+    "next-sitemap": "^4.2.3",
     "packery": "^3.0.0",
     "papaparse": "^5.5.2",
     "payload": "^3.38.0",
