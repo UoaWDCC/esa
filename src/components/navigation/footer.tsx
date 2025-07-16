@@ -24,27 +24,25 @@ function Footer() {
 
   const footerColumns = [
     {
-      heading: "Heading 1",
+      heading: "About",
       links: [
-        { label: "Marketing", href: "/marketing" },
         { label: "About Us", href: "/about" },
-        { label: "filler", href: "/" },
-        { label: "filler", href: "/" },
+        { label: "Execs", href: "/execs" },
+        { label: "Sponsors", href: "/sponsors" },
       ],
     },
     {
-      heading: "Heading 2",
+      heading: "Explore",
       links: [
         { label: "Gallery", href: "/gallery" },
         { label: "Events", href: "/events" },
-        { label: "filler", href: "/" },
+        { label: "News", href: "/news" },
       ],
     },
     {
       heading: "Contact Us",
       links: [
-        { label: "Contact 1", href: "/contact" },
-        { label: "Contact Option 2", href: "/" },
+        { label: "Contact", href: "/contact" },
       ],
     },
   ];
