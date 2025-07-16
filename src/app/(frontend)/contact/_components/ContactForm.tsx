@@ -28,12 +28,12 @@ export default function ContactForm() {
     <section className="flex flex-col items-center text-center text-primary-white bg-transparent w-full max-w-sm">
       <h3 className="mb-2 text-2xl underline underline-offset-4">Let’s have a chat!</h3>
 
-      <div className="text-[14px]  w-full">
+      <div className="text-[12px]  w-full">
         <p className="mb-6 px-4">
           We’d love to hear from you! You can contact us with the form below or send us an email or call.
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-1 w-full px-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-1 w-full max-w-lg px-4">
           <FormInput
             placeholder="Enter your name"
             {...register("name")}
@@ -53,7 +53,7 @@ export default function ContactForm() {
             className="w-full"
           />
           <div className="flex justify-end">
-            <Button type="submit" disabled={isSubmitting} className="flex items-center gap-x-2">
+            <Button type="submit" disabled={isSubmitting} className="flex items-center gap-x-1">
               {isSubmitting ? "Submitting..." : (
                 <>
                   Send
@@ -64,7 +64,7 @@ export default function ContactForm() {
           </div>
         </form>
 
-        <div className="mt-7 px-4 text-left space-y-2">
+        <div className="mt-15 px-4 text-left space-y-2">
           <InfoRow label="Email" value="uoaesa@gmail.com" />
           <InfoRow label="Contact number" value="020 4180 2771" />
         </div>
