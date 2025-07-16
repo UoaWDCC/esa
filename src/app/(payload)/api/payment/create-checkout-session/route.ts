@@ -8,11 +8,12 @@ export async function POST(req: Request) {
   try {
     const signupData = await req.json()
 
-    // Use req.nextUrl.origin for absolute URLs (app router)
-    // Fallback to env var if needed
-    // TODO: Change this t onot require .env probably
+    // Hopefully this works on deployment. If redirects don't work, we can use a different method to get the origin.
     const origin =
-      (req as any).nextUrl?.origin || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+      (req as any).nextUrl?.origin ||
+      req.headers.get('origin') ||
+      process.env.NEXT_PUBLIC_BASE_URL ||
+      'http://localhost:3000'
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -23,7 +24,7 @@ export async function POST(req: Request) {
             product_data: {
               name: 'ESA Year Membership',
             },
-            unit_amount: 500, // NZD 5.00. Will need to change this to account for the tax
+            unit_amount: 600, // NZD 6.00.
           },
           quantity: 1,
         },
