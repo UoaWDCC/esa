@@ -18,7 +18,7 @@ export default function notFound() {
                 </p>
             </div>
 
-            <div className="w-64 h-px bg-white opacity-50 my-4"></div>
+            <hr className="w-64 h-px bg-white opacity-50 my-4"></hr>
 
             <div className="flex space-x-6 text-white">
                 <Link href="/" className="hover:underline">Go Home</Link>
