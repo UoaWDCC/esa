@@ -1,9 +1,5 @@
-# *
 User-agent: *
-Allow: /
+Disallow: /admin
 
-# Host
 Host: https://esa.wdcc.co.nz
-
-# Sitemaps
 Sitemap: https://esa.wdcc.co.nz/sitemap.xml
