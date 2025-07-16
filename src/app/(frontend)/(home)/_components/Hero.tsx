@@ -17,14 +17,14 @@ const Hero = () => {
             <Image
               className="w-full h-auto hidden md:block"
               src="/images/HeroTitle.svg"
-              alt=""
+              alt="ESA title"
               width={100}
               height={100}
             />
             <Image
                 className="w-full h-auto block md:hidden"
                 src="/images/home/HeroTitleMobile.svg"
-                alt=""
+                alt="ESA title"
                 width={100}
                 height={100}
             />
