@@ -66,7 +66,7 @@ export default function ContactForm() {
 
         <div className="mt-7 px-4 text-left space-y-2">
           <InfoRow label="Email" value="uoaesa@gmail.com" />
-          <InfoRow label="Contact number" value="90812 2134" />
+          <InfoRow label="Contact number" value="020 4180 2771" />
         </div>
       </div>
     </section>
