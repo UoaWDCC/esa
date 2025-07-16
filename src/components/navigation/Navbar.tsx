@@ -32,17 +32,16 @@ export default function Navbar() {
                 </Link>
             </nav>
 
-            {/* Mobile Navbar */}
-            <nav className="md:hidden fixed top-0 left-0 right-0 z-50 bg-primary-black/90 backdrop-blur-sm">
+            <nav className="md:hidden fixed top-0 left-0 right-0 z-50">
                 <div className="flex justify-between items-center px-4 py-3">
-                    {/* Hamburger Menu Button */}
                     <button
                         onClick={toggleMenu}
-                        className="text-primary-white hover:text-primary-grey transition-colors p-2"
+                        className="w-20 h-20 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey-light transition-colors"
+                        style={{ backgroundColor: '#404040' }}
                         aria-label="Toggle menu"
                     >
                         <svg
-                            className="w-6 h-6"
+                            className="w-8 h-8"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -64,49 +63,51 @@ export default function Navbar() {
                             )}
                         </svg>
                     </button>
-
-                    {/* Logo */}
-                    <Link href="/" className="w-10 h-10 flex items-center justify-center">
+                    <Link
+                        href="/"
+                        className="w-20 h-20 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: '#404040' }}
+                    >
                         <Image
                             src="/images/logo/esa_logo.png"
                             alt="ESA Logo"
-                            height={40}
-                            width={48}
+                            height={55}
+                            width={66}
                         />
                     </Link>
-
-                    {/* Spacer to keep logo centered */}
-                    <div className="w-10"></div>
+                    <div className="w-20"></div>
                 </div>
 
-                {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="absolute top-full left-0 right-0 bg-primary-black/95 backdrop-blur-sm border-t border-primary-grey/20">
-                        <div className="flex flex-col py-4 px-4 space-y-4 font-roboto-mono text-primary-white">
+                    <div
+                        className="absolute top-full left-4 w-40 rounded-lg mt-2"
+                        style={{ backgroundColor: '#404040' }}
+                    >
+                        <div className="flex flex-col py-4 px-4 space-y-3 font-roboto-mono text-primary-white">
                             <Link
                                 href="/news"
-                                className="hover:text-primary-grey transition-colors py-2 px-2"
+                                className="hover:text-primary-grey transition-colors py-1 px-1"
                                 onClick={() => setIsOpen(false)}
                             >
                                 NEWS
                             </Link>
                             <Link
                                 href="/contact"
-                                className="hover:text-primary-grey transition-colors py-2 px-2"
+                                className="hover:text-primary-grey transition-colors py-1 px-1"
                                 onClick={() => setIsOpen(false)}
                             >
                                 CONTACT
                             </Link>
                             <Link
                                 href="/events"
-                                className="hover:text-primary-grey transition-colors py-2 px-2"
+                                className="hover:text-primary-grey transition-colors py-1 px-1"
                                 onClick={() => setIsOpen(false)}
                             >
                                 EVENTS
                             </Link>
                             <Link
                                 href="/about-us"
-                                className="hover:text-primary-grey transition-colors py-2 px-2"
+                                className="hover:text-primary-grey transition-colors py-1 px-1"
                                 onClick={() => setIsOpen(false)}
                             >
                                 ABOUT US
