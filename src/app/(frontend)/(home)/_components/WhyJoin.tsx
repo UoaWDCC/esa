@@ -30,15 +30,14 @@ const WhyJoin = () => {
         {/* Body Text One*/}
         <div id="body-text-one" className="mt-[6vh] lg:w-[50vw] max-w-[1000px]">
           <p className="text-white text-lg lg:text-xl">
-            We&apos;re doing things our way - fresh events, fun people, and a vibe that feels like
-            your favourite hangout spot. Kinda new, kinda nostalgic, always a good time.
+            We&apos;re doing things our way with fresh events, fun people, and a vibe that feels like your favourite hangout spot.
+            Kinda new, kinda nostalgic, and always a good time.
           </p>
         </div>
         {/* Body Text Two*/}
         <div id="body-text-two" className="mt-[3vh] lg:w-[50vw] max-w-[1000px]">
           <p className="text-white text-lg lg:text-xl">
-            Lorem ipsum dolor sit amet consecutetur. Elementum gravida egestas id consecutetur
-            volutpat id nec consecutetur. Pretium pellentesque a consecutetur urna
+            Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at arcade night, we&apos;ve got you!
           </p>
         </div>
 
