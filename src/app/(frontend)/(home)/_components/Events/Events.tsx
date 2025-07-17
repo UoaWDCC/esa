@@ -47,7 +47,7 @@ export default async function Events() {
               />
           </div>
 
-          <h1 className="text-primary-red-400 underline py-16 relative z-20 whitespace-nowrap">
+          <h1 className="text-primary-red underline py-16 relative z-20 whitespace-nowrap">
               OUR EVENTS
           </h1>
 
