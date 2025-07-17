@@ -44,7 +44,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     return (
         <html lang="en">
             <body className="min-h-screen flex flex-col">
-                <Navbar />
+                {/* <Navbar /> */}
                 <main className="grow">{children}</main>
                 <Footer />
             </body>
