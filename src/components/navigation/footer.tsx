@@ -89,8 +89,8 @@ function Footer() {
       </div>
 
       {/* Bottom Row */}
-      <div className="flex items-center gap-2 justify-between text-xs text-white border-t border-white mt-10 pt-6 w-[80%]">
-        <p className="mb-4 md:mb-0">&copy; Eastern Students Association 2025</p>
+      <div className="flex items-center gap-2 justify-between text-xs text-white border-t border-white mt-6 md:mt-10 pt-6 w-[80%]">
+        <p className="mb-0">&copy; Eastern Students Association 2025</p>
 
         <div className="flex items-center gap-3">
           <div className="bg-white rounded-full p-0.25 md:p-0.5">
