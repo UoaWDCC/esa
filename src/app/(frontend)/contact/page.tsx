@@ -10,7 +10,7 @@ export default function ContactPage() {
           alt="Contact us image"
           height={600}
           width={500}
-          className="object-cover rounded-2xl md:aspect-[3.3/4]"
+          className="object-cover rounded-2xl md:aspect-[3/4]"
           priority
         />
       </div>
