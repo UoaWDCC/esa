@@ -3,7 +3,7 @@ import ContactForm from "@/app/(frontend)/contact/_components/ContactForm";
 
 export default function ContactPage() {
   return (
-    <main className="mt-16 flex flex-col md:flex-row items-center justify-center h-dvh px-5">
+    <section className="mt-16 flex flex-col md:flex-row items-center justify-center h-dvh px-5">
       <div className="mb-8 md:mb-0 md:mr-8 w-full md:w-auto max-w-md">
         <Image
           src="/images/contact-us-image.png"
@@ -15,6 +15,6 @@ export default function ContactPage() {
         />
       </div>
       <ContactForm />
-    </main>
+    </section>
   );
 }
