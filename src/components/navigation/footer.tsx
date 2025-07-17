@@ -89,7 +89,7 @@ function Footer() {
       </div>
 
       {/* Bottom Row */}
-      <div className="flex flex-col md:flex-row items-center justify-between text-xs text-white border-t border-white mt-10 pt-6 w-[80%]">
+      <div className="flex items-center gap-2 justify-between text-xs text-white border-t border-white mt-10 pt-6 w-[80%]">
         <p className="mb-4 md:mb-0">&copy; Eastern Students Association 2025</p>
 
         <div className="flex items-center gap-3">
@@ -102,7 +102,7 @@ function Footer() {
               className="object-contain"
             />
           </div>
-          <div className="text-lg text-white leading-tight text-start font-reservoir-grunge">
+          <div className="text-md md:text-lg text-white leading-tight text-start font-reservoir-grunge">
             Eastern Students
             <br />
             Association
