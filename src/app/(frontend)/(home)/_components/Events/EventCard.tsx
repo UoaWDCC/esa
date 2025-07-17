@@ -31,6 +31,7 @@ export default function EventCard({ event, even }: EventCardProps) {
                         src={event.image}
                         alt={event.imageAlt}
                         fill
+                        draggable={false}
                         className={`object-cover rounded-3xl ${event.locked ? 'blur-sm' : ''}`}
                     />
 
@@ -40,6 +41,7 @@ export default function EventCard({ event, even }: EventCardProps) {
                             alt="Locked"
                             width={60}
                             height={60}
+                            draggable={false}
                             className="absolute inset-0 m-auto z-10"
                         />
                     )}
