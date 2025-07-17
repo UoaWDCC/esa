@@ -1,79 +1,105 @@
-"use client";
+'use client'
 
-import { useForm } from "react-hook-form";
-import { ContactInput, contactSchema } from "@/lib/zod/schema/contactInput";
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import ArrowUp from "@/components/icons/ArrowUp";
-import FormInput from "@/components/ui/FormInput";
-import FormTextarea from "@/components/ui/FormTextArea";
-import {Button} from "@/components/ui/Button";
+import { useForm } from 'react-hook-form'
+import { ContactInput, contactSchema } from '@/lib/zod/schema/contactInput'
+import { useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import ArrowUp from '@/components/icons/ArrowUp'
+import FormInput from '@/components/ui/FormInput'
+import FormTextarea from '@/components/ui/FormTextArea'
+import { Button } from '@/components/ui/Button'
+import { set } from 'zod'
 
 export default function ContactForm() {
-    const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState(false)
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<ContactInput>({
-        resolver: zodResolver(contactSchema),
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactInput>({
+    resolver: zodResolver(contactSchema),
+  })
 
-    async function onSubmit(values: ContactInput) {
-        console.log(values);
+  async function onSubmit(values: ContactInput) {
+    // Logging for debugging
+    console.log('Submitting form with values:', values)
+    // Fetch the POST function rather than importing it to the client to protect the API key
+    // This had to be done because Resend throws an error to protect the API key (CORS error)
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+      console.log('Response:', response)
+
+      setSent(true)
+      // Basic Error Handling
+    } catch (error) {
+      console.error('Unexpected error:', error)
     }
 
-    return (
-        <div className="w-full mx-auto text-center text-primary-white bg-transparent flex flex-col items-center">
-            <h3 className="underline underline-offset-4 mb-2">
-                Let’s have a chat!
-            </h3>
-            <p className="mb-6 text-xs max-w-[60%]">
-                We’d love to hear from you! You can contact us with the
-                form below or send us an email or a call!
-            </p>
+    // Logging for debugging
+    console.log(`Email sent with ${values.name}`)
+    console.log(`Message: ${values.message}`)
+  }
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full max-w-lg px-5">
-                <FormInput
-                    placeholder="Enter your name"
-                    {...register("name")}
-                    error={errors.name}
-                    className="w-full"
-                />
-                <FormInput
-                    placeholder="Enter your email"
-                    {...register("email")}
-                    error={errors.email}
-                    className="w-full"
-                />
-                <FormTextarea
-                    placeholder="Write your message"
-                    {...register("message")}
-                    error={errors.message}
-                    className="w-full"
-                />
-                <Button type="submit" disabled={isSubmitting} className="flex flex-row items-center gap-x-2">
-                    {isSubmitting ? "Submitting..." : (
-                        <>
-                            Send
-                            <ArrowUp className="size-3" />
-                        </>
-                    )}
+  return (
+    <div className="w-full mx-auto text-center text-primary-white bg-transparent flex flex-col items-center">
+      <h3 className="underline underline-offset-4 mb-2">Let’s have a chat!</h3>
+      <p className="mb-6 text-xs max-w-[60%]">
+        We’d love to hear from you! You can contact us with the form below or send us an email or a
+        call!
+      </p>
 
-                </Button>
-            </form>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full max-w-lg px-5">
+        <FormInput
+          placeholder="Enter your name"
+          {...register('name')}
+          error={errors.name}
+          className="w-full"
+        />
+        <FormInput
+          placeholder="Enter your email"
+          {...register('email')}
+          error={errors.email}
+          className="w-full"
+        />
+        <FormTextarea
+          placeholder="Write your message"
+          {...register('message')}
+          error={errors.message}
+          className="w-full"
+        />
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="flex flex-row items-center gap-x-2"
+        >
+          {isSubmitting ? (
+            'Submitting...'
+          ) : (
+            <>
+              Send
+              <ArrowUp className="size-3" />
+            </>
+          )}
+        </Button>
+      </form>
 
-            <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
-                <div className="flex px-3 border-b border-primary-white justify-between">
-                    <span className="max-w-lg">Email</span>
-                    <span className="max-w-lg">sdkfj@asadljcf.com</span>
-                </div>
-                <div className="flex px-3 border-b border-primary-white justify-between mt-2">
-                    <span className="max-w-lg">Contact number</span>
-                    <span className="max-w-lg">90812 2134</span>
-                </div>
-            </div>
+      <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
+        <div className="flex px-3 border-b border-primary-white justify-between">
+          <span className="max-w-lg">Email</span>
+          <span className="max-w-lg">sdkfj@asadljcf.com</span>
         </div>
-    );
+        <div className="flex px-3 border-b border-primary-white justify-between mt-2">
+          <span className="max-w-lg">Contact number</span>
+          <span className="max-w-lg">90812 2134</span>
+        </div>
+      </div>
+    </div>
+  )
 }
