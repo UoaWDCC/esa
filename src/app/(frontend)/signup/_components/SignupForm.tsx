@@ -61,10 +61,10 @@ export default function SignupForm() {
     };
 
     return (
-        <div className="flex flex-col justify-center p-4">
+        <div className="flex flex-col justify-center px-8">
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="border-white border rounded-4xl flex items-center justify-center"
+                className="border-white border rounded-[4rem] flex items-center justify-center bg-primary-grey"
             >
                 <AnimatePresence mode="wait">
                     {step === 1 && (

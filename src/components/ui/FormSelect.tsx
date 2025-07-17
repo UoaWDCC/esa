@@ -37,7 +37,14 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
                         </option>
                     ))}
                 </select>
-                {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                <p
+                    className={cn(
+                        "text-sm px-3 transition-all duration-200 h-5",
+                        error ? "text-red-500 visible" : "invisible"
+                    )}
+                    >
+                    {error?.message || "Error placeholder"}
+                </p>
             </div>
         );
     },
