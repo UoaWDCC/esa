@@ -84,12 +84,11 @@ export default function WhoAreWe() {
             </div>
             <div className='w-[80%] md:w-88'>
               <p className="self-start text-sm tracking-[0.15em] text-black md:mb-4">
-                Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at
-                arcade night — we&apos;ve got you.
+                We are one of the largest and most diverse social clubs on campus and welcome anyone to join us!
               </p>
               <p className="self-start text-sm tracking-[0.15em] text-black hidden md:block">
-                ESA firmly believes that university life is not just about academic studies...but it&apos;s
-                also about having fun, and meeting new friends!
+                We believe that university life is not just about academic studies... but
+                also having fun, and meeting new friends.
               </p>
             </div>
           </div>

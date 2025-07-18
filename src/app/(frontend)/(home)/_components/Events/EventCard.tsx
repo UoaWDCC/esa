@@ -26,13 +26,13 @@ export default function EventCard({ event, even }: EventCardProps) {
                         Sign up Here
                     </Button>
                 </div>
-                <div className="relative w-[200px] md:w-[246px]">
+                <div className="relative w-[200px] md:w-[246px] aspect-[178/123] overflow-hidden rounded-3xl">
                     <Image
                         src={event.image}
                         alt={event.imageAlt}
-                        height={356}
-                        width={246}
-                        className={`aspect-[178/123] rounded-3xl ${event.locked ? 'blur-sm' : ''}`}
+                        fill
+                        draggable={false}
+                        className={`object-cover rounded-3xl ${event.locked ? 'blur-sm' : ''}`}
                     />
 
                     {event.locked && (
@@ -41,6 +41,7 @@ export default function EventCard({ event, even }: EventCardProps) {
                             alt="Locked"
                             width={60}
                             height={60}
+                            draggable={false}
                             className="absolute inset-0 m-auto z-10"
                         />
                     )}
