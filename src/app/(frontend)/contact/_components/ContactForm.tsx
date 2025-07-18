@@ -1,14 +1,13 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { ContactInput, contactSchema } from '@/lib/zod/schema/contactInput';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ContactInput, contactSchema } from '@/lib/zod/schema/contactInput';
 import ArrowUp from '@/components/icons/ArrowUp';
 import FormInput from '@/components/ui/FormInput';
 import FormTextarea from '@/components/ui/FormTextArea';
 import { Button } from '@/components/ui/Button';
-import { set } from 'zod';
 
 export default function ContactForm() {
     const [sent, setSent] = useState(false);
@@ -23,6 +22,7 @@ export default function ContactForm() {
 
     async function onSubmit(values: ContactInput) {
         try {
+            // send form data to Web3Forms API
             const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
@@ -36,9 +36,9 @@ export default function ContactForm() {
                 }),
             });
 
+            // get resonse and check if it was successful
             const result = await response.json();
             if (result.success) {
-                console.log('Success:', result.message);
                 setSent(true);
             } else {
                 console.error('Failed:', result.message);
