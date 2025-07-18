@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import FrogBackground from '@/components/backgrounds/FrogBackground';
+import {Button} from "@/components/ui/Button";
 
 export default function notFound() {
     return (
@@ -20,11 +20,9 @@ export default function notFound() {
 
             <hr className="w-64 h-px bg-white opacity-50 my-4"></hr>
 
-            <div className="flex space-x-6 text-white">
-                <Link href="/" className="hover:underline">Go Home</Link>
-                <Link href="/about-us" className="hover:underline">About Us</Link>
-                <Link href="/contact" className="hover:underline">Contact Us</Link>
-            </div>
+            <Button className="mt-5" href="/" size="default">
+                Return to Homepage
+            </Button>
         </div>
     );
 }
