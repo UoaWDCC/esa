@@ -13,7 +13,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
     ({ label, placeholder, error, className, ...rest }, ref) => {
         return (
-            <div className="mb-4">
+            <div className="mb-2">
                 <label className="block mb-1 font-medium px-3">
                     {label}
                 </label>
@@ -23,7 +23,14 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                     className={cn(`border border-white rounded-2xl p-1 px-3 placeholder:text-white`, className)}
                     {...rest}
                 />
-                {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                <p
+                    className={cn(
+                        "text-sm px-3 transition-all duration-200 h-5",
+                        error ? "text-red-500 visible" : "invisible"
+                    )}
+                    >
+                    {error?.message || "Error placeholder"}
+                </p>
             </div>
         );
     }

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { getSponsors } from '@/actions/getSponsors'
 import parseSponsors from '@/types/parsers/parseSponsors'
 import Image from 'next/image'
+import Title from "@/components/ui/Title";
 
 export default async function Sponsors() {
   const sponsors = parseSponsors(await getSponsors())
@@ -15,9 +16,10 @@ export default async function Sponsors() {
         <div className="relative">
           <Link
             href="/sponsors"
-            className="bg-[#A92622] px-4.5 py-2 rounded-2xl text-2xl font-reservoir-grunge tracking-wider"
           >
-            Our Sponsors
+            <Title className="tracking-wider">
+              Our Sponsors
+            </Title>
           </Link>
           <div className="absolute items-center right-[-16.25rem] top-[-2.2rem] gap-1.5 hidden lg:flex">
             <Image
@@ -33,8 +35,8 @@ export default async function Sponsors() {
         </div>
 
         <p className="w-[80%] text-center text-base/tight font-smeltex-medium tracking-[0.15em] lg:text-lg/tight lg:w-[28.5rem]">
-          Enjoy discounts? As uni students we understand, that's why we've sponsored up for you.
-          Take a look at ESA's sponsors!
+          Enjoy discounts? As uni students we understand, that&apos;s why we&apos;ve sponsored up for you.
+          Take a look at ESA&apos;s sponsors!
         </p>
       </div>
       <Carousel sponsors={sponsors ?? []} />
