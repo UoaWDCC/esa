@@ -14,7 +14,7 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Navbar */}
-            <nav className="hidden md:flex mt-5 z-50 absolute top-0 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-8 lg:px-28 rounded-full gap-4 py-3">
+            <nav className="hidden md:flex mt-5 z-50 absolute top-0 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-8 lg:px-28 rounded-full gap-4 py-0">
                 <Link href="/news" className="hover:text-primary-grey transition-colors">
                     NEWS
                 </Link>
@@ -36,8 +36,7 @@ export default function Navbar() {
                 <div className="flex justify-between items-center px-4 py-3">
                     <button
                         onClick={toggleMenu}
-                        className="w-20 h-20 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey-light transition-colors"
-                        style={{ backgroundColor: '#404040' }}
+                        className="w-20 h-20 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light"
                         aria-label="Toggle menu"
                     >
                         <svg
@@ -80,9 +79,7 @@ export default function Navbar() {
 
                 {isOpen && (
                     <div
-                        className="absolute top-full left-4 w-40 rounded-lg mt-2"
-                        style={{ backgroundColor: '#404040' }}
-                    >
+                        className="absolute top-full left-4 w-40 rounded-lg mt-2 bg-primary-grey-light">
                         <div className="flex flex-col py-4 px-4 space-y-3 font-roboto-mono text-primary-white">
                             <Link
                                 href="/news"
