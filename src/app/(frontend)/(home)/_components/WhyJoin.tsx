@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button'
 const WhyJoin = () => {
   return (
     // Root container with background image and content overlay
-    <div id="root" className="relative min-h-[65vh] min-w-[375px] overflow-hidden">
+    <div id="root" className="relative h-[700px] md:min-h-screen min-w-[375px] overflow-hidden">
       {/* Background Image using Next.js Image component */}
       <Image
         src="/images/home/HeroPageImage.jpg"
@@ -18,7 +18,7 @@ const WhyJoin = () => {
         className="absolute origin-center object-cover scale-180 brightness-20 lg:scale-140"
       />
       {/* Content overlay */}
-      <div id="content" className="relative z-10 my-[15vh] mx-[10vw] w-[80vw] lg:mb-[23vh]">
+      <div id="content" className="flex flex-col items-center justify-center relative z-10 mx-[10vw] w-fit h-full">
         {/* Heading SVG */}
         <Image
           src="images/home/WhyJoinESA.svg"
@@ -28,14 +28,14 @@ const WhyJoin = () => {
           className="origin-bottom-left lg:scale-90"
         />
         {/* Body Text One*/}
-        <div id="body-text-one" className="mt-[6vh] lg:w-[50vw] max-w-[1000px]">
+        <div id="body-text-one" className="mt-8 lg:w-[50vw] max-w-[1000px]">
           <p className="text-white text-lg lg:text-xl">
             We&apos;re doing things our way with fresh events, fun people, and a vibe that feels like your favourite hangout spot.
             Kinda new, kinda nostalgic, and always a good time.
           </p>
         </div>
         {/* Body Text Two*/}
-        <div id="body-text-two" className="mt-[3vh] lg:w-[50vw] max-w-[1000px]">
+        <div id="body-text-two" className="mt-4 lg:w-[50vw] max-w-[1000px]">
           <p className="text-white text-lg lg:text-xl">
             Whether you&apos;re here to smash it at sports day, chill at pool night, or game it out at arcade night, we&apos;ve got you!
           </p>
@@ -44,7 +44,7 @@ const WhyJoin = () => {
         {/* Join button */}
         <div
           id="join-button"
-          className="flex flex-col items-center lg:items-start mx-auto mt-[4.5vh]"
+          className="flex flex-col items-center lg:items-start mx-auto mt-5"
         >
           <Button href="/signup" className="px-8 py-3.25">
             Join the ESA Family!
