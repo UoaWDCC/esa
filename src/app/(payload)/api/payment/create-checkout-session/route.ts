@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       (req as any).nextUrl?.origin ||
       req.headers.get('origin') ||
       process.env.NEXT_PUBLIC_BASE_URL ||
-      'http://localhost:3000'
+      'https://esa.wdcc.co.nz'
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
