@@ -26,38 +26,62 @@ export default function SignupForm() {
         resolver: zodResolver(signupSchema),
         defaultValues: {
             timestamp: new Date(),
-            membershipPayment: 'Bank Transferred',
-            paymentScreenshotLink: '',
+            membershipPayment: "Stripe",
+            paymentScreenshotLink: "N/A",
         },
     });
 
-    const onSubmit = async (data: SignupInput) => {
+    const checkCanCreate = async (data: SignupInput) => {
         try {
-            await createMember(data);
-            alert('Signup successful!');
+            const response = await fetch('/api/members/can-create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            return result.canCreate;
+        } catch (error: any) {
+            console.error("Error checking if member can be created:", error);
+            alert(error.message);
+            return false;
+        }
+    }
+
+    // This function handles the form submission (upon clicking the "Continue to Payment" button).
+    // For now it just creates the member in the database. In the future, it will also handle the payment process.
+    const onSubmit = async (data: SignupInput) => {
+        // Check if the member can be created
+        const canCreate = await checkCanCreate(data);
+        if (!canCreate) {
+            alert("You have already signed up for the ESA membership for this year. If you think this is a mistake, please contact us.");
+            return;
+        }
+
+        // If the member can be created, proceed to create the payment session
+        try {
+            const response = await fetch('/api/payment/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+
+            const result = await response.json()
+            console.log("Payment session result:", result)
+
+            if (!response.ok) throw new Error(result.message || "Failed to start payment")
+
+            window.location.href = result.url // TODO: Change this 
+        
             reset();
         } catch (error: any) {
             alert(error.message);
         }
-    };
-
-    const createMember = async (data: SignupInput) => {
-        const response = await fetch('/api/members', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-            const error = await response.json().catch(() => ({}));
-            throw new Error(
-                error.message || 'Signup failed. Member already exists or an error occurred.',
-            );
-        }
-
-        return response;
     };
 
     return (
