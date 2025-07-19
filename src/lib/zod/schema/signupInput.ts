@@ -13,7 +13,7 @@ export const signupSchema = z.object({
     }),
     email: z.string().email("Invalid email address"),
     studentID: z.string().regex(/^\d{9}$/, "Student ID must be a 9-digit number").optional().or(z.literal("")),
-    upi: z.string().regex(/^[a-z]{4}\d{3}$/, "UPI must be 4 lowercase letters followed by 3 digits").optional().or(z.literal("")),
+    upi: z.string().regex(/^[a-z]{3,4}\d{3}$/, "UPI must be 3 or 4 lowercase letters followed by 3 digits").optional().or(z.literal("")),
     yearOfStudy: z.enum(["1st Year", "2nd Year", "3rd Year", "4th Year+"], {
         errorMap: () => ({ message: "Please select a valid year of study" }),
     }),
