@@ -9,7 +9,7 @@ export default function WipPage() {
             {/* Title/body text */}
             <h3 className="text-primary-red p-2"> Work In Progress </h3>
 
-            <div className="mx-auto text-center text-primary-white flex flex-col items-center tracking-widest md:w-[40%] w-full">
+            <div className="w-[90%] md:w-[70%] mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
                 <p className="text-primary-white mb-2">
                     You&apos;ve come across a work-in-progress-page!
                 </p>
