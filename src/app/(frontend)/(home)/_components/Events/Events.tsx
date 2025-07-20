@@ -54,7 +54,7 @@ export default async function Events() {
           {/* latest header */}
           <div className="flex flex-col relative z-20 items-center md:items-start">
               <Title className="mb-10">LATEST</Title>
-              {pastEvents[0] && <EventCard event={pastEvents[0]} />}
+              {pastEvents[0] && <EventCard event={pastEvents[0]} isPast={true}/>}
           </div>
 
           <Image
