@@ -241,11 +241,17 @@ export default function SignupForm() {
                                 />
                                 <Button
                                     type="submit"
-                                    className="w-fit mx-auto flex items-center gap-x-2"
+                                    className="w-fit mx-auto flex items-center gap-x-2 select-none"
                                     disabled={isSubmitting}
                                 >
-                                    Continue to Payment
-                                    <ArrowUp className="size-3" />
+                                    {isSubmitting ? (
+                                        'Submitting...'
+                                    ) : (
+                                        <>
+                                            Continue to Payment
+                                            <ArrowUp className="size-3" />
+                                        </>
+                                    )}
                                 </Button>
                             </div>
                         </motion.div>
