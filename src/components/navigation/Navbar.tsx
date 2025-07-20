@@ -13,6 +13,25 @@ export default function Navbar() {
         setIsOpen(!isOpen);
     };
 
+    const links = [
+        {
+            name: "NEWS",
+            href: "/news",
+        },
+        {
+            name: "CONTACT",
+            href: "/contact",
+        },
+        {
+            name: "EVENTS",
+            href: "/events",
+        },
+        {
+            name: "ABOUT US",
+            href: "/about",
+        }
+    ];
+
     return (
         <>
             {/* Desktop Navbar */}
@@ -41,7 +60,7 @@ export default function Navbar() {
                         className="w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light"
                         aria-label="Toggle menu"
                     >
-                      <Menu />
+                        <Menu />
                     </button>
                     <Link
                         href="/"
@@ -58,52 +77,35 @@ export default function Navbar() {
                 </div>
 
                 <AnimatePresence>
-                  {isOpen && (
-                      <motion.div
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 1 }}
-                          exit={{ opacity: 0, x: -20 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-1 left-[12px] w-40 rounded-lg mt-2 bg-primary-grey-light">
+                    {isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 1 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-1 left-[12px] w-40 rounded-lg mt-2 bg-primary-grey-light"
+                        >
                             <button
                                 onClick={toggleMenu}
                                 className="w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light"
                                 aria-label="Toggle menu"
                             >
-                              <X className={"z-50"}/>
+                                <X className={'z-50'} />
                             </button>
                             <div className="flex flex-col pb-4  px-4 space-y-3 font-roboto-mono text-primary-white">
-                              <Link
-                                  href="/news"
-                                  className="hover:text-primary-grey transition-colors py-1 px-1"
-                                  onClick={() => setIsOpen(false)}
-                              >
-                                  NEWS
-                              </Link>
-                              <Link
-                                  href="/contact"
-                                  className="hover:text-primary-grey transition-colors py-1 px-1"
-                                  onClick={() => setIsOpen(false)}
-                              >
-                                  CONTACT
-                              </Link>
-                              <Link
-                                  href="/events"
-                                  className="hover:text-primary-grey transition-colors py-1 px-1"
-                                  onClick={() => setIsOpen(false)}
-                              >
-                                  EVENTS
-                              </Link>
-                              <Link
-                                  href="/about-us"
-                                  className="hover:text-primary-grey transition-colors py-1 px-1"
-                                  onClick={() => setIsOpen(false)}
-                              >
-                                  ABOUT US
-                              </Link>
-                          </div>
-                      </motion.div>
-                  )}
+                                {links.map((link) => (
+                                    <Link
+                                        key={link.name}
+                                        href={`/${link.href}`}
+                                        className="hover:text-primary-grey transition-colors py-1 px-1"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
                 </AnimatePresence>
             </nav>
         </>
