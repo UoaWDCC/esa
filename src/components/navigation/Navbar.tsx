@@ -96,7 +96,7 @@ export default function Navbar() {
                                 {links.map((link) => (
                                     <Link
                                         key={link.name}
-                                        href={`/${link.href}`}
+                                        href={link.href}
                                         className="hover:text-primary-grey transition-colors py-1 px-1"
                                         onClick={() => setIsOpen(false)}
                                     >
