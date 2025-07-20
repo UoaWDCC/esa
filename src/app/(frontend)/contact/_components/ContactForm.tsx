@@ -1,83 +1,106 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ContactInput, contactSchema } from "@/lib/zod/schema/contactInput";
-import ArrowUp from "@/components/icons/ArrowUp";
-import FormInput from "@/components/ui/FormInput";
-import FormTextArea from "@/components/ui/FormTextArea";
-import { Button } from "@/components/ui/Button";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ContactInput, contactSchema } from '@/lib/zod/schema/contactInput';
+import ArrowUp from '@/components/icons/ArrowUp';
+import FormInput from '@/components/ui/FormInput';
+import FormTextarea from '@/components/ui/FormTextArea';
+import { Button } from '@/components/ui/Button';
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
+    const [sent, setSent] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<ContactInput>({
-    resolver: zodResolver(contactSchema),
-  });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = useForm<ContactInput>({
+        resolver: zodResolver(contactSchema),
+    });
 
-  async function onSubmit(values: ContactInput) {
-    console.log(values);
-  }
+    async function onSubmit(values: ContactInput) {
+        try {
+            // send form data to Web3Forms API
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+                    name: values.name,
+                    email: values.email,
+                    message: values.message,
+                }),
+            });
 
-  return (
-    <section className="flex flex-col items-center text-center text-primary-white bg-transparent w-full max-w-md">
-      <h3 className="mb-2 text-2xl underline underline-offset-4">Let&apos;s have a chat</h3>
+            // get resonse and check if it was successful
+            const result = await response.json();
+            if (result.success) {
+                setSent(true);
+            } else {
+                console.error('Failed:', result.message);
+            }
+        } catch (error) {
+            console.error('Unexpected error:', error);
+        }
+    }
 
-      <div className="text-xs  w-full">
-        <p className="mb-6 px-4">
-          We&apos;d love to hear from you. You can contact us with the form below or send us an email or call.
-        </p>
+    return (
+        <div className="text-center text-primary-white bg-transparent flex flex-col items-center">
+            <h3 className="underline underline-offset-4 mb-2">Let’s have a chat!</h3>
+            <p className="mb-6 text-xs max-w-[60%]">
+                We’d love to hear from you! You can contact us with the form below or send us an
+                email or a call!
+            </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-1 w-full max-w-lg px-4">
-          <FormInput
-            placeholder="Enter your name"
-            {...register("name")}
-            error={errors.name}
-            className="w-full"
-          />
-          <FormInput
-            placeholder="Enter your email"
-            {...register("email")}
-            error={errors.email}
-            className="w-full"
-          />
-          <FormTextArea
-            placeholder="Write your message"
-            {...register("message")}
-            error={errors.message}
-            className="w-full"
-          />
-          <div className="flex justify-end">
-            <Button type="submit" disabled={isSubmitting} className="flex items-center gap-x-1">
-              {isSubmitting ? "Submitting..." : (
-                <>
-                  Send
-                  <ArrowUp className="size-3" />
-                </>
-              )}
-            </Button>
-          </div>
-        </form>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full max-w-lg px-5">
+                <FormInput
+                    placeholder="Enter your name"
+                    {...register('name')}
+                    error={errors.name}
+                    className="w-full"
+                />
+                <FormInput
+                    placeholder="Enter your email"
+                    {...register('email')}
+                    error={errors.email}
+                    className="w-full"
+                />
+                <FormTextarea
+                    placeholder="Write your message"
+                    {...register('message')}
+                    error={errors.message}
+                    className="w-full"
+                />
+                <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex flex-row items-center gap-x-2"
+                >
+                    {isSubmitting ? (
+                        'Submitting...'
+                    ) : (
+                        <>
+                            Send
+                            <ArrowUp className="size-3" />
+                        </>
+                    )}
+                </Button>
+            </form>
 
-        <div className="mt-16 px-4 text-left space-y-2">
-          <InfoRow label="Email" value="uoaesa@gmail.com" />
-          <InfoRow label="Contact number" value="020 4180 2771" />
+            <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
+                <div className="flex px-3 border-b border-primary-white justify-between">
+                    <span className="max-w-lg">Email</span>
+                    <span className="max-w-lg">uoaesa@gmail.com</span>
+                </div>
+                <div className="flex px-3 border-b border-primary-white justify-between mt-2">
+                    <span className="max-w-lg">Contact number</span>
+                    <span className="max-w-lg">020 4180 2771</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function InfoRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex justify-between border-b border-primary-white py-1 px-3">
-      <span>{label}</span>
-      <span>{value}</span>
-    </div>
-  );
+    );
 }
