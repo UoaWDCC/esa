@@ -60,39 +60,35 @@ export default function Navbar() {
             {/* Mobile Navbar */}
             <>
                 <div className="fixed top-4 left-3 z-50 md:hidden">
-                    <div>
-                        <button
-                            onClick={toggleMenu}
-                            className="w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light"
-                            aria-label="Toggle menu"
-                        >
-                        <AnimatePresence mode="wait" initial={false}>
-                            {isOpen ? (
-                            <motion.div
-                                key="close-icon"
+                    <AnimatePresence mode="wait" initial={false}>
+                        {isOpen ? (
+                            <motion.button
+                                key="close-button"
+                                onClick={toggleMenu}
+                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                aria-label="Close menu"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 transition={{ duration: 0.1 }}
-                                className={"flex z-[60]"}
                             >
                                 <X />
-                            </motion.div>
-                            ) : (
-                            <motion.div
-                                key="menu-icon"
+                            </motion.button>
+                        ) : (
+                            <motion.button
+                                key="menu-button"
+                                onClick={toggleMenu}
+                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                aria-label="Open menu"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 transition={{ duration: 0.1 }}
-                                className="flex z-[60]"
                             >
                                 <Menu />
-                            </motion.div>
-                            )}
-                        </AnimatePresence>
-                        </button>
-                    </div>
+                            </motion.button>
+                        )}
+                    </AnimatePresence>
 
                     <AnimatePresence>
                         {isOpen && (
