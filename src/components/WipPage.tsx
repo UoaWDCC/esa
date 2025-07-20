@@ -9,13 +9,13 @@ export default function WipPage() {
             {/* Title/body text */}
             <h3 className="text-primary-red p-2"> Work In Progress </h3>
 
-            <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
+            <div className="mx-auto text-center text-primary-white flex flex-col items-center tracking-widest md:w-[40%] w-full">
                 <p className="text-primary-white mb-2">
                     You&apos;ve come across a work-in-progress-page!
                 </p>
                 <p className="text-primary-white mb-1">
-                    This website is currently under development by WDCC and <br />
-                    we are working on implementing this page
+                    This website is currently under development and
+                    we are working on implementing this page.
                 </p>
             </div>
 
