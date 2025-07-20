@@ -22,11 +22,9 @@ export default function EventCard({ event, even }: EventCardProps) {
                         {(date.getMonth() + 1).toString().padStart(2, '0')}.
                         {date.getFullYear().toString().slice(-2)}
                     </h4>
-                    {!event.locked &&
-                        <Button variant="clear" size="sm" className="whitespace-nowrap" href={event.signUpForm}>
+                        <Button variant="clear" size="sm" className="whitespace-nowrap" href={event.locked ? undefined : event.signUpForm} disabled={event.locked}>
                         Sign up Here
                         </Button>
-                    }
 
                 </div>
                 <div className="relative w-[200px] md:w-[246px] aspect-[178/123] overflow-hidden rounded-3xl">
