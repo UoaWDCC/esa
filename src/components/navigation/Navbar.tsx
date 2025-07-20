@@ -28,7 +28,7 @@ export default function Navbar() {
         },
         {
             name: "ABOUT US",
-            href: "/about",
+            href: "/about-us",
         }
     ];
 
