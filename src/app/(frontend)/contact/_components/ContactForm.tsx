@@ -29,7 +29,7 @@ export default function ContactForm() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    access_key: process.env.PUBLIC_WEB3FORMS_KEY,
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
                     name: values.name,
                     email: values.email,
                     message: values.message,
@@ -49,7 +49,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="mr-auto text-center text-primary-white bg-transparent flex flex-col items-center">
+        <div className="text-center text-primary-white bg-transparent flex flex-col items-center">
             <h3 className="underline underline-offset-4 mb-2">Let’s have a chat!</h3>
             <p className="mb-6 text-xs max-w-[60%]">
                 We’d love to hear from you! You can contact us with the form below or send us an
@@ -98,7 +98,7 @@ export default function ContactForm() {
                 </div>
                 <div className="flex px-3 border-b border-primary-white justify-between mt-2">
                     <span className="max-w-lg">Contact number</span>
-                    <span className="max-w-lg">90812 2134</span>
+                    <span className="max-w-lg">020 4180 2771</span>
                 </div>
             </div>
         </div>
