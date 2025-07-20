@@ -8,9 +8,10 @@ const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 interface EventCardProps {
   event: EventData;
   even?: boolean;
+  isPast?: boolean;
 }
 
-export default function EventCard({ event, even }: EventCardProps) {
+export default function EventCard({ event, even, isPast }: EventCardProps) {
     const date = new Date(event.date);
     return (
         <div className="w-fit md:w-full flex flex-col md:flex-row gap-x-5">
@@ -22,11 +23,9 @@ export default function EventCard({ event, even }: EventCardProps) {
                         {(date.getMonth() + 1).toString().padStart(2, '0')}.
                         {date.getFullYear().toString().slice(-2)}
                     </h4>
-                    {!event.locked &&
-                        <Button variant="clear" size="sm" className="whitespace-nowrap" href={event.signUpForm}>
+                        <Button variant="clear" size="sm" className="whitespace-nowrap" href={event.locked ? undefined : event.signUpForm} disabled={event.locked || isPast}>
                         Sign up Here
                         </Button>
-                    }
 
                 </div>
                 <div className="relative w-[200px] md:w-[246px] aspect-[178/123] overflow-hidden rounded-3xl">

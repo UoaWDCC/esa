@@ -18,6 +18,10 @@ const buttonVariants = cva(
                 sm: "px-3 py-1",
                 lg: "px-8 py-2 text-2xl"
             },
+            disabled: {
+                true: "opacity-50 cursor-default pointer-events-none hover:bg-none hover:text-primary-white",
+                false: ""
+            }
         },
         defaultVariants: {
             variant: "default",
@@ -29,16 +33,35 @@ const buttonVariants = cva(
 export interface ButtonProps
     extends ButtonHTMLAttributes<HTMLButtonElement>,
         VariantProps<typeof buttonVariants> {
-    href?: string
+    href?: string;
+    disabled?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, children, href, variant, size, ...props }, ref) => {
+    ({ className, children, href, variant, size, disabled = false, ...props }, ref) => {
+        const classes = cn(buttonVariants({ variant, size, disabled, className }));
+        
         if (href) {
+            if (disabled) {
+                return (
+                    <button
+                        className={classes}
+                        disabled
+                        ref={ref}
+                        {...props}
+                        type={props.type || "button"}
+                    >
+                        {children}
+                    </button>
+                );
+            }
             return (
                 <Link
                     href={href}
-                    className={cn(buttonVariants({ variant, size, className }))}
+                    className={cn(buttonVariants({ variant, size, disabled, className }))} // <-- add disabled here
+                    onClick={disabled ? (e) => e.preventDefault() : undefined}  // prevent clicking if disabled
+                    aria-disabled={disabled}  // for accessibility
+                    tabIndex={disabled ? -1 : 0} // prevent focus if disabled
                 >
                     {children}
                 </Link>
@@ -46,7 +69,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         }
         return (
             <button
-                className={cn(buttonVariants({ variant, size, className }))}
+                className={cn(buttonVariants({ variant, size, disabled, className }))}
+                disabled={disabled}
                 ref={ref}
                 {...props}
             >

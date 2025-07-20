@@ -15,6 +15,10 @@ export default function Navbar() {
 
     const links = [
         {
+            name: "HOME",
+            href: "/",
+        },
+        {
             name: "NEWS",
             href: "/news",
         },
@@ -28,7 +32,7 @@ export default function Navbar() {
         },
         {
             name: "ABOUT US",
-            href: "/about",
+            href: "/about-us",
         }
     ];
 
@@ -53,15 +57,66 @@ export default function Navbar() {
                 </Link>
             </nav>
 
-            <nav className="md:hidden fixed top-5 left-0 right-0 z-50">
-                <div className="flex justify-between items-center px-4 py-3">
-                    <button
-                        onClick={toggleMenu}
-                        className="w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light"
-                        aria-label="Toggle menu"
-                    >
-                        <Menu />
-                    </button>
+            {/* Mobile Navbar */}
+            <>
+                <div className="fixed top-4 left-3 z-50 md:hidden">
+                    <AnimatePresence mode="wait" initial={false}>
+                        {isOpen ? (
+                            <motion.button
+                                key="close-button"
+                                onClick={toggleMenu}
+                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                aria-label="Close menu"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.1 }}
+                            >
+                                <X />
+                            </motion.button>
+                        ) : (
+                            <motion.button
+                                key="menu-button"
+                                onClick={toggleMenu}
+                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                aria-label="Open menu"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.1 }}
+                            >
+                                <Menu />
+                            </motion.button>
+                        )}
+                    </AnimatePresence>
+
+                    <AnimatePresence>
+                        {isOpen && (
+                            <motion.div
+                                initial={{ x: -150 }}
+                                animate={{ x: 1 }}
+                                exit={{ x: -150 }}
+                                transition={{ duration: 0.1 }}
+                                className="absolute -top-[7px] -left-[1px] mt-2 w-40 rounded-lg bg-primary-grey-light z-40"
+                            >
+                                <div className="flex flex-col pt-18 pb-4 px-5 space-y-3 font-roboto-mono text-primary-white">
+                                    {links.map((link) => (
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            className="hover:text-primary-grey transition-colors py-1 px-1"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
                     <Link
                         href="/"
                         className="w-18 h-18 rounded-full flex items-center justify-center bg-primary-grey-light"
@@ -73,41 +128,8 @@ export default function Navbar() {
                             width={66}
                         />
                     </Link>
-                    <div className="w-18"></div>
                 </div>
-
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 1 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-1 left-[12px] w-40 rounded-lg mt-2 bg-primary-grey-light"
-                        >
-                            <button
-                                onClick={toggleMenu}
-                                className="w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light"
-                                aria-label="Toggle menu"
-                            >
-                                <X className={'z-50'} />
-                            </button>
-                            <div className="flex flex-col pb-4  px-4 space-y-3 font-roboto-mono text-primary-white">
-                                {links.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className="hover:text-primary-grey transition-colors py-1 px-1"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </nav>
+            </>
         </>
     );
 }

@@ -14,7 +14,7 @@ export default function TextMarquee({ text, bgColor, textBg, textColor, wrapperC
 
     return (
         <div className={clsx("w-full z-20", bgColor, wrapperClassName)}>
-            <Marquee speed={90} pauseOnHover gradient={false}>
+            <Marquee speed={90} gradient={false}>
                 {repeatedText.map((text, index) => (
                     <div
                         key={index}

@@ -26,7 +26,7 @@ function Footer() {
     {
       heading: "About",
       links: [
-        { label: "About Us", href: "/about" },
+        { label: "About Us", href: "/about-us" },
         { label: "Execs", href: "/execs" },
         { label: "Sponsors", href: "/sponsors" },
       ],
