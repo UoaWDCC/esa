@@ -8,6 +8,7 @@ import ArrowUp from '@/components/icons/ArrowUp';
 import FormInput from '@/components/ui/FormInput';
 import FormTextarea from '@/components/ui/FormTextArea';
 import { Button } from '@/components/ui/Button';
+import ThankYou from './ThankYou';
 
 export default function ContactForm() {
     const [sent, setSent] = useState(false);
@@ -55,41 +56,44 @@ export default function ContactForm() {
                 We’d love to hear from you! You can contact us with the form below or send us an
                 email or a call!
             </p>
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full max-w-lg px-5">
-                <FormInput
-                    placeholder="Enter your name"
-                    {...register('name')}
-                    error={errors.name}
-                    className="w-full"
-                />
-                <FormInput
-                    placeholder="Enter your email"
-                    {...register('email')}
-                    error={errors.email}
-                    className="w-full"
-                />
-                <FormTextarea
-                    placeholder="Write your message"
-                    {...register('message')}
-                    error={errors.message}
-                    className="w-full"
-                />
-                <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="flex flex-row items-center gap-x-2"
-                >
-                    {isSubmitting ? (
-                        'Submitting...'
-                    ) : (
-                        <>
-                            Send
-                            <ArrowUp className="size-3" />
-                        </>
-                    )}
-                </Button>
-            </form>
+            {!sent ? (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full max-w-lg px-5">
+                    <FormInput
+                        placeholder="Enter your name"
+                        {...register('name')}
+                        error={errors.name}
+                        className="w-full"
+                    />
+                    <FormInput
+                        placeholder="Enter your email"
+                        {...register('email')}
+                        error={errors.email}
+                        className="w-full"
+                    />
+                    <FormTextarea
+                        placeholder="Write your message"
+                        {...register('message')}
+                        error={errors.message}
+                        className="w-full"
+                    />
+                    <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="flex flex-row items-center gap-x-2"
+                    >
+                        {isSubmitting ? (
+                            'Submitting...'
+                        ) : (
+                            <>
+                                Send
+                                <ArrowUp className="size-3" />
+                            </>
+                        )}
+                    </Button>
+                </form>
+            ) : (
+                <ThankYou />
+            )}
 
             <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
                 <div className="flex px-3 border-b border-primary-white justify-between">
