@@ -14,7 +14,7 @@ export default async function HomePage() {
           {/* page content */}
           <div className="relative w-full text-white">
               <Hero/>
-              <div className="absolute bottom-0 left-0 w-full z-50 -translate-y-15 md:-translate-0">
+              <div className="absolute bottom-0 left-0 w-full -translate-y-15 md:-translate-0">
                   <TextMarquee
                       text={"📍 University of Auckland"}
                       bgColor="bg-primary-red-800"

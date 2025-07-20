@@ -13,7 +13,7 @@ export default function TextMarquee({ text, bgColor, textBg, textColor, wrapperC
     const repeatedText = Array(10).fill(text);
 
     return (
-        <div className={clsx("w-full", bgColor, wrapperClassName)}>
+        <div className={clsx("w-full z-20", bgColor, wrapperClassName)}>
             <Marquee speed={90} pauseOnHover gradient={false}>
                 {repeatedText.map((text, index) => (
                     <div
