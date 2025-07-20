@@ -241,7 +241,7 @@ export default function SignupForm() {
                                 />
                                 <Button
                                     type="submit"
-                                    className="w-fit mx-auto flex items-center gap-x-2"
+                                    className="w-fit mx-auto flex items-center gap-x-2 select-none"
                                     disabled={isSubmitting}
                                 >
                                     {isSubmitting ? (
