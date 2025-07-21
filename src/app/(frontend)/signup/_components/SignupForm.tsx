@@ -196,7 +196,7 @@ export default function SignupForm() {
                             <div className="flex flex-col justify-center py-10">
                                 <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
-                                        label="Ethnicity"
+                                        label="Ethnicity (E.g. Chinese"
                                         placeholder="Enter Here"
                                         {...register('ethnicity')}
                                         error={errors.ethnicity}
