@@ -1,6 +1,5 @@
 import { InputHTMLAttributes, forwardRef } from "react";
 import { FieldError } from "react-hook-form";
-import clsx from "clsx";
 import {cn} from "@/lib/utils";
 
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -29,7 +28,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                         error ? "text-red-500 visible" : "invisible"
                     )}
                     >
-                    {error?.message || "Error placeholder"}
+                    {error?.message}
                 </p>
             </div>
         );

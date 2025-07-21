@@ -165,6 +165,8 @@ export default function SignupForm() {
                                             'lastName',
                                             'email',
                                             'yearOfStudy',
+                                            'upi',
+                                            'membershipCardNumber'
                                         ]);
                                         if (valid) setStep(2);
                                     }}
