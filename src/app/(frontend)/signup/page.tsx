@@ -23,7 +23,7 @@ export default function SignupPage() {
         alt={"ESA Signup"}
         width={400}
         height={400}
-        className={"absolute right-[40%] translate-x-[80%] -rotate-180 bottom-[-60px] md:hidden block"}
+        className={"absolute right-[40%] translate-x-[80%] -rotate-180 bottom-[-60px] md:hidden block select-none -z-5"}
         />
     </div>
 </div>

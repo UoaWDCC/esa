@@ -165,6 +165,8 @@ export default function SignupForm() {
                                             'lastName',
                                             'email',
                                             'yearOfStudy',
+                                            'upi',
+                                            'membershipCardNumber'
                                         ]);
                                         if (valid) setStep(2);
                                     }}
@@ -194,7 +196,7 @@ export default function SignupForm() {
                             <div className="flex flex-col justify-center py-10">
                                 <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
-                                        label="Ethnicity"
+                                        label="Ethnicity (E.g. Chinese"
                                         placeholder="Enter Here"
                                         {...register('ethnicity')}
                                         error={errors.ethnicity}
@@ -241,7 +243,7 @@ export default function SignupForm() {
                                 />
                                 <Button
                                     type="submit"
-                                    className="w-fit mx-auto flex items-center gap-x-2 select-none"
+                                    className="w-fit mx-auto flex items-center gap-x-2 select-none z-10"
                                     disabled={isSubmitting}
                                 >
                                     {isSubmitting ? (
