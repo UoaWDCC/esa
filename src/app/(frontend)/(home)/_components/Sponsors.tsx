@@ -2,8 +2,8 @@ import React from 'react'
 import Carousel from './Carousel'
 import Link from 'next/link'
 
-import { getSponsors } from '@/actions/getSponsors'
-import parseSponsors from '@/types/parsers/parseSponsors'
+import { getSponsors } from '@/features/sponsors/data/payload/getSponsors'
+import parseSponsors from '@/features/sponsors/data/payload/parseSponsors'
 import Image from 'next/image'
 import Title from "@/components/ui/Title";
 

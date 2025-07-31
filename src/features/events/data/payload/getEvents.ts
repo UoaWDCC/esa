@@ -1,6 +1,6 @@
 'use server';
 import { getPayload } from '@/lib/payload';
-import parseEvents from '@/types/parsers/parseEvents';
+import parseEvents from '@/features/events/data/payload/parseEvents';
 
 export const getEvents = async () => {
     const payload = await getPayload();

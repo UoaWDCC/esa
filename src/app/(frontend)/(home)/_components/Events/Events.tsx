@@ -4,7 +4,7 @@ import EventCard from './EventCard';
 import { EventData } from '@/types/EventData';
 import Title from "@/components/ui/Title";
 import Image from "next/image";
-import {useEvents} from "@/hooks/useEvents";
+import {useEvents} from "@/features/events/data/tanstack/useEvents";
 
 export default function Events() {
   const { data: parsedEvents } = useEvents();
