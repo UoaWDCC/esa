@@ -8,7 +8,7 @@ import TextMarquee from "@/app/(frontend)/(home)/_components/Marquees/TextMarque
 import PlainMarquee from "@/app/(frontend)/(home)/_components/Marquees/PlainMarquee";
 
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
       <div className="text-primary-grey">
           {/* page content */}
