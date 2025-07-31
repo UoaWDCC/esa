@@ -1,12 +1,14 @@
-import EventCard from './EventCard'
-import { getEvents } from '@/actions/getEvents'
-import parseEvents from '@/types/parsers/parseEvents'
-import { EventData } from '@/types/EventData'
+"use client";
+
+import EventCard from './EventCard';
+import { EventData } from '@/types/EventData';
 import Title from "@/components/ui/Title";
 import Image from "next/image";
+import {useEvents} from "@/hooks/useEvents";
 
-export default async function Events() {
-  const parsedEvents = parseEvents(await getEvents());
+export default function Events() {
+  const { data: parsedEvents } = useEvents();
+  if (!parsedEvents) return
 
   const upcomingEvents: EventData[] = [];
   const pastEvents: EventData[] = []; // Stored as list incase we want to show more than one past event later
