@@ -1,22 +1,12 @@
 import { Media, Sponsor } from '@/payload-types'
+import {SponsorData} from "@/types/SponsorData";
 
-export type SponsorParsed = {
-  id: string
-  name: string
-  logo: {
-    alt: string
-    url: string
-  }
-  deal: string
-  importance: number
-}
-
-export default function parseSponsors(data: Sponsor[]): SponsorParsed[] | undefined {
+export default function parseSponsors(data: Sponsor[]): SponsorData[] | undefined {
   if (!data) {
     return undefined
   }
 
-  const sponsors: SponsorParsed[] = (data ?? [])
+  const sponsors: SponsorData[] = (data ?? [])
     .filter(
       (sponsor): sponsor is Sponsor & { logo: Media } =>
         typeof sponsor === 'object' &&

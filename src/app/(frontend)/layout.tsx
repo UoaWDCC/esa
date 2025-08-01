@@ -2,6 +2,7 @@ import React from 'react';
 import 'src/styles/global.css';
 import Footer from '../../components/navigation/footer';
 import Navbar from '../../components/navigation/Navbar';
+import {QueryProvider} from "@/lib/tanstack/query-provider";
 
 // SEO metadata
 export const metadata = {
@@ -45,7 +46,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <html lang="en">
             <body className="min-h-screen flex flex-col">
                 <Navbar />
-                <main className="grow">{children}</main>
+                <main className="grow">
+                    <QueryProvider>{children}</QueryProvider>
+                </main>
                 <Footer />
             </body>
         </html>
