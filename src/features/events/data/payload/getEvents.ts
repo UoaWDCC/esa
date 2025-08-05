@@ -8,5 +8,6 @@ export const getEvents = async () => {
         collection: 'events',
         pagination: false,
     });
+    console.log('Fetched events:', events.docs);
     return parseEvents(events.docs);
 };
