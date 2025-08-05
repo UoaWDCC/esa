@@ -6,28 +6,30 @@ import Title from "@/components/ui/Title";
 import Image from "next/image";
 import {useEvents} from "@/features/events/data/tanstack/useEvents";
 
+interface EventDoc extends EventData {}
+
 export default function Events() {
   const { data: parsedEvents } = useEvents();
   if (!parsedEvents) return
 
   const upcomingEvents: EventData[] = [];
-  const pastEvents: EventData[] = []; // Stored as list incase we want to show more than one past event later
+  const pastEvents: EventData[] = [];
 
-
-  // Sort by date ascending, then take the first 10
-  const docs = parsedEvents
-  .slice()
-  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-  .slice(0, 10);
+  // Sort by date ascending, then take the first 10 events from all events in payload
+  const docs: EventDoc[] = parsedEvents
+    .sort((a: EventDoc, b: EventDoc) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .slice(0, 10);
 
 
   // Get today's date at midnight (UTC)
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
+  // For every event, split events into upcoming and past based on today's date
   docs.forEach((doc) => {
     const dateObj = new Date(doc.date)
 
+    // Check if the event is upcoming or past
     if (dateObj >= today) { // Upcoming event
       upcomingEvents.push(doc)
     } else {
@@ -56,6 +58,7 @@ export default function Events() {
           {/* latest header */}
           <div className="flex flex-col relative z-20 items-center md:items-start">
               <Title className="mb-10">LATEST</Title>
+              {/* display the single most recent event */}
               {pastEvents[0] && <EventCard event={pastEvents[0]} isPast={true}/>}
           </div>
 
