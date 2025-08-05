@@ -35,6 +35,8 @@ export default function Events() {
     }
   })
 
+  pastEvents.reverse(); // Newest past event is at index 0
+
   return (
       <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
           {/* background image layer */}
