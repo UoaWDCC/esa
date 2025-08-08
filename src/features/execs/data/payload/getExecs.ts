@@ -4,10 +4,12 @@ import parseExecs from './parseExecs';
 
 export const getExecs = async () => {
     const payload = await getPayload();
-    const events = await payload.find({
+    const execs = await payload.find({
         collection: 'execs',
         pagination: false,
     });
 
-    return parseExecs(events.docs);
+    console.log('Fetched execs:', execs.docs);
+
+    return parseExecs(execs.docs);
 };
