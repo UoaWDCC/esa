@@ -10,17 +10,17 @@ export default function BotTear() {
                     width={1700}
                     height={500}
                     alt=""
-                    className=""
+                    className="w-screen"
                 />
             </div>
 
-            <div className="absolute -top-6 md:-top-8 lg:-top-10 xl:-top-12 overflow-hidden">
+            <div className="absolute -top-6 md:-top-8 lg:-top-10 xl:-top-14 overflow-hidden">
                 <Image
                     src={'/images/aboutus/BlackTearBot.png'}
                     width={1700}
                     height={500}
                     alt=""
-                    className=""
+                    className="w-screen"
                 />
             </div>
         </div>
