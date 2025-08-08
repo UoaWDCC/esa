@@ -11,7 +11,10 @@ export default function TopTear(props: TopTearProps) {
     const { translateY = 0 } = props;
 
     return (
-        <div className="w-screen absolute" style={{ transform: `translateY(${translateY}rem)` }}>
+        <div
+            className="w-screen absolute h-50 overflow-clip -top-[12.5rem]"
+            style={{ transform: `translateY([${translateY}]rem)` }}
+        >
             <Image
                 src={'/images/aboutus/WhiteTear.png'}
                 width={1700}

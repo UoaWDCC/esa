@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
 import TopTear from './TopTear';
 
-export default function AboutUs() {
+export default function JoinExecTeam() {
     return (
         <div className="flex items-center justify-center bg-[url(/images/aboutus/AboutUsImage.jpg)] bg-cover bg-no-repeat bg-center min-h-screen relative">
             <div className="flex items-center">
