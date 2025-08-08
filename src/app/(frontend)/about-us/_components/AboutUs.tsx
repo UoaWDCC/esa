@@ -4,15 +4,13 @@ import React from 'react';
 export default function AboutUs() {
     return (
         <div className="flex items-center justify-center bg-[url(/images/aboutus/AboutUsImage.jpg)] bg-cover bg-no-repeat bg-center min-h-screen relative">
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
                 {/* About Us Text */}
-                <div className="flex flex-col w-[29rem]">
+                <div className="flex flex-col w-[28rem]">
                     <h3>ABOUT US</h3>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate,
-                        adipisci distinctio pariatur, deserunt perferendis temporibus nesciunt
-                        veritatis amet at, provident fugit. Labore veniam id dolor debitis earum
-                        quibusdam.
+                    <p className="text-xl tracking-[0.15em]">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.
                     </p>
                 </div>
                 {/* About Us Image */}
@@ -21,7 +19,7 @@ export default function AboutUs() {
                     width={400}
                     height={400}
                     alt="ESA Mascot"
-                    className="max-w-[20rem]"
+                    className="max-w-[18rem] -translate-y-5"
                 />
             </div>
         </div>

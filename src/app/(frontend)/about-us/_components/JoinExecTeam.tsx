@@ -1,32 +1,38 @@
-import React from 'react';
 import Image from 'next/image';
-import TopTear from './TopTear';
+import React from 'react';
 
 export default function JoinExecTeam() {
     return (
-        <div className="flex items-center justify-center bg-[url(/images/aboutus/AboutUsImage.jpg)] bg-cover bg-no-repeat bg-center min-h-screen relative">
-            <div className="flex items-center">
-                {/* About Us Text */}
-                <div className="flex flex-col w-[29rem]">
-                    <h3>ABOUT US</h3>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate,
-                        adipisci distinctio pariatur, deserunt perferendis temporibus nesciunt
-                        veritatis amet at, provident fugit. Labore veniam id dolor debitis earum
-                        quibusdam.
+        <div className="flex items-center justify-start bg-[url(/images/aboutus/ExecTeamBg.jpg)] bg-cover bg-no-repeat bg-center min-h-[150vh] relative">
+            <div className="flex flex-col pl-20 w-[38rem] gap-20">
+                {/* First Half of text */}
+                <div className="flex flex-col gap-5">
+                    <h3>Join our Exec Team</h3>
+                    <p className="text-xl tracking-[0.15em]">
+                        ESA is a social club is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry&apos;s standard dummy text
                     </p>
                 </div>
-                {/* About Us Image */}
-                <Image
-                    src={'/images/logo/esa_mascot.png'}
-                    width={400}
-                    height={400}
-                    alt="ESA Mascot"
-                    className="max-w-[20rem]"
-                />
+
+                {/* Second Half of text */}
+                <div className="flex flex-col gap-5">
+                    <p className="text-xl tracking-[0.15em]">
+                        ESA is a social club is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum
+                    </p>
+                    <p className="text-xl tracking-[0.15em]">
+                        ESA is a social club is simply dummy text of the printing and typesetting
+                    </p>
+                </div>
             </div>
 
-            {/* <TopTear /> */}
+            <Image
+                src={'/images/aboutus/ExecTeamPolaroid.png'}
+                width={500}
+                height={500}
+                alt="ESA Exec Team Polaroid"
+                className="absolute bottom-0 right-2"
+            />
         </div>
     );
 }
