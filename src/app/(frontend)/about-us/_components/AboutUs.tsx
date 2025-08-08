@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import TopTear from './TopTear';
 
 export default function AboutUs() {
     return (
@@ -25,8 +24,6 @@ export default function AboutUs() {
                     className="max-w-[20rem]"
                 />
             </div>
-
-            {/* <TopTear /> */}
         </div>
     );
 }
