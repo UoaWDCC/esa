@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function TopTear() {
     return (
-        <div className="w-screen absolute h-50 overflow-clip -top-[12.5rem]">
+        <div className="w-screen absolute h-50 overflow-clip -top-[12rem]">
             <Image
                 src={'/images/aboutus/WhiteTearTop.png'}
                 width={1700}

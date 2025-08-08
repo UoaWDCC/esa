@@ -8,7 +8,7 @@ interface ExecPolaroidProps {
 
 const variations = [
     {
-        // Variation 0 - Green pin, center position, -6deg rotation
+        // Variation 0 - Green pin
         flip: false,
         bgRotation: '',
         pinColor: 'GreenPin.svg',
@@ -17,7 +17,7 @@ const variations = [
         polaroidTransform: '-translate-x-2',
     },
     {
-        // Variation 1 - Red pin, right position, 9deg rotation
+        // Variation 1 - Red pin
         flip: true,
         bgRotation: '-rotate-[6deg]',
         pinColor: 'RedPin.svg',
@@ -26,7 +26,7 @@ const variations = [
         polaroidTransform: 'translate-y-2 -translate-x-2.5',
     },
     {
-        // Variation 2 - Yellow pin, left position, 12deg rotation
+        // Variation 2 - Yellow pin
         flip: false,
         bgRotation: '-rotate-[14deg]',
         pinColor: 'YellowPin.svg',
