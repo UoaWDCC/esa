@@ -3,8 +3,8 @@ import React from 'react';
 
 export default function JoinExecTeam() {
     return (
-        <div className="flex items-center justify-start bg-[url(/images/aboutus/ExecTeamBg.jpg)] bg-cover bg-no-repeat bg-center min-h-[150vh] relative">
-            <div className="flex flex-col px-6 md:px-0 md:pl-20 w-[38rem] gap-20">
+        <div className="flex items-center justify-center md:justify-start bg-[url(/images/aboutus/ExecTeamBg.jpg)] bg-cover bg-no-repeat bg-center min-h-[150vh] relative">
+            <div className="flex flex-col px-6 text-center md:text-left md:px-0 md:pl-20 w-[38rem] gap-20">
                 {/* First Half of text */}
                 <div className="flex flex-col gap-5">
                     <h3>Join our Exec Team</h3>
