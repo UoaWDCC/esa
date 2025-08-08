@@ -21,7 +21,7 @@ const variations = [
         flip: true,
         bgRotation: '-rotate-[6deg]',
         pinColor: 'RedPin.svg',
-        pinPosition: 'top-1 right-[38%]',
+        pinPosition: 'top-0 right-[39%]',
         rotation: 'rotate-[10deg]',
         polaroidTransform: 'translate-y-2 -translate-x-2.5',
     },
@@ -42,7 +42,7 @@ export default function ExecPolaroid({ index, image }: ExecPolaroidProps) {
 
     return (
         <div
-            className={`flex bg-[url(/images/aboutus/ExecImageBg.png)] bg-no-repeat bg-center p-20 bg-contain relative ${variation.flip ? 'scale-x-[-1]' : ''} ${variation.bgRotation}`}
+            className={`flex bg-[url(/images/aboutus/ExecImageBg.png)] bg-no-repeat bg-center p-14 bg-contain relative ${variation.flip ? 'scale-x-[-1]' : ''} ${variation.bgRotation}`}
         >
             <Image
                 src={`/images/aboutus/${variation.pinColor}`}
@@ -50,14 +50,14 @@ export default function ExecPolaroid({ index, image }: ExecPolaroidProps) {
                 height={40}
                 unoptimized={true}
                 alt={`${variation.pinColor.replaceAll('.svg', '')}`}
-                className={`absolute ${variation.pinPosition} ${variation.flip ? 'scale-x-[-1]' : ''}`}
+                className={`absolute ${variation.pinPosition} ${variation.flip ? 'scale-x-[-1]' : ''} w-7 h-auto`}
             />
             <Image
                 src={image}
                 width={450}
                 height={450}
-                alt={`Exec Polaroid ${index}`}
-                className={`${variation.rotation} scale-120 ${variation.polaroidTransform}`}
+                alt={`Exec Polaroid`}
+                className={`${variation.rotation} w-[16rem] h-auto ${variation.polaroidTransform}`}
             />
         </div>
     );

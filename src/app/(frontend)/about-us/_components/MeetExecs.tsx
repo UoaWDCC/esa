@@ -29,14 +29,22 @@ const execs = [
         image: '/images/aboutus/MeetExecTest.jpg', // Remove from folder once integrated
         isImportant: true,
     },
+    {
+        id: 4,
+        name: 'Maternus',
+        role: 'Co-President',
+        about: 'Lorem ipsum dolor sit amet consectetur. Nisi venenatis nisl vitae tincidunt eu quis bibendum. Tincidunt nisl mattis cursus volutpat commodo venenatis euismod egestas. ',
+        image: '/images/aboutus/MeetExecTest.jpg', // Remove from folder once integrated
+        isImportant: false,
+    },
 ];
 
 export default function MeetExecs() {
     return (
-        <div className="flex flex-col items-center justify-center gap-10 min-h-screen relative z-50">
+        <div className="flex flex-col items-center justify-center gap-10 min-h-screen relative z-50 py-10">
             <h3 className="bg-primary-red-400 px-6 py-1 rounded-2xl">Meet The Execs</h3>
 
-            <div className="flex gap-10">
+            <div className="w-full flex flex-wrap justify-center gap-5">
                 {execs.map((exec, index) => {
                     if (exec.isImportant) {
                         return (
