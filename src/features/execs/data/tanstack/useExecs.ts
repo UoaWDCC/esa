@@ -1,7 +1,7 @@
 import {useQuery} from "@tanstack/react-query";
 import { getExecs } from "../payload/getExecs";
 
-export function useEvents() {
+export function useExecs() {
     return useQuery({
         queryKey: ["execs"],
         queryFn: getExecs,
