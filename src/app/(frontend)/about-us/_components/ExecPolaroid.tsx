@@ -6,23 +6,58 @@ interface ExecPolaroidProps {
     image: string;
 }
 
+const variations = [
+    {
+        // Variation 0 - Green pin, center position, -6deg rotation
+        flip: false,
+        bgRotation: '',
+        pinColor: 'GreenPin.svg',
+        pinPosition: '-top-1 right-[37%]',
+        rotation: 'rotate-[10deg]',
+        polaroidTransform: '-translate-x-2',
+    },
+    {
+        // Variation 1 - Red pin, right position, 9deg rotation
+        flip: true,
+        bgRotation: '-rotate-[6deg]',
+        pinColor: 'RedPin.svg',
+        pinPosition: 'top-1 right-[38%]',
+        rotation: 'rotate-[10deg]',
+        polaroidTransform: 'translate-y-2 -translate-x-2.5',
+    },
+    {
+        // Variation 2 - Yellow pin, left position, 12deg rotation
+        flip: false,
+        bgRotation: '-rotate-[14deg]',
+        pinColor: 'YellowPin.svg',
+        pinPosition: 'top-4 right-[31%]',
+        rotation: 'rotate-[7deg]',
+        polaroidTransform: 'translate-y-2 -translate-x-2',
+    },
+];
+
 export default function ExecPolaroid({ index, image }: ExecPolaroidProps) {
+    // Get the variation based on index (cycle through if more than 3 execs)
+    const variation = variations[index % 3];
+
     return (
-        <div className="bg-[url(/images/aboutus/ExecImageBg.png)] bg-no-repeat bg-center p-20 bg-contain scale-x-[-1] relative">
+        <div
+            className={`flex bg-[url(/images/aboutus/ExecImageBg.png)] bg-no-repeat bg-center p-20 bg-contain relative ${variation.flip ? 'scale-x-[-1]' : ''} ${variation.bgRotation}`}
+        >
             <Image
-                src={`/images/aboutus/RedPin.svg`}
+                src={`/images/aboutus/${variation.pinColor}`}
                 width={40}
                 height={40}
                 unoptimized={true}
-                alt={`Pin`}
-                className="absolute -top-1 right-[38%] scale-x-[-1]"
+                alt={`${variation.pinColor.replaceAll('.svg', '')}`}
+                className={`absolute ${variation.pinPosition} ${variation.flip ? 'scale-x-[-1]' : ''}`}
             />
             <Image
                 src={image}
                 width={450}
                 height={450}
                 alt={`Exec Polaroid ${index}`}
-                className="rotate-[9deg] scale-120 translate-y-2 -translate-x-2.5"
+                className={`${variation.rotation} scale-120 ${variation.polaroidTransform}`}
             />
         </div>
     );
