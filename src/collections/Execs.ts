@@ -49,7 +49,7 @@ export const Execs: CollectionConfig = {
     },
     {
       name: 'about',
-      type: 'richText',
+      type: 'text',
       required: true,
       admin: {
         description: 'Short biography of the executive',

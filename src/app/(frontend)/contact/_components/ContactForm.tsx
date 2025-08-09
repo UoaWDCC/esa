@@ -10,6 +10,9 @@ import FormTextarea from '@/components/ui/FormTextArea';
 import { Button } from '@/components/ui/Button';
 import ThankYou from './ThankYou';
 
+// T3 env
+import { env } from 'config/clientEnv';
+
 export default function ContactForm() {
     const [sent, setSent] = useState(false);
 
@@ -30,7 +33,7 @@ export default function ContactForm() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+                    access_key: env.NEXT_PUBLIC_WEB3FORMS_KEY,
                     name: values.name,
                     email: values.email,
                     message: values.message,
