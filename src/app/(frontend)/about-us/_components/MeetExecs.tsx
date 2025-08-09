@@ -3,6 +3,7 @@ import TopTear from './TopTear';
 import BotTear from './BotTear';
 import Link from 'next/link';
 import ExecCard from './ExecCard';
+import { Button } from '@/components/ui/Button';
 
 const execs = [
     {
@@ -61,12 +62,7 @@ export default function MeetExecs() {
                 })}
             </div>
 
-            <Link
-                href={'/execs'}
-                className="bg-accent text-black rounded-2xl py-1 px-6 font-roboto-mono"
-            >
-                Meet More Execs
-            </Link>
+            <Button href="/execs">Meet More Execs</Button>
 
             <TopTear />
             <BotTear />
