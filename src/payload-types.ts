@@ -246,6 +246,10 @@ export interface Exec {
    * Short biography of the executive
    */
   about: string;
+  /**
+   * Controls whether this exec will be displayed on the about us page
+   */
+  isImportant: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -422,6 +426,7 @@ export interface ExecsSelect<T extends boolean = true> {
   degree?: T;
   image?: T;
   about?: T;
+  isImportant?: T;
   updatedAt?: T;
   createdAt?: T;
 }
