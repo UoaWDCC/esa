@@ -1,4 +1,5 @@
 import {Button} from "@/components/ui/Button";
+import SquigglyArrow from "@/components/icons/SquigglyArrow"
 
 const test = () => {
   return (
@@ -29,6 +30,8 @@ const test = () => {
 
           <div className="mt-5">
               <p>if you want to test any components, you can place them here</p>
+              <SquigglyArrow />
+              
           </div>
       </div>
   )
