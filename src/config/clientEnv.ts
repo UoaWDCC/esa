@@ -10,4 +10,5 @@ export const env = createEnv({
     runtimeEnv: {
         NEXT_PUBLIC_WEB3FORMS_KEY: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
     },
+    skipValidation: true
 });
