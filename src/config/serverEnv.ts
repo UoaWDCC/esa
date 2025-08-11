@@ -15,4 +15,5 @@ export const env = createEnv({
         BASE_URL: z.string().url().default('https://esa.wdcc.co.nz'),
     },
     experimental__runtimeEnv: process.env,
+    skipValidation: process.env.SKIP_ENV_VALIDATION === 'true'
 });
