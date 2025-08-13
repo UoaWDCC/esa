@@ -7,6 +7,7 @@ export default function BotTear() {
             <div className="absolute top-1">
                 <Image
                     src={'/images/aboutus/WhiteTearBot.png'}
+                    priority
                     width={1700}
                     height={500}
                     alt=""
@@ -17,6 +18,7 @@ export default function BotTear() {
             <div className="absolute -top-6 md:-top-8 lg:-top-10 xl:-top-14 overflow-hidden">
                 <Image
                     src={'/images/aboutus/BlackTearBot.png'}
+                    priority
                     width={1700}
                     height={500}
                     alt=""

@@ -16,6 +16,7 @@ export default function AboutUs() {
                 {/* About Us Image */}
                 <Image
                     src={'/images/logo/esa_mascot.png'}
+                    priority
                     width={400}
                     height={400}
                     alt="ESA Mascot"
