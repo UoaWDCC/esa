@@ -3,8 +3,16 @@ import React from 'react';
 
 export default function AboutUs() {
     return (
-        <div className="flex items-center justify-center bg-[url(/images/aboutus/AboutUsImage.jpg)] bg-cover bg-no-repeat bg-center min-h-screen relative px-6 md:px-0">
-            <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center min-h-screen relative px-6 md:px-0 overflow-hidden">
+            <Image
+                src="/images/aboutus/AboutUsImage.jpg"
+                alt=""
+                fill={true}
+                priority={true}
+                className="object-cover object-center"
+            />
+
+            <div className="flex items-center gap-2 relative z-10">
                 {/* About Us Text */}
                 <div className="flex flex-col text-center md:text-start md:w-[28rem]">
                     <h3>ABOUT US</h3>
