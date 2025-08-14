@@ -2,10 +2,10 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { SponsorParsed } from '@/types/parsers/parseSponsors'
+import {SponsorData} from "@/types/SponsorData";
 
 export interface SponsorProps {
-  sponsors: SponsorParsed[]
+  sponsors: SponsorData[];
 }
 
 export default function SponsorBubbles({ sponsors }: SponsorProps) {

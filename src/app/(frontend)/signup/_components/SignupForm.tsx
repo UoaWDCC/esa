@@ -26,45 +26,69 @@ export default function SignupForm() {
         resolver: zodResolver(signupSchema),
         defaultValues: {
             timestamp: new Date(),
-            membershipPayment: 'Bank Transferred',
-            paymentScreenshotLink: '',
+            membershipPayment: "Stripe",
+            paymentScreenshotLink: "N/A",
         },
     });
 
-    const onSubmit = async (data: SignupInput) => {
+    const checkCanCreate = async (data: SignupInput) => {
         try {
-            await createMember(data);
-            alert('Signup successful!');
+            const response = await fetch('/api/members/can-create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            return result.canCreate;
+        } catch (error: any) {
+            console.error("Error checking if member can be created:", error);
+            alert(error.message);
+            return false;
+        }
+    }
+
+    // This function handles the form submission (upon clicking the "Continue to Payment" button).
+    // For now it just creates the member in the database. In the future, it will also handle the payment process.
+    const onSubmit = async (data: SignupInput) => {
+        // Check if the member can be created
+        const canCreate = await checkCanCreate(data);
+        if (!canCreate) {
+            alert("You have already signed up for the ESA membership for this year. If you think this is a mistake, please contact us.");
+            return;
+        }
+
+        // If the member can be created, proceed to create the payment session
+        try {
+            const response = await fetch('/api/payment/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+
+            const result = await response.json()
+            console.log("Payment session result:", result)
+
+            if (!response.ok) throw new Error(result.message || "Failed to start payment")
+
+            window.location.href = result.url // TODO: Change this 
+        
             reset();
         } catch (error: any) {
             alert(error.message);
         }
     };
 
-    const createMember = async (data: SignupInput) => {
-        const response = await fetch('/api/members', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-            const error = await response.json().catch(() => ({}));
-            throw new Error(
-                error.message || 'Signup failed. Member already exists or an error occurred.',
-            );
-        }
-
-        return response;
-    };
-
     return (
-        <div className="flex flex-col justify-center p-4">
+        <div className="flex flex-col justify-center px-8">
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="border-white border rounded-4xl flex items-center justify-center"
+                className="border-white border rounded-[4rem] flex items-center justify-center bg-primary-grey"
             >
                 <AnimatePresence mode="wait">
                     {step === 1 && (
@@ -141,6 +165,8 @@ export default function SignupForm() {
                                             'lastName',
                                             'email',
                                             'yearOfStudy',
+                                            'upi',
+                                            'membershipCardNumber'
                                         ]);
                                         if (valid) setStep(2);
                                     }}
@@ -170,7 +196,7 @@ export default function SignupForm() {
                             <div className="flex flex-col justify-center py-10">
                                 <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
-                                        label="Ethnicity"
+                                        label="Ethnicity (E.g. Chinese"
                                         placeholder="Enter Here"
                                         {...register('ethnicity')}
                                         error={errors.ethnicity}
@@ -217,11 +243,17 @@ export default function SignupForm() {
                                 />
                                 <Button
                                     type="submit"
-                                    className="w-fit mx-auto flex items-center gap-x-2"
+                                    className="w-fit mx-auto flex items-center gap-x-2 select-none z-10"
                                     disabled={isSubmitting}
                                 >
-                                    Continue to Payment
-                                    <ArrowUp className="size-3" />
+                                    {isSubmitting ? (
+                                        'Submitting...'
+                                    ) : (
+                                        <>
+                                            Continue to Payment
+                                            <ArrowUp className="size-3" />
+                                        </>
+                                    )}
                                 </Button>
                             </div>
                         </motion.div>

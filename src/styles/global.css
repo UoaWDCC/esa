@@ -38,6 +38,7 @@
   --font-roboto-mono: "RobotoMono Regular", monospace;
 
   --color-primary-red: #D3312A; /* red */
+  --color-primary-red-400: #871F1B; /* Slightly Darker red */
   --color-primary-red-800: #651714; /* Dark red */
   --color-primary-white: #EBE9E6; /* white */
   --color-primary-grey: #161514; /* dark grey */
@@ -64,7 +65,6 @@
 h1 {
   font-family: var(--font-reservoir-grunge);
   font-size: clamp(2rem, 5vw + 1rem, 5rem); /* minmum size, perferred size, maximum size */
-  color: var(--color-primary-red);
 }
 
 h2 {
@@ -75,6 +75,10 @@ h2 {
 h3 {
   font-family: var(--font-reservoir-grunge);
   font-size: clamp(1rem, 1vw + 1rem, 1.75rem); /* minmum size, perferred size, maximum size */
+}
+
+h4 {
+  font-size: clamp(1rem, 1vw + 2rem, 1.75rem);
 }
 
 /* SHADCN STUFF DO NOT WORRY ABOUT IT!! */

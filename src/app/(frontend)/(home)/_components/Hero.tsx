@@ -5,26 +5,26 @@ import {Button} from "@/components/ui/Button";
 
 const Hero = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="h-[700px] md:min-h-screen relative overflow-hidden">
       {/* Black Background */}
       <div className="absolute inset-0"></div>
 
       {/* Background Image covering full screen with zoom */}
-      <div className="absolute inset-0 h-screen bg-cover bg-center bg-no-repeat bg-[url('/images/home/HeroPageImage.png')] transform scale-100 transition-transform duration-500 ease-in-out">
+      <div className="absolute inset-0 h-[700px] md:h-screen bg-cover bg-center bg-no-repeat bg-[url('/images/home/HeroPageImage.png')] transform scale-100 transition-transform duration-500 ease-in-out">
 
           {/* Hero Section */}
-          <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 md:px-8 xl:px-20 text-center">
+          <div className="relative z-10 flex flex-col items-center justify-center h-[700px] md:min-h-screen px-4 md:px-8 xl:px-20 text-center md:pb-0 pb-10">
             <Image
               className="w-full h-auto hidden md:block"
               src="/images/HeroTitle.svg"
-              alt=""
+              alt="Eastern Students Association title"
               width={100}
               height={100}
             />
             <Image
-                className="w-full h-auto block md:hidden"
+                className="w-full h-auto block md:hidden mb-15"
                 src="/images/home/HeroTitleMobile.svg"
-                alt=""
+                alt="Eastern Students Association title"
                 width={100}
                 height={100}
             />

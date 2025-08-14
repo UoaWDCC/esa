@@ -195,6 +195,7 @@ export interface Event {
   description?: string | null;
   photo?: (string | null) | Media;
   isLocked?: boolean | null;
+  signUpForm: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -251,21 +252,11 @@ export interface Exec {
   /**
    * Short biography of the executive
    */
-  about: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  about: string;
+  /**
+   * Controls whether this exec will be displayed on the about us page
+   */
+  isImportant: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -411,6 +402,7 @@ export interface EventsSelect<T extends boolean = true> {
   description?: T;
   photo?: T;
   isLocked?: T;
+  signUpForm?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -448,6 +440,7 @@ export interface ExecsSelect<T extends boolean = true> {
   degree?: T;
   image?: T;
   about?: T;
+  isImportant?: T;
   updatedAt?: T;
   createdAt?: T;
 }
