@@ -141,20 +141,17 @@ export default function SignupForm() {
                                             { value: '4th Year+', label: '4th Year+' },
                                         ]}
                                         className="w-full"
-                                        required
+                                        required={true}
                                     />
-                                    {/* Tooltip text */}
-                                    <div className="min-h-auto flex flex-col justify-between">
-                                        <FormInput
-                                            label="UPI"
-                                            placeholder="Enter your UPI"
-                                            {...register('upi')}
-                                            error={errors.upi}
-                                            className="w-full placeholder:text-gray"
-                                            showTooltip={true}
-                                            tooltip='The characters before the @ in your UoA email address or "000" if you are from AUT'
-                                        />
-                                    </div>
+                                    <FormInput
+                                        label="UPI"
+                                        placeholder="Enter your UPI"
+                                        {...register('upi')}
+                                        error={errors.upi}
+                                        className="w-full placeholder:text-gray"
+                                        showTooltip={true}
+                                        tooltip='The characters before the @ in your UoA email address or "000" if you are from AUT'
+                                    />
                                 </div>
 
                                 <FormInput
