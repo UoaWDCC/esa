@@ -1,77 +1,52 @@
 "use client"
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 export default function SquigglyArrow() {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const [phase, setPhase] = useState(0);
+    const width = 150;
+    const height = 100;
+    const amplitude = 10;
+    const frequency = 0.1;
+    const arrowLength = 20;
+    const arrowWidth = 10;
 
     useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-
-        let phase = 0; // makes sine wave move
-        const amplitude = 10;
-        const frequency = 0.1;
-
-        const draw = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // clear old frame
-
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height / 2);
-
-            // draw sin wave
-            for (let x = 0; x <= canvas.width; x++) {
-                const y =
-                    amplitude * Math.sin(frequency * x + phase) + canvas.height / 2;
-                ctx.lineTo(x, y);
-            }
-
-            ctx.strokeStyle = "#FFFFFF";
-            ctx.lineWidth = 5;
-            ctx.stroke();
-
-            // calculate points for arrowhead
-            const endX = canvas.width;
-            const endY = amplitude * Math.sin(frequency * endX + phase) + canvas.height / 2;
-
-            const prevX = endX - 1;
-            const prevY = amplitude * Math.sin(frequency * prevX + phase) + canvas.height / 2;
-
-            // calculate angle of the line at the end (tangent)
-            const angle = Math.atan2(endY - prevY, endX - prevX);
-
-            // draw arrowhead
-            const arrowLength = 20;
-            const arrowWidth = 10;
-
-            ctx.fillStyle = "#FFFFFF";
-            ctx.beginPath();
-
-            // point of arrowhead
-            ctx.moveTo(endX, endY);
-
-            // two base points of the arrowhead triangle
-            ctx.lineTo(
-                endX - arrowLength * Math.cos(angle - Math.PI / 6),
-                endY - arrowLength * Math.sin(angle - Math.PI / 6)
-            );
-            ctx.lineTo(
-                endX - arrowLength * Math.cos(angle + Math.PI / 6),
-                endY - arrowLength * Math.sin(angle + Math.PI / 6)
-            );
-
-            ctx.closePath();
-            ctx.fill();
-
-            phase += 0.1;
-            requestAnimationFrame(draw);
-        };
-
-        draw();
+        const id = requestAnimationFrame(function animate() {
+            setPhase(prev => prev + 0.07);
+            requestAnimationFrame(animate);
+        });
+        return () => cancelAnimationFrame(id);
     }, []);
 
-    return <canvas ref={canvasRef} width={150} height={100} />;
-}
+    // calculate wave path
+    const points: string[] = [];
+    for (let x = 0; x <= width - (arrowLength - 15); x++) {
+        const y = amplitude * Math.sin(frequency * x + phase) + height / 2;
+        points.push(`${x},${y}`);
+    }
+    const pathData = "M" + points.join(" L"); // M: move to, L: line to
 
+    // calculate position of arrowhead
+    const tipX = width;
+    const tipY = amplitude * Math.sin(frequency * tipX + phase) + height / 2;
+    const prevX = tipX - 1;
+    const prevY = amplitude * Math.sin(frequency * prevX + phase) + height / 2;
+    const angle = Math.atan2(tipY - prevY, tipX - prevX);
+    const baseX = tipX - arrowLength * Math.cos(angle);
+    const baseY = tipY - arrowLength * Math.sin(angle);
+    
+    const arrowPoints = [
+        [tipX, tipY],
+        [baseX + arrowWidth * Math.sin(angle), baseY - arrowWidth * Math.cos(angle)],
+        [baseX - arrowWidth * Math.sin(angle), baseY + arrowWidth * Math.cos(angle)],
+    ]
+        .map(p => p.join(","))
+        .join(" ");
+
+    return (
+        <svg width={width} height={height}>
+            <path d={pathData} stroke="#FFFFFF" strokeWidth={5} />
+            <polygon points={arrowPoints} fill="#FFFFFF" />
+        </svg>
+    );
+}
