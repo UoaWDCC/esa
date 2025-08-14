@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Image from "next/image";
 import ContactForm from "@/app/(frontend)/contact/_components/ContactForm";
 
@@ -23,6 +24,12 @@ import Image from 'next/image';
 import ContactForm from '@/app/(frontend)/contact/_components/ContactForm';
 
 export default function ContactPage() {
+=======
+import Image from 'next/image';
+import ContactForm from '@/app/(frontend)/contact/_components/ContactForm';
+
+export default function ContactPage() {
+>>>>>>> c7ca0b30ae80de3d7f0a24253f25022a4c7339ab
     return (
         <section className="mx-auto mt-16 flex flex-col md:flex-row items-center justify-center h-dvh px-5">
             <div className="mb-8 w-auto md:mb-0 md:mr-8 md:w-auto max-w-md">
@@ -38,5 +45,8 @@ export default function ContactPage() {
             <ContactForm />
         </section>
     );
+<<<<<<< HEAD
+>>>>>>> c7ca0b30ae80de3d7f0a24253f25022a4c7339ab
+=======
 >>>>>>> c7ca0b30ae80de3d7f0a24253f25022a4c7339ab
 }

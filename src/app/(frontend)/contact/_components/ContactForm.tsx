@@ -12,14 +12,6 @@ import ThankYou from './ThankYou';
 
 // T3 env
 import { env } from 'config/clientEnv';
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ContactInput, contactSchema } from "@/lib/zod/schema/contactInput";
-import ArrowUp from "@/components/icons/ArrowUp";
-import FormInput from "@/components/ui/FormInput";
-import FormTextArea from "@/components/ui/FormTextArea";
-import { Button } from "@/components/ui/Button";
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -59,9 +51,6 @@ export default function ContactForm() {
             console.error('Unexpected error:', error);
         }
     }
-  async function onSubmit(values: ContactInput) {
-    console.log(values);
-  }
 
     return (
         <div className="text-center text-primary-white bg-transparent flex flex-col items-center">
@@ -108,45 +97,6 @@ export default function ContactForm() {
             ) : (
                 <ThankYou />
             )}
-  return (
-    <section className="flex flex-col items-center text-center text-primary-white bg-transparent w-full max-w-sm">
-      <h3 className="mb-2 text-2xl underline underline-offset-4">Let’s have a chat!</h3>
-
-      <div className="text-[12px]  w-full">
-        <p className="mb-6 px-4">
-          We’d love to hear from you! You can contact us with the form below or send us an email or call.
-        </p>
-
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-1 w-full max-w-lg px-4">
-          <FormInput
-            placeholder="Enter your name"
-            {...register("name")}
-            error={errors.name}
-            className="w-full"
-          />
-          <FormInput
-            placeholder="Enter your email"
-            {...register("email")}
-            error={errors.email}
-            className="w-full"
-          />
-          <FormTextArea
-            placeholder="Write your message"
-            {...register("message")}
-            error={errors.message}
-            className="w-full"
-          />
-          <div className="flex justify-end">
-            <Button type="submit" disabled={isSubmitting} className="flex items-center gap-x-1">
-              {isSubmitting ? "Submitting..." : (
-                <>
-                  Send
-                  <ArrowUp className="size-3" />
-                </>
-              )}
-            </Button>
-          </div>
-        </form>
 
             <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
                 <div className="flex px-3 border-b border-primary-white justify-between">
