@@ -4,13 +4,10 @@ import Link from 'next/link';
 import { useSponsors } from '@/features/sponsors/data/tanstack/useSponsors';
 import Image from 'next/image';
 import Title from '@/components/ui/Title';
-import parseSponsors from '@/features/sponsors/data/payload/parseSponsors';
-import { SponsorData } from '@/types/SponsorData';
 
 export default function Sponsors() {
-    const { data } = useSponsors();
-    const parsedSponsors = (data ? parseSponsors(data) : []) as SponsorData[];
-    if (!parsedSponsors.length) return null;
+    const { data: parsedSponsors } = useSponsors();
+    if (!parsedSponsors) return;
 
     return (
         <div className="py-12 text-primary-white">
