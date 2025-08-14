@@ -7,9 +7,9 @@ export default function JoinExecTeam() {
         <div className="flex items-center justify-center md:justify-start min-h-[150vh] relative overflow-hidden">
             <Image
                 src="/images/aboutus/ExecTeamBg.jpg"
-                alt=""
-                fill={true}
-                priority={true}
+                alt="exec team background"
+                fill
+                priority
                 className="object-cover object-center"
             />
 
