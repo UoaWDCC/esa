@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
 import { EventData } from '@/types/EventData';
@@ -16,13 +17,17 @@ interface EventCardProps {
 export default function EventCard({ event, even, isPast }: EventCardProps) {
     const [expanded, setExpanded] = useState(false);
     const date = new Date(event.date);
+    const disabled = event.locked || isPast;
 
     return (
         <div className="w-full">
+            {/* Collapsed view */}
             {!expanded && (
                 <div className="w-fit md:w-full flex flex-col md:flex-row gap-x-5">
                     <div
-                        className={`flex gap-x-5 justify-center items-center ${even ? 'flex-row-reverse md:flex-row' : 'flex-row'}`}
+                        className={`flex gap-x-5 justify-center items-center ${
+                            even ? 'flex-row-reverse md:flex-row' : 'flex-row'
+                        }`}
                     >
                         <div className="flex flex-col">
                             <h4>{days[date.getDay()]}</h4>
@@ -35,13 +40,14 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                                 variant="clear"
                                 size="sm"
                                 className="whitespace-nowrap"
-                                href={event.locked ? undefined : event.signUpForm}
-                                disabled={event.locked || isPast}
+                                href={disabled ? undefined : event.signUpForm}
+                                disabled={disabled}
                             >
                                 Sign up Here
                             </Button>
                         </div>
 
+                        {/* Poster with fixed aspect ratio */}
                         <div className="relative w-[200px] md:w-[246px] aspect-[178/123] overflow-hidden rounded-3xl">
                             <Image
                                 src={event.image}
@@ -63,9 +69,9 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                         </div>
                     </div>
 
-                    <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0">
+                    {/* Transparent, no border */}
+                    <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0 !bg-transparent !border-none">
                         <h4>{!event.locked ? event.title : 'Locked Event'}</h4>
-                        <hr />
                         <p>
                             {!event.locked
                                 ? event.description
@@ -75,6 +81,7 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                 </div>
             )}
 
+            {/* Expanded view */}
             <AnimatePresence>
                 {expanded && (
                     <motion.div
@@ -82,24 +89,39 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col md:flex-row gap-6 mt-4"
+                        className="mt-4"
                     >
-                        <div className="relative w-full md:w-[45%] min-h-[250px] rounded-3xl overflow-hidden">
-                            <Image
-                                src={event.image}
-                                alt={event.imageAlt}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
+                        {/* Fixed height for both columns */}
+                        <div className="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-6 items-end">
+                            {/* Tall poster */}
+                            <div className="relative w-full h-[520px] rounded-3xl overflow-hidden shadow-lg">
+                                <Image
+                                    src={event.image}
+                                    alt={event.imageAlt}
+                                    fill
+                                    priority
+                                    className={`object-cover ${event.locked ? 'blur-sm' : ''}`}
+                                    draggable={false}
+                                />
+                                {event.locked && (
+                                    <Image
+                                        src="/images/home/lock.png"
+                                        alt="Locked"
+                                        width={80}
+                                        height={80}
+                                        draggable={false}
+                                        className="absolute inset-0 m-auto z-10"
+                                    />
+                                )}
+                            </div>
 
-                        <div className="flex flex-col justify-between w-full md:w-[55%]">
-                            <div>
-                                <div className="flex justify-between items-center">
-                                    <h2 className="text-xl font-bold">
+                            {/* Right panel matches image height */}
+                            <div className="flex flex-col justify-between w-full h-[520px] rounded-3xl p-4 md:p-6 !bg-transparent !border-none">
+                                <div>
+                                    <h2 className="text-xl md:text-2xl font-bold leading-tight">
                                         {!event.locked ? event.title : 'Locked Event'}
                                     </h2>
-                                    <span className="text-sm text-gray-400">
+                                    <span className="text-sm md:text-base text-gray-400 block mt-1">
                                         {date.toLocaleDateString('en-NZ', {
                                             weekday: 'long',
                                             day: '2-digit',
@@ -107,36 +129,50 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                                             year: '2-digit',
                                         })}
                                     </span>
+                                    <div className="mt-4 text-gray-300 leading-relaxed">
+                                        {!event.locked
+                                            ? event.description
+                                            : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
+                                    </div>
                                 </div>
-                                <p className="mt-4 text-gray-300">
-                                    {!event.locked
-                                        ? event.description
-                                        : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
-                                </p>
-                            </div>
 
-                            <div className="flex justify-end mt-6">
-                                <Button
-                                    variant="default"
-                                    size="lg"
-                                    href={event.locked ? undefined : event.signUpForm}
-                                    disabled={event.locked || isPast}
-                                >
-                                    Sign Up ↗
-                                </Button>
+                                {/* Centered Sign Up PNG at the bottom */}
+                                <div className="flex justify-center pt-6">
+                                    <a
+                                        href={disabled ? undefined : event.signUpForm}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-disabled={disabled}
+                                        tabIndex={disabled ? -1 : undefined}
+                                        className={disabled ? 'pointer-events-none' : ''}
+                                    >
+                                        <Image
+                                            src="/images/signup/Group 1.png"
+                                            alt="Sign Up"
+                                            width={200}
+                                            height={80}
+                                            draggable={false}
+                                            className="hover:scale-105 transition-transform"
+                                        />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
+            {/* Toggle as button (no date) */}
             <div className="mt-3 flex justify-end">
-                <button
+                <Button
+                    variant="clear"
+                    size="sm"
+                    className="whitespace-nowrap"
                     onClick={() => setExpanded(!expanded)}
-                    className="text-primary-red underline hover:opacity-80 transition-opacity"
+                    aria-expanded={expanded}
                 >
                     {expanded ? 'See Less' : 'See More'}
-                </button>
+                </Button>
             </div>
         </div>
     );
