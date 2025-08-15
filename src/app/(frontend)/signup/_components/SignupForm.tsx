@@ -163,9 +163,6 @@ export default function SignupForm() {
                                     showTooltip={true}
                                     tooltip='Put "0" if it has not been given to you - we will get in touch!'
                                 />
-                                <p className="text-xs mb-5 mx-auto">
-                                    Fields marked with * are required
-                                </p>
                             </div>
 
                             <div className="flex justify-end items-center pl-2 md:pl-5">
@@ -256,9 +253,6 @@ export default function SignupForm() {
                                     className="w-full placeholder:text-gray"
                                     rows={1}
                                 />
-                                <p className="text-xs mb-5 mx-auto">
-                                    Fields marked with * are required
-                                </p>
                                 <Button
                                     type="submit"
                                     className="w-fit mx-auto flex items-center gap-x-2 select-none z-10"

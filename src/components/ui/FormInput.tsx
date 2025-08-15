@@ -17,7 +17,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
     ({ label, placeholder, error, className, tooltip, showTooltip, required, ...rest }, ref) => {
         const [isHovered, setIsHovered] = useState(false);
         return (
-            <div className="mb-8">
+            <div className="mb-2">
                 {/* Parent flex row for Label and Tooltip */}
                 <div className="flex items-center pl-3 mb-1">
                     {/* Label Element with Error Asterisk */}
@@ -61,6 +61,15 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                     )}
                     {...rest}
                 />
+
+                <p
+                    className={cn(
+                        'text-sm px-3 transition-all duration-200 h-5',
+                        error ? 'text-red-500 visible' : 'invisible',
+                    )}
+                >
+                    {error?.message}
+                </p>
             </div>
         );
     },
