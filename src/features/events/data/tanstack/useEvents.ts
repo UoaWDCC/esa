@@ -5,6 +5,6 @@ export function useEvents() {
     return useQuery({
         queryKey: ["events"],
         queryFn: getEvents,
-        staleTime: 1000 * 60
+        staleTime: 1000 * 60 * 60
     });
 }

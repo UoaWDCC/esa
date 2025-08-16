@@ -24,7 +24,7 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                         {date.getFullYear().toString().slice(-2)}
                     </h4>
                         <Button variant="clear" size="sm" className="whitespace-nowrap" href={event.locked ? undefined : event.signUpForm} disabled={event.locked || isPast}>
-                        Sign up Here
+                        Sign up here
                         </Button>
 
                 </div>
