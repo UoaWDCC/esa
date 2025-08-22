@@ -10,13 +10,6 @@ const WhyJoin = () => {
   return (
       // Root container with background image and content overlay
       <div id="root" className="relative h-[700px] md:min-h-screen min-w-[375px] overflow-hidden">
-          {/* Background Image using Next.js Image component */}
-          <Image
-              src="/images/home/HeroPageImage.jpg"
-              alt="Why Join Background"
-              fill
-              className="absolute origin-center object-cover scale-180 brightness-20 lg:scale-140"
-          />
           {/* Content overlay */}
           <div
               id="content"
