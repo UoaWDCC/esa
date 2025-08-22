@@ -40,7 +40,7 @@ const WhyJoin = () => {
               </div>
 
               {/* Join button */}
-              <div className="flex flex-col items-start mt-5 ">
+              <div className="flex flex-col items-start mt-15 ">
                   <Button href="/signup" className="px-8 py-3.25 z-10">
                       Join the ESA Family!
                   </Button>
@@ -53,7 +53,7 @@ const WhyJoin = () => {
               alt="Film Strip"
               width="758"
               height="1072"
-              className="absolute hidden lg:block right-0 -top-[29px] origin-top-right"
+              className="absolute mt-65 top-10 rotate-60 lg:block lg:rotate-none lg:mt-0 lg:right-0 lg:-top-[29px] lg:origin-top-right"
           />
       </div>
   );
