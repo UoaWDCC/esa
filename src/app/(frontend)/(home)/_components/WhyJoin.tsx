@@ -53,7 +53,7 @@ const WhyJoin = () => {
               alt="Film Strip"
               width="758"
               height="1072"
-              className="absolute mt-65 top-10 rotate-60 lg:block lg:rotate-none lg:mt-0 lg:right-0 lg:-top-[29px] lg:origin-top-right"
+              className="absolute top-90 rotate-60 right-15 scale-125 lg:block lg:rotate-none lg:mt-0 lg:right-0 lg:-top-[29px] lg:origin-top-right"
           />
       </div>
   );
