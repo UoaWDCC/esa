@@ -1,14 +1,30 @@
 "use client"
 import React, { useEffect, useState } from "react";
 
-export default function SquigglyArrow() {
+interface SquigglyArrowProps {
+    width?: number;
+    height?: number;
+    amplitude?: number;
+    frequency?: number;
+    arrowLength?: number;
+    arrowWidth?: number;
+    strokeColor?: string;
+    strokeWidth?: number;
+    fillColor?: string;
+}
+
+export default function SquigglyArrow({
+    width = 85,
+    height = 100,
+    amplitude = 10,
+    frequency = 0.1,
+    arrowLength = 20,
+    arrowWidth = 10,
+    strokeColor = "#FFFFFF",
+    strokeWidth = 5,
+    fillColor = "#FFFFFF",
+}: SquigglyArrowProps) {
     const [phase, setPhase] = useState(0);
-    const width = 85;
-    const height = 100;
-    const amplitude = 10;
-    const frequency = 0.1;
-    const arrowLength = 20;
-    const arrowWidth = 10;
 
     useEffect(() => {
         const id = requestAnimationFrame(function animate() {
@@ -47,8 +63,8 @@ export default function SquigglyArrow() {
 
     return (
         <svg width={width + arrowLength} height={height}>
-            <path d={pathData} stroke="#FFFFFF" strokeWidth={5} fill="none" />
-            <polygon points={arrowPoints} fill="#FFFFFF" />
+            <path d={pathData} stroke={strokeColor} strokeWidth={strokeWidth} fill="none" />
+            <polygon points={arrowPoints} fill={fillColor} />
         </svg>
     );
 }
