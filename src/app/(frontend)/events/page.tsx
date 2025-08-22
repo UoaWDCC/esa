@@ -5,6 +5,7 @@ import Title from "@/components/ui/Title";
 import EventCard from '@/app/(frontend)/(home)/_components/Events/EventCard';
 import { EventData } from '@/types/EventData';
 import {useEvents} from "@/features/events/data/tanstack/useEvents";
+import { setupEvents } from '@/features/events/utils/setupEvents';
 
 interface EventDoc extends EventData {}
 
@@ -16,29 +17,7 @@ export default function events() {
     const upcomingEvents: EventData[] = [];
     const pastEvents: EventData[] = [];
     
-    // Sort by date ascending, then take the first 10 events from all events in payload
-    const docs: EventDoc[] = parsedEvents
-        .sort((a: EventDoc, b: EventDoc) => new Date(a.date).getTime() - new Date(b.date).getTime())
-        .slice(0, 10);
-    
-    
-    // Get today's date at midnight (UTC)
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-    
-    // For every event, split events into upcoming and past based on today's date
-    docs.forEach((doc) => {
-        const dateObj = new Date(doc.date)
-    
-        // Check if the event is upcoming or past
-        if (dateObj >= today) { // Upcoming event
-            upcomingEvents.push(doc)
-        } else {
-            pastEvents.push(doc) // Past event
-        }
-    })
-    
-    pastEvents.reverse(); // Newest past event is at index 0
+    setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
     <div className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
