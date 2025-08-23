@@ -1,4 +1,5 @@
-import { Button } from '@/components/ui/Button';
+import {Button} from "@/components/ui/Button";
+import SquigglyArrow from "@/components/icons/SquigglyArrow"
 
 const test = () => {
     return (
@@ -27,11 +28,13 @@ const test = () => {
                 <Button href="/">This is a button with a link</Button>
             </div>
 
-            <div className="mt-5">
-                <p>if you want to test any components, you can place them here</p>
-            </div>
-        </div>
-    );
-};
+          <div className="mt-5">
+              <p>if you want to test any components, you can place them here</p>
+              <SquigglyArrow />
+              
+          </div>
+      </div>
+  )
+}
 
 export default test;
