@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Carousel from './Carousel';
 import Link from 'next/link';
