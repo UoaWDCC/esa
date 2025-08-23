@@ -245,21 +245,11 @@ export interface Exec {
   /**
    * Short biography of the executive
    */
-  about: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  about: string;
+  /**
+   * Controls whether this exec will be displayed on the about us page
+   */
+  isImportant: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -436,6 +426,7 @@ export interface ExecsSelect<T extends boolean = true> {
   degree?: T;
   image?: T;
   about?: T;
+  isImportant?: T;
   updatedAt?: T;
   createdAt?: T;
 }

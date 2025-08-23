@@ -26,8 +26,8 @@ export default function SignupForm() {
         resolver: zodResolver(signupSchema),
         defaultValues: {
             timestamp: new Date(),
-            membershipPayment: "Stripe",
-            paymentScreenshotLink: "N/A",
+            membershipPayment: 'Stripe',
+            paymentScreenshotLink: 'N/A',
         },
     });
 
@@ -45,11 +45,11 @@ export default function SignupForm() {
 
             return result.canCreate;
         } catch (error: any) {
-            console.error("Error checking if member can be created:", error);
+            console.error('Error checking if member can be created:', error);
             alert(error.message);
             return false;
         }
-    }
+    };
 
     // This function handles the form submission (upon clicking the "Continue to Payment" button).
     // For now it just creates the member in the database. In the future, it will also handle the payment process.
@@ -57,7 +57,9 @@ export default function SignupForm() {
         // Check if the member can be created
         const canCreate = await checkCanCreate(data);
         if (!canCreate) {
-            alert("You have already signed up for the ESA membership for this year. If you think this is a mistake, please contact us.");
+            alert(
+                'You have already signed up for the ESA membership for this year. If you think this is a mistake, please contact us.',
+            );
             return;
         }
 
@@ -69,15 +71,14 @@ export default function SignupForm() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-            })
+            });
 
-            const result = await response.json()
-            console.log("Payment session result:", result)
+            const result = await response.json();
+            console.log('Payment session result:', result);
 
-            if (!response.ok) throw new Error(result.message || "Failed to start payment")
+            if (!response.ok) throw new Error(result.message || 'Failed to start payment');
 
-            window.location.href = result.url // TODO: Change this 
-        
+            window.location.href = result.url; // TODO: Change this
             reset();
         } catch (error: any) {
             alert(error.message);
@@ -100,7 +101,7 @@ export default function SignupForm() {
                             transition={{ duration: 0.3 }}
                             className="flex pl-10 md:pl-20 pr-2 md:pr-5 w-fit"
                         >
-                            <div className="py-10">
+                            <div className="flex flex-col py-10">
                                 <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
                                         label="First Name"
@@ -108,6 +109,7 @@ export default function SignupForm() {
                                         {...register('firstName')}
                                         error={errors.firstName}
                                         className="w-full placeholder:text-gray"
+                                        required={true}
                                     />
                                     <FormInput
                                         label="Last Name"
@@ -115,6 +117,7 @@ export default function SignupForm() {
                                         {...register('lastName')}
                                         error={errors.lastName}
                                         className="w-full placeholder:text-gray"
+                                        required={true}
                                     />
                                 </div>
                                 <FormInput
@@ -123,6 +126,7 @@ export default function SignupForm() {
                                     {...register('email')}
                                     error={errors.email}
                                     className="w-full placeholder:text-gray"
+                                    required={true}
                                 />
                                 <div className="md:flex md:justify-between">
                                     <FormSelect
@@ -137,21 +141,27 @@ export default function SignupForm() {
                                             { value: '4th Year+', label: '4th Year+' },
                                         ]}
                                         className="w-full"
+                                        required={true}
                                     />
                                     <FormInput
-                                        label="UPI (Optional)"
+                                        label="UPI"
                                         placeholder="Enter your UPI"
                                         {...register('upi')}
                                         error={errors.upi}
                                         className="w-full placeholder:text-gray"
+                                        showTooltip={true}
+                                        tooltip='The characters before the @ in your UoA email address or "000" if you are from AUT'
                                     />
                                 </div>
+
                                 <FormInput
-                                    label="Membership Card Number (Optional)"
+                                    label="Membership Card Number"
                                     placeholder="Enter Card Number"
                                     {...register('membershipCardNumber')}
                                     error={errors.membershipCardNumber}
                                     className="w-full placeholder:text-gray"
+                                    showTooltip={true}
+                                    tooltip='Put "0" if it has not been given to you - we will get in touch!'
                                 />
                             </div>
 
@@ -166,7 +176,7 @@ export default function SignupForm() {
                                             'email',
                                             'yearOfStudy',
                                             'upi',
-                                            'membershipCardNumber'
+                                            'membershipCardNumber',
                                         ]);
                                         if (valid) setStep(2);
                                     }}
@@ -196,11 +206,12 @@ export default function SignupForm() {
                             <div className="flex flex-col justify-center py-10">
                                 <div className="md:flex md:justify-between gap-x-15">
                                     <FormInput
-                                        label="Ethnicity (E.g. Chinese"
+                                        label="Ethnicity (E.g. Chinese)"
                                         placeholder="Enter Here"
                                         {...register('ethnicity')}
                                         error={errors.ethnicity}
                                         className="w-full placeholder:text-gray"
+                                        required={true}
                                     />
                                     <FormSelect
                                         label="Gender"
@@ -217,24 +228,25 @@ export default function SignupForm() {
                                             { value: 'other', label: 'Other' },
                                         ]}
                                         className="w-full"
+                                        required={true}
                                     />
                                 </div>
                                 <FormInput
-                                    label="Which ESA Committee Member convinced you to sign-up? (Optional)"
-                                    placeholder="Enter the name of ESA committee member that convinced you to sign-up (optional)"
+                                    label="Which ESA Committee Member convinced you to sign-up?"
+                                    placeholder="Enter Full Name"
                                     {...register('convincedByCommitteeMember')}
                                     error={errors.convincedByCommitteeMember}
                                     className="w-full placeholder:text-gray"
                                 />
                                 <FormInput
-                                    label="Person who referred you (Optional)"
-                                    placeholder="Enter Full Name Here"
+                                    label="Person who referred you"
+                                    placeholder="Enter Full Name"
                                     {...register('referrerName')}
                                     error={errors.referrerName}
                                     className="w-full placeholder:text-gray"
                                 />
                                 <FormTextarea
-                                    label="Notes (Optional)"
+                                    label="Notes"
                                     placeholder="Enter Notes Here"
                                     {...register('notes')}
                                     error={errors.notes}
