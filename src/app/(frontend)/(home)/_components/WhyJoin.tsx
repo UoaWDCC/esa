@@ -10,13 +10,6 @@ const WhyJoin = () => {
   return (
       // Root container with background image and content overlay
       <div id="root" className="relative h-[700px] md:min-h-screen min-w-[375px] overflow-hidden">
-          {/* Background Image using Next.js Image component */}
-          <Image
-              src="/images/home/HeroPageImage.jpg"
-              alt="Why Join Background"
-              fill
-              className="absolute origin-center object-cover scale-180 brightness-20 lg:scale-140"
-          />
           {/* Content overlay */}
           <div
               id="content"
@@ -47,7 +40,7 @@ const WhyJoin = () => {
               </div>
 
               {/* Join button */}
-              <div className="flex flex-col items-start mt-5 ">
+              <div className="flex flex-col items-start mt-15 ">
                   <Button href="/signup" className="px-8 py-3.25 z-10">
                       Join the ESA Family!
                   </Button>
@@ -60,7 +53,7 @@ const WhyJoin = () => {
               alt="Film Strip"
               width="758"
               height="1072"
-              className="absolute hidden lg:block right-0 -top-[29px] origin-top-right"
+              className="absolute top-90 rotate-60 right-15 scale-125 lg:block lg:rotate-none lg:mt-0 lg:right-0 lg:-top-[29px] lg:origin-top-right"
           />
       </div>
   );
