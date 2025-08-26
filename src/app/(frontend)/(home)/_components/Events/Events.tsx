@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import EventCard from './EventCard';
 import { EventData } from '@/types/EventData';
-import Title from '@/components/ui/Title';
-import Image from 'next/image';
-import { useEvents } from '@/features/events/data/tanstack/useEvents';
+import Title from "@/components/ui/Title";
+import Image from "next/image";
+import {useEvents} from "@/features/events/data/tanstack/useEvents";
+import { setupEvents } from '@/features/events/utils/setupEvents';
 
 interface EventDoc extends EventData {}
 
@@ -18,23 +19,7 @@ export default function Events() {
     const upcomingEvents: EventData[] = [];
     const pastEvents: EventData[] = [];
 
-    const docs: EventDoc[] = parsedEvents
-        .sort((a: EventDoc, b: EventDoc) => new Date(a.date).getTime() - new Date(b.date).getTime())
-        .slice(0, 10);
-
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-
-    docs.forEach((doc) => {
-        const dateObj = new Date(doc.date);
-        if (dateObj >= today) {
-            upcomingEvents.push(doc);
-        } else {
-            pastEvents.push(doc);
-        }
-    });
-
-    pastEvents.reverse();
+  setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
         <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
