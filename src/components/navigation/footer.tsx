@@ -27,7 +27,6 @@ function Footer() {
             links: [
                 { label: 'About Us', href: '/about-us' },
                 { label: 'Execs', href: '/execs' },
-                { label: 'Sponsors', href: '/sponsors' },
             ],
         },
         {
@@ -35,7 +34,7 @@ function Footer() {
             links: [
                 { label: 'Gallery', href: '/gallery' },
                 { label: 'Events', href: '/events' },
-                { label: 'News', href: '/news' },
+                { label: 'Sponsors', href: '/sponsors' },
             ],
         },
         {
