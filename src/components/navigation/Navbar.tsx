@@ -19,8 +19,8 @@ export default function Navbar() {
             href: "/",
         },
         {
-            name: "NEWS",
-            href: "/news",
+            name: "GALLERY",
+            href: "/gallery",
         },
         {
             name: "CONTACT",
@@ -39,22 +39,23 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Navbar */}
-            <nav className="hidden md:flex mt-5 z-50 absolute top-0 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-8 lg:px-28 rounded-full gap-4 py-0">
-                <Link href="/news" className="hover:text-primary-grey transition-colors">
-                    NEWS
+            <nav className="hidden md:flex z-50 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-8 lg:px-28 rounded-full gap-4 py-0">    
+                <Link href="/events" className="hover:text-accent transition-colors">
+                    EVENTS
                 </Link>
-                <Link href="/contact" className="hover:text-primary-grey transition-colors">
-                    CONTACT
+                <Link href="/gallery" className="hover:text-accent transition-colors">
+                    GALLERY
                 </Link>
                 <Link href="/" className="w-10 h-10 flex items-center justify-center">
                     <Image src="/images/logo/esa_logo.png" alt="ESA Logo" height={50} width={60} />
                 </Link>
-                <Link href="/events" className="hover:text-primary-grey transition-colors">
-                    EVENTS
+                <Link href="/about-us" className="hover:text-accent transition-colors">
+                    ABOUT
                 </Link>
-                <Link href="/about-us" className="hover:text-primary-grey transition-colors">
-                    ABOUT US
+                <Link href="/contact" className="hover:text-accent transition-colors">
+                    CONTACT
                 </Link>
+                
             </nav>
 
             {/* Mobile Navbar */}
