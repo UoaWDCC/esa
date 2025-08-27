@@ -167,7 +167,10 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
 
                                 {/* Button stuck bottom right */}
                                 <div className="mt-auto flex justify-end">
-                                    <Button className="flex flex-row items-center gap-x-2">
+                                    <Button
+                                        disabled={event.locked}
+                                        className="flex flex-row items-center gap-x-2"
+                                    >
                                         Sign Up
                                         <ArrowUp className="size-3" />
                                     </Button>

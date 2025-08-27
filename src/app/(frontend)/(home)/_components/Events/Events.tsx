@@ -8,8 +8,6 @@ import Image from "next/image";
 import {useEvents} from "@/features/events/data/tanstack/useEvents";
 import { setupEvents } from '@/features/events/utils/setupEvents';
 
-interface EventDoc extends EventData {}
-
 export default function Events() {
     const { data: parsedEvents } = useEvents();
     const [showAllUpcoming, setShowAllUpcoming] = useState(false); // NEW: toggle state
@@ -24,6 +22,7 @@ export default function Events() {
     return (
         <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
             {/* background image */}
+            {/* TODO change the background to use Next image */}
             <div className="hidden md:block absolute inset-0 bg-[url(/images/home/paperbackground.png)] bg-cover bg-center opacity-50" />
 
             <div className="hidden md:block absolute top-0 right-0 p-4 z-10 -rotate-[9deg] -translate-y-50 translate-x-30 w-[70vw] max-w-[900px] aspect-square opacity-40">
