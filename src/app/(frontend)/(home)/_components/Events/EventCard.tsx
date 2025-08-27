@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { EventData } from '@/types/EventData';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Clock, DollarSign, MapPin } from 'lucide-react';
+import ArrowUp from '@/components/icons/ArrowUp';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -19,8 +21,16 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
     const date = new Date(event.date);
     const disabled = event.locked || isPast;
 
+    const startTime = new Date(event.startTime);
+    const endTime = new Date(event.endTime);
+
+    function formatTime(date: Date) {
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    }
+
     return (
         <div className="w-full">
+            {expanded && <hr className="mb-5" />}
             {/* Collapsed view */}
             {!expanded && (
                 <div className="w-fit md:w-full flex flex-col md:flex-row gap-x-5">
@@ -72,6 +82,7 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                     {/* Transparent, no border */}
                     <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0 !bg-transparent !border-none">
                         <h4>{!event.locked ? event.title : 'Locked Event'}</h4>
+                        <hr />
                         <p>
                             {!event.locked
                                 ? event.description
@@ -91,8 +102,7 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                         transition={{ duration: 0.3 }}
                         className="mt-4"
                     >
-                        {/* Fixed height for both columns */}
-                        <div className="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-6 items-end">
+                        <div className="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-6 items-stretch">
                             {/* Tall poster */}
                             <div className="relative w-full h-[520px] rounded-3xl overflow-hidden shadow-lg">
                                 <Image
@@ -116,19 +126,38 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                             </div>
 
                             {/* Right panel matches image height */}
-                            <div className="flex flex-col justify-between w-full h-[520px] rounded-3xl p-4 md:p-6 !bg-transparent !border-none">
+                            <div className="flex flex-col w-full h-[520px] rounded-3xl !bg-transparent !border-none">
                                 <div>
-                                    <h2 className="text-xl md:text-2xl font-bold leading-tight">
-                                        {!event.locked ? event.title : 'Locked Event'}
-                                    </h2>
-                                    <span className="text-sm md:text-base text-gray-400 block mt-1">
-                                        {date.toLocaleDateString('en-NZ', {
-                                            weekday: 'long',
-                                            day: '2-digit',
-                                            month: '2-digit',
-                                            year: '2-digit',
-                                        })}
-                                    </span>
+                                    <div className="flex justify-between items-center">
+                                        <h4 className="text-xl md:text-2xl font-bold leading-tight">
+                                            {!event.locked ? event.title : 'Locked Event'}
+                                        </h4>
+                                        <h4>
+                                            {date.getDate().toString().padStart(2, '0')}.
+                                            {(date.getMonth() + 1).toString().padStart(2, '0')}.
+                                            {date.getFullYear().toString().slice(-2)}
+                                        </h4>
+                                    </div>
+                                    <div className="flex flex-col mt-5">
+                                        <div className="flex justify-between">
+                                            <span className="flex flex-row items-center">
+                                                <DollarSign /> {event.memberPrice} (Members)
+                                            </span>
+                                            <span className="flex flex-row items-center">
+                                                <Clock className="mr-1" />{' '}
+                                                {`${formatTime(startTime)} - ${formatTime(endTime)}`}
+                                            </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span className="flex flex-row items-center">
+                                                <DollarSign /> {event.nonMemberPrice} (Non-Members)
+                                            </span>
+                                            <span className="flex flex-row items-center">
+                                                <MapPin className="mr-1" />
+                                                {event.location}
+                                            </span>
+                                        </div>
+                                    </div>
                                     <div className="mt-4 text-gray-300 leading-relaxed">
                                         {!event.locked
                                             ? event.description
@@ -136,25 +165,12 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                                     </div>
                                 </div>
 
-                                {/* Centered Sign Up PNG at the bottom */}
-                                <div className="flex justify-center pt-6">
-                                    <a
-                                        href={disabled ? undefined : event.signUpForm}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-disabled={disabled}
-                                        tabIndex={disabled ? -1 : undefined}
-                                        className={disabled ? 'pointer-events-none' : ''}
-                                    >
-                                        <Image
-                                            src="/images/signup/Group 1.png"
-                                            alt="Sign Up"
-                                            width={200}
-                                            height={80}
-                                            draggable={false}
-                                            className="hover:scale-105 transition-transform"
-                                        />
-                                    </a>
+                                {/* Button stuck bottom right */}
+                                <div className="mt-auto flex justify-end">
+                                    <Button className="flex flex-row items-center gap-x-2">
+                                        Sign Up
+                                        <ArrowUp className="size-3" />
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +178,9 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                 )}
             </AnimatePresence>
 
-            {/* Toggle as button (no date) */}
+            {expanded && <hr className="mt-5" />}
+
+            {/* Toggle button */}
             <div className="mt-3 flex justify-end">
                 <Button
                     variant="clear"
