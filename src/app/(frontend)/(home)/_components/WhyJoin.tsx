@@ -47,7 +47,7 @@ const WhyJoin = () => {
               </div>
           </div>
 
-          {/*Film Strip image right-hand side of the page. Vertical on desktop, horizontal on mobile*/}
+          {/*Film Strip image. Vertical on desktop at the right, horizontal on mobile at the bottom */}
           <Image
               src="/images/home/film_strip.png"
               alt="Film Strip"
