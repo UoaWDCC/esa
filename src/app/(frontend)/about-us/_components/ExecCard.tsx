@@ -16,7 +16,7 @@ export default function ExecCard({ index, name, role, about, image }: ExecCardPr
             <div className="flex flex-col items-center w-[20rem]">
                 <h4 className="text-2xl font-semibold -mb-1">{name}</h4>
                 <p className="text-sm font-smeltex-medium">{role}</p>
-                <div className="h-[1px] w-[80%] bg-white mb-5"></div>
+                <div className="h-[1px] w-[80%] bg-white mb-5 mt-3"></div>
                 <p className="text-center max-w-md text-sm">{about}</p>
             </div>
         </div>

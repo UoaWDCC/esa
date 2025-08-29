@@ -8,6 +8,7 @@ import ExecCard from './ExecCard';
 import ExecPolaroid from './ExecPolaroid';
 import { Button } from '@/components/ui/Button';
 import { useExecs } from '@/features/execs/data/tanstack/useExecs';
+import { AnimatePresence, motion } from "framer-motion";
 import Carousel from './Carousel';
 
 export default function MeetExecs() {
@@ -60,7 +61,7 @@ export default function MeetExecs() {
       </div>
 
       {/* Image-only Carousel; we listen to which one is centered */}
-      <div className="block md:hidden -translate-x-1">
+      <div className="block md:hidden mt-10 -translate-x-1">
         <div className="App">
           <div className="carousel">
             <Carousel
@@ -72,14 +73,23 @@ export default function MeetExecs() {
       
 
         {/* Text section tied to the centered image */}
-        {activeExec && (
-          <div className="flex flex-col items-center w-[20rem]">
-                  <h4 className="text-2xl font-semibold -mb-1 mt-4">{activeExec.name}</h4>
-                  <p className="text-sm font-smeltex-medium">{activeExec.role}</p>
-                  <div className="h-[1px] w-[80%] bg-white mb-5"></div>
-                  <p className="text-center max-w-md text-sm">{activeExec.about}</p>
-              </div>
-        )}
+        <AnimatePresence mode="wait">
+          {activeExec && (
+            <motion.div
+              key={activeExec.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col items-center w-[20rem]"
+            >
+              <h4 className="text-2xl font-semibold -mb-1 mt-4">{activeExec.name}</h4>
+              <p className="text-sm font-smeltex-medium">{activeExec.role}</p>
+              <div className="h-[1px] w-[80%] bg-white mb-5"></div>
+              <p className="text-center max-w-md text-sm">{activeExec.about}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <Button href="/execs">Meet More Execs</Button>

@@ -92,7 +92,7 @@ const Carousel: React.FC<CarouselProps> = ({ Data, onCenterChange }) => {
             animate="center"
             onAnimationComplete={() => setIsAnimating(false)}
             className="absolute"
-            drag="x"
+            drag={isAnimating ? false : "x"}
             dragConstraints={{ left: 0, right: 0 }}
             onDragEnd={(e, info) => {
               if (isAnimating) return;
@@ -101,7 +101,6 @@ const Carousel: React.FC<CarouselProps> = ({ Data, onCenterChange }) => {
             }}
             style={{ touchAction: 'pan-x' }}
           >
-            {/* Polaroid style for center */}
             <ExecPolaroid index={CenterId} image={Data[CenterId]} />
           </motion.div>
           <motion.div
