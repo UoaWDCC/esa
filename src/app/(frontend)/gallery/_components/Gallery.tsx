@@ -1,7 +1,18 @@
+import Image from "next/image"
+
 export default function Gallery() {
     return (
-        <div className="w-full min-h-screen bg-[url('/images/gallery/board.png')] bg-contain bg-center bg-no-repeat py-20">
-
+        <div className="relative w-[90vw] min-h-screen">
+        <Image
+            src="/images/gallery/board.png"
+            alt="Gallery Board Background"
+            fill
+            className="object-fill"
+            priority
+        />
+        <div className="relative z-10">
+            {/* Content goes here */}
         </div>
+</div>
     )
 }
