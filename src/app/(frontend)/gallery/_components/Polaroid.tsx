@@ -36,15 +36,14 @@ const RANDOM_TRANSFORMS = [
     'rotate-3 -translate-x-1 translate-y-1',
 ] as const;
 
-export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", eventDate = "12/20/2015", eventName = "TestEvent", pinColour = 'red', variation = 'small' }: PolaroidProps) {
+export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", eventDate = "12/20/2015", eventName = "TestEvent", pinColour = 'red', variation = 'large' }: PolaroidProps) {
     const shift = RANDOM_TRANSFORMS[Math.floor(Math.random() * RANDOM_TRANSFORMS.length)]
 
     return (     
         <div 
             className={`relative bg-white rounded-md drop-shadow-lg 
-                ${variation === 'large' ? 'w-[370px] aspect-[370/320]' : 'w-[260px] aspect-[260/290]'}
-                ${shift}
-                transition-all duration-300 hover:scale-105 hover:z-10`}
+                ${variation === 'large' ? 'w-[20vw] aspect-[370/320]' : 'w-[17vw] aspect-[260/290]'}
+                ${shift}`}
         >
             <Pin 
                 className="absolute left-[43%] -top-6"
