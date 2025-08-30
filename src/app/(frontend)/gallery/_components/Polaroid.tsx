@@ -59,7 +59,7 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
                         className="object-cover rounded-sm"
                     />
                 </div>
-                <p className="mt-3 text-center text-[#2b2b2b] text-sm"> 
+                <p className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
                     <span>{new Date(eventDate).toLocaleDateString('en-AU', {
                         year: 'numeric',
                         month: 'numeric',

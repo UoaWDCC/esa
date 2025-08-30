@@ -11,6 +11,13 @@
 }
 
 @font-face {
+  font-family: "Waytoon";
+  font-style: normal;
+  display: swap;
+  src: url("/fonts/Waytoon.otf") format("truetype");
+}
+
+@font-face {
   font-family: "Smeltex Medium";
   font-style: normal;
   display: swap;
@@ -36,6 +43,7 @@
   --font-smeltex-medium: "Smeltex Medium", sans-serif;
   --font-super-jellyfish: "Super Jellyfish", sans-serif;
   --font-roboto-mono: "RobotoMono Regular", monospace;
+  --font-waytoon: "Waytoon", sans-serif;
 
   --color-primary-red: #D3312A; /* red */
   --color-primary-red-400: #871F1B; /* Slightly Darker red */
