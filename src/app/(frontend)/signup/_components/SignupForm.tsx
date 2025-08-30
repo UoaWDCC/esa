@@ -272,12 +272,28 @@ export default function SignupForm() {
                     )}
                 </AnimatePresence>
             </form>
-            <div className="flex flex-row mt-2 gap-2 justify-center">
+            <div className="relative flex flex-row mt-2 gap-2 justify-center">
                 {Arr.map((_, index) => (
                     <div
                         key={index}
                         className={`rounded-full w-3 h-3 ${step === index + 1 ? 'bg-primary-red-800' : 'bg-white'}`}
-                    />
+                    >
+                        <button
+                            type="button"
+                            className="absolute min-w-3 min-h-3 hover:cursor-pointer"
+                            onClick={async () => {
+                                const valid = await trigger([
+                                    'firstName',
+                                    'lastName',
+                                    'email',
+                                    'yearOfStudy',
+                                    'upi',
+                                    'membershipCardNumber',
+                                ]);
+                                if (valid) setStep(index + 1);
+                            }}
+                        />
+                    </div>
                 ))}
             </div>
         </div>
