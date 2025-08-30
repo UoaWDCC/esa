@@ -1,6 +1,16 @@
 import Image from "next/image";
 import Pin from "./Pin";
 
+export type PinColour = keyof typeof PIN_COLOURS;
+
+export interface PolaroidProps {
+    image: string;
+    eventDate: string;
+    eventName: string;
+    pinColour: PinColour;
+    variation: 'small' | 'large';
+}
+
 const PIN_COLOURS = {
     red: '#A92622',
     blue: '#0000FF',
@@ -14,25 +24,30 @@ const PIN_COLOURS = {
     gray: '#808080'
 } as const;
 
-export type PinColour = keyof typeof PIN_COLOURS;
-
-export interface PolaroidProps {
-    image: string;
-    eventDate: string;
-    eventName: string;
-    pinColour: PinColour;
-    variation: 'small' | 'large';
-}
+const RANDOM_TRANSFORMS = [
+    'rotate-3 translate-x-1 translate-y-1',
+    '-rotate-2 -translate-x-1 translate-y-2',
+    'rotate-1 translate-x-2 -translate-y-1',
+    '-rotate-3 -translate-x-2 -translate-y-2',
+    'rotate-2 translate-x-1 -translate-y-1',
+    '-rotate-1 -translate-x-1 translate-y-1',
+    'rotate-1 translate-x-2 translate-y-1',
+    '-rotate-2 translate-x-1 -translate-y-2',
+    'rotate-3 -translate-x-1 translate-y-1',
+] as const;
 
 export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", eventDate = "12/20/2015", eventName = "TestEvent", pinColour = 'red', variation = 'small' }: PolaroidProps) {
+    const shift = RANDOM_TRANSFORMS[Math.floor(Math.random() * RANDOM_TRANSFORMS.length)]
+
     return (     
-        <div className={`relative bg-white rounded-md drop-shadow-lg ${
-            variation === 'large'  
-                ? 'w-[60%] aspect-[370/320]'  
-                : 'w-[60%] aspect-[260/290]'
-        }`}>
+        <div 
+            className={`relative bg-white rounded-md drop-shadow-lg 
+                ${variation === 'large' ? 'w-[370px] aspect-[370/320]' : 'w-[260px] aspect-[260/290]'}
+                ${shift}
+                transition-all duration-300 hover:scale-105 hover:z-10`}
+        >
             <Pin 
-                className="absolute left-[45%] top-[-6%]"
+                className="absolute left-[43%] -top-6"
                 hexPinColour={PIN_COLOURS[pinColour]} 
             />
             <div className="flex flex-col p-3 h-full">
