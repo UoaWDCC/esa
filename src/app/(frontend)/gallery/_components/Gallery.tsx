@@ -54,7 +54,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     return (
         <div>
             {/* Gallery Board */}
-            <div className="relative w-[80vw] min-h-screen py-20 px-12">
+            <div className="relative w-[80vw] py-[8vh] px-[5vw]">
                 <Image
                     src="/images/gallery/board.png"
                     alt="Gallery Board Background"
