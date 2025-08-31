@@ -11,7 +11,7 @@ export default function EventInfo({ event, className, dateString }: { event: Eve
     }
     return (
         <div className={cn('flex flex-col mt-5 gap-y-2', className)}>
-            <div className="flex flex-col md:justify-between gap-y-2">
+            <div className="flex flex-col md:flex-row md:justify-between gap-y-2">
                 <span className="flex md:hidden flex-row items-center whitespace-nowrap">
                     <Calendar className="mr-1" /> {dateString}
                 </span>
@@ -22,7 +22,7 @@ export default function EventInfo({ event, className, dateString }: { event: Eve
                     <Clock className="mr-1" /> {`${formatTime(startTime)} - ${formatTime(endTime)}`}
                 </span>
             </div>
-            <div className="flex flex-col md:justify-between gap-y-2">
+            <div className="flex flex-col md:flex-row md:justify-between gap-y-2">
                 <span className="flex flex-row items-center whitespace-nowrap">
                     <DollarSign /> {event.nonMemberPrice} (Non-Members)
                 </span>

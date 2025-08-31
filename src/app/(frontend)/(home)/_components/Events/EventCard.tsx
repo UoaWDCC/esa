@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArrowUp from '@/components/icons/ArrowUp';
 import EventInfo from "@/app/(frontend)/(home)/_components/Events/EventInfo";
+import SquigglyArrow from "@/components/icons/SquigglyArrow";
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -146,10 +147,13 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
                             </div>
 
                             {/* Button stuck bottom right */}
-                            <div className="my-6 md:my-0 md:mt-auto flex justify-end">
+                            <div className="my-6 md:my-0 md:mt-auto flex justify-end items-end">
+                                <div className="rotate-15 hidden md:block">
+                                    <SquigglyArrow />
+                                </div>
                                 <Button
                                     disabled={event.locked}
-                                    className="flex flex-row items-center gap-x-2"
+                                    className="flex flex-row items-center gap-x-2 h-fit"
                                 >
                                     Sign Up
                                     <ArrowUp className="size-3" />
