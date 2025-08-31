@@ -56,13 +56,13 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
                 hexPinColour={PIN_COLOURS[pinColour]} 
             />
             <div className="flex flex-col p-3 h-full">
-                <div className="relative w-full h-[80%]">
+                <div className="relative w-full h-[90%]">
                     <Image
                         src={image}
                         alt={eventName}
                         fill
                         sizes={variation === 'large' ? '370px' : '260px'}
-                        className="object-cover rounded-sm"
+                        className="object-cover"
                     />
                 </div>
                 <p className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
