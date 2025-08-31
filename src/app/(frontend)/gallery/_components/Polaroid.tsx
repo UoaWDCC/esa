@@ -47,8 +47,8 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
         <div 
             className={`relative bg-white rounded-md drop-shadow-lg 
                 ${variation === 'large' 
-                    ? 'w-[20vw] min-w-[360px] md:min-w-[250px] aspect-[370/320] lg:min-w-[220px]' 
-                    : 'w-[17vw] min-w-[250px] md:min-w-[220px] aspect-[290/260] lg:min-w-[110px]'}
+                    ? 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]' 
+                    : 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]'}
                 ${shift}`}
         >
             <Pin 
