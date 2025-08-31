@@ -37,16 +37,18 @@ const RANDOM_TRANSFORMS = [
 ] as const;
 
 export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", eventDate = "12/20/2015", eventName = "TestEvent", pinColour = 'red', variation = 'small' }: PolaroidProps) {
-    const shift = RANDOM_TRANSFORMS[Math.floor(Math.random() * RANDOM_TRANSFORMS.length)]
+    const shift = RANDOM_TRANSFORMS[Math.floor(Math.random() * RANDOM_TRANSFORMS.length)];
 
     return (     
         <div 
             className={`relative bg-white rounded-md drop-shadow-lg 
-                ${variation === 'large' ? 'w-[20vw] aspect-[370/320]' : 'w-[17vw] aspect-[290/260]'}
+                ${variation === 'large' 
+                    ? 'w-[20vw] min-w-[360px] md:min-w-[250px] aspect-[370/320] lg:min-w-[220px]' 
+                    : 'w-[17vw] min-w-[250px] md:min-w-[200px] aspect-[290/260] lg:min-w-[110px]'}
                 ${shift}`}
         >
             <Pin 
-                className="absolute left-[43%] -top-6"
+                className="absolute left-[45%] -top-6"
                 hexPinColour={PIN_COLOURS[pinColour]} 
             />
             <div className="flex flex-col p-3 h-full">
