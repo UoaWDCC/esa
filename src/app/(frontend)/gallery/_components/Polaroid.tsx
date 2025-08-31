@@ -37,14 +37,18 @@ const RANDOM_TRANSFORMS = [
 ] as const;
 
 export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", eventDate = "12/20/2015", eventName = "TestEvent", pinColour = 'red', variation = 'small' }: PolaroidProps) {
-    const shift = RANDOM_TRANSFORMS[Math.floor(Math.random() * RANDOM_TRANSFORMS.length)];
+    // Calculates transform based on event name.
+    // This allows for the "random" transforms without using math.random. This prevents hydration issues.
+    const shift = RANDOM_TRANSFORMS[
+        eventName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % RANDOM_TRANSFORMS.length
+    ];
 
     return (     
         <div 
             className={`relative bg-white rounded-md drop-shadow-lg 
                 ${variation === 'large' 
                     ? 'w-[20vw] min-w-[360px] md:min-w-[250px] aspect-[370/320] lg:min-w-[220px]' 
-                    : 'w-[17vw] min-w-[250px] md:min-w-[200px] aspect-[290/260] lg:min-w-[110px]'}
+                    : 'w-[17vw] min-w-[250px] md:min-w-[220px] aspect-[290/260] lg:min-w-[110px]'}
                 ${shift}`}
         >
             <Pin 
@@ -62,11 +66,7 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
                     />
                 </div>
                 <p className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
-                    <span>{new Date(eventDate).toLocaleDateString('en-AU', {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric'
-                    })}</span>
+                    <span>{eventDate}</span>
                     <span className="ml-1">{eventName}</span>
                 </p>
             </div>
