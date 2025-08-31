@@ -4,6 +4,7 @@ import Image from "next/image"
 import Polaroid from "./Polaroid"
 import { PolaroidProps, PinColour } from "./Polaroid"
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface GalleryProps {
     polaroids?: PolaroidProps[];
@@ -62,23 +63,61 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     className="object-fill"
                     priority
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px] relative">
                     {/* Change grid format based on screen size */}
-                    <div className="hidden lg:contents">
-                        {getCurrentItems('lg').map((polaroid, index) => (
-                            <Polaroid key={index} {...polaroid} />
-                        ))}
-                    </div>
-                    <div className="hidden md:contents lg:hidden">
-                        {getCurrentItems('md').map((polaroid, index) => (
-                            <Polaroid key={index} {...polaroid} />
-                        ))}
-                    </div>
-                    <div className="contents md:hidden">
-                        {getCurrentItems('sm').map((polaroid, index) => (
-                            <Polaroid key={index} {...polaroid} />
-                        ))}
-                    </div>
+                    <AnimatePresence mode="wait">
+                        <div key={`lg-${currentPage}`} className="hidden lg:contents">
+                            {getCurrentItems('lg').map((polaroid, index) => (
+                                <motion.div
+                                    key={`${polaroid.eventName}-${index}`}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ 
+                                        duration: 0.2,
+                                        delay: index * 0.05,
+                                        ease: "easeOut"
+                                    }}
+                                >
+                                    <Polaroid {...polaroid} />
+                                </motion.div>
+                            ))}
+                        </div>
+                        <div key={`md-${currentPage}`} className="hidden md:contents lg:hidden">
+                            {getCurrentItems('md').map((polaroid, index) => (
+                                <motion.div
+                                    key={`${polaroid.eventName}-${index}`}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ 
+                                        duration: 0.2,
+                                        delay: index * 0.05,
+                                        ease: "easeOut"
+                                    }}
+                                >
+                                    <Polaroid {...polaroid} />
+                                </motion.div>
+                            ))}
+                        </div>
+                        <div key={`sm-${currentPage}`} className="contents md:hidden">
+                            {getCurrentItems('sm').map((polaroid, index) => (
+                                <motion.div
+                                    key={`${polaroid.eventName}-${index}`}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ 
+                                        duration: 0.2,
+                                        delay: index * 0.05,
+                                        ease: "easeOut"
+                                    }}
+                                >
+                                    <Polaroid {...polaroid} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </AnimatePresence>
                 </div> 
             </div>
 
