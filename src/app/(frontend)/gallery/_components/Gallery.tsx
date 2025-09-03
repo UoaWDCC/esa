@@ -30,7 +30,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     const [itemsPerPage, setItemsPerPage] = useState(9);
 
     useEffect(() => {
-        const handleResize = () => {
+        const handleResize = (): void => {
             if (window.innerWidth >= 1024) {
                 setItemsPerPage(9); // lg has 3x3 grid
             } else if (window.innerWidth >= 768) {
@@ -52,20 +52,20 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     }, []);
 
 
-    const getTotalPages = () => {
+    const getTotalPages = (): number => {
         return Math.ceil(polaroids.length / itemsPerPage);
     };
 
-    const getCurrentItems = () => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
+    const getCurrentItems = (): PolaroidProps[] => {
+        const startIndex: number = (currentPage - 1) * itemsPerPage;
         return polaroids.slice(startIndex, startIndex + itemsPerPage);
     };
 
-    const handlePrevPage = () => {
+    const handlePrevPage = (): void => {
         setCurrentPage((prev) => Math.max(1, prev - 1));
     };
 
-    const handleNextPage = () => {
+    const handleNextPage = (): void => {
         setCurrentPage((prev) => Math.min(getTotalPages(), prev + 1));
     };
 
@@ -88,7 +88,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                         exit={{ opacity: 1 }}         // keep fully visible so children exit staggered
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px] relative z-10"
                     >
-                        {getCurrentItems().map((polaroid, index) => (
+                        {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
                             <motion.div
                                 key={`${polaroid.eventName}-${index}`}
                                 initial={{ opacity: 0, y: 20 }}
