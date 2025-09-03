@@ -72,7 +72,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     return (
         <div>
             {/* Gallery Board */}
-            <div className="relative w-[80vw] py-[8vh] px-[5vw]">
+            <div className="relative w-auto h-auto py-[5vh] lg:py-[10vh] px-[5vw]">
                 <Image
                     src="/images/gallery/board.png"
                     alt="Gallery Board Background"
@@ -86,7 +86,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                         initial={{ opacity: 1 }}      // no fade
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 1 }}         // keep fully visible so children exit staggered
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px] relative z-10"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[5vh] place-items-center relative z-10"
                     >
                         {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
                             <motion.div
