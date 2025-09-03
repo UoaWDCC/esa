@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button'
 const WhyJoin = () => {
   return (
       // Root container with background image and content overlay
-      <div id="root" className="relative h-[90vh] md:min-h-screen min-w-[375px] overflow-hidden">
+      <div id="root" className="relative h-auto min-w-[375px] min-h-20 pt-5 pb-[min(30vw,20vh)] overflow-hidden">
           {/* Content overlay */}
           <div
               id="content"
@@ -53,9 +53,8 @@ const WhyJoin = () => {
               alt="Film Strip"
               width="758"
               height="1072"
-              className="absolute top-[min(45vw,300px)] rotate-60 right-[25vw] scale-125 md:top-[min(20vw,200px)] 
-                lg:block lg:rotate-none lg:mt-0 lg:right-0 lg:-top-[29px] lg:origin-top-right
-                w-auto h-[90vh] md:h-screen object-contain max-w-none"
+              className="absolute origin-bottom-left bottom-[33vw] right-[55vw] rotate-65 md:bottom-[25vw]
+                lg:-rotate-15 lg:right-0 lg:-top-50 lg:origin-top-right lg:scale-120"
           />
       </div>
   );
