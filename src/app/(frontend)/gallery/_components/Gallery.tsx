@@ -25,6 +25,9 @@ const dummyPolaroids: PolaroidProps[] = Array(18).fill(null).map((_, index) => (
     variation: index % 3 === 2 ? 'large' : 'small'
 }));
 
+// TODO: https://stackoverflow.com/questions/67965295/how-to-update-state-for-device-width-using-hooks-in-react
+// Use this instead of css to change number of items per page based on screen size
+// Have a useState for screen size (sm, md, lg)
 export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     const [currentPage, setCurrentPage] = useState(1);
     
@@ -130,8 +133,14 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                 >
                     Previous
                 </button>
-                <span className="text-lg">
+                <span className="text-lg hidden lg:contents">
                     Page {currentPage} of {getTotalPages('lg')}
+                </span>
+                <span className="text-lg hidden md:contents lg:hidden">
+                    Page {currentPage} of {getTotalPages('md')}
+                </span>
+                <span className="text-lg contents md:hidden">
+                    Page {currentPage} of {getTotalPages('sm')}
                 </span>
                 <button
                     onClick={() => handleNextPage('lg')}
