@@ -72,61 +72,73 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     return (
         <div>
             {/* Gallery Board */}
-            <div className="relative w-auto h-auto py-[5vh] lg:py-[10vh] px-[5vw]">
-                <Image
-                    src="/images/gallery/board.png"
-                    alt="Gallery Board Background"
-                    fill
-                    className="object-fill"
-                    priority
-                />
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={currentPage}
-                        initial={{ opacity: 1 }}      // no fade
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 1 }}         // keep fully visible so children exit staggered
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[5vh] place-items-center relative z-10"
+            <div className="flex justify-center items-center"> 
+                <div>
+                    <button
+                        onClick={handlePrevPage}
+                        disabled={currentPage === 1}
+                        className="px-4 py-2 text-[10vw] mr-[3vw] disabled:opacity-50"
                     >
-                        {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
-                            <motion.div
-                                key={`${polaroid.eventName}-${index}`}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{
-                                    duration: 0.2,
-                                    delay: index * 0.05,
-                                    ease: "easeOut"
-                                }}
-                            >
-                                <Polaroid {...polaroid} />
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </AnimatePresence>
+                        &lt;
+                    </button>
+                </div>
+            
+                <div className="relative w-auto h-auto py-[5vh] lg:py-[10vh] px-[5vw]">
+                    <Image
+                        src="/images/gallery/board.png"
+                        alt="Gallery Board Background"
+                        fill
+                        className="object-fill"
+                        priority
+                    />
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentPage}
+                            initial={{ opacity: 1 }}      // no fade
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 1 }}         // keep fully visible so children exit staggered
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[5vh] place-items-center relative z-10"
+                        >
+                            {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
+                                <motion.div
+                                    key={`${polaroid.eventName}-${index}`}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{
+                                        duration: 0.2,
+                                        delay: index * 0.05,
+                                        ease: "easeOut"
+                                    }}
+                                >
+                                    <Polaroid {...polaroid} />
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                <div>
+                    <button
+                        onClick={handleNextPage}
+                        disabled={currentPage === getTotalPages()}
+                        className="px-4 py-2 text-[10vw] ml-[3vw] disabled:opacity-50"
+                    >
+                        &gt;
+                    </button>
+                </div>
             </div>
 
-            {/* Pagination Controls */}
-            <div className="flex justify-center items-center gap-4 mt-8">
-                <button
-                    onClick={handlePrevPage}
-                    disabled={currentPage === 1}
-                    className="px-4 py-2 bg-black/20 hover:bg-black/30 disabled:opacity-50 rounded"
-                >
-                    Previous
-                </button>
-                <span className="text-lg">
-                    Page {currentPage} of {getTotalPages()}
-                </span>
-                <button
-                    onClick={() => handleNextPage()}
-                    disabled={currentPage === getTotalPages()}
-                    className="px-4 py-2 bg-black/20 hover:bg-black/30 disabled:opacity-50 rounded"
-                >
-                    Next
-                </button>
-            </div>
+            {/* Page Indicator */}
+            <div className="flex justify-center items-center my-4">
+                {Array.from({ length: getTotalPages() }, (_, index) => (
+                    <div
+                        key={index}
+                        className={`h-3 w-3 mx-1 rounded-full ${currentPage === index + 1 ? 'bg-gray-800' : 'bg-gray-400'}`}
+                        onClick={() => setCurrentPage(index + 1)}
+                    />
+                ))}
+            </div>  
         </div>
     )
 }
