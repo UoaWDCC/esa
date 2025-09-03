@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Polaroid from "./Polaroid"
 import { PolaroidProps, PinColour } from "./Polaroid"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface GalleryProps {
@@ -25,34 +25,48 @@ const dummyPolaroids: PolaroidProps[] = Array(18).fill(null).map((_, index) => (
     variation: index % 3 === 2 ? 'large' : 'small'
 }));
 
-// TODO: https://stackoverflow.com/questions/67965295/how-to-update-state-for-device-width-using-hooks-in-react
-// Use this instead of css to change number of items per page based on screen size
-// Have a useState for screen size (sm, md, lg)
 export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     const [currentPage, setCurrentPage] = useState(1);
-    
-    // Different items per page for different screen sizes
-    const itemsPerPage = {
-        lg: 9, // 3x3 grid
-        md: 4, // 2x2 gris
-        sm: 2  // 1x2 grid
+    const [itemsPerPage, setItemsPerPage] = useState(9);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1024) {
+                setItemsPerPage(9); // lg has 3x3 grid
+            } else if (window.innerWidth >= 768) {
+                setItemsPerPage(4); // md has 2x2 grid
+            } else {
+                setItemsPerPage(2); //sm has 1x2 grid
+            }
+            setCurrentPage(1); // Reset to first page on resize
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Set initial items per page 
+        handleResize(); 
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    const getTotalPages = () => {
+        return Math.ceil(polaroids.length / itemsPerPage);
     };
 
-    const getTotalPages = (screenSize: 'sm' | 'md' | 'lg') => {
-        return Math.ceil(polaroids.length / itemsPerPage[screenSize]);
-    };
-
-    const getCurrentItems = (screenSize: 'sm' | 'md' | 'lg') => {
-        const startIndex = (currentPage - 1) * itemsPerPage[screenSize];
-        return polaroids.slice(startIndex, startIndex + itemsPerPage[screenSize]);
+    const getCurrentItems = () => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        return polaroids.slice(startIndex, startIndex + itemsPerPage);
     };
 
     const handlePrevPage = () => {
         setCurrentPage((prev) => Math.max(1, prev - 1));
     };
 
-    const handleNextPage = (screenSize: 'sm' | 'md' | 'lg') => {
-        setCurrentPage((prev) => Math.min(getTotalPages(screenSize), prev + 1));
+    const handleNextPage = () => {
+        setCurrentPage((prev) => Math.min(getTotalPages(), prev + 1));
     };
 
     return (
@@ -67,61 +81,24 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     priority
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px] relative">
-                    {/* Change grid format based on screen size */}
                     <AnimatePresence mode="wait">
-                        <div key={`lg-${currentPage}`} className="hidden lg:contents">
-                            {getCurrentItems('lg').map((polaroid, index) => (
-                                <motion.div
-                                    key={`${polaroid.eventName}-${index}`}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ 
-                                        duration: 0.2,
-                                        delay: index * 0.05,
-                                        ease: "easeOut"
-                                    }}
-                                >
-                                    <Polaroid {...polaroid} />
-                                </motion.div>
-                            ))}
-                        </div>
-                        <div key={`md-${currentPage}`} className="hidden md:contents lg:hidden">
-                            {getCurrentItems('md').map((polaroid, index) => (
-                                <motion.div
-                                    key={`${polaroid.eventName}-${index}`}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ 
-                                        duration: 0.2,
-                                        delay: index * 0.05,
-                                        ease: "easeOut"
-                                    }}
-                                >
-                                    <Polaroid {...polaroid} />
-                                </motion.div>
-                            ))}
-                        </div>
-                        <div key={`sm-${currentPage}`} className="contents md:hidden">
-                            {getCurrentItems('sm').map((polaroid, index) => (
-                                <motion.div
-                                    key={`${polaroid.eventName}-${index}`}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{ 
-                                        duration: 0.2,
-                                        delay: index * 0.05,
-                                        ease: "easeOut"
-                                    }}
-                                >
-                                    <Polaroid {...polaroid} />
-                                </motion.div>
-                            ))}
-                        </div>
+                        {getCurrentItems().map((polaroid, index) => (
+                            <motion.div
+                                key={`${polaroid.eventName}-${index}-${currentPage}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ 
+                                    duration: 0.2,
+                                    delay: index * 0.05,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <Polaroid {...polaroid} />
+                            </motion.div>
+                        ))}
                     </AnimatePresence>
-                </div> 
+                </div>
             </div>
 
             {/* Pagination Controls */}
@@ -133,18 +110,12 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                 >
                     Previous
                 </button>
-                <span className="text-lg hidden lg:contents">
-                    Page {currentPage} of {getTotalPages('lg')}
-                </span>
-                <span className="text-lg hidden md:contents lg:hidden">
-                    Page {currentPage} of {getTotalPages('md')}
-                </span>
-                <span className="text-lg contents md:hidden">
-                    Page {currentPage} of {getTotalPages('sm')}
+                <span className="text-lg">
+                    Page {currentPage} of {getTotalPages()}
                 </span>
                 <button
-                    onClick={() => handleNextPage('lg')}
-                    disabled={currentPage === getTotalPages('lg')}
+                    onClick={() => handleNextPage()}
+                    disabled={currentPage === getTotalPages()}
                     className="px-4 py-2 bg-black/20 hover:bg-black/30 disabled:opacity-50 rounded"
                 >
                     Next
