@@ -80,15 +80,21 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     className="object-fill"
                     priority
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px] relative">
-                    <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentPage}
+                        initial={{ opacity: 1 }}      // no fade
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 1 }}         // keep fully visible so children exit staggered
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center min-h-[600px] relative z-10"
+                    >
                         {getCurrentItems().map((polaroid, index) => (
                             <motion.div
-                                key={`${polaroid.eventName}-${index}-${currentPage}`}
+                                key={`${polaroid.eventName}-${index}`}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
-                                transition={{ 
+                                transition={{
                                     duration: 0.2,
                                     delay: index * 0.05,
                                     ease: "easeOut"
@@ -97,8 +103,8 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                                 <Polaroid {...polaroid} />
                             </motion.div>
                         ))}
-                    </AnimatePresence>
-                </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
             {/* Pagination Controls */}
