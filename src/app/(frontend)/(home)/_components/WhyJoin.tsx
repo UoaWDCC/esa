@@ -9,14 +9,7 @@ import { Button } from '@/components/ui/Button'
 const WhyJoin = () => {
   return (
       // Root container with background image and content overlay
-      <div id="root" className="relative h-[700px] md:min-h-screen min-w-[375px] overflow-hidden">
-          {/* Background Image using Next.js Image component */}
-          <Image
-              src="/images/home/HeroPageImage.jpg"
-              alt="Why Join Background"
-              fill
-              className="absolute origin-center object-cover scale-180 brightness-20 lg:scale-140"
-          />
+      <div id="root" className="relative h-auto min-w-[375px] min-h-20 pt-5 pb-[min(30vw,20vh)] overflow-hidden">
           {/* Content overlay */}
           <div
               id="content"
@@ -47,20 +40,21 @@ const WhyJoin = () => {
               </div>
 
               {/* Join button */}
-              <div className="flex flex-col items-start mt-5 ">
+              <div className="flex flex-col items-start mt-15 ">
                   <Button href="/signup" className="px-8 py-3.25 z-10">
                       Join the ESA Family!
                   </Button>
               </div>
           </div>
 
-          {/*Film Strip image right-hand side of the page, Only visible on desktop*/}
+          {/*Film Strip image. Vertical on desktop at the right, horizontal on mobile at the bottom */}
           <Image
               src="/images/home/film_strip.png"
               alt="Film Strip"
               width="758"
               height="1072"
-              className="absolute hidden lg:block right-0 -top-[29px] origin-top-right"
+              className="absolute origin-bottom-left bottom-[33vw] right-[55vw] rotate-65 md:bottom-[25vw]
+                lg:-rotate-15 lg:right-0 lg:-top-50 lg:origin-top-right lg:scale-120"
           />
       </div>
   );
