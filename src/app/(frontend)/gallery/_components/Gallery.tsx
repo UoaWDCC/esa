@@ -134,7 +134,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                 {Array.from({ length: getTotalPages() }, (_, index) => (
                     <div
                         key={index}
-                        className={`h-3 w-3 mx-1 rounded-full ${currentPage === index + 1 ? 'bg-gray-800' : 'bg-gray-400'}`}
+                        className={`h-3 w-3 mx-1 rounded-full ${currentPage === index + 1 ? 'bg-primary-red-400' : 'bg-gray-400'}`}
                         onClick={() => setCurrentPage(index + 1)}
                     />
                 ))}
