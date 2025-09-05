@@ -52,7 +52,7 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
                 ${shift}`}
         >
             <Pin 
-                className="absolute left-[45%] -top-6"
+                className="absolute left-[45%] -top-9 md:-top-7 lg:-top-6"
                 hexPinColour={PIN_COLOURS[pinColour]} 
             />
             <div className="flex flex-col p-3 h-full">
