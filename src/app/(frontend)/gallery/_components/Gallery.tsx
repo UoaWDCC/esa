@@ -13,7 +13,7 @@ interface GalleryProps {
 // Dummy data for the gallery
 // TODO: Remove this
 const PIN_COLOURS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'] as const;
-const dummyPolaroids: PolaroidProps[] = Array(18).fill(null).map((_, index) => ({
+const dummyPolaroids: PolaroidProps[] = Array(19).fill(null).map((_, index) => ({
     image: "/images/contact-us-image.png",
     eventName: `Event ${index + 1}`,
     eventDate: new Date(2025, Math.floor(index / 3), (index % 28) + 1).toLocaleDateString('en-US', {
@@ -83,7 +83,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     </button>
                 </div>
             
-                <div className="relative w-auto h-auto py-[5vh] lg:py-[10vh] px-[5vw]">
+                <div className="relative w-[60vw] h-[95vw] px-[5vw] py-[5vw] md:w-[80vw] md:h-[65vw]">
                     <Image
                         src="/images/gallery/board.png"
                         alt="Gallery Board Background"
@@ -94,9 +94,9 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentPage}
-                            initial={{ opacity: 1 }}      // no fade
+                            initial={{ opacity: 1 }}   
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 1 }}         // keep fully visible so children exit staggered
+                            exit={{ opacity: 1 }}     
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[5vh] place-items-center relative z-10"
                         >
                             {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
