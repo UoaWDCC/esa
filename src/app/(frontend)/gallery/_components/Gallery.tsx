@@ -11,7 +11,7 @@ interface GalleryProps {
 }
 
 // Dummy data for the gallery
-// TODO: Remove this
+// TODO: Remove this when integrating with backend
 const PIN_COLOURS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'] as const;
 const dummyPolaroids: PolaroidProps[] = Array(19).fill(null).map((_, index) => ({
     image: "/images/contact-us-image.png",
