@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Polaroid from "./Polaroid"
-import { PolaroidProps, PinColour } from "./Polaroid"
+import { PolaroidProps, PinColour, Variation } from "./Polaroid"
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -22,7 +22,7 @@ const dummyPolaroids: PolaroidProps[] = Array(19).fill(null).map((_, index) => (
         day: 'numeric',
     }),
     pinColour: PIN_COLOURS[index % PIN_COLOURS.length] as PinColour,
-    variation: index % 3 === 2 ? 'large' : 'small'
+    variation: index % 3 === 2 ? 'large' : 'small' as Variation
 }));
 
 export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {

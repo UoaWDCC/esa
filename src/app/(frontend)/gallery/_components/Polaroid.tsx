@@ -2,14 +2,26 @@ import Image from "next/image";
 import Pin from "./Pin";
 
 export type PinColour = keyof typeof PIN_COLOURS;
+export type Variation = keyof typeof VARIATIONS;
 
 export interface PolaroidProps {
     image: string;
     eventDate: string;
     eventName: string;
     pinColour: PinColour;
-    variation: 'small' | 'large';
+    variation: Variation;
 }
+
+const VARIATIONS = {
+    small: {
+        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
+        imageSize: '260px'
+    },
+    large: {
+        dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
+        imageSize: '370px'
+    }
+} as const;
 
 const PIN_COLOURS = {
     red: '#A92622',
@@ -36,7 +48,13 @@ const RANDOM_TRANSFORMS = [
     'rotate-3 -translate-x-1 translate-y-1',
 ] as const;
 
-export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", eventDate = "12/20/2015", eventName = "TestEvent", pinColour = 'red', variation = 'small' }: PolaroidProps) {
+export default function Polaroid({ 
+    image = "/images/aboutus/AboutUsImage.jpg", 
+    eventDate = "12/20/2015", 
+    eventName = "TestEvent", 
+    pinColour = 'red', 
+    variation = 'small' 
+}: PolaroidProps) {
     // Calculates transform based on event name.
     // This allows for the "random" transforms without using math.random. This prevents hydration issues.
     const shift = RANDOM_TRANSFORMS[
@@ -46,9 +64,7 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
     return (     
         <div 
             className={`relative bg-white rounded-md drop-shadow-lg 
-                ${variation === 'large' 
-                    ? 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]' 
-                    : 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]'}
+                ${VARIATIONS[variation].dimensions}
                 ${shift}`}
         >
             <Pin 
@@ -61,7 +77,7 @@ export default function Polaroid({ image = "/images/aboutus/AboutUsImage.jpg", e
                         src={image}
                         alt={eventName}
                         fill
-                        sizes={variation === 'large' ? '370px' : '260px'}
+                        sizes={VARIATIONS[variation].imageSize}
                         className="object-cover"
                     />
                 </div>
