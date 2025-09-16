@@ -89,6 +89,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                         alt="Gallery Board Background"
                         fill
                         className="object-fill"
+                        draggable={false}
                         priority
                     />
                     <AnimatePresence mode="wait">
