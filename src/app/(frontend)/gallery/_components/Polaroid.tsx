@@ -79,6 +79,7 @@ export default function Polaroid({
                         fill
                         sizes={VARIATIONS[variation].imageSize}
                         className="object-cover"
+                        draggable={false}
                     />
                 </div>
                 <p className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
