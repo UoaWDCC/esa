@@ -77,7 +77,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     <button
                         onClick={handlePrevPage}
                         disabled={currentPage === 1}
-                        className="px-4 py-2 text-[10vw] mr-[3vw] disabled:opacity-50"
+                        className="px-4 py-2 text-[10vw] mr-[3vw] disabled:opacity-50 cursor-pointer"
                     >
                         &lt;
                     </button>
@@ -122,7 +122,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     <button
                         onClick={handleNextPage}
                         disabled={currentPage === getTotalPages()}
-                        className="px-4 py-2 text-[10vw] ml-[3vw] disabled:opacity-50"
+                        className="px-4 py-2 text-[10vw] ml-[3vw] disabled:opacity-50 cursor-pointer"
                     >
                         &gt;
                     </button>
@@ -134,7 +134,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                 {Array.from({ length: getTotalPages() }, (_, index) => (
                     <div
                         key={index}
-                        className={`h-3 w-3 mx-1 rounded-full ${currentPage === index + 1 ? 'bg-primary-red-400' : 'bg-gray-400'}`}
+                        className={`h-3 w-3 mx-1 rounded-full cursor-pointer ${currentPage === index + 1 ? 'bg-primary-red-400' : 'bg-gray-400'}`}
                         onClick={() => setCurrentPage(index + 1)}
                     />
                 ))}
