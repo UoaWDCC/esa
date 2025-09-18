@@ -18,7 +18,9 @@ export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps)
                 <p className="font-reservoir-grunge text-3xl bg-primary-red-400 px-4 pt-2 pb-1 rounded-2xl">
                     {title}
                 </p>
-                <p className="mt-3 text-sm max-w-[80%] sm:max-w-[60%] mx-auto">{blurb}</p>
+                <p className="mt-3 text-sm max-w-[80%] sm:max-w-[60%] xl:max-w-[40%] mx-auto">
+                    {blurb}
+                </p>
             </div>
 
             {/* Card grid / flex container */}
