@@ -52,7 +52,7 @@ export const Execs: CollectionConfig = {
             type: 'textarea',
             required: true,
             admin: {
-                description: 'Short biography of the executive',
+                description: 'Short biography of the executive (max 200 characters)',
             },
             validate: (val: string | null | undefined) => {
                 if (val && val.length > 200) {
