@@ -22,7 +22,7 @@ export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps)
             </div>
 
             {/* Card grid / flex container */}
-            <div className="mt-3 grid grid-cols-2 gap-y-10 gap-x-10 sm:gap-y-10 sm:gap-x-20 lg:gap-y-20 lg:gap-x-30">
+            <div className="mt-3 grid grid-cols-2 gap-y-10 gap-x-10 sm:gap-y-10 sm:gap-x-20 lg:gap-x-30">
                 {execs.map((exec, i) => {
                     const shouldCenter = isOdd && i === lastIndex;
                     return (
