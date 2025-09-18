@@ -15,7 +15,7 @@ export default function AboutUs() {
                 {/* About Us Text */}
                 <div className="flex flex-col text-center md:text-start md:w-[28rem]">
                     <h3>ABOUT US</h3>
-                    <p className="text-xl tracking-[0.15em]">
+                    <p className="tracking-[0.15em]">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua.
                     </p>

@@ -13,23 +13,23 @@ export default function JoinExecTeam() {
                 className="object-cover object-center"
             />
 
-            <div className="flex flex-col px-6 items-center text-center md:text-left md:px-0 md:pl-20 w-[38rem] gap-20 relative z-10">
+            <div className="flex flex-col px-6 items-center text-center md:text-left md:px-0 md:pl-20 w-[40rem] gap-20 relative z-10">
                 {/* First Half of text */}
                 <div className="flex flex-col gap-5">
                     <h3>Join our Exec Team</h3>
-                    <p className="text-xl tracking-[0.15em]">
+                    <p className="tracking-[0.15em]">
                         ESA is a social club is simply dummy text of the printing and typesetting
                         industry. Lorem Ipsum has been the industry&apos;s standard dummy text
                     </p>
                 </div>
 
                 {/* Second Half of text */}
-                <div className="flex flex-col gap-5">
-                    <p className="text-xl tracking-[0.15em]">
+                <div className="flex flex-col gap-4">
+                    <p className="tracking-[0.15em]">
                         ESA is a social club is simply dummy text of the printing and typesetting
                         industry. Lorem Ipsum
                     </p>
-                    <p className="text-xl tracking-[0.15em]">
+                    <p className="tracking-[0.15em]">
                         ESA is a social club is simply dummy text of the printing and typesetting
                     </p>
                 </div>
@@ -43,7 +43,7 @@ export default function JoinExecTeam() {
                 width={500}
                 height={500}
                 alt="ESA Exec Team Polaroid"
-                className="w-100 xl:w-125 h-auto absolute bottom-0 right-2 z-10"
+                className="w-100 xl:w-125 h-auto absolute bottom-0 right-2"
             />
         </div>
     );

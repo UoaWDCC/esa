@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function BotTear() {
     return (
-        <div className="w-screen absolute h-54 overflow-clip -bottom-[13rem]">
+        <div className="w-screen absolute h-54 -bottom-[12rem]">
             <div className="absolute top-1">
                 <Image
                     src={'/images/aboutus/WhiteTearBot.png'}

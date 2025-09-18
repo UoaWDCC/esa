@@ -1,34 +1,31 @@
-import {ButtonHTMLAttributes, forwardRef} from "react";
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 import { VariantProps, cva } from 'class-variance-authority';
-import Link from "next/link";
+import Link from 'next/link';
 
-const buttonVariants = cva(
-    "rounded-3xl hover:cursor-pointer transition",
-    {
-        variants: {
-            variant: {
-                default: "bg-accent text-black font-roboto-mono hover:bg-accent-light",
-                clear: "text-primary-white border border-primary-white hover:bg-primary-white hover:text-black"
-                // add more variants here, such as dark, disabled, destructive etc etc
-            },
-            size: {
-                // change size of buttons here
-                default: "px-6 py-2",
-                sm: "px-3 py-1",
-                lg: "px-8 py-2 text-2xl"
-            },
-            disabled: {
-                true: "opacity-50 cursor-default pointer-events-none hover:bg-none hover:text-primary-white",
-                false: ""
-            }
+const buttonVariants = cva('rounded-3xl hover:cursor-pointer transition', {
+    variants: {
+        variant: {
+            default: 'bg-accent text-black font-roboto-mono hover:bg-accent-light',
+            clear: 'text-primary-white border border-primary-white hover:bg-primary-white hover:text-black',
+            // add more variants here, such as dark, disabled, destructive etc etc
         },
-        defaultVariants: {
-            variant: "default",
-            size: "default"
-        }
-    }
-);
+        size: {
+            // change size of buttons here
+            default: 'px-6 py-2',
+            sm: 'px-3 py-1',
+            lg: 'px-8 py-2 md:text-2xl text-xl',
+        },
+        disabled: {
+            true: 'opacity-50 cursor-default pointer-events-none hover:bg-none hover:text-primary-white',
+            false: '',
+        },
+    },
+    defaultVariants: {
+        variant: 'default',
+        size: 'default',
+    },
+});
 
 export interface ButtonProps
     extends ButtonHTMLAttributes<HTMLButtonElement>,
@@ -40,7 +37,7 @@ export interface ButtonProps
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, children, href, variant, size, disabled = false, ...props }, ref) => {
         const classes = cn(buttonVariants({ variant, size, disabled, className }));
-        
+
         if (href) {
             if (disabled) {
                 return (
@@ -49,7 +46,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         disabled
                         ref={ref}
                         {...props}
-                        type={props.type || "button"}
+                        type={props.type || 'button'}
                     >
                         {children}
                     </button>
@@ -59,13 +56,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 <Link
                     href={href}
                     className={cn(buttonVariants({ variant, size, disabled, className }))} // <-- add disabled here
-                    onClick={disabled ? (e) => e.preventDefault() : undefined}  // prevent clicking if disabled
-                    aria-disabled={disabled}  // for accessibility
+                    onClick={disabled ? (e) => e.preventDefault() : undefined} // prevent clicking if disabled
+                    aria-disabled={disabled} // for accessibility
                     tabIndex={disabled ? -1 : 0} // prevent focus if disabled
                 >
                     {children}
                 </Link>
-            )
+            );
         }
         return (
             <button
@@ -76,9 +73,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             >
                 {children}
             </button>
-        )
-    }
-)
-Button.displayName = 'Button'
+        );
+    },
+);
+Button.displayName = 'Button';
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };
