@@ -40,7 +40,6 @@ export default function Execs() {
         };
     }, [data]);
 
-    /* render */
     return (
         <main className="flex flex-col items-center">
             <div className="flex flex-col items-center font-bold mt-35 md:mt-25">

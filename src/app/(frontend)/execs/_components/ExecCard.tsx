@@ -1,10 +1,9 @@
-// components/ExecCard.tsx
 import Image from 'next/image';
 import { Exec } from '../page';
 
 type ExecCardProps = {
     exec: Exec;
-    tiltLeft: boolean; // keeps your original API
+    tiltLeft: boolean;
 };
 
 export default function ExecCard({ exec, tiltLeft }: ExecCardProps) {
