@@ -20,6 +20,7 @@ export default function HomePage() {
                         textBg="bg-white"
                         textColor="text-primary-red-800"
                         wrapperClassName="skew-y-10 md:skew-y-6 origin-left"
+                        
                     />
                     <TextMarquee
                         text={'Established in 1998'}
