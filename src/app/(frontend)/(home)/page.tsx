@@ -26,6 +26,7 @@ export default function HomePage() {
                         textBg="bg-primary-red-800"
                         bgColor="bg-white"
                         wrapperClassName="-skew-y-6 md:-skew-y-3 origin-right scale-105 -translate-y-13"
+                        direction="right"
                     />
                 </div>
             </div>
