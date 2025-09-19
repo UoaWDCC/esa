@@ -44,7 +44,7 @@ export default function MeetExecs() {
 
   return (
   <div className="flex flex-col items-center justify-center gap-10 relative z-50 pt-8 pb-8 md:min-h-screen md:pt-25 md:pb-20">
-      <h3 className="bg-primary-red-400 px-6 py-1 rounded-2xl">Meet The Execs</h3>
+      <h3 className="bg-primary-red-400 rounded-2xl px-10 py-2 md:px-6 md:py-1">Meet The Execs</h3>
 
       {/* Original grid of cards */}
       <div className="hidden w-full md:flex flex-wrap justify-center gap-5 z-50">
@@ -61,7 +61,7 @@ export default function MeetExecs() {
       </div>
 
       {/* Image-only Carousel; we listen to which one is centered */}
-      <div className="block md:hidden mt-10 -translate-x-1">
+      <div className="block md:hidden mt-8 -translate-x-1">
         <div className="App">
           <div className="carousel">
             <Carousel
@@ -85,14 +85,14 @@ export default function MeetExecs() {
             >
               <h4 className="text-2xl font-semibold -mb-1 mt-4">{activeExec.name}</h4>
               <p className="text-sm font-smeltex-medium">{activeExec.role}</p>
-              <div className="h-[1px] w-[80%] bg-white mb-5"></div>
+              <div className="h-[1px] w-[80%] bg-white mb-5 mt-3"></div>
               <p className="text-center max-w-md text-sm">{activeExec.about}</p>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      <Button href="/execs">Meet More Execs</Button>
+      <Button href="/execs" className="my-5 md:mb-0">Meet More Execs</Button>
 
       <Image
         src="/images/aboutus/path.svg"

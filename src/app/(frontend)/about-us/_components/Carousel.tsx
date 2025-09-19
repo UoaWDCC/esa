@@ -11,14 +11,33 @@ const Carousel: React.FC<CarouselProps> = ({ Data, onCenterChange }) => {
   if (!Data || Data.length === 0) return null;
 
   const [FlowDirection, setFlowDirection] = useState(true);
-  const [CenterId, setCenterId] = useState(0);
-  const [LeftId, setLeftId] = useState(Data.length - 1);
-  const [RightId, setRightId] = useState(Data.length > 1 ? 1 : 0);
+  const [CenterId, setCenterId] = useState(Data.length > 0 ? (0 + 3) % Data.length : 0);
+  const [LeftId, setLeftId] = useState(Data.length > 0 ? (Data.length - 1 + 3) % Data.length : 0);
+  const [RightId, setRightId] = useState(Data.length > 1 ? (1 + 3) % Data.length : 0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     onCenterChange?.(CenterId);
   }, [CenterId, onCenterChange]);
+
+  useEffect(() => {
+    if (!hasInitialized && Data.length > 0) {
+      // Move 3 steps to the right before showing to prevent indexing bug
+      setCenterId((prev) => (prev + 3) % Data.length);
+      setLeftId((prev) => (prev + 3) % Data.length);
+      setRightId((prev) => (prev + 3) % Data.length);
+      setHasInitialized(true);
+    }
+  }, [hasInitialized, Data.length]);
+
+  useEffect(() => {
+    if (hasInitialized) {
+      const timer = setTimeout(() => setIsVisible(true), 700);
+      return () => clearTimeout(timer);
+    }
+  }, [hasInitialized]);
 
   const nextBtn = () => {
     if (isAnimating) return;
@@ -69,7 +88,7 @@ const Carousel: React.FC<CarouselProps> = ({ Data, onCenterChange }) => {
   };
 
   return (
-    <motion.div className="grid place-content-center rounded-[2rem]">
+    <motion.div className={`grid place-content-center rounded-[2rem] ${isVisible ? "" : "invisible"}`}>
       <motion.div className="relative w-60 h-52">
         <AnimatePresence initial={false}>
           <motion.div

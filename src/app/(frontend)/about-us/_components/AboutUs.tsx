@@ -20,7 +20,7 @@ export default function AboutUs() {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua.
                     </p>
-                    {/* Mobile Mascot Image */}
+                    {/* Mobile Mascot Image (separate one to put in the flex-col structure) */}
                     <Image
                         src={'/images/logo/esa_mascot.png'}
                         priority
