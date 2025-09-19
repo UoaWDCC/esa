@@ -6,7 +6,7 @@ import Papa from 'papaparse';
 export const Members: CollectionConfig = {
   slug: 'members',
   admin: {
-    hidden: true, 
+    hidden: false,
   },
   access: {
     read: () => true,
@@ -90,6 +90,47 @@ export const Members: CollectionConfig = {
         return Response.json({ message: 'CSV file uploaded and members created successfully' }, { status: 200 });
       }
     },
+    {
+      path: '/can-create',
+      method: 'post',
+      handler: async (req) => {
+        await addDataAndFileToRequest(req);
+
+        // Cast data to Member type
+        const data = req.data as Member;
+
+        let canCreate = true;
+        let errorMessage = '';
+
+        // Check whether there is a duplicate email. 
+        const existingMembers = await req.payload.find({
+          collection: 'members',
+          where: {
+            email: { equals: data.email }
+          }
+        });
+
+        // If there are members with the same email, check if the year in the timestamp is the same.
+        if (existingMembers.totalDocs !== 0) {
+          const existingMember = existingMembers.docs[0] as Member;
+
+          const existingYear = new Date(existingMember.timestamp).getFullYear();
+          const newYear = new Date(data.timestamp).getFullYear();
+
+          // Check if the year of the existing member matches the year of the new member
+          if (existingMember.email === data.email && existingYear === newYear) {
+            errorMessage = 'A member with this email already exists for this year.';
+            canCreate = false;
+          }
+        }
+        
+        if (canCreate) {
+          return Response.json({ canCreate: true }, { status: 200 });
+        } else {
+          return Response.json({ canCreate: false, error: errorMessage }, { status: 400 });
+        }
+      }
+    }
   ],
   fields: [
     {
@@ -175,4 +216,46 @@ export const Members: CollectionConfig = {
       type: 'textarea',
     },
   ],
+  hooks: {
+    // Ensure that duplicate emails are not allowed within the same year
+    // This hook runs before creating or updating a member
+    beforeChange: [
+      async ({ data, req, operation }) => {
+        if (operation === 'create' || operation === 'update') {
+          const { email, timestamp } = data;
+
+          if (!email || !timestamp) return;
+
+          const year = new Date(timestamp).getFullYear();
+
+          // Search for existing member with the same email and year
+          const existing = await req.payload.find({
+            collection: 'members',
+            where: {
+              and: [
+                { email: { equals: email } },
+                {
+                  timestamp: {
+                    greater_than_equal: `${year}-01-01T00:00:00.000Z`,
+                    less_than: `${year + 1}-01-01T00:00:00.000Z`
+                  }
+                }
+              ]
+            }
+          });
+
+          const isUpdate = operation === 'update' && data?.id;
+
+          if (
+            existing.docs.length > 0 &&
+            (!isUpdate || existing.docs[0].id !== data.id)
+          ) {
+            throw new Error(
+              `A member with email "${email}" has already registered in ${year}.`
+            );
+          }
+        }
+      }
+    ]
+  }
 };
