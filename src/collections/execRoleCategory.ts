@@ -5,6 +5,9 @@ import type { CollectionConfig } from 'payload';
 }
 export const execRoleCategories: CollectionConfig = {
     slug: 'execRoleCategories',
+    access: {
+        read: () => true,
+    },
     fields: [
         {
             name: 'exec',
