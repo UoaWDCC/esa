@@ -20,7 +20,7 @@ export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps)
                 </p>
             </div>
 
-            <div className="mt-3 flex flex-wrap justify-center gap-y-10 gap-x-10 lg:gap-x-15 max-w-2xl [@media(min-width:1920px)]:max-w-5xl">
+            <div className="mt-3 flex flex-wrap justify-center gap-y-10 gap-x-10 lg:gap-x-15 max-w-2xl [@media(min-width:1921px)]:max-w-5xl">
                 {execs.map((exec) => (
                     <div
                         key={exec.id}
