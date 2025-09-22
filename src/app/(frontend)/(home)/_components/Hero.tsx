@@ -14,7 +14,7 @@ const Hero = () => {
                 {/* Hero Section */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-[700px] md:min-h-screen px-4 md:px-8 xl:px-20 text-center md:pb-0 pb-10">
                     <Image
-                        className="w-full h-auto hidden md:block"
+                        className="md:w-[80%] w-full h-auto hidden md:block"
                         src="/images/HeroTitle.svg"
                         alt="Eastern Students Association title"
                         width={100}
@@ -27,7 +27,7 @@ const Hero = () => {
                         width={100}
                         height={100}
                     />
-                    <div className="transform -translate-y-5 lg:-translate-y-[55%] md:-translate-y-[50%]">
+                    <div className="transform -translate-y-14 lg:-translate-y-[-15%] md:-translate-y-[-20%]">
                         {/* Subtitle */}
                         <p className="text-white mb-6 font-smeltex-medium max-w-md">
                             Your go-to university social club.

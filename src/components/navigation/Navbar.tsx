@@ -39,7 +39,7 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Navbar */}
-            <nav className="hidden md:flex z-50 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-8 lg:px-28 rounded-full gap-4 py-0">
+            <nav className="hidden md:flex z-50 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1.2rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-18 lg:px-28 rounded-full gap-4 py-1">
                 <Link href="/events" className="hover:text-accent transition-colors">
                     EVENTS
                 </Link>
