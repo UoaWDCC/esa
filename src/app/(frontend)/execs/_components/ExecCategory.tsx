@@ -9,9 +9,6 @@ type ExecCategoryProps = {
 };
 
 export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps) {
-    const lastIndex = execs.length - 1;
-    const isOdd = execs.length % 2 === 1;
-
     return (
         <div className="flex flex-col py-8 px-10 items-center">
             <div className="relative mx-auto text-center mb-6 inline-flex flex-col items-center">
@@ -23,23 +20,15 @@ export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps)
                 </p>
             </div>
 
-            {/* Card grid / flex container */}
-            <div className="mt-3 grid grid-cols-2 gap-y-10 gap-x-10 sm:gap-y-10 sm:gap-x-20 lg:gap-x-30">
-                {execs.map((exec, i) => {
-                    const shouldCenter = isOdd && i === lastIndex;
-                    return (
-                        /* identifies last card in the category and centers it while mantaining the same size as other cards */
-                        <div
-                            key={exec.id}
-                            className={
-                                `${shouldCenter ? 'col-span-2 flex justify-center mx-auto' : ''}` +
-                                ' max-w-45 sm:max-w-auto'
-                            }
-                        >
-                            <ExecCard exec={exec} tiltLeft={exec.tilt} />
-                        </div>
-                    );
-                })}
+            <div className="mt-3 flex flex-wrap justify-center gap-y-10 gap-x-10 lg:gap-x-15 max-w-2xl [@media(min-width:1920px)]:max-w-5xl">
+                {execs.map((exec) => (
+                    <div
+                        key={exec.id}
+                        className="max-w-45 sm:max-w-auto"
+                    >
+                        <ExecCard exec={exec} tiltLeft={exec.tilt} />
+                    </div>
+                ))}
             </div>
         </div>
     );

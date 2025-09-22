@@ -41,7 +41,7 @@ export default function Execs() {
     }, [data]);
 
     return (
-        <main className="flex flex-col items-center">
+        <main className="flex flex-col items-center px-[5%] md:px-[10%]">
             <div className="flex flex-col items-center font-bold mt-35 md:mt-25">
                 <p className="text-primary-red-400 text-4xl md:text-5xl font-reservoir-grunge ">
                     Our Execs
