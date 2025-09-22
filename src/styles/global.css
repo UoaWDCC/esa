@@ -59,26 +59,40 @@
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  font-size: clamp(0.8rem, 1vw + 0.5rem, 1.25rem); /* minmum size, perferred size, maximum size */ --radius: 0.625rem; --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --card: oklch(1 0 0); --card-foreground: oklch(0.145 0 0); --popover: oklch(1 0 0); --popover-foreground: oklch(0.145 0 0); --primary: oklch(0.205 0 0); --primary-foreground: oklch(0.985 0 0); --secondary: oklch(0.97 0 0); --secondary-foreground: oklch(0.205 0 0); --muted: oklch(0.97 0 0); --muted-foreground: oklch(0.556 0 0); --accent: oklch(0.97 0 0); --accent-foreground: oklch(0.205 0 0); --destructive: oklch(0.577 0.245 27.325); --border: oklch(0.922 0 0); --input: oklch(0.922 0 0); --ring: oklch(0.708 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.625rem; --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --card: oklch(1 0 0); --card-foreground: oklch(0.145 0 0); --popover: oklch(1 0 0); --popover-foreground: oklch(0.145 0 0); --primary: oklch(0.205 0 0); --primary-foreground: oklch(0.985 0 0); --secondary: oklch(0.97 0 0); --secondary-foreground: oklch(0.205 0 0); --muted: oklch(0.97 0 0); --muted-foreground: oklch(0.556 0 0); --accent: oklch(0.97 0 0); --accent-foreground: oklch(0.205 0 0); --destructive: oklch(0.577 0.245 27.325); --border: oklch(0.922 0 0); --input: oklch(0.922 0 0); --ring: oklch(0.708 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
+  /* font sizes calculated using https://utopia.fyi/type/calculator?c=360,18,1.2,1240,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step--2: clamp(0.7035rem, 0.8131rem + -0.1414vw, 0.7813rem);
+  --step--1: clamp(0.9375rem, 0.9374rem + 0.0004vw, 0.9377rem);
+  --step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2206rem + 0.575vw, 1.6663rem);
+  --step-2: clamp(1.62rem, 1.3741rem + 1.0929vw, 2.2211rem);
+  --step-3: clamp(1.944rem, 1.5281rem + 1.8486vw, 2.9607rem);
+  --step-4: clamp(2.3328rem, 1.6726rem + 2.9343vw, 3.9467rem);
+  --step-5: clamp(2.7994rem, 1.7924rem + 4.4755vw, 5.2609rem);
 }
 
 h1 {
   font-family: var(--font-reservoir-grunge);
-  font-size: clamp(2rem, 5vw + 1rem, 5rem); /* minmum size, perferred size, maximum size */
+  font-size: var(--step-4);
 }
 
 h2 {
   font-family: var(--font-reservoir-grunge);
-  font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem); /* minmum size, perferred size, maximum size */
+  font-size: var(--step-3);
 }
 
 h3 {
   font-family: var(--font-reservoir-grunge);
-  font-size: clamp(1rem, 1vw + 1rem, 1.75rem); /* minmum size, perferred size, maximum size */
+  font-size: var(--step-2);
 }
 
 h4 {
-  font-size: clamp(1rem, 1vw + 2rem, 1.75rem);
+  font-size: var(--step-1);
+}
+
+p {
+  font-size: var(--step-0);
+  line-height: 1.5rem;
 }
 
 /* SHADCN STUFF DO NOT WORRY ABOUT IT!! */
