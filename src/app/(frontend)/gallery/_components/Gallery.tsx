@@ -5,6 +5,7 @@ import Polaroid from "./Polaroid"
 import { PolaroidProps, PinColour, Variation } from "./Polaroid"
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface GalleryProps {
     polaroids?: PolaroidProps[];
@@ -70,16 +71,16 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
     };
 
     return (
-        <div>
+        <div className="w-full">
             {/* Gallery Board */}
             <div className="flex justify-center items-center"> 
                 <div>
                     <button
                         onClick={handlePrevPage}
                         disabled={currentPage === 1}
-                        className="px-4 py-2 text-[10vw] mr-[3vw] disabled:opacity-50 cursor-pointer"
+                        className="py-2 text-[10vw] mr-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
                     >
-                        &lt;
+                        <ChevronLeft className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
                     </button>
                 </div>
             
@@ -123,9 +124,9 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                     <button
                         onClick={handleNextPage}
                         disabled={currentPage === getTotalPages()}
-                        className="px-4 py-2 text-[10vw] ml-[3vw] disabled:opacity-50 cursor-pointer"
+                        className="py-2 text-[10vw] ml-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
                     >
-                        &gt;
+                        <ChevronRight className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
                     </button>
                 </div>
             </div>
