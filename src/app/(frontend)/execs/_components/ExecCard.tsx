@@ -29,16 +29,16 @@ export default function ExecCard({ exec, tiltLeft }: ExecCardProps) {
                     </div>
 
                     {/* Name & role */}
-                    <div className="px-3 py-2 text-black">
-                        <p className="font-bold">{name}</p>
-                        <p className="text-xs">{role}</p>
+                    <div className="px-3 py-2 lg:py-4 text-black">
+                        <p className="!text-sm sm:!text-[1rem] md:!text-[1.25rem] font-bold">{name}</p>
+                        <p className="!text-xs sm:!text-[1rem] md:!text-[1.25rem]">{role}</p>
                     </div>
                 </div>
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-gray-200 pointer-events-none" />
             </div>
 
             {/* Optional bio */}
-            <p className="hidden md:inline text-xs text-center mt-5">{about}</p>
+            <p className="hidden lg:inline text-center mt-5">{about}</p>
         </article>
     );
 }

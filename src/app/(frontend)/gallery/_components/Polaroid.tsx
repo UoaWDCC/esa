@@ -17,10 +17,14 @@ const VARIATIONS = {
         dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
         imageSize: '260px'
     },
+    // large: {
+    //     dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
+    //     imageSize: '370px'
+    // }
     large: {
-        dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
-        imageSize: '370px'
-    }
+        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
+        imageSize: '260px'
+    },
 } as const;
 
 const PIN_COLOURS = {
