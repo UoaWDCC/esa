@@ -11,12 +11,12 @@ const WhyJoin = () => {
         // Root container with background image and content overlay
         <div
             id="root"
-            className="relative h-auto min-w-[375px] min-h-20 pt-5 pb-[min(30vw,20vh)] overflow-hidden"
+            className="relative h-auto min-h-20 pt-5 pb-[min(30vw,20vh)] overflow-hidden"
         >
             {/* Content overlay */}
             <div
                 id="content"
-                className="flex flex-col justify-center relative z-10 mx-[10vw] w-fit h-full"
+                className="flex flex-col justify-center items-center md:items-start relative z-10 w-fit h-full lg:px-[13%] md:px-[10%] px-[6%]"
             >
                 {/* Heading SVG */}
                 <Image
@@ -27,7 +27,7 @@ const WhyJoin = () => {
                     className="origin-bottom-left lg:scale-90"
                 />
                 {/* Body Text One*/}
-                <div id="body-text-one" className="mt-8 lg:w-[50vw] max-w-[1000px]">
+                <div id="body-text-one" className="mt-8 lg:w-[50vw] max-w-[1000px] text-center md:text-start">
                     <p className="text-white">
                         We&apos;re doing things our way with fresh events, fun people, and a vibe
                         that feels like your favourite hangout spot. Kinda new, kinda nostalgic, and
@@ -35,7 +35,7 @@ const WhyJoin = () => {
                     </p>
                 </div>
                 {/* Body Text Two*/}
-                <div id="body-text-two" className="mt-4 lg:w-[50vw] max-w-[1000px]">
+                <div id="body-text-two" className="mt-4 lg:w-[50vw] max-w-[1000px] text-center md:text-start">
                     <p className="text-white">
                         Whether you&apos;re here to smash it at sports day, chill at pool night, or
                         game it out at arcade night, we&apos;ve got you!

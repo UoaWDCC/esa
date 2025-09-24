@@ -29,7 +29,7 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
             {expanded && <hr className="mb-5" />}
             {/* Collapsed view */}
             {!expanded && (
-                <div className="w-fit md:w-full flex flex-col md:flex-row gap-x-5">
+                <div className="w-full flex flex-col md:flex-row gap-x-5">
                     <div
                         className={`flex gap-x-5 justify-center items-center ${
                             even ? 'flex-row-reverse md:flex-row' : 'flex-row'

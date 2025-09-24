@@ -30,16 +30,16 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center w-full p-5 md:mt-20">
+            <div className="flex flex-col items-center w-full">
                 <WhoAreWe />
             </div>
-            <div className="w-full bg-[#161514]">
+            <div className="w-full">
                 <Sponsors />
             </div>
-            <div className="w-full bg-[#161514]">
+            <div className="w-full">
                 <WhyJoin />
             </div>
-            <div className="w-full bg-[#161514]">
+            <div className="w-full">
                 <Events />
             </div>
             <PlainMarquee />

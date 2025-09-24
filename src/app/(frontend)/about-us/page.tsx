@@ -4,7 +4,7 @@ import MeetExecs from './_components/MeetExecs';
 
 export default function aboutUs() {
     return (
-        <div className="w-screen">
+        <div className="w-full">
             <div>
                 <AboutUs />
             </div>

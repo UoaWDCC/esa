@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
 import React from 'react';
+import TopTear from './TopTear';
 
 export default function JoinExecTeam() {
     return (
-        <div className="flex items-center justify-center md:justify-start min-h-[150vh] relative overflow-hidden">
+        <div className="flex items-center justify-center md:justify-start min-h-[150vh] relative overflow-hidden w-full">
             <Image
                 src="/images/aboutus/ExecTeamBg.jpg"
                 alt="exec team background"
@@ -13,7 +14,7 @@ export default function JoinExecTeam() {
                 className="object-cover object-center"
             />
 
-            <div className="flex flex-col px-6 items-center text-center md:text-left md:px-0 md:pl-20 w-[40rem] gap-20 relative z-10">
+            <div className="flex flex-col md:items-start items-center text-center md:text-left lg:ml-[13%] md:m-[10%] mx-[6%] lg:w-[45%] w-[full] gap-20 relative z-10">
                 {/* First Half of text */}
                 <div className="flex flex-col gap-5">
                     <h3>Join our Exec Team</h3>
@@ -45,6 +46,8 @@ export default function JoinExecTeam() {
                 alt="ESA Exec Team Polaroid"
                 className="w-100 xl:w-125 h-auto absolute bottom-0 right-2"
             />
+
+            <TopTear />
         </div>
     );
 }
