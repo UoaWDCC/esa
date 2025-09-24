@@ -19,9 +19,9 @@ export default function Events() {
     setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
-        <div className="relative text-white pb-32 overflow-hidden lg:px-[13%] md:px-[10%] px-[6%]">
+        <div className="relative text-white pb-32 overflow-hidden lg:px-[13%] md:px-[10%] px-[6%] py-28">
             {/* Title/body text */}
-            <h2 className="text-primary-red pt-27 text-center"> Our Events </h2>
+            <h2 className="text-primary-red text-center"> Our Events </h2>
 
             <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
                 <p className="text-primary-white mb-2">View our next and previous events here!</p>
