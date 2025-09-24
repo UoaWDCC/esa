@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import LinktreeIcon from '../icons/linktree-icon.webp';
 
 function Footer() {
     const socialLinks = [
@@ -18,6 +19,11 @@ function Footer() {
             href: 'https://www.tiktok.com/@uoaesa',
             icon: FaTiktok,
             label: 'TikTok',
+        },
+        {
+            href: 'https://linktr.ee/uoa.esa',
+            icon: LinktreeIcon, // Changed to LinktreeIcon (Image)
+            label: 'LinkTree',
         },
     ];
 
@@ -59,7 +65,12 @@ function Footer() {
                                 aria-label={label}
                                 className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition"
                             >
-                                <Icon className="text-xl" />
+                                {/* If it's LinktreeIcon, render it as an Image */}
+                                {label === 'LinkTree' ? (
+                                    <Image src={Icon} alt="Linktree Icon" width={24} height={24} />
+                                ) : (
+                                    <Icon className="text-xl" />
+                                )}
                             </Link>
                         ))}
                     </div>
