@@ -9,8 +9,10 @@ export default function ContactPage() {
                     <Image
                         src="/images/contact-us-image.png"
                         alt="Contact us image"
-                        height={300}
-                        width={200}
+                        height={0}
+                        width={0}
+                        sizes="100vw"
+                        style={{ width: "100%", height: "auto" }}
                         className="object-cover rounded-2xl w-full h-full md:aspect-[3/4]"
                         priority
                     />

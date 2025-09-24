@@ -4,7 +4,7 @@ import Title from '@/components/ui/Title';
 
 export default function WhoAreWe() {
     return (
-        <div className="w-full flex justify-center md:w-auto relative lg:px-[15%] md:px-[10%] px-[6%] mt-50 mb-28">
+        <div className="w-full flex justify-center md:w-auto relative lg:px-[15%] md:px-[10%] px-[6%] mt-10 md:mt-50 mb-14 md:mb-28">
             {/* bottom right frame*/}
             <Image
                 src="/images/home/frame.png"
@@ -60,7 +60,7 @@ export default function WhoAreWe() {
                             alt="arrow3.svg"
                             width={39}
                             height={100}
-                            className="absolute top-[7rem] left-[-2.5rem] md:hidden"
+                            className="absolute top-[7rem] left-[-2.5rem] md:hidden z-50"
                         />
                     </div>
 
@@ -74,8 +74,10 @@ export default function WhoAreWe() {
                         <Image
                             src="/images/home/who_are_we_mobile.png"
                             alt="team photo"
-                            width={120}
-                            height={100}
+                            width={0}
+                            height={0}
+                            style={{ width: "100%", height: "auto" }}
+                            sizes="100vw"
                             className="w-[90%] h-auto max-w-full object-contain"
                         />
                         {/* Top Right Particles */}
@@ -104,7 +106,7 @@ export default function WhoAreWe() {
                                 height={0}
                                 style={{ width: "100%", height: "auto" }}
                                 sizes="100vw"
-                                className="w-full max-w-[120px] h-auto object-contain"
+                                className="w-full max-w-[120px]"
                             />
                             {/* Bottom Left Particles */}
                             <div className="relative">
