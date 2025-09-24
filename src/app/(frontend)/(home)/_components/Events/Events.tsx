@@ -20,10 +20,7 @@ export default function Events() {
   setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
-        <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
-            {/* background image */}
-            {/* TODO change the background to use Next image */}
-            <div className="hidden md:block absolute inset-0 bg-[url(/images/home/paperbackground.png)] bg-cover bg-center opacity-50" />
+        <section className="relative px-6 text-white pb-32 overflow-hidden w-full md:px-[10%] lg:px-[13%] sm:px-[5%]">
 
             <div className="hidden md:block absolute top-0 right-0 p-4 z-10 -rotate-[9deg] -translate-y-50 translate-x-30 w-[70vw] max-w-[900px] aspect-square opacity-40">
                 <Image
@@ -34,7 +31,7 @@ export default function Events() {
                 />
             </div>
 
-            <h1 className="text-primary-red underline py-16 relative z-20 whitespace-nowrap">
+            <h1 className="text-primary-red underline py-16 relative z-20 whitespace-nowrap md:text-start text-center w-full">
                 OUR EVENTS
             </h1>
 
