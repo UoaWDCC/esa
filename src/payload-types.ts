@@ -223,17 +223,17 @@ export interface Member {
 export interface Exec {
   id: string;
   /**
-   * Full name of the executive
+   * First name of the executive
    */
-  name: string;
+  firstName: string;
+  /**
+   * Last name of the executive
+   */
+  lastName: string;
   /**
    * Ethinicity of the executive
    */
   ethnicity: string;
-  /**
-   * Role held by the executive
-   */
-  role: string;
   /**
    * Degree of the executive
    */
@@ -243,7 +243,7 @@ export interface Exec {
    */
   image: string | Media;
   /**
-   * Short biography of the executive
+   * Short biography of the executive (max 200 characters)
    */
   about: string;
   /**
@@ -420,9 +420,9 @@ export interface MembersSelect<T extends boolean = true> {
  * via the `definition` "execs_select".
  */
 export interface ExecsSelect<T extends boolean = true> {
-  name?: T;
+  firstName?: T;
+  lastName?: T;
   ethnicity?: T;
-  role?: T;
   degree?: T;
   image?: T;
   about?: T;
