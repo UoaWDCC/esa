@@ -16,7 +16,7 @@ const WhyJoin = () => {
             {/* Content overlay */}
             <div
                 id="content"
-                className="flex flex-col justify-center items-center md:items-start relative z-10 w-fit h-full md:px-[10%] lg:px-[13%] sm:px-[5%]"
+                className="flex flex-col justify-center items-center md:items-start relative z-10 w-fit h-full lg:px-[13%] md:px-[10%] px-[6%]"
             >
                 {/* Heading SVG */}
                 <Image

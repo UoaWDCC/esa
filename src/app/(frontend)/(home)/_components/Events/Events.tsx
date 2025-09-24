@@ -20,7 +20,7 @@ export default function Events() {
   setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
-        <section className="relative px-6 text-white pb-32 overflow-hidden w-full md:px-[10%] lg:px-[13%] sm:px-[5%]">
+        <section className="relative text-white pb-32 overflow-hidden w-full lg:px-[13%] md:px-[10%] px-[6%]">
 
             <div className="hidden md:block absolute top-0 right-0 p-4 z-10 -rotate-[9deg] -translate-y-50 translate-x-30 w-[70vw] max-w-[900px] aspect-square opacity-40">
                 <Image

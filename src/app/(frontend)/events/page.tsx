@@ -19,7 +19,7 @@ export default function Events() {
     setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
-        <div className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
+        <div className="relative text-white pb-32 overflow-hidden lg:px-[13%] md:px-[10%] px-[6%]">
             {/* Title/body text */}
             <h2 className="text-primary-red pt-27 text-center"> Our Events </h2>
 
