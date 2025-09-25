@@ -18,7 +18,7 @@ export default function Sponsors() {
                     <Link href="/sponsors">
                         <Title className="tracking-wider">Our Sponsors</Title>
                     </Link>
-                    <div className="absolute items-center right-[-16.25rem] top-[-2.2rem] gap-1.5 hidden lg:flex">
+                    <div className="absolute items-center right-[-19rem] top-[-2rem] gap-1.5 hidden lg:flex">
                         <Image
                             width={90}
                             height={90}
@@ -33,7 +33,7 @@ export default function Sponsors() {
                     </div>
                 </div>
 
-                <p className="w-[80%] text-center text-base/tight font-smeltex-medium tracking-[0.15em] lg:text-lg/tight lg:w-[28.5rem]">
+                <p className="w-[80%] text-center tracking-[0.15em] lg:w-[28.5rem]">
                     Enjoy discounts? As uni students we understand, that&apos;s why we&apos;ve
                     sponsored up for you. Take a look at ESA&apos;s sponsors!
                 </p>

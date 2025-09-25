@@ -12,7 +12,7 @@ export default function MeetExecs() {
     const { data: execs } = useExecs();
 
     return (
-        <div className="flex flex-col items-center justify-center gap-10 min-h-screen relative z-50 pt-25 pb-20">
+        <div className="flex flex-col items-center justify-center gap-10 min-h-screen z-10 relative pt-25 pb-20">
             <h3 className="bg-primary-red-400 px-6 py-1 rounded-2xl">Meet The Execs</h3>
 
             <div className="w-full flex flex-wrap justify-center gap-5 z-50">

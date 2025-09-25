@@ -1,5 +1,10 @@
-import WipPage from '@/components/WipPage';
+import Gallery from "./_components/Gallery";
 
-export default function gallery() {
-    return <WipPage />;
+export default function GalleryPage() {
+    return (
+        <div className="flex flex-col mt-[7rem] px-[10%] md:px-[5%] items-center">
+            <h2 className="text-primary-red border-b-2 border-white mb-[2vw] px-[20vw]">Gallery</h2>
+            <Gallery /> 
+        </div>
+    );
 }
