@@ -1,9 +1,13 @@
+import { isTier3 } from '@/access/isTier3';
 import type { CollectionConfig } from 'payload';
 
 export const Execs: CollectionConfig = {
     slug: 'execs',
     access: {
         read: () => true,
+        create: isTier3,
+        update: isTier3,
+        delete: isTier3,
     },
     fields: [
         {

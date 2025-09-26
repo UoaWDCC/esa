@@ -1,102 +1,106 @@
+import { isTier2OrHigher } from '@/access/isTier2OrHigher';
 import type { CollectionConfig } from 'payload';
 
 const Events: CollectionConfig = {
-  slug: "events",
-  access: {
-    read: () => true
-  },
-  fields: [
-    {
-      name: "name",
-      label: "Event Name",
-      type: "text",
-      required: true,
+    slug: 'events',
+    access: {
+        read: () => true,
+        create: isTier2OrHigher,
+        update: isTier2OrHigher,
+        delete: isTier2OrHigher,
     },
-    {
-      name: "location",
-      label: "Location",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "date",
-      label: "Date",
-      type: "date",
-      admin: {
-        date: {
-          pickerAppearance: 'dayOnly',
-          displayFormat: 'EEEE d MMMM yyyy'
+    fields: [
+        {
+            name: 'name',
+            label: 'Event Name',
+            type: 'text',
+            required: true,
         },
-      },
-      required: true
-    },
-    {
-      name: "startTime",
-      label: "Event Starting Time",
-      type: "date",
-      admin: {
-        date: {
-          pickerAppearance: 'timeOnly',
-          displayFormat: 'hh:mm a'
+        {
+            name: 'location',
+            label: 'Location',
+            type: 'text',
+            required: true,
         },
-      },
-      required: true,
-    },
-    {
-      name: "endTime",
-      label: "Event Ending Time",
-      type: "date",
-      admin: {
-        date: {
-          pickerAppearance: 'timeOnly',
-          displayFormat: 'hh:mm a'
+        {
+            name: 'date',
+            label: 'Date',
+            type: 'date',
+            admin: {
+                date: {
+                    pickerAppearance: 'dayOnly',
+                    displayFormat: 'EEEE d MMMM yyyy',
+                },
+            },
+            required: true,
         },
-      },
-    },
-    {
-      name: "memberPrice",
-      label: "Member Price",
-      type: "number",
-      admin: {
-        step: 0.01,
-      },
-      required: true,
-    },
-    {
-      name: "nonMemberPrice",
-      label: "Non-Member Price",
-      type: "number",
-      admin: {
-        step: 0.01,
-      },
-      required: true,
-    },
-    {
-      name: "description",
-      label: "Event Description",
-      type: "textarea",
-    },
-    {
-      name: 'photo',
-      label: 'Event Photo',
-      type: 'upload',
-      relationTo: 'media',
-      required: false,
-      displayPreview: true,
-    },
-    {
-      name: "isLocked",
-      label: "Lock Event",
-      type: "checkbox",
-      required: false,
-    },
-    {
-      name: "signUpForm",
-      label: "Sign Up Form Link",
-      type: "text",
-      required: true
-    }
-  ]
-}
+        {
+            name: 'startTime',
+            label: 'Event Starting Time',
+            type: 'date',
+            admin: {
+                date: {
+                    pickerAppearance: 'timeOnly',
+                    displayFormat: 'hh:mm a',
+                },
+            },
+            required: true,
+        },
+        {
+            name: 'endTime',
+            label: 'Event Ending Time',
+            type: 'date',
+            admin: {
+                date: {
+                    pickerAppearance: 'timeOnly',
+                    displayFormat: 'hh:mm a',
+                },
+            },
+        },
+        {
+            name: 'memberPrice',
+            label: 'Member Price',
+            type: 'number',
+            admin: {
+                step: 0.01,
+            },
+            required: true,
+        },
+        {
+            name: 'nonMemberPrice',
+            label: 'Non-Member Price',
+            type: 'number',
+            admin: {
+                step: 0.01,
+            },
+            required: true,
+        },
+        {
+            name: 'description',
+            label: 'Event Description',
+            type: 'textarea',
+        },
+        {
+            name: 'photo',
+            label: 'Event Photo',
+            type: 'upload',
+            relationTo: 'media',
+            required: false,
+            displayPreview: true,
+        },
+        {
+            name: 'isLocked',
+            label: 'Lock Event',
+            type: 'checkbox',
+            required: false,
+        },
+        {
+            name: 'signUpForm',
+            label: 'Sign Up Form Link',
+            type: 'text',
+            required: true,
+        },
+    ],
+};
 
 export default Events;
