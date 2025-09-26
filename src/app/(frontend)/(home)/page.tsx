@@ -20,12 +20,14 @@ export default function HomePage() {
                         textBg="bg-white"
                         textColor="text-primary-red-800"
                         wrapperClassName="skew-y-10 md:skew-y-6 origin-left"
+                        
                     />
                     <TextMarquee
                         text={'Established in 1998'}
                         textBg="bg-primary-red-800"
                         bgColor="bg-white"
                         wrapperClassName="-skew-y-6 md:-skew-y-3 origin-right scale-105 -translate-y-13"
+                        direction="right"
                     />
                 </div>
             </div>

@@ -7,14 +7,15 @@ interface TextMarqueeProps {
     textBg: string;
     textColor?: string;
     wrapperClassName?: string;
+    direction?: "left" | "right"; // <-- add this line
 }
 
-export default function TextMarquee({ text, bgColor, textBg, textColor, wrapperClassName }: TextMarqueeProps) {
+export default function TextMarquee({ text, bgColor, textBg, textColor, wrapperClassName, direction = "left" }: TextMarqueeProps) {
     const repeatedText = Array(10).fill(text);
 
     return (
         <div className={clsx("w-full z-20", bgColor, wrapperClassName)}>
-            <Marquee speed={90} gradient={false}>
+            <Marquee speed={90} gradient={false} direction={direction}>
                 {repeatedText.map((text, index) => (
                     <div
                         key={index}
