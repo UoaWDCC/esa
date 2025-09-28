@@ -15,12 +15,22 @@ interface EventCardProps {
     event: EventData;
     even?: boolean;
     isPast?: boolean;
+    isSeeMoreVisible?: boolean;
 }
 
-export default function EventCard({ event, even, isPast }: EventCardProps) {
+export default function EventCard({
+    event,
+    even,
+    isPast,
+    isSeeMoreVisible = true,
+}: EventCardProps) {
     const [expanded, setExpanded] = useState(false);
     const date = new Date(event.date);
     const disabled = event.locked || isPast;
+    console.log(event);
+    console.log(isPast);
+    console.log(event.locked);
+    console.log(disabled);
 
     const dateString = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear().toString().slice(-2)}`;
 
@@ -171,7 +181,10 @@ export default function EventCard({ event, even, isPast }: EventCardProps) {
             {expanded && <hr className="mt-5" />}
 
             {/* Toggle button */}
-            <div className="mt-3 flex justify-end">
+            <div
+                className="mt-3 justify-end"
+                style={{ display: isSeeMoreVisible ? 'flex' : 'none' }}
+            >
                 <Button
                     variant="clear"
                     size="sm"

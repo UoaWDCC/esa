@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import EventCard from './EventCard';
 import { EventData } from '@/types/EventData';
-import Title from "@/components/ui/Title";
-import Image from "next/image";
-import {useEvents} from "@/features/events/data/tanstack/useEvents";
+import Title from '@/components/ui/Title';
+import Image from 'next/image';
+import { useEvents } from '@/features/events/data/tanstack/useEvents';
 import { setupEvents } from '@/features/events/utils/setupEvents';
 
 export default function Events() {
@@ -17,7 +17,7 @@ export default function Events() {
     const upcomingEvents: EventData[] = [];
     const pastEvents: EventData[] = [];
 
-  setupEvents(parsedEvents, upcomingEvents, pastEvents);
+    setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
         <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
@@ -41,7 +41,9 @@ export default function Events() {
             {/* latest header */}
             <div className="flex flex-col relative z-20 items-center md:items-start">
                 <Title className="mb-10">LATEST</Title>
-                {pastEvents[0] && <EventCard event={pastEvents[0]} isPast={true} />}
+                {pastEvents[0] && (
+                    <EventCard event={pastEvents[0]} isPast={true} isSeeMoreVisible={false} />
+                )}
             </div>
 
             <Image
@@ -58,7 +60,12 @@ export default function Events() {
                 <div className="flex flex-col items-center space-y-10 w-full">
                     {(showAllUpcoming ? upcomingEvents : upcomingEvents.slice(0, 2)).map(
                         (event, index) => (
-                            <EventCard key={event._id} event={event} even={index % 2 === 0} />
+                            <EventCard
+                                key={event._id}
+                                event={event}
+                                even={index % 2 === 0}
+                                isSeeMoreVisible={false}
+                            />
                         ),
                     )}
                 </div>

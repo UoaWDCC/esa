@@ -42,7 +42,12 @@ export default function Events() {
                 <Title className="mb-10">LATEST</Title>
                 <div className="flex flex-col items-center space-y-10 w-full">
                     {pastEvents.slice(0, 2).map((event, index) => (
-                        <EventCard key={event._id} event={event} even={index % 2 === 0} />
+                        <EventCard
+                            key={event._id}
+                            event={event}
+                            even={index % 2 === 0}
+                            isPast={true}
+                        />
                     ))}
                 </div>
             </div>
