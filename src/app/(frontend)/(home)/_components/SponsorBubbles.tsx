@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { SponsorData } from '@/types/SponsorData';
 
@@ -46,28 +47,99 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                 console.error('Failed to load Packery:', error);
             });
     }, [baseSize]);
-
+    
     return (
-        <div className="relative h-[24rem] inline-block ml-4 select-none" ref={containerRef}>
+        <div
+            className="relative h-[24rem] inline-block ml-4 select-none"
+            ref={containerRef}
+        >
             {sponsors.map((sponsor) => {
                 const size = baseSize * sponsor.importance;
 
                 return (
-                    <div
-                        className={`grid-item rounded-full select-none absolute overflow-hidden ${sponsor.name === 'SaigonChill' ? 'stamp top-0 left-15' : ''}`}
-                        style={{ width: `${size}px`, height: `${size}px` }}
+                    <Link
+                        href="/sponsors"
                         key={sponsor.id}
+                        className={`grid-item absolute rounded-full overflow-visible group ${
+                            sponsor.name === 'SaigonChill' ? 'stamp top-0 left-15' : ''
+                        }`}
+                        style={{ width: `${size}px`, height: `${size}px` }}
                     >
                         <Image
                             src={sponsor.logo.url}
                             height={size}
                             width={size}
-                            alt={sponsor.logo.alt || 'Brand logo'}
-                            className="scale-105 select-none"
+                            alt={sponsor.logo.alt || sponsor.name}
+                            className="scale-105 rounded-full select-none"
                         />
-                    </div>
+
+                        {/* tooltip bubble */}
+                        {sponsor.deal && (
+                            // <div
+                            //     className="absolute -top-8 left-1/2 -translate-x-1/2
+                            //     bg-gray-700 text-white text-xs
+                            //     px-2 py-0.5 rounded-md shadow-md opacity-0
+                            //     group-hover:opacity-100 duration-200 whitespace-nowrap
+                            //     z-50"
+                            // >
+                            //     {sponsor.deal}
+                            // </div>
+                            <div
+                                className="absolute -top-14 left-1/2 -translate-x-1/2
+                                bg-gray-700 text-white text-sm leading-snug
+                                px-3 py-2 rounded-lg shadow-md opacity-0
+                                group-hover:opacity-100 transition-opacity duration-200
+                                max-w-[14rem] text-center z-50"
+                            >
+                                {sponsor.deal}
+                            </div>
+                      
+                        )}
+                    </Link>
                 );
             })}
         </div>
     );
 }
+
+//     return (
+//         <div className="relative h-[24rem] inline-block ml-4 select-none" ref={containerRef}>
+//             {sponsors.map((sponsor) => {
+//                 const size = baseSize * sponsor.importance;
+
+//                 return (
+//                     <Link
+//                         href="/sponsors"
+//                         key={sponsor.id}
+//                         className="grid-item absolute rounded-full overflow-visible group"
+//                         style={{ width: `${size}px`, height: `${size}px` }}
+//                     >
+//                         <div
+//                             className={`grid-item rounded-full select-none absolute overflow-hidden ${sponsor.name === 'SaigonChill' ? 'stamp top-0 left-15' : ''}`}
+//                             style={{ width: `${size}px`, height: `${size}px` }}
+//                             key={sponsor.id}
+//                         >
+//                             <Image
+//                                 src={sponsor.logo.url}
+//                                 height={size}
+//                                 width={size}
+//                                 alt={sponsor.logo.alt || 'Brand logo'}
+//                                 className="scale-105 select-none"
+//                             />
+//                             {/* tooltip bubble */}
+//                             {sponsor.deal && (
+//                                 <div className="absolute -top-8 left-1/2 -translate-x-1/2 
+//                                     bg-primary-black text-primary-white text-sm 
+//                                     px-3 py-1 rounded-full shadow-md opacity-0 
+//                                     group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+//                                     {sponsor.deal}
+//                                 </div>
+//                             )}
+//                         </div>
+//                     </Link>
+//                 );
+//             })}
+//         </div>
+//     );
+// }
+
