@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ArrowUp from '@/components/icons/ArrowUp';
 import EventInfo from '@/app/(frontend)/(home)/_components/Events/EventInfo';
 import SquigglyArrow from '@/components/icons/SquigglyArrow';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -188,11 +189,12 @@ export default function EventCard({
                 <Button
                     variant="clear"
                     size="sm"
-                    className="whitespace-nowrap"
+                    className="flex justify-center gap-3 px-4 py-2 whitespace-nowrap"
                     onClick={() => setExpanded(!expanded)}
                     aria-expanded={expanded}
                 >
-                    {expanded ? 'See Less' : 'See More'}
+                    {expanded ? 'See less' : 'See more'}
+                    {expanded ? <ChevronUp strokeWidth={2.5} /> : <ChevronDown strokeWidth={2.5} />}
                 </Button>
             </div>
         </div>
