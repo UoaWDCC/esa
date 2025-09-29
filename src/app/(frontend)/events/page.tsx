@@ -27,8 +27,6 @@ export default function Events() {
                 <p className="text-primary-white mb-2">View our next and previous events here!</p>
             </div>
 
-            <hr className="mx-auto mt-4 w-[1200px] h-px border-0 bg-white/50" />
-
             <div className="mt-25 flex flex-col relative z-20 items-center md:items-start">
                 <Title className="mb-10">UPCOMING</Title>
                 <div className="flex flex-col items-center space-y-10 w-full">

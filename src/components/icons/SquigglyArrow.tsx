@@ -1,5 +1,5 @@
-"use client"
-import React, { useEffect, useState } from "react";
+'use client';
+import React, { useEffect, useState } from 'react';
 
 interface SquigglyArrowProps {
     width?: number;
@@ -11,6 +11,7 @@ interface SquigglyArrowProps {
     strokeColor?: string;
     strokeWidth?: number;
     fillColor?: string;
+    speed?: number;
 }
 
 export default function SquigglyArrow({
@@ -20,19 +21,20 @@ export default function SquigglyArrow({
     frequency = 0.1,
     arrowLength = 20,
     arrowWidth = 10,
-    strokeColor = "#FFFFFF",
+    strokeColor = '#FFFFFF',
     strokeWidth = 5,
-    fillColor = "#FFFFFF",
+    fillColor = '#FFFFFF',
+    speed = 0.08,
 }: SquigglyArrowProps) {
     const [phase, setPhase] = useState(0);
 
     useEffect(() => {
         const id = requestAnimationFrame(function animate() {
-            setPhase(prev => prev + 0.08);
+            setPhase((prev) => prev + speed);
             requestAnimationFrame(animate);
         });
         return () => cancelAnimationFrame(id);
-    }, []);
+    }, [speed]);
 
     // calculate wave path
     const points: string[] = [];
@@ -40,7 +42,7 @@ export default function SquigglyArrow({
         const y = amplitude * Math.sin(frequency * x + phase) + height / 2;
         points.push(`${x},${y}`);
     }
-    const pathData = "M" + points.join(" L"); // M: move to, L: line to
+    const pathData = 'M' + points.join(' L'); // M: move to, L: line to
 
     // calculate position of arrowhead (attach at the end of tail path)
     const endX = width - (arrowLength - 16); // end of wave path
@@ -58,8 +60,8 @@ export default function SquigglyArrow({
         [endX + arrowWidth * Math.sin(angle), endY - arrowWidth * Math.cos(angle)],
         [endX - arrowWidth * Math.sin(angle), endY + arrowWidth * Math.cos(angle)],
     ]
-        .map(p => p.join(","))
-        .join(" ");
+        .map((p) => p.join(','))
+        .join(' ');
 
     return (
         <svg width={width + arrowLength} height={height}>

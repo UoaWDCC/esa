@@ -28,31 +28,35 @@ export default function EventCard({
     const [expanded, setExpanded] = useState(false);
     const date = new Date(event.date);
     const disabled = event.locked || isPast;
+
     console.log(event);
-    console.log(isPast);
-    console.log(event.locked);
-    console.log(disabled);
 
     const dateString = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear().toString().slice(-2)}`;
 
     return (
         <div className="w-full">
-            {expanded && <hr className="mb-5" />}
+            <hr className="md:hidden mb-5" />
             {/* Collapsed view */}
             {!expanded && (
                 <div className="w-fit md:w-full flex flex-col md:flex-row gap-x-5">
                     <div
-                        className={`flex gap-x-5 justify-center items-center ${
-                            even ? 'flex-row-reverse md:flex-row' : 'flex-row'
+                        className={`flex gap-x-5 justify-center items-start ${
+                            even ? 'flex-row ' : 'flex-row-reverse md:flex-row'
                         }`}
                     >
-                        <div className="flex flex-col">
-                            <h4>{days[date.getDay()]}</h4>
+                        <div className="flex flex-col flex-1">
+                            <h4 className="md:hidden">{event.title}</h4>
+                            <h4 className="hidden md:block">{days[date.getDay()]}</h4>
                             <h4>{dateString}</h4>
+                            <p className="md:hidden break-all">
+                                {!event.locked
+                                    ? event.description
+                                    : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
+                            </p>
                             <Button
                                 variant="clear"
                                 size="sm"
-                                className="whitespace-nowrap"
+                                className="hidden md:block whitespace-nowrap"
                                 href={disabled ? undefined : event.signUpForm}
                                 disabled={disabled}
                             >
@@ -61,7 +65,7 @@ export default function EventCard({
                         </div>
 
                         {/* Poster with fixed aspect ratio */}
-                        <div className="relative w-[200px] md:w-[246px] aspect-[178/123] overflow-hidden rounded-3xl">
+                        <div className="relative w-40 h-50 md:w-[246px] md:h-auto md:aspect-[178/123] overflow-hidden rounded-3xl">
                             <Image
                                 src={event.image}
                                 alt={event.imageAlt}
@@ -83,10 +87,10 @@ export default function EventCard({
                     </div>
 
                     {/* Transparent, no border */}
-                    <div className="flex flex-col w-full gap-y-3 mt-2 md:mt-0 !bg-transparent !border-none">
+                    <div className="hidden md:flex flex-col w-full gap-y-3 mt-2 md:mt-0 !bg-transparent !border-none">
                         <h4>{!event.locked ? event.title : 'Locked Event'}</h4>
                         <hr />
-                        <p>
+                        <p className="break-all">
                             {!event.locked
                                 ? event.description
                                 : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
@@ -162,11 +166,13 @@ export default function EventCard({
 
                                 {/* Button stuck bottom right */}
                                 <div className="my-6 md:my-0 md:mt-auto flex justify-end items-end">
-                                    <div className="rotate-15 hidden md:block">
-                                        <SquigglyArrow />
-                                    </div>
+                                    {disabled ? null : (
+                                        <div className="rotate-20 hidden md:block">
+                                            <SquigglyArrow amplitude={5} speed={0.05} />
+                                        </div>
+                                    )}
                                     <Button
-                                        disabled={event.locked}
+                                        disabled={disabled}
                                         className="flex flex-row items-center gap-x-2 h-fit"
                                     >
                                         Sign Up
@@ -183,7 +189,7 @@ export default function EventCard({
 
             {/* Toggle button */}
             <div
-                className="mt-3 justify-end"
+                className={`mt-3 md:justify-end ${even ? 'justify-end' : 'justify-start'} flex`}
                 style={{ display: isSeeMoreVisible ? 'flex' : 'none' }}
             >
                 <Button
