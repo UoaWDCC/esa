@@ -41,15 +41,15 @@ export default function Execs() {
     }, [data]);
 
     return (
-        <section className="flex flex-col items-center px-[5%] md:px-[10%]">
-            <div className="flex flex-col items-center font-bold mt-35 md:mt-25">
-                <p className="text-primary-red-400 text-4xl md:text-5xl font-reservoir-grunge ">
+        <section className="flex flex-col items-center lg:px-[13%] md:px-[10%] px-[6%] py-28">
+            <div className="flex flex-col items-center">
+                <h2 className="text-primary-red">
                     Our Execs
-                </p>
-                <p className="text-xs md:text-md font-medium font-roboto-mono mt-2">
-                    View our past and previous executives here!
-                </p>
-                <hr className="my-6 border-2 w-[75vw] min-w-[300px] max-w-[900px] border-primary-grey-light" />
+                </h2>
+                <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
+                    <p className="text-primary-white mb-2">View our next and previous events here!</p>
+                </div>
+                <hr className="mx-auto mb-15 mt-4 w-[1200px] h-px border-0 bg-white/50" />
             </div>
 
             {isLoading && <p>Loading execs…</p>}
