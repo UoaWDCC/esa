@@ -8,7 +8,6 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ Data, onCenterChange }) => {
-  if (!Data || Data.length === 0) return null;
 
   const [FlowDirection, setFlowDirection] = useState(true);
   const [CenterId, setCenterId] = useState(Data.length > 0 ? (0 + 3) % Data.length : 0);
@@ -86,6 +85,8 @@ const Carousel: React.FC<CarouselProps> = ({ Data, onCenterChange }) => {
     rightHidden: { x: "7rem", scale: 0, opacity: 0 },
     leftHidden: { x: "-7rem", scale: 0, opacity: 0 },
   };
+
+  if (!Data || Data.length === 0) return null;
 
   return (
     <motion.div className={`grid place-content-center rounded-[2rem] ${isVisible ? "" : "invisible"}`}>
