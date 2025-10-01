@@ -11,6 +11,7 @@ export const Roles: CollectionConfig = {
     fields: [
         {
             name: 'roleName',
+            label: "Role Name",
             type: 'text',
             required: true,
         },

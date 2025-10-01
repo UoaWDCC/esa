@@ -11,6 +11,7 @@ export const Categories: CollectionConfig = {
     fields: [
         {
             name: 'categoryName',
+            label: "Exec Team Category",
             type: 'text',
             required: true,
         },
