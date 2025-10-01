@@ -20,7 +20,7 @@ export default function Events() {
   setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
-        <section className="relative px-6 md:px-[8%] text-white pb-32 overflow-hidden">
+        <section className="relative text-white pb-32 overflow-hidden w-full lg:px-[13%] md:px-[10%] px-[6%]">
             {/* background image using Next Image */}
             <div className="hidden md:block absolute inset-0 opacity-50">
                 <Image
@@ -41,7 +41,7 @@ export default function Events() {
                 />
             </div>
 
-            <h1 className="text-primary-red underline py-16 relative z-20 whitespace-nowrap">
+            <h1 className="text-primary-red underline py-16 relative z-20 whitespace-nowrap md:text-start text-center w-full">
                 OUR EVENTS
             </h1>
 

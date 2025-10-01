@@ -25,7 +25,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                         <label className="block font-medium">{label}</label>
                         <p
                             className={cn(
-                                'text-sm inline-block transition-all duration-50 h-5',
+                                'inline-block transition-all duration-50 h-5',
                                 error ? 'text-red-500 visible' : required ? 'visible' : 'invisible',
                             )}
                         >
@@ -64,7 +64,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
 
                 <p
                     className={cn(
-                        'text-sm px-3 transition-all duration-200 h-5',
+                        'px-3 transition-all duration-200 h-5',
                         error ? 'text-red-500 visible' : 'invisible',
                     )}
                 >
