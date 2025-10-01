@@ -21,6 +21,16 @@ export default function Events() {
 
     return (
         <section className="relative text-white pb-32 overflow-hidden w-full lg:px-[13%] md:px-[10%] px-[6%]">
+            {/* background image using Next Image */}
+            <div className="hidden md:block absolute inset-0 opacity-50">
+                <Image
+                    src="/images/home/paperbackground.png"
+                    alt="paper background"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            </div>
 
             <div className="hidden md:block absolute top-0 right-0 p-4 z-10 -rotate-[9deg] -translate-y-50 translate-x-30 w-[70vw] max-w-[900px] aspect-square opacity-40">
                 <Image
