@@ -50,7 +50,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
     
     return (
         <div
-            className="relative h-[24rem] inline-block ml-4 select-none"
+            className="relative h-[24rem] pt-8 inline-block ml-4 select-none overflow-visible"
             ref={containerRef}
         >
             {sponsors.map((sponsor) => {
@@ -60,40 +60,35 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                     <Link
                         href="/sponsors"
                         key={sponsor.id}
-                        className={`grid-item absolute rounded-full overflow-visible group ${
+                        className={`grid-item absolute rounded-full group ${
                             sponsor.name === 'SaigonChill' ? 'stamp top-0 left-15' : ''
                         }`}
                         style={{ width: `${size}px`, height: `${size}px` }}
                     >
-                        <Image
-                            src={sponsor.logo.url}
-                            height={size}
-                            width={size}
-                            alt={sponsor.logo.alt || sponsor.name}
-                            className="scale-105 rounded-full select-none"
-                        />
-
+                        <div className="w-full h-full rounded-full overflow-hidden">
+                            <Image
+                                src={sponsor.logo.url}
+                                height={size}
+                                width={size}
+                                alt={sponsor.logo.alt || sponsor.name}
+                                className="scale-105 object-cover rounded-full select-none overflow-hidden"
+                            />
+                        </div>
                         {/* tooltip bubble */}
                         {sponsor.deal && (
-                            // <div
-                            //     className="absolute -top-8 left-1/2 -translate-x-1/2
-                            //     bg-gray-700 text-white text-xs
-                            //     px-2 py-0.5 rounded-md shadow-md opacity-0
-                            //     group-hover:opacity-100 duration-200 whitespace-nowrap
-                            //     z-50"
-                            // >
-                            //     {sponsor.deal}
-                            // </div>
                             <div
-                                className="absolute -top-14 left-1/2 -translate-x-1/2
-                                bg-gray-700 text-white text-sm leading-snug
-                                px-3 py-2 rounded-lg shadow-md opacity-0
-                                group-hover:opacity-100 transition-opacity duration-200
-                                max-w-[14rem] text-center z-50"
+                                className="absolute top-1/2 left-full ml-2
+                                        bg-primary-grey-light text-primary-white text-sm leading-snug
+                                        px-3 py-2 rounded-xl shadow-md opacity-0
+                                        group-hover:opacity-100 transition-opacity duration-200
+                                        min-w-[11rem] text-left break-words whitespace-normal z-50"
+                                style={{
+                                    transform: 'translateY(-50%)', 
+                                }}
                             >
                                 {sponsor.deal}
                             </div>
-                      
+                    
                         )}
                     </Link>
                 );
