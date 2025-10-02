@@ -1,7 +1,5 @@
-import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTiktok, FaLink } from 'react-icons/fa'; // Added FaLink for LinkTree
 import Link from 'next/link';
-import Image from 'next/image';
-import LinktreeIcon from '../icons/linktree-icon.webp';
 
 function Footer() {
     const socialLinks = [
@@ -22,7 +20,7 @@ function Footer() {
         },
         {
             href: 'https://linktr.ee/uoa.esa',
-            icon: LinktreeIcon, // Changed to LinktreeIcon (Image)
+            icon: FaLink, // Using FaLink icon for Linktree
             label: 'LinkTree',
         },
     ];
@@ -65,12 +63,7 @@ function Footer() {
                                 aria-label={label}
                                 className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center hover:opacity-80 transition"
                             >
-                                {/* If it's LinktreeIcon, render it as an Image */}
-                                {label === 'LinkTree' ? (
-                                    <Image src={Icon} alt="Linktree Icon" width={24} height={24} />
-                                ) : (
-                                    <Icon className="text-xl" />
-                                )}
+                                <Icon className="text-xl" />
                             </Link>
                         ))}
                     </div>
