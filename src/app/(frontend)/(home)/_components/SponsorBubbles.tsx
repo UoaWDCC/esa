@@ -81,14 +81,14 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                                         bg-primary-grey-light text-primary-white text-sm leading-snug
                                         px-3 py-2 rounded-xl shadow-md opacity-0
                                         group-hover:opacity-100 transition-opacity duration-200
-                                        min-w-[11rem] text-left break-words whitespace-normal z-50"
+                                        min-w-[11rem] text-center break-words whitespace-normal z-50"
                                 style={{
                                     transform: 'translateY(-50%)', 
                                 }}
                             >
                                 {sponsor.deal}
                             </div>
-                    
+
                         )}
                     </Link>
                 );
