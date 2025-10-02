@@ -15,7 +15,7 @@ export default function MeetExecs() {
         <div className="flex flex-col items-center justify-center gap-10 min-h-screen z-10 relative pt-25 pb-20">
             <h3 className="bg-primary-red-400 px-6 py-1 rounded-2xl">Meet The Execs</h3>
 
-            <div className="w-full flex flex-wrap justify-center gap-5 z-50">
+            <div className="w-full flex flex-wrap justify-center gap-x-5 gap-y-15 z-50 lg:px-[13%] md:px-[10%] px-[6%]">
                 {(execs ?? [])
                     .filter((e) => e.isImportant)
                     .map((exec, index) => {

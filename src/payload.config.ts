@@ -17,6 +17,9 @@ import { Members } from './collections/Members';
 import { Execs } from './collections/Execs';
 import storage from '@/collections/Storage';
 import { Sponsors } from './collections/Sponsors';
+import {Roles} from "@/collections/Role";
+import {execRoleCategories} from "@/collections/execRoleCategory";
+import {Categories} from "@/collections/Category";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -49,7 +52,7 @@ export default buildConfig({
             ],
         },
     },
-    collections: [Users, Media, Sponsors, Events, Members, Execs],
+    collections: [Users, Media, Sponsors, Events, Members, Execs, Roles, execRoleCategories, Categories],
     editor: lexicalEditor(),
     secret: env.PAYLOAD_SECRET || '',
     typescript: {
