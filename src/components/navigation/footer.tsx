@@ -1,5 +1,7 @@
-import { FaFacebookF, FaInstagram, FaTiktok, FaLink } from 'react-icons/fa'; // Added FaLink for LinkTree
+import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
+import { SiLinktree } from "react-icons/si";
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Footer() {
     const socialLinks = [
@@ -20,7 +22,7 @@ function Footer() {
         },
         {
             href: 'https://linktr.ee/uoa.esa',
-            icon: FaLink, // Using FaLink icon for Linktree
+            icon: SiLinktree,
             label: 'LinkTree',
         },
     ];
