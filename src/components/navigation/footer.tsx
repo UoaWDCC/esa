@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
+import { SiLinktree } from "react-icons/si";
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -18,6 +19,11 @@ function Footer() {
             href: 'https://www.tiktok.com/@uoaesa',
             icon: FaTiktok,
             label: 'TikTok',
+        },
+        {
+            href: 'https://linktr.ee/uoa.esa',
+            icon: SiLinktree,
+            label: 'LinkTree',
         },
     ];
 
