@@ -53,9 +53,9 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="text-center text-primary-white bg-transparent flex flex-col items-center">
+        <div className="text-center text-primary-white flex flex-col items-center w-full">
             <h3 className="underline underline-offset-4 mb-2">Let’s have a chat!</h3>
-            <p className="mb-6 text-xs max-w-[60%]">
+            <p className="mb-6 max-w-[60%]">
                 We’d love to hear from you! You can contact us with the form below or send us an
                 email or a call!
             </p>
@@ -98,7 +98,7 @@ export default function ContactForm() {
                 <ThankYou />
             )}
 
-            <div className="mt-7 px-5 text-xs text-left w-full max-w-lg">
+            <div className="mt-7 px-5 text-left w-full max-w-lg">
                 <div className="flex px-3 border-b border-primary-white justify-between">
                     <span className="max-w-lg">Email</span>
                     <span className="max-w-lg">uoaesa@gmail.com</span>

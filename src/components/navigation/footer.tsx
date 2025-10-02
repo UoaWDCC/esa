@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
+import { SiLinktree } from "react-icons/si";
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -19,6 +20,11 @@ function Footer() {
             icon: FaTiktok,
             label: 'TikTok',
         },
+        {
+            href: 'https://linktr.ee/uoa.esa',
+            icon: SiLinktree,
+            label: 'LinkTree',
+        },
     ];
 
     const footerColumns = [
@@ -27,7 +33,6 @@ function Footer() {
             links: [
                 { label: 'About Us', href: '/about-us' },
                 { label: 'Execs', href: '/execs' },
-                { label: 'Sponsors', href: '/sponsors' },
             ],
         },
         {
@@ -35,7 +40,7 @@ function Footer() {
             links: [
                 { label: 'Gallery', href: '/gallery' },
                 { label: 'Events', href: '/events' },
-                { label: 'News', href: '/news' },
+                { label: 'Sponsors', href: '/sponsors' },
             ],
         },
         {
@@ -50,7 +55,7 @@ function Footer() {
             <div className="flex flex-col md:grid md:grid-cols-[1fr_3fr] justify-between w-[80%]">
                 {/* Column 1: Social Media */}
                 <div className="flex flex-col justify-center items-center order-2 md:order-first mt-6 md:mt-2">
-                    <p className="text-sm mb-1 opacity-75">Follow Us!</p>
+                    <p className="mb-1 opacity-75">Follow us!</p>
                     <div className="flex space-x-2">
                         {socialLinks.map(({ href, icon: Icon, label }, index) => (
                             <Link
@@ -67,10 +72,10 @@ function Footer() {
                 </div>
 
                 {/* Grouped Columns 2–4 */}
-                <div className="flex justify-center gap-x-10 md:gap-x-[20%] gap-y-6 mt-6 text-sm text-center md:text-left">
+                <div className="flex justify-center gap-x-10 md:gap-x-[20%] gap-y-6 mt-6 text-center md:text-left">
                     {footerColumns.map((col, colIndex) => (
                         <div key={colIndex} className="flex flex-col items-start text-left">
-                            <p className="text-sm mb-1 opacity-75">{col.heading}</p>
+                            <p className="mb-1 opacity-75">{col.heading}</p>
                             <ul className="space-y-1">
                                 {col.links.map(({ label, href }, linkIndex) => (
                                     <li key={linkIndex}>
@@ -86,7 +91,7 @@ function Footer() {
             </div>
 
             {/* Bottom Row */}
-            <div className="flex items-center gap-2 justify-between text-xs text-white border-t border-white mt-6 md:mt-10 pt-6 w-[80%]">
+            <div className="flex items-center gap-2 justify-between text-white border-t border-white mt-6 md:mt-10 pt-6 w-[80%]">
                 <p className="mb-0">&copy; Eastern Students Association 2025</p>
 
                 <div className="flex items-center gap-3">

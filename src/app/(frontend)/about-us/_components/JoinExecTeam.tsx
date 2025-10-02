@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
 import React from 'react';
+import TopTear from './TopTear';
 
 export default function JoinExecTeam() {
     return (
@@ -31,6 +32,7 @@ export default function JoinExecTeam() {
                 <div className="flex flex-col gap-2 md:gap-5">
                     <p className="text-2xl md:text-xl tracking-[0.15em] max-w-[24rem] mx-auto md:max-w-full md:mx-0">
                         ESA is a social club is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum
                     </p>
                 </div>
 
@@ -45,6 +47,8 @@ export default function JoinExecTeam() {
                 alt="ESA Exec Team Polaroid"
                 className="w-100 xl:w-125 h-auto absolute bottom-0 right-2 z-10 hidden md:block"
             />
+
+            <TopTear />
         </div>
     );
 }

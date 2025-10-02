@@ -8,5 +8,10 @@ export type EventData = {
     disabled: boolean;
     description: string;
     signUpForm: string;
+    memberPrice: number;
+    nonMemberPrice: number;
+    startTime: string;
+    endTime: string;
+    location: string;
   };
   

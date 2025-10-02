@@ -42,7 +42,7 @@ export default async function PaymentSuccessPage({
                 <>
                     <meta httpEquiv="refresh" content="5;url=/" />
                     <h3 className="text-primary-red">Payment Successful!</h3>
-                    <p className="mt-5 text-xl tracking-[0.14em]">
+                    <p className="mt-5 tracking-[0.14em]">
                         Thank you! Your payment has been processed successfully.
                     </p>
                 </>
@@ -51,7 +51,7 @@ export default async function PaymentSuccessPage({
                 <>
                     <meta httpEquiv="refresh" content="5;url=/" />
                     <h3 className="text-primary-red">Payment Pending</h3>
-                    <p className="mt-5 text-xl tracking-[0.14em]">
+                    <p className="mt-5 tracking-[0.14em]">
                         Thank you! Your payment is being processed and may take a few days. We will
                         email you once the payment is confirmed.
                     </p>
@@ -60,12 +60,12 @@ export default async function PaymentSuccessPage({
             {status === 'unknown' && (
                 <>
                     <h3 className="text-primary-red">Payment Status Unknown</h3>
-                    <p className="mt-5 text-xl tracking-[0.14em]">
+                    <p className="mt-5 tracking-[0.14em]">
                         {`We couldn't verify your payment. Please contact us to resolve this issue.`}
                     </p>
                 </>
             )}
-            <p className="mt-5 text-xl text-center tracking-[0.14em]">
+            <p className="mt-5 text-center tracking-[0.14em]">
                 You’ll be redirected shortly. <br />
                 If nothing happens,{' '}
                 <Link href="/" className="text-[#FFC857]">
