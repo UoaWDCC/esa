@@ -48,7 +48,7 @@ export default function EventCard({
                             <h4 className="md:hidden">{event.title}</h4>
                             <h4 className="hidden md:block">{days[date.getDay()]}</h4>
                             <h4>{dateString}</h4>
-                            <p className="md:hidden break-all">
+                            <p className="md:hidden text-wrap">
                                 {!event.locked
                                     ? event.description
                                     : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
@@ -90,7 +90,7 @@ export default function EventCard({
                     <div className="hidden md:flex flex-col w-full gap-y-3 mt-2 md:mt-0 !bg-transparent !border-none">
                         <h4>{!event.locked ? event.title : 'Locked Event'}</h4>
                         <hr />
-                        <p className="break-all">
+                        <p className="text-wrap">
                             {!event.locked
                                 ? event.description
                                 : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
