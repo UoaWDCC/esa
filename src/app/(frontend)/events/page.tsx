@@ -1,13 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import Title from '@/components/ui/Title';
-import EventCard from '@/app/(frontend)/(home)/_components/Events/EventCard';
+import EventCard from '@/features/events/components/EventCard';
 import { EventData } from '@/types/EventData';
 import { useEvents } from '@/features/events/data/tanstack/useEvents';
 import { setupEvents } from '@/features/events/utils/setupEvents';
+import NoEvents from "@/features/events/components/NoEvents";
 
-interface EventDoc extends EventData {}
 
 export default function Events() {
     const { data: parsedEvents } = useEvents();
@@ -30,23 +29,29 @@ export default function Events() {
             <div className="mt-25 flex flex-col relative z-20 items-center md:items-start">
                 <Title className="mb-10">UPCOMING</Title>
                 <div className="flex flex-col items-center space-y-10 w-full">
-                    {upcomingEvents.slice(0, 2).map((event, index) => (
-                        <EventCard key={event._id} event={event} even={index % 2 === 0} />
-                    ))}
+                    {upcomingEvents.length === 0 ?
+                        <NoEvents /> :
+                        upcomingEvents.slice(0, 2).map((event, index) => (
+                            <EventCard key={event._id} event={event} even={index % 2 === 0} />
+                        ))
+                    }
                 </div>
             </div>
 
             <div className="mt-20 flex flex-col relative z-20 items-center md:items-start">
                 <Title className="mb-10">LATEST</Title>
                 <div className="flex flex-col items-center space-y-10 w-full">
-                    {pastEvents.slice(0, 2).map((event, index) => (
-                        <EventCard
-                            key={event._id}
-                            event={event}
-                            even={index % 2 === 0}
-                            isPast={true}
-                        />
-                    ))}
+                    {pastEvents.length === 0 ?
+                        <NoEvents /> :
+                        pastEvents.slice(0, 2).map((event, index) => (
+                            <EventCard
+                                key={event._id}
+                                event={event}
+                                even={index % 2 === 0}
+                                isPast={true}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         </div>

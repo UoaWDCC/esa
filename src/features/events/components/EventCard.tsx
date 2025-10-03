@@ -6,7 +6,7 @@ import { EventData } from '@/types/EventData';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArrowUp from '@/components/icons/ArrowUp';
-import EventInfo from '@/app/(frontend)/(home)/_components/Events/EventInfo';
+import EventInfo from '@/features/events/components/EventInfo';
 import SquigglyArrow from '@/components/icons/SquigglyArrow';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
