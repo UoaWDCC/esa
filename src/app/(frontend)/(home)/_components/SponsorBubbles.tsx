@@ -47,10 +47,10 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                 console.error('Failed to load Packery:', error);
             });
     }, [baseSize]);
-    
+
     return (
         <div
-            className="relative h-[24rem] pt-8 inline-block ml-4 select-none overflow-visible"
+            className="relative h-[24rem] pt-8 inline-block ml-4 select-none overflow-visible border -z-10"
             ref={containerRef}
         >
             {sponsors.map((sponsor) => {
@@ -81,14 +81,13 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                                         bg-primary-grey-light text-primary-white text-sm leading-snug
                                         px-3 py-2 rounded-xl shadow-md opacity-0
                                         group-hover:opacity-100 transition-opacity duration-200
-                                        min-w-[11rem] text-center break-words whitespace-normal z-50"
+                                        min-w-[11rem] text-center break-words whitespace-normal z-50 pointer-events-none"
                                 style={{
-                                    transform: 'translateY(-50%)', 
+                                    transform: 'translateY(-50%)',
                                 }}
                             >
                                 {sponsor.deal}
                             </div>
-
                         )}
                     </Link>
                 );
@@ -96,4 +95,3 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
         </div>
     );
 }
-
