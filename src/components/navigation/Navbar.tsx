@@ -65,7 +65,7 @@ export default function Navbar() {
                             <motion.button
                                 key="close-button"
                                 onClick={toggleMenu}
-                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                className="relative w-15 h-15 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
                                 aria-label="Close menu"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -78,7 +78,7 @@ export default function Navbar() {
                             <motion.button
                                 key="menu-button"
                                 onClick={toggleMenu}
-                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                className="relative w-15 h-15 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
                                 aria-label="Open menu"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -119,7 +119,7 @@ export default function Navbar() {
                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
                     <Link
                         href="/"
-                        className="w-18 h-18 rounded-full flex items-center justify-center bg-primary-grey-light"
+                        className="w-15 h-15 rounded-full flex items-center justify-center bg-primary-grey-light"
                     >
                         <Image
                             src="/images/logo/esa_logo.png"
