@@ -19,8 +19,8 @@ export const VARIATIONS = {
         imageSize: '260px'
     },
     large: {
-        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
-        imageSize: '260px'
+        dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
+        imageSize: '370px'
     }
 } as const;
 
