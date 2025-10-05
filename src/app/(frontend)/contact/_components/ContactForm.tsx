@@ -11,15 +11,15 @@ import { Button } from '@/components/ui/Button';
 import ThankYou from './ThankYou';
 
 export default function ContactForm() {
-    const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState(false);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<ContactInput>({
-        resolver: zodResolver(contactSchema),
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactInput>({
+    resolver: zodResolver(contactSchema),
+  });
 
     async function onSubmit(values: ContactInput) {
         try {
