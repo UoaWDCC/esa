@@ -2,33 +2,15 @@
 
 import Image from "next/image"
 import Polaroid from "./Polaroid"
-import { PolaroidProps, PinColour, Variation } from "./Polaroid"
+import { PolaroidProps} from "./Polaroid"
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface GalleryProps {
-    polaroids?: PolaroidProps[];
-}
-
-// Dummy data for the gallery
-// TODO: Remove this when integrating with backend
-const PIN_COLOURS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'] as const;
-const dummyPolaroids: PolaroidProps[] = Array(19).fill(null).map((_, index) => ({
-    image: "/images/contact-us-image.png",
-    eventName: `Event ${index + 1}`,
-    eventDate: new Date(2025, Math.floor(index / 3), (index % 28) + 1).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-    }),
-    pinColour: PIN_COLOURS[index % PIN_COLOURS.length] as PinColour,
-    variation: index % 3 === 2 ? 'large' : 'small' as Variation
-}));
-
-export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
+export default function Gallery() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(9);
+    const [polaroids, setPolaroids] = useState<PolaroidProps[]>([]);
 
     useEffect(() => {
         const handleResize = (): void => {
@@ -54,6 +36,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
 
 
     const getTotalPages = (): number => {
+        if (!polaroids || polaroids.length == 0) return 1;
         return Math.ceil(polaroids.length / itemsPerPage);
     };
 

@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Pin from "./Pin";
+import { PinColour, Variation, PIN_COLOURS, VARIATIONS } from "@/types/GalleryData";
 
-export type PinColour = keyof typeof PIN_COLOURS;
-export type Variation = keyof typeof VARIATIONS;
-
+// To change options for pinColour and variation, edit src/types/GalleryData.ts
 export interface PolaroidProps {
     image: string;
     eventDate: string;
@@ -11,34 +10,6 @@ export interface PolaroidProps {
     pinColour: PinColour;
     variation: Variation;
 }
-
-const VARIATIONS = {
-    small: {
-        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
-        imageSize: '260px'
-    },
-    // large: {
-    //     dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
-    //     imageSize: '370px'
-    // }
-    large: {
-        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
-        imageSize: '260px'
-    },
-} as const;
-
-const PIN_COLOURS = {
-    red: '#A92622',
-    blue: '#0000FF',
-    green: '#55A077',
-    yellow: '#FFC857',
-    purple: '#800080',
-    orange: '#FFA500',
-    pink: '#FFC0CB',
-    teal: '#008080',
-    brown: '#A52A2A',
-    gray: '#808080'
-} as const;
 
 const RANDOM_TRANSFORMS = [
     'rotate-3 translate-x-1 translate-y-1',
