@@ -33,7 +33,7 @@ export const GalleryImages: CollectionConfig = {
                 }
             }
         },
-        // To change options for pinColour and variation, edit src/types/GalleryData.ts
+        // To change options for pinColour and variation, edit src/types/GalleryImageData.ts
         {
             name: "pinColour",
             type: "select",

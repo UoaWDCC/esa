@@ -1,14 +1,11 @@
 import Image from "next/image";
 import Pin from "./Pin";
-import { PinColour, Variation, PIN_COLOURS, VARIATIONS } from "@/types/GalleryImageData";
+import {PIN_COLOURS, VARIATIONS } from "@/types/GalleryImageData";
+import { GalleryImageData } from "@/types/GalleryImageData";
 
-// To change options for pinColour and variation, edit src/types/GalleryData.ts
-export interface PolaroidProps {
-    image: string;
-    eventDate: string;
-    eventName: string;
-    pinColour: PinColour;
-    variation: Variation;
+// To change options for pinColour and variation, edit src/types/GalleryImageData.ts
+export interface PolaroidProps extends GalleryImageData {
+    // Add additional props here if needed
 }
 
 const RANDOM_TRANSFORMS = [

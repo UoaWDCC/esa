@@ -2,15 +2,16 @@
 
 import Image from "next/image"
 import Polaroid from "./Polaroid"
-import { PolaroidProps} from "./Polaroid"
+import { PolaroidProps } from "./Polaroid"
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useGalleryImages } from "@/features/gallery/tanstack/useGalleryImages"
 
 export default function Gallery() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(9);
-    const [polaroids, setPolaroids] = useState<PolaroidProps[]>([]);
+    const {data: polaroids, isLoading, error} = useGalleryImages();
 
     useEffect(() => {
         const handleResize = (): void => {
@@ -36,11 +37,12 @@ export default function Gallery() {
 
 
     const getTotalPages = (): number => {
-        if (!polaroids || polaroids.length == 0) return 1;
+        if (!polaroids || polaroids.length === 0) return 1;
         return Math.ceil(polaroids.length / itemsPerPage);
     };
 
     const getCurrentItems = (): PolaroidProps[] => {
+        if (!polaroids) return [];
         const startIndex: number = (currentPage - 1) * itemsPerPage;
         return polaroids.slice(startIndex, startIndex + itemsPerPage);
     };
