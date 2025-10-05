@@ -1,8 +1,8 @@
 import { CollectionConfig } from "payload";
-import { PIN_COLOUR_OPTIONS, VARIATION_OPTIONS } from "../types/GalleryData";
+import { PIN_COLOUR_OPTIONS, VARIATION_OPTIONS } from "../types/GalleryImageData";
 
-export const Gallery: CollectionConfig = {
-    slug: "gallery",
+export const GalleryImages: CollectionConfig = {
+    slug: "galleryImages",
     access: {
         read: () => true // Not sure about what tier of access to put, so leaving it open for now
     },

@@ -28,7 +28,7 @@ export type PinColour = keyof typeof PIN_COLOURS;
 export type Variation = keyof typeof VARIATIONS;
 
 // Type for the gallery item in the collection
-export interface GalleryItem {
+export interface GalleryImage {
     id: string;
     image: {
         url: string;

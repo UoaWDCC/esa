@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Pin from "./Pin";
-import { PinColour, Variation, PIN_COLOURS, VARIATIONS } from "@/types/GalleryData";
+import { PinColour, Variation, PIN_COLOURS, VARIATIONS } from "@/types/GalleryImageData";
 
 // To change options for pinColour and variation, edit src/types/GalleryData.ts
 export interface PolaroidProps {
