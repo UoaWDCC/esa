@@ -20,6 +20,15 @@ const RANDOM_TRANSFORMS = [
     'rotate-3 -translate-x-1 translate-y-1',
 ] as const;
 
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+};
+
 export default function Polaroid({ 
     image = "/images/aboutus/AboutUsImage.jpg", 
     eventDate = "12/20/2015", 
@@ -54,10 +63,10 @@ export default function Polaroid({
                         draggable={false}
                     />
                 </div>
-                <p className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
-                    <span>{eventDate}</span>
-                    <span className="ml-1">{eventName}</span>
-                </p>
+                <div className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
+                    <p>{formatDate(eventDate)}</p>
+                    <p className="ml-1">{eventName}</p>
+                </div>
             </div>
         </div>
     );
