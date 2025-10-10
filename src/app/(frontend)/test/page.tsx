@@ -37,7 +37,6 @@ const test = () => {
                 <button onClick={() => signIn('google')}>Login</button>
                 <button onClick={() => signOut()}>Logout</button>
                 {session ? <p>Signed in as {session.user.email}</p> : <p>Not signed in</p>}
-                {session && <p>Google ID: {session.user.googleId}</p>}
             </div>
         </div>
     );
