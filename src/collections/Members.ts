@@ -231,7 +231,7 @@ export const Members: CollectionConfig = {
             name: 'googleId',
             type: 'text',
             admin: {
-                readOnly: true,
+                hidden: true,
             },
             unique: true,
         },
