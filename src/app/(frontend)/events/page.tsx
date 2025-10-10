@@ -24,7 +24,9 @@ export default function Events() {
             <h2 className="text-primary-red pt-27 text-center"> Our Events </h2>
 
             <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
-                <p className="text-primary-white mb-2">View our next and previous events here!</p>
+                <p className="text-primary-white mb-2">
+                    Catch up on our past events and see what’s coming next!
+                </p>
             </div>
 
             <hr className="mx-auto mt-4 w-[1200px] h-px border-0 bg-white/50" />
