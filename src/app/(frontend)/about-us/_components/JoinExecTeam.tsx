@@ -15,7 +15,7 @@ export default function JoinExecTeam() {
                 style={{ objectPosition: '75% center' }}
             />
 
-            <div className="flex flex-col px-6 items-center text-center md:text-left md:px-0 md:pl-20 w-[40rem] gap-20 relative z-10 my-40">
+            <div className="flex flex-col md:items-start items-center text-center md:text-left lg:ml-[13%] md:m-[10%] mx-[6%] lg:w-[45%] w-[full] gap-20 relative z-10">
                 {/* First Half of text */}
                 <div className="flex flex-col gap-3 md:gap-5">
                     <h3 className="hidden md:block">Join our Exec Team</h3>
