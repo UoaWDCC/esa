@@ -1,10 +1,19 @@
 'use client';
 
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function VerifyResultsPage() {
     const searchParams = useSearchParams();
     const status = searchParams.get('status');
+
+    // Go back to home after 4 seconds
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            window.location.href = '/';
+        }, 4000);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-background px-4">
