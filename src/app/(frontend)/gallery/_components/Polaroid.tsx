@@ -1,44 +1,12 @@
 import Image from "next/image";
 import Pin from "./Pin";
+import {PIN_COLOURS, VARIATIONS } from "@/types/GalleryImageData";
+import { GalleryImageData } from "@/types/GalleryImageData";
 
-export type PinColour = keyof typeof PIN_COLOURS;
-export type Variation = keyof typeof VARIATIONS;
-
-export interface PolaroidProps {
-    image: string;
-    eventDate: string;
-    eventName: string;
-    pinColour: PinColour;
-    variation: Variation;
+// To change options for pinColour and variation, edit src/types/GalleryImageData.ts
+export interface PolaroidProps extends GalleryImageData {
+    // Add additional props here if needed
 }
-
-const VARIATIONS = {
-    small: {
-        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
-        imageSize: '260px'
-    },
-    // large: {
-    //     dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
-    //     imageSize: '370px'
-    // }
-    large: {
-        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
-        imageSize: '260px'
-    },
-} as const;
-
-const PIN_COLOURS = {
-    red: '#A92622',
-    blue: '#0000FF',
-    green: '#55A077',
-    yellow: '#FFC857',
-    purple: '#800080',
-    orange: '#FFA500',
-    pink: '#FFC0CB',
-    teal: '#008080',
-    brown: '#A52A2A',
-    gray: '#808080'
-} as const;
 
 const RANDOM_TRANSFORMS = [
     'rotate-3 translate-x-1 translate-y-1',
@@ -51,6 +19,15 @@ const RANDOM_TRANSFORMS = [
     '-rotate-2 translate-x-1 -translate-y-2',
     'rotate-3 -translate-x-1 translate-y-1',
 ] as const;
+
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+};
 
 export default function Polaroid({ 
     image = "/images/aboutus/AboutUsImage.jpg", 
@@ -86,10 +63,10 @@ export default function Polaroid({
                         draggable={false}
                     />
                 </div>
-                <p className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
-                    <span>{eventDate}</span>
-                    <span className="ml-1">{eventName}</span>
-                </p>
+                <div className="mt-3 text-center text-[#2b2b2b] text-sm font-waytoon"> 
+                    <p>{formatDate(eventDate)}</p>
+                    <p className="ml-1">{eventName}</p>
+                </div>
             </div>
         </div>
     );

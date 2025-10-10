@@ -20,6 +20,7 @@ import { Sponsors } from './collections/Sponsors';
 import {Roles} from "@/collections/Role";
 import {execRoleCategories} from "@/collections/execRoleCategory";
 import {Categories} from "@/collections/Category";
+import { GalleryImages } from './collections/GalleryImages';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -52,7 +53,7 @@ export default buildConfig({
             ],
         },
     },
-    collections: [Users, Media, Sponsors, Events, Members, Execs, Roles, execRoleCategories, Categories],
+    collections: [Users, Media, Sponsors, Events, Members, Execs, Roles, execRoleCategories, Categories, GalleryImages],
     editor: lexicalEditor(),
     secret: env.PAYLOAD_SECRET || '',
     typescript: {
