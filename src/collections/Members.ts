@@ -239,7 +239,6 @@ export const Members: CollectionConfig = {
             name: 'verificationToken',
             type: 'text',
             admin: {
-                readOnly: true,
                 hidden: true,
             },
             unique: true,
@@ -248,17 +247,24 @@ export const Members: CollectionConfig = {
             name: 'verificationTokenExpiry',
             type: 'date',
             admin: {
-                readOnly: true,
                 hidden: true,
             },
+        },
+        {
+            name: 'pendingGoogleId',
+            type: 'text',
+            admin: {
+                hidden: true,
+            },
+            unique: true,
         }
     ],
     hooks: {
         // Ensure that duplicate emails are not allowed within the same year
-        // This hook runs before creating or updating a member
+        // This hook runs before creating a member (updates are ignored)
         beforeChange: [
             async ({ data, req, operation }) => {
-                if (operation === 'create' || operation === 'update') {
+                if (operation === 'create') {
                     const { email, timestamp } = data;
 
                     if (!email || !timestamp) return;
@@ -281,12 +287,7 @@ export const Members: CollectionConfig = {
                         },
                     });
 
-                    const isUpdate = operation === 'update' && data?.id;
-
-                    if (
-                        existing.docs.length > 0 &&
-                        (!isUpdate || existing.docs[0].id !== data.id)
-                    ) {
+                    if (existing.docs.length > 0) {
                         throw new Error(
                             `A member with email "${email}" has already registered in ${year}.`,
                         );
