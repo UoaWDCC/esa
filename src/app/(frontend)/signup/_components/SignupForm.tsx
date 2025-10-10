@@ -34,6 +34,7 @@ export default function SignupForm({ email, token }: SignupFormProps) {
             membershipPayment: 'Stripe',
             paymentScreenshotLink: 'N/A',
             email: email ?? '',
+            token: token ?? '',
         },
     });
 
