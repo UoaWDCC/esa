@@ -234,6 +234,13 @@ export const Members: CollectionConfig = {
                 hidden: true,
             },
             unique: true,
+        },
+        {
+            name: 'lastVerificationEmailSentAt',
+            type: 'date',
+            admin: {
+                hidden: true,
+            }
         }
     ],
     hooks: {

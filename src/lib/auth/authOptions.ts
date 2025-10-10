@@ -43,6 +43,26 @@ export const authOptions: NextAuthOptions = {
                 return true;
             // If member exists, but doesn't have googleId, send a verification email with the verification token
             } else {
+                // Rate limit: check lastVerificationEmailSentAt, if within 5 minutes, do not send email
+                const member = await payload.find({
+                    collection: 'members',
+                    where: { email: { equals: profile?.email } },
+                    limit: 1,
+                });
+                
+                const lastSent = member.docs[0].lastVerificationEmailSentAt;
+
+                console.log('Last verification email sent at:', lastSent);
+
+                if (lastSent) {
+                    const lastSentDate = new Date(lastSent);
+                    const now = new Date();
+                    const diffMinutes = (now.getTime() - lastSentDate.getTime()) / (1000 * 60);
+                    if (diffMinutes < 5) { // 5 minutes rate limit
+                        return `/verify?email=${profile?.email}&token=notsent`;
+                    }
+                }
+
                 const token = signVerificationToken({ googleId: googleId!, email: profile?.email! }, '10m');
                 return `/verify?email=${profile?.email}&token=${token}`;
             }

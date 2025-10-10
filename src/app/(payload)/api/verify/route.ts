@@ -24,7 +24,9 @@ const handler = async (req: NextRequest, res: NextResponse) => {
         },
         data: {
             googleId: googleId,
+            lastVerificationEmailSentAt: null,
         },
+        limit: 1
     });
 
     // Redirect to a result page with success

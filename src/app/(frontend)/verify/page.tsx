@@ -13,7 +13,7 @@ export default function VerifyPage() {
     useEffect(() => {
         if (!email || !token) {
             router.replace('/');
-        } else {
+        } else if (token !== "notsent") {
             sendVerificationEmail();
         }
     }, []);
@@ -32,16 +32,17 @@ export default function VerifyPage() {
         }
     }
 
+    // If token == "notsent", show a message saying that the email was not sent
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-background px-4">
             <h1 className="text-2xl mb-4 text-primary-red">
-                Verification Email Sent
+                {token == "notsent" ? "Verification Email Not Sent" : "Verification Email Sent"}
             </h1>
             <p className="mb-6">
-                We've sent a verification email to your inbox. Please check your email and follow the instructions to link your Google account!
+                {token == "notsent" ? "Please wait a few minutes before attempting to send another verification email." : "We've sent a verification email to your inbox. Please check your email and follow the instructions to link your Google account!"}
             </p>
             <p className="text-sm ">
-                Didn't receive the email? Check your spam folder or logging in again.
+                {token == "notsent" ? "" : "Didn't receive the email? Check your spam folder or logging in again."}
             </p>
 
             <a href="/" className="mt-6 text-primary underline">

@@ -221,6 +221,7 @@ export interface Member {
   referrerName?: string | null;
   notes?: string | null;
   googleId?: string | null;
+  lastVerificationEmailSentAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -466,6 +467,7 @@ export interface MembersSelect<T extends boolean = true> {
   referrerName?: T;
   notes?: T;
   googleId?: T;
+  lastVerificationEmailSentAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
