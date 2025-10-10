@@ -62,7 +62,7 @@ export default function Gallery() {
                 <div>
                     <button
                         onClick={handlePrevPage}
-                        disabled={currentPage === 1}
+                        hidden={currentPage === 1}
                         className="py-2 text-[10vw] mr-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
                     >
                         <ChevronLeft className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
@@ -108,7 +108,7 @@ export default function Gallery() {
                 <div>
                     <button
                         onClick={handleNextPage}
-                        disabled={currentPage === getTotalPages()}
+                        hidden={currentPage === getTotalPages()}
                         className="py-2 text-[10vw] ml-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
                     >
                         <ChevronRight className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
