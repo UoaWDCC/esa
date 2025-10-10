@@ -1,10 +1,10 @@
 'use client'
 
 import { Button } from '@/components/ui/Button';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useAuthenticatedMember } from '@/features/members/data/tanstack/useAuthenticatedMember';
 
 const test = () => {
-    const { data: session } = useSession();
+    const member = useAuthenticatedMember();
 
     return (
         <div className="bg-[#161514] p-8 text-primary-white">
@@ -34,7 +34,7 @@ const test = () => {
             </div>
 
             <div className = "flex flex-col gap-5 mt-5">
-                {session ? <p>Signed in as {session.user.email}</p> : <p>Not signed in</p>}
+                {member ? <p>Signed in as {member?.email}</p> : <p>Not signed in</p>}
             </div>
         </div>
     );
