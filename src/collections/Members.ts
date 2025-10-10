@@ -234,29 +234,6 @@ export const Members: CollectionConfig = {
                 hidden: true,
             },
             unique: true,
-        },
-        {
-            name: 'verificationToken',
-            type: 'text',
-            admin: {
-                hidden: true,
-            },
-            unique: true,
-        },
-        {
-            name: 'verificationTokenExpiry',
-            type: 'date',
-            admin: {
-                hidden: true,
-            },
-        },
-        {
-            name: 'pendingGoogleId',
-            type: 'text',
-            admin: {
-                hidden: true,
-            },
-            unique: true,
         }
     ],
     hooks: {

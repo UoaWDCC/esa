@@ -8,9 +8,10 @@ export default function VerifyPage() {
 
     const searchParams = useSearchParams();
     const email = searchParams.get('email');
+    const token = searchParams.get('token');
 
     useEffect(() => {
-        if (!email) {
+        if (!email || !token) {
             router.replace('/');
         } else {
             sendVerificationEmail();
@@ -24,7 +25,7 @@ export default function VerifyPage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email: email }),
+                body: JSON.stringify({ email: email, token: token }),
             });
         } catch (error) {
             console.error('Error sending verification email:', error);

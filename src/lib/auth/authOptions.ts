@@ -4,6 +4,7 @@ import { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
 import { env } from 'config/serverEnv';
+import { signVerificationToken } from '../jwt/verificationToken';
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -33,28 +34,16 @@ export const authOptions: NextAuthOptions = {
                 limit: 1
             });
 
-            // If member doesn't exist, go to signup page (TODO: auto link account and auto fill details)
+            // If member doesn't exist, go to signup page
             if (member.totalDocs == 0) {
                 return '/signup';
             // If member exists, and has googleId, allow sign in
             } else if (member.docs[0].googleId == googleId) {
                 return true;
-            // If member exists, but doesn't have googleId, store pendingGoogleId and send verification email
+            // If member exists, but doesn't have googleId, send a verification email with the verification token
             } else {
-                try{ 
-                    await payload.update({
-                        collection: 'members',
-                        id: member.docs[0].id,
-                        data: {
-                            pendingGoogleId: googleId
-                        }
-                    });
-                } catch (error) {
-                    console.error('Error updating member with pendingGoogleId:', error);
-                    return false;
-                }
-
-                return '/verify?email=' + profile?.email;
+                const token = signVerificationToken({ googleId: googleId!, email: profile?.email! }, '10m');
+                return `/verify?email=${profile?.email}&token=${token}`;
             }
         }
     }
