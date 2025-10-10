@@ -27,7 +27,8 @@ export const authOptions: NextAuthOptions = {
                         ]
                 },
                 depth: 0,
-                pagination: false
+                pagination: false,
+                limit: 1
             });
 
             // If member doesn't exist, go to signup page (TODO: auto link account and auto fill details. check whether google account exists before payment)
@@ -36,9 +37,22 @@ export const authOptions: NextAuthOptions = {
             // If member exists, and has googleId, allow sign in
             } else if (member.docs[0].googleId == googleId) {
                 return true;
-            // If member exists, but doesn't have googleId, send verification email (TODO LATER)
+            // If member exists, but doesn't have googleId, store pendingGoogleId and send verification email
             } else {
-                return '/';
+                try{ 
+                    await payload.update({
+                        collection: 'members',
+                        id: member.docs[0].id,
+                        data: {
+                            pendingGoogleId: googleId
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error updating member with pendingGoogleId:', error);
+                    return false;
+                }
+
+                return '/verify?email=' + profile?.email;
             }
         }
     }

@@ -1,12 +1,39 @@
 import VerificationEmailTemplate from "@/components/emails/VerificationEmailTemplate";
+import { getPayload } from "@/lib/payload";
 import { getResend } from "@/lib/resend/getResend";
-import { NextApiRequest } from "next";
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: Request) {
     const resend = getResend();
-    const { email, token } = await req.body;
+    const body = await req.json();
+    const { email } = body;
 
-    const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/verify?token=${token}&email=${email}`;
+    const createToken = async () => {
+        // Logic to create a verification token and update the member's document
+        const token = Math.random().toString(36).substring(2); // Simple token generation
+        const expiry = new Date();
+        expiry.setHours(expiry.getHours() + 1); // Token valid for 1 hour
+
+        const payload = await getPayload();
+
+        await payload.update({
+            collection: 'members',
+            where: {
+                email: { equals: email },
+            },
+            data: {
+                verificationToken: token,
+                verificationTokenExpiry: expiry.toISOString(),
+            }
+        });
+
+        return token;
+    }
+
+    const token = await createToken();
+
+
+
+    const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/api/verify?token=${token}&email=${email}`;
 
     try {
         const { data, error } = await resend.emails.send({
@@ -17,12 +44,14 @@ export async function POST(req: NextApiRequest) {
         });
 
         if (error) {
+            console.error('Error sending verification email:', error);
             return Response.json({ error }, { status: 500 });
         }
 
         return Response.json(data);
-        
+
     } catch (error) {
+        console.error('Error sending verification email:', error);
         return Response.json({ error }, { status: 500 });
     }
 }
