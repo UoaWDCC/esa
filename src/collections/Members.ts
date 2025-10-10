@@ -232,7 +232,7 @@ export const Members: CollectionConfig = {
         // Ensure that duplicate emails are not allowed within the same year
         // This hook runs before creating or updating a member
         beforeChange: [
-            async ({ data, req, operation }) => {
+            async ({ data, req, operation, originalDoc }) => {
                 if (operation === 'create' || operation === 'update') {
                     const { email, timestamp } = data;
 
@@ -256,11 +256,9 @@ export const Members: CollectionConfig = {
                         },
                     });
 
-                    const isUpdate = operation === 'update' && data?.id;
-
                     if (
                         existing.docs.length > 0 &&
-                        (!isUpdate || existing.docs[0].id !== data.id)
+                        existing.docs.some((doc) => doc.id !== (originalDoc?.id ?? ''))
                     ) {
                         throw new Error(
                             `A member with email "${email}" has already registered in ${year}.`,
