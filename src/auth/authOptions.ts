@@ -1,14 +1,7 @@
-import { getServerSession, NextAuthOptions, SessionStrategy, Session, DefaultSession } from "next-auth"
+import { getPayload } from 'payload'
+import config from '@payload-config'
+import { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-
-// Extend the default session to include googleId
-declare module "next-auth" {
-  interface Session {
-    user: {
-      googleId?: string
-    } & DefaultSession["user"]
-  }
-}
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -21,13 +14,32 @@ export const authOptions: NextAuthOptions = {
         strategy: 'jwt'
     },
     callbacks: {
-        // Callback to add the googleId to the session object
-        async session({ session, token }) {
-            session.user.googleId = token.sub;
-            return session;
-        }
-    },
-}
+        async signIn({ profile }) {
+            const googleId = profile?.sub;
+            const payload = await getPayload({ config });
 
-// To get current user's session on server side (if logged in). null otherwise.
-export const getAuth = () => getServerSession(authOptions)
+            const member = await payload.find({
+                collection: 'members',
+                where: {
+                        or: [
+                            { googleId: { equals: googleId } },
+                            { email: { equals: profile?.email } }
+                        ]
+                },
+                depth: 0,
+                pagination: false
+            });
+
+            // If member doesn't exist, go to signup page
+            if (member.totalDocs == 0) {
+                return '/signup';
+            // If member exists, and has googleId, allow sign in
+            } else if (member.docs[0].googleId == googleId) {
+                return true;
+            // If member exists, but doesn't have googleId, send verification email (TODO LATER)
+            } else {
+                return '/';
+            }
+        }
+    }
+}
