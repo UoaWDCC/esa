@@ -16,8 +16,9 @@ export default function AboutUs() {
                 <div className="flex flex-col text-center md:text-start md:w-[28rem]">
                     <h3>ABOUT US</h3>
                     <p className="tracking-[0.15em]">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.
+                        ESA brings students together to connect, share, and celebrate culture.
+                        Whether you're from an Eastern background or just curious, everyone’s
+                        welcome to join the fun!
                     </p>
                 </div>
                 {/* About Us Image */}

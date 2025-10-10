@@ -18,19 +18,20 @@ export default function JoinExecTeam() {
                 <div className="flex flex-col gap-5">
                     <h3>Join our Exec Team</h3>
                     <p className="tracking-[0.15em]">
-                        ESA is a social club is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry&apos;s standard dummy text
+                        Are you passionate about creating fun, inclusive events and making a real
+                        impact on campus?
                     </p>
                 </div>
 
                 {/* Second Half of text */}
                 <div className="flex flex-col gap-4">
                     <p className="tracking-[0.15em]">
-                        ESA is a social club is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum
+                        Join the ESA’s executive team and help us bring students together to
+                        celebrate culture, connect, and grow.
                     </p>
                     <p className="tracking-[0.15em]">
-                        ESA is a social club is simply dummy text of the printing and typesetting
+                        Develop leadership skills, connect with like minded individuals, and make
+                        lasting memories!
                     </p>
                 </div>
 
