@@ -24,6 +24,7 @@ export const signupSchema = z.object({
     paymentScreenshotLink: z.string().optional(),
     referrerName: z.string().optional(),
     notes: z.string().optional(),
+    token: z.string().optional(),
 });
 
 export type SignupInput = z.infer<typeof signupSchema>;

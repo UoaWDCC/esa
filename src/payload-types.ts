@@ -143,13 +143,6 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
   password?: string | null;
 }
 /**
@@ -227,6 +220,8 @@ export interface Member {
   paymentScreenshotLink?: string | null;
   referrerName?: string | null;
   notes?: string | null;
+  googleId?: string | null;
+  lastVerificationEmailSentAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -399,13 +394,6 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -478,6 +466,8 @@ export interface MembersSelect<T extends boolean = true> {
   paymentScreenshotLink?: T;
   referrerName?: T;
   notes?: T;
+  googleId?: T;
+  lastVerificationEmailSentAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

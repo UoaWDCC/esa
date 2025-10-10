@@ -4,6 +4,7 @@ import Footer from '../../components/navigation/footer';
 import Navbar from '../../components/navigation/Navbar';
 import LoginButton from '../../components/navigation/LoginButton';
 import {QueryProvider} from "@/lib/tanstack/query-provider";
+import SessionWrapper from './SessionWrapper';
 
 // SEO metadata
 export const metadata = {
@@ -46,12 +47,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     return (
         <html lang="en">
             <body className="min-h-screen flex flex-col">
+              <SessionWrapper>
                 <Navbar />
                 <LoginButton />
                 <main className="grow">
                     <QueryProvider>{children}</QueryProvider>
                 </main>
                 <Footer />
+              </SessionWrapper>
             </body>
         </html>
     );

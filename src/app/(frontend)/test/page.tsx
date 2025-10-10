@@ -1,7 +1,11 @@
+'use client'
+
 import { Button } from '@/components/ui/Button';
-import SquigglyArrow from '@/components/icons/SquigglyArrow';
+import { useAuthenticatedMember } from '@/features/members/data/tanstack/useAuthenticatedMember';
 
 const test = () => {
+    const member = useAuthenticatedMember();
+
     return (
         <div className="bg-[#161514] p-8 text-primary-white">
             <h1>Heading 1</h1>
@@ -29,9 +33,8 @@ const test = () => {
                 <Button href="/">This is a button with a link</Button>
             </div>
 
-            <div className="mt-5">
-                <p>if you want to test any components, you can place them here</p>
-                <SquigglyArrow />
+            <div className = "flex flex-col gap-5 mt-5">
+                {member ? <p>Signed in as {member?.email}</p> : <p>Not signed in</p>}
             </div>
         </div>
     );
