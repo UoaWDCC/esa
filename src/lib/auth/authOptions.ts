@@ -3,11 +3,13 @@ import config from '@payload-config'
 import { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
+import { env } from 'config/serverEnv';
+
 export const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+            clientId: env.GOOGLE_CLIENT_ID!,
+            clientSecret: env.GOOGLE_CLIENT_SECRET!,
         })
   ],
     session: {
@@ -31,7 +33,7 @@ export const authOptions: NextAuthOptions = {
                 limit: 1
             });
 
-            // If member doesn't exist, go to signup page (TODO: auto link account and auto fill details. check whether google account exists before payment)
+            // If member doesn't exist, go to signup page (TODO: auto link account and auto fill details)
             if (member.totalDocs == 0) {
                 return '/signup';
             // If member exists, and has googleId, allow sign in

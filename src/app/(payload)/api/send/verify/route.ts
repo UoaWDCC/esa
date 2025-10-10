@@ -2,6 +2,7 @@ import VerificationEmailTemplate from "@/components/emails/VerificationEmailTemp
 import { getPayload } from "@/lib/payload";
 import { getResend } from "@/lib/resend/getResend";
 import { NextRequest, NextResponse } from "next/server";
+import { env } from 'config/serverEnv';
 
 export async function POST(req: NextRequest) {
     const resend = getResend();
@@ -32,7 +33,7 @@ export async function POST(req: NextRequest) {
 
     const token = await createToken();
 
-    const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/api/verify?token=${token}&email=${email}`;
+    const verificationLink = `${env.BASE_URL}/api/verify?token=${token}&email=${email}`;
 
     console.log('Verification link:', verificationLink);
 
