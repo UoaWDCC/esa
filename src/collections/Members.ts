@@ -234,6 +234,23 @@ export const Members: CollectionConfig = {
                 readOnly: true,
             },
             unique: true,
+        },
+        {
+            name: 'verificationToken',
+            type: 'text',
+            admin: {
+                readOnly: true,
+                hidden: true,
+            },
+            unique: true,
+        },
+        {
+            name: 'verificationTokenExpiry',
+            type: 'date',
+            admin: {
+                readOnly: true,
+                hidden: true,
+            },
         }
     ],
     hooks: {
