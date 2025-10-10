@@ -34,8 +34,6 @@ const test = () => {
             </div>
 
             <div className = "flex flex-col gap-5 mt-5">
-                <button onClick={() => signIn('google')}>Login</button>
-                <button onClick={() => signOut()}>Logout</button>
                 {session ? <p>Signed in as {session.user.email}</p> : <p>Not signed in</p>}
             </div>
         </div>
