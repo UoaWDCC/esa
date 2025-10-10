@@ -36,7 +36,8 @@ export const authOptions: NextAuthOptions = {
 
             // If member doesn't exist, go to signup page
             if (member.totalDocs == 0) {
-                return '/signup';
+                const token = signVerificationToken({ googleId: googleId!, email: profile?.email! }, '30m');
+                return `/signup?email=${profile?.email}&token=${token}`;
             // If member exists, and has googleId, allow sign in
             } else if (member.docs[0].googleId == googleId) {
                 return true;

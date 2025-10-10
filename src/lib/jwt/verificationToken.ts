@@ -3,7 +3,7 @@ import { env } from 'config/serverEnv';
 
 const SECRET: string = env.PAYLOAD_SECRET;
 
-export function signVerificationToken(payload: { googleId: string; email: string }, expiresIn : '10m') {
+export function signVerificationToken(payload: { googleId: string; email: string }, expiresIn : '10m' | '30m') {
   return sign(payload, SECRET, { expiresIn });
 }
 
