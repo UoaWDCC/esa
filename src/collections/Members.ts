@@ -227,6 +227,14 @@ export const Members: CollectionConfig = {
             name: 'notes',
             type: 'textarea',
         },
+        {
+            name: 'googleId',
+            type: 'text',
+            admin: {
+                readOnly: true,
+            },
+            unique: true,
+        }
     ],
     hooks: {
         // Ensure that duplicate emails are not allowed within the same year
