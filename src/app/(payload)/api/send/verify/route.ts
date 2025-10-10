@@ -1,8 +1,9 @@
 import VerificationEmailTemplate from "@/components/emails/VerificationEmailTemplate";
 import { getPayload } from "@/lib/payload";
 import { getResend } from "@/lib/resend/getResend";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     const resend = getResend();
     const body = await req.json();
     const { email } = body;
@@ -31,9 +32,9 @@ export async function POST(req: Request) {
 
     const token = await createToken();
 
-
-
     const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/api/verify?token=${token}&email=${email}`;
+
+    console.log('Verification link:', verificationLink);
 
     try {
         const { data, error } = await resend.emails.send({
@@ -45,13 +46,13 @@ export async function POST(req: Request) {
 
         if (error) {
             console.error('Error sending verification email:', error);
-            return Response.json({ error }, { status: 500 });
+            return NextResponse.json({ error }, { status: 500 });
         }
 
-        return Response.json(data);
+        return NextResponse.json(data);
 
     } catch (error) {
         console.error('Error sending verification email:', error);
-        return Response.json({ error }, { status: 500 });
+        return NextResponse.json({ error }, { status: 500 });
     }
 }

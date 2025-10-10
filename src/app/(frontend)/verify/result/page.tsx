@@ -1,3 +1,5 @@
+'use client';
+
 import { useSearchParams } from "next/navigation";
 
 export default function VerifyResultsPage() {
@@ -6,7 +8,6 @@ export default function VerifyResultsPage() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-background px-4">
-            <div className="rounded-lg shadow-md p-8 max-w-md w-full text-center">
                 {status === 'success' ? (
                     <>
                         <h1 className="text-2xl mb-4 text-primary-red">
@@ -30,7 +31,6 @@ export default function VerifyResultsPage() {
                     Return to Home
                 </a>
             </div>  
-        </div>
     );
 }
 
