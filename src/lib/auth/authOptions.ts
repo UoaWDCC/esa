@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
                 pagination: false
             });
 
-            // If member doesn't exist, go to signup page
+            // If member doesn't exist, go to signup page (TODO: auto link account and auto fill details. check whether google account exists before payment)
             if (member.totalDocs == 0) {
                 return '/signup';
             // If member exists, and has googleId, allow sign in
