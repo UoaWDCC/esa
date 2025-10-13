@@ -74,6 +74,27 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
         <div className="w-full">
             {/* Gallery Board */}
             <div className="flex justify-center items-center"> 
+
+                {/* Background star */}
+                <div className="absolute bottom-[-80%] right-[-20%] -z-10 overflow-hidden">
+                    <Image
+                        src="/images/signup/background_star.png"
+                        alt="background star red"
+                        width={700}
+                        height={700}
+                        className="w-[700px]"
+                    />
+                </div>
+
+                <div className="absolute top-[30%] left-[-15%] -z-10 overflow-hidden">
+                    <Image
+                        src="/images/signup/background_star_white.png"
+                        alt="background star white"
+                        width={700}
+                        height={700}
+                        className="w-[500px]"
+                    />
+                </div>
                 <div>
                     <button
                         onClick={handlePrevPage}
