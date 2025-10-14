@@ -76,23 +76,23 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
             <div className="flex justify-center items-center"> 
 
                 {/* Background star */}
-                <div className="absolute bottom-[-80%] right-[-20%] -z-10 overflow-hidden">
-                    <Image
-                        src="/images/signup/background_star.png"
-                        alt="background star red"
-                        width={700}
-                        height={700}
-                        className="w-[700px]"
-                    />
-                </div>
-
-                <div className="absolute top-[30%] left-[-15%] -z-10 overflow-hidden">
+                <div className="absolute bottom-[-50%] md:bottom-[-60%] lg:bottom-[-80%] right-[-20%] -z-10 overflow-hidden">
                     <Image
                         src="/images/signup/background_star_white.png"
                         alt="background star white"
                         width={700}
                         height={700}
-                        className="w-[500px]"
+                        className="w-[500px] md:w-[600px] lg:w-[700px]"
+                    />
+                </div>
+
+                <div className="absolute top-[40%] left-[-15%] -z-10 overflow-hidden">
+                    <Image
+                        src="/images/signup/background_star.png"
+                        alt="background star red"
+                        width={700}
+                        height={700}
+                        className="w-[350px] md:w-[400px] lg:w-[450px]"
                     />
                 </div>
                 <div>

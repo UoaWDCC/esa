@@ -33,23 +33,23 @@ export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps)
             </div>
 
             {/* Background star */}
-            <div className="absolute bottom-[-60%] left-[-20%] -z-10 overflow-hidden">
+            <div className="absolute bottom-[-40%] left-[-20%] -z-10 overflow-hidden">
                 <Image
                     src="/images/signup/background_star.png"
                     alt="background star red"
                     width={700}
                     height={700}
-                    className="w-[700px]"
+                    className="w-[650px]"
                 />
             </div>
 
-            <div className="absolute bottom-[-280%] right-[-20%] -z-10 overflow-hidden">
+            <div className="absolute bottom-[-130%] lg:bottom-[-250%] right-[-15%] lg:right-[-10%] -z-10 overflow-hidden">
                 <Image
-                    src="/images/signup/background_star_white.png"
-                    alt="background star white"
+                    src="/images/signup/background_star.png"
+                    alt="background star red"
                     width={700}
                     height={700}
-                    className="w-[800px]"
+                    className="w-[450px] deg-[40]"
                 />
             </div>
 

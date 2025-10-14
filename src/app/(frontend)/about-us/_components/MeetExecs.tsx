@@ -51,7 +51,7 @@ export default function MeetExecs() {
                     alt="background star white"
                     width={700}
                     height={700}
-                    className="w-[650px]"
+                    className="w-[400px] md:w-[600px] lg:w-[700px]"
                 />
             </div>
             
