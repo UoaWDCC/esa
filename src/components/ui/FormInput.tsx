@@ -58,7 +58,7 @@ const FormInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormInputPr
                         ref={ref as React.Ref<HTMLTextAreaElement>}
                         placeholder={placeholder}
                         className={cn(
-                            `border border-white rounded-2xl p-1 px-3 placeholder:text-white text-left align-top whitespace-pre-wrap resize-y`,
+                            `border border-white rounded-2xl p-1 px-3 placeholder:text-white text-left align-top whitespace-pre-wrap resize-y bg-primary-grey/80`,
                             className,
                         )}
                         {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
@@ -68,7 +68,7 @@ const FormInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormInputPr
                         ref={ref as React.Ref<HTMLInputElement>}
                         placeholder={placeholder}
                         className={cn(
-                            `border border-white rounded-2xl p-1 px-3 placeholder:text-white`,
+                            `border border-white rounded-2xl p-1 px-3 placeholder:text-white bg-primary-grey/80`,
                             className,
                         )}
                         {...rest}

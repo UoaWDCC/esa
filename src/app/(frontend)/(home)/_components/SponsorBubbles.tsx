@@ -67,7 +67,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                 console.error('Failed to load Packery:', error);
             });
     }, [baseSize]);
-
+    
     return (
         <div
             className="relative h-[24rem] pt-8 inline-block ml-4 select-none overflow-visible"
@@ -132,3 +132,4 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
         </div>
     );
 }
+
