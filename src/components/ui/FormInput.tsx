@@ -56,7 +56,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                     ref={ref}
                     placeholder={placeholder}
                     className={cn(
-                        `border border-white rounded-2xl p-1 px-3 placeholder:text-white`,
+                        `border border-white rounded-2xl p-1 px-3 placeholder:text-white bg-primary-grey/80`,
                         className,
                     )}
                     {...rest}

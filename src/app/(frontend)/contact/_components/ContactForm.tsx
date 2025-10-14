@@ -54,7 +54,7 @@ export default function ContactForm() {
         <div className="text-center text-primary-white flex flex-col items-center w-full">
 
             {/* Background star */}
-            <div className="absolute top-[100%] md:top-[60%] lg:top-[50%] left-[-20%] -z-10 overflow-hidden">
+            <div className="absolute top-[100%] md:top-[60%] lg:top-[50%] right-[-10%] -z-10 overflow-hidden">
                 <Image
                     src="/images/signup/background_star.png"
                     alt="background star red"
