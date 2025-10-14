@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef } from 'react';
+import { InputHTMLAttributes, TextareaHTMLAttributes, forwardRef } from 'react';
 import { FieldError } from 'react-hook-form';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -11,10 +11,11 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
     tooltip?: string;
     showTooltip?: boolean;
     required?: boolean;
+    textarea?: boolean;
 }
 
-const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
-    ({ label, placeholder, error, className, tooltip, showTooltip, required, ...rest }, ref) => {
+const FormInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormInputProps>(
+    ({ label, placeholder, error, className, tooltip, showTooltip, required, textarea, ...rest }, ref) => {
         const [isHovered, setIsHovered] = useState(false);
         return (
             <div className="mb-2">
@@ -52,15 +53,27 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                     )}
                 </div>
                 {/* Input Field Element*/}
-                <input
-                    ref={ref}
-                    placeholder={placeholder}
-                    className={cn(
-                        `border border-white rounded-2xl p-1 px-3 placeholder:text-white bg-primary-grey/80`,
-                        className,
-                    )}
-                    {...rest}
-                />
+                {textarea ? (
+                    <textarea
+                        ref={ref as React.Ref<HTMLTextAreaElement>}
+                        placeholder={placeholder}
+                        className={cn(
+                            `border border-white rounded-2xl p-1 px-3 placeholder:text-white text-left align-top whitespace-pre-wrap resize-y`,
+                            className,
+                        )}
+                        {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+                    />
+                ) : (
+                    <input
+                        ref={ref as React.Ref<HTMLInputElement>}
+                        placeholder={placeholder}
+                        className={cn(
+                            `border border-white rounded-2xl p-1 px-3 placeholder:text-white`,
+                            className,
+                        )}
+                        {...rest}
+                    />
+                )}
 
                 <p
                     className={cn(

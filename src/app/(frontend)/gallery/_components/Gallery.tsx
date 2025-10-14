@@ -2,33 +2,16 @@
 
 import Image from "next/image"
 import Polaroid from "./Polaroid"
-import { PolaroidProps, PinColour, Variation } from "./Polaroid"
+import { PolaroidProps } from "./Polaroid"
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useGalleryImages } from "@/features/gallery/tanstack/useGalleryImages"
 
-interface GalleryProps {
-    polaroids?: PolaroidProps[];
-}
-
-// Dummy data for the gallery
-// TODO: Remove this when integrating with backend
-const PIN_COLOURS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'] as const;
-const dummyPolaroids: PolaroidProps[] = Array(19).fill(null).map((_, index) => ({
-    image: "/images/contact-us-image.png",
-    eventName: `Event ${index + 1}`,
-    eventDate: new Date(2025, Math.floor(index / 3), (index % 28) + 1).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-    }),
-    pinColour: PIN_COLOURS[index % PIN_COLOURS.length] as PinColour,
-    variation: index % 3 === 2 ? 'large' : 'small' as Variation
-}));
-
-export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
+export default function Gallery() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(9);
+    const {data: polaroids, isLoading, error} = useGalleryImages();
 
     useEffect(() => {
         const handleResize = (): void => {
@@ -54,10 +37,12 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
 
 
     const getTotalPages = (): number => {
+        if (!polaroids || polaroids.length === 0) return 1;
         return Math.ceil(polaroids.length / itemsPerPage);
     };
 
     const getCurrentItems = (): PolaroidProps[] => {
+        if (!polaroids) return [];
         const startIndex: number = (currentPage - 1) * itemsPerPage;
         return polaroids.slice(startIndex, startIndex + itemsPerPage);
     };
@@ -98,7 +83,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                 <div>
                     <button
                         onClick={handlePrevPage}
-                        disabled={currentPage === 1}
+                        hidden={currentPage === 1}
                         className="py-2 text-[10vw] mr-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
                     >
                         <ChevronLeft className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
@@ -144,7 +129,7 @@ export default function Gallery({polaroids = dummyPolaroids}: GalleryProps) {
                 <div>
                     <button
                         onClick={handleNextPage}
-                        disabled={currentPage === getTotalPages()}
+                        hidden={currentPage === getTotalPages()}
                         className="py-2 text-[10vw] ml-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
                     >
                         <ChevronRight className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
