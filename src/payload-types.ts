@@ -174,7 +174,9 @@ export interface Sponsor {
   _order?: string | null;
   name: string;
   logo: string | Media;
+  location?: string | null;
   deal?: string | null;
+  type?: ('cafe-drinks' | 'entertainment' | 'restaurants' | 'retail') | null;
   importance: number;
   updatedAt: string;
   createdAt: string;
@@ -420,7 +422,9 @@ export interface SponsorSelect<T extends boolean = true> {
   _order?: T;
   name?: T;
   logo?: T;
+  location?: T;
   deal?: T;
+  type?: T;
   importance?: T;
   updatedAt?: T;
   createdAt?: T;

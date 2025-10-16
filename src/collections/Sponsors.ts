@@ -26,9 +26,25 @@ export const Sponsors: CollectionConfig = {
             displayPreview: true,
         },
         {
+            name: 'location',
+            label: 'Location',
+            type: 'text',
+        },
+        {
             name: 'deal',
             label: 'Sponsor Deal/Benefit',
             type: 'text',
+        },
+        {
+            name: 'type',
+            label: 'Sponsor Type',
+            type: 'select',
+            options: [
+                { label: 'Cafe / Drinks', value: 'cafe-drinks' },
+                { label: 'Entertainment', value: 'entertainment' },
+                { label: 'Restaurant', value: 'restaurant' },
+                { label: 'Retail Other', value: 'Retail Other' },
+            ],
         },
         {
             name: 'importance',
