@@ -28,7 +28,7 @@ export default function CafeDrinksFolder() {
 
                     {/* Scrollable Sponsor Content */}
                     <div className="p-6 max-h-[calc(90vh-120px)] overflow-y-auto bg-[#4A5AFF]">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-8">
+                        <div className="grid sm:grid-cols-2 md:grid-cols-2 gap-1 md:gap-10">
                             <SponsorCard
                                 name="Gong Cha"
                                 location="Multiple Stores"
