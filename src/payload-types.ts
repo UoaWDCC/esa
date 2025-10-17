@@ -240,6 +240,10 @@ export interface Exec {
    */
   lastName: string;
   /**
+   * Role/position of the executive
+   */
+  role: string;
+  /**
    * Ethinicity of the executive
    */
   ethnicity: string;
@@ -494,6 +498,7 @@ export interface MembersSelect<T extends boolean = true> {
 export interface ExecsSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
+  role?: T;
   ethnicity?: T;
   degree?: T;
   image?: T;
