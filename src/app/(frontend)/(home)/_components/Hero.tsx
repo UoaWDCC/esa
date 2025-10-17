@@ -35,10 +35,10 @@ const Hero = () => {
                     />
                     <div className="transform -translate-y-14 lg:-translate-y-[-15%] md:-translate-y-[-20%]">
                         {/* Subtitle */}
-                        <p className="text-white mb-6 font-smeltex-medium max-w-md">
+                        <p className= {"text-white font-smeltex-medium max-w-md " + (status === 'authenticated' ? "-mt-3" : "mb-6")}>
                             Your go-to university social club.
                         </p>
-                        <p className="text-white mb-6 font-smeltex-medium max-w-md">
+                        <p className="text-white mb-3 font-smeltex-medium">
                             {status === 'authenticated' && member?.firstName ? `Welcome, ${member?.firstName}!` : ""}
                         </p>
                         <Button onClick={() => status === 'authenticated' ? redirect("/events") : signIn('google') } size="lg">
