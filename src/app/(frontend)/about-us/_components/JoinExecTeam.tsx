@@ -1,19 +1,21 @@
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
 import React from 'react';
+import PageTear from './PageTear';
 
 export default function JoinExecTeam() {
     return (
-        <div className="flex items-center justify-center md:justify-start min-h-[150vh] relative overflow-hidden">
+        <div className="flex items-center justify-center md:justify-start md:min-h-[150vh] min-h-[100vh] relative">
             <Image
                 src="/images/aboutus/ExecTeamBg.jpg"
                 alt="exec team background"
                 fill
                 priority
-                className="object-cover object-center"
+                className="object-cover md:object-center"
+                style={{ objectPosition: '75% center' }}
             />
 
-            <div className="flex flex-col px-6 items-center text-center md:text-left md:px-0 md:pl-20 w-[40rem] gap-20 relative z-10">
+            <div className="flex flex-col md:items-start items-center text-center md:text-left lg:ml-[13%] md:m-[10%] mx-[6%] lg:w-[45%] w-[full] gap-20 relative z-10">
                 {/* First Half of text */}
                 <div className="flex flex-col gap-5">
                     <h3>Join our Exec Team</h3>
@@ -44,8 +46,11 @@ export default function JoinExecTeam() {
                 width={500}
                 height={500}
                 alt="ESA Exec Team Polaroid"
-                className="w-100 xl:w-125 h-auto absolute bottom-0 right-2"
+                className="w-100 xl:w-140 h-auto absolute bottom-25 right-20 hidden md:block"
             />
+
+            <PageTear isTop={true} mirrorY={true} />
+            <PageTear />
         </div>
     );
 }

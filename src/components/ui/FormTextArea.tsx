@@ -16,7 +16,7 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
                 <textarea
                     ref={ref}
                     className={cn(
-                        `border border-white rounded-2xl p-1 px-3 placeholder:text-white`,
+                        `border border-white rounded-2xl p-1 px-3 placeholder:text-white bg-primary-grey/80`,
                         className,
                     )}
                     rows={4}

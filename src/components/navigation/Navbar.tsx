@@ -39,7 +39,7 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Navbar */}
-            <nav className="hidden md:flex z-50 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1.2rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-18 lg:px-28 rounded-full gap-4 py-1">
+            <nav className="hidden md:flex z-100 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-primary-white justify-between items-center bg-primary-grey-light w-[65%] md:w-[70%] lg:w-[75%] xl:w-[80%] 2xl:w-[85%] max-w-[550px] md:max-w-[650px] lg:max-w-[750px] xl:max-w-[900px] 2xl:max-w-[1100px] px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-18 rounded-full gap-1 md:gap-1 lg:gap-2 xl:gap-3 2xl:gap-4 py-1">
                 <Link href="/events" className="hover:text-accent transition-colors">
                     EVENTS
                 </Link>
@@ -59,13 +59,13 @@ export default function Navbar() {
 
             {/* Mobile Navbar */}
             <>
-                <div className="fixed top-4 left-3 z-50 md:hidden">
+                <div className="fixed top-4 left-3 z-100 md:hidden">
                     <AnimatePresence mode="wait" initial={false}>
                         {isOpen ? (
                             <motion.button
                                 key="close-button"
                                 onClick={toggleMenu}
-                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                className="relative w-15 h-15 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
                                 aria-label="Close menu"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -78,7 +78,7 @@ export default function Navbar() {
                             <motion.button
                                 key="menu-button"
                                 onClick={toggleMenu}
-                                className="relative w-18 h-18 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
+                                className="relative w-15 h-15 rounded-full flex items-center justify-center text-primary-white hover:text-primary-grey transition-colors hover:cursor-pointer bg-primary-grey-light z-[60]"
                                 aria-label="Open menu"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -119,7 +119,7 @@ export default function Navbar() {
                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
                     <Link
                         href="/"
-                        className="w-18 h-18 rounded-full flex items-center justify-center bg-primary-grey-light"
+                        className="w-15 h-15 rounded-full flex items-center justify-center bg-primary-grey-light"
                     >
                         <Image
                             src="/images/logo/esa_logo.png"

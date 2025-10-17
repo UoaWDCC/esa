@@ -42,7 +42,7 @@ export default function ExecPolaroid({ index, image }: ExecPolaroidProps) {
 
     return (
         <div
-            className={`flex w-88 h-75 bg-[url(/images/aboutus/ExecImageBg.png)] justify-center items-center bg-no-repeat bg-center bg-contain relative ${variation.flip ? 'scale-x-[-1]' : ''} ${variation.bgRotation}`}
+            className={`flex w-60 h-52 md:w-88 md:h-75 bg-[url(/images/aboutus/ExecImageBg.png)] justify-center items-center bg-no-repeat bg-center bg-contain relative ${variation.flip ? 'scale-x-[-1]' : ''} ${variation.bgRotation}`}
         >
             <Image
                 src={`/images/aboutus/${variation.pinColor}`}

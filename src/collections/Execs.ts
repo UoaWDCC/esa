@@ -1,17 +1,32 @@
+import { isTier3 } from '@/access/isTier3';
 import type { CollectionConfig } from 'payload';
 
 export const Execs: CollectionConfig = {
     slug: 'execs',
     access: {
         read: () => true,
+        create: isTier3,
+        update: isTier3,
+        delete: isTier3,
+    },
+    admin: {
+        useAsTitle: "firstName"
     },
     fields: [
         {
-            name: 'name',
+            name: 'firstName',
             type: 'text',
             required: true,
             admin: {
-                description: 'Full name of the executive',
+                description: 'First name of the executive',
+            },
+        },
+        {
+            name: 'lastName',
+            type: 'text',
+            required: true,
+            admin: {
+                description: 'Last name of the executive',
             },
         },
         {
@@ -20,14 +35,6 @@ export const Execs: CollectionConfig = {
             required: true,
             admin: {
                 description: 'Ethinicity of the executive',
-            },
-        },
-        {
-            name: 'role',
-            type: 'text',
-            required: true,
-            admin: {
-                description: 'Role held by the executive',
             },
         },
         {
@@ -49,10 +56,16 @@ export const Execs: CollectionConfig = {
         },
         {
             name: 'about',
-            type: 'text',
+            type: 'textarea',
             required: true,
             admin: {
-                description: 'Short biography of the executive',
+                description: 'Short biography of the executive (max 200 characters)',
+            },
+            validate: (val: string | null | undefined) => {
+                if (val && val.length > 200) {
+                    return 'About text must not exceed 200 characters';
+                }
+                return true;
             },
         },
         {
