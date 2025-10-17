@@ -41,13 +41,13 @@ export default function Execs() {
     }, [data]);
 
     return (
-        <section className="flex flex-col items-center lg:px-[13%] md:px-[10%] px-[6%] py-28">
+        <section className="flex flex-col items-center lg:px-[13%] md:px-[10%] px-[6%] py-28 overflow-hidden">
             <div className="flex flex-col items-center">
-                <h2 className="text-primary-red">
-                    Our Execs
-                </h2>
+                <h2 className="text-primary-red">Our Execs</h2>
                 <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
-                    <p className="text-primary-white mb-2">View our next and previous events here!</p>
+                    <p className="text-primary-white mb-2">
+                        View our next and previous events here!
+                    </p>
                 </div>
                 <hr className="mx-auto mb-15 mt-4 w-[1200px] h-px border-0 bg-white/50" />
             </div>

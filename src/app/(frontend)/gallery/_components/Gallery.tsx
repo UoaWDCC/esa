@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import Image from "next/image"
-import Polaroid from "./Polaroid"
-import { PolaroidProps } from "./Polaroid"
-import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import Image from 'next/image';
+import Polaroid from './Polaroid';
+import { PolaroidProps } from './Polaroid';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useGalleryImages } from "@/features/gallery/tanstack/useGalleryImages"
+import { useGalleryImages } from '@/features/gallery/tanstack/useGalleryImages';
 
 export default function Gallery() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(9);
-    const {data: polaroids, isLoading, error} = useGalleryImages();
+    const { data: polaroids, isLoading, error } = useGalleryImages();
 
     useEffect(() => {
         const handleResize = (): void => {
@@ -27,14 +27,13 @@ export default function Gallery() {
 
         window.addEventListener('resize', handleResize);
 
-        // Set initial items per page 
-        handleResize(); 
+        // Set initial items per page
+        handleResize();
 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
 
     const getTotalPages = (): number => {
         if (!polaroids || polaroids.length === 0) return 1;
@@ -56,40 +55,21 @@ export default function Gallery() {
     };
 
     return (
-        <div className="w-full">
+        <div className="relative ml-10 w-full ">
             {/* Gallery Board */}
-            <div className="flex justify-center items-center"> 
-
-                {/* Background star */}
-                <div className="absolute bottom-[-50%] md:bottom-[-60%] lg:bottom-[-80%] right-[-20%] -z-10 overflow-hidden">
-                    <Image
-                        src="/images/signup/background_star_white.png"
-                        alt="background star white"
-                        width={700}
-                        height={700}
-                        className="w-[500px] md:w-[600px] lg:w-[700px]"
-                    />
-                </div>
-
-                <div className="absolute top-[40%] left-[-15%] -z-10 overflow-hidden">
-                    <Image
-                        src="/images/signup/background_star.png"
-                        alt="background star red"
-                        width={700}
-                        height={700}
-                        className="w-[350px] md:w-[400px] lg:w-[450px]"
-                    />
-                </div>
+            <div className=" relative flex justify-center items-center">
                 <div>
                     <button
                         onClick={handlePrevPage}
-                        hidden={currentPage === 1}
-                        className="py-2 text-[10vw] mr-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
+                        className={
+                            'relative py-2 text-[10vw] mr-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors ' +
+                            `${currentPage === 1 ? 'invisible' : 'visible'}`
+                        }
                     >
-                        <ChevronLeft className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
+                        <ChevronLeft className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10" />
                     </button>
                 </div>
-            
+
                 <div className="relative w-[60vw] h-[95vw] px-[5vw] py-[5vw] md:w-[80vw] md:h-[65vw]">
                     <Image
                         src="/images/gallery/board.png"
@@ -102,9 +82,9 @@ export default function Gallery() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentPage}
-                            initial={{ opacity: 1 }}   
+                            initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 1 }}     
+                            exit={{ opacity: 1 }}
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[5vh] place-items-center relative z-10"
                         >
                             {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
@@ -116,7 +96,7 @@ export default function Gallery() {
                                     transition={{
                                         duration: 0.2,
                                         delay: index * 0.05,
-                                        ease: "easeOut"
+                                        ease: 'easeOut',
                                     }}
                                 >
                                     <Polaroid {...polaroid} />
@@ -129,10 +109,13 @@ export default function Gallery() {
                 <div>
                     <button
                         onClick={handleNextPage}
-                        hidden={currentPage === getTotalPages()}
-                        className="py-2 text-[10vw] ml-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors"
+                        hidden={false}
+                        className={
+                            'relative py-2 pr-8 text-[10vw] ml-[1rem] disabled:opacity-50 cursor-pointer hover:text-accent transition-colors ' +
+                            `${currentPage === getTotalPages() ? 'invisible' : 'visible'}`
+                        }
                     >
-                        <ChevronRight className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10"/>
+                        <ChevronRight className="lg:w-20 lg:h-20 md:w-15 md:h-15 w-10 h-10" />
                     </button>
                 </div>
             </div>
@@ -146,7 +129,7 @@ export default function Gallery() {
                         onClick={() => setCurrentPage(index + 1)}
                     />
                 ))}
-            </div>  
+            </div>
         </div>
-    )
+    );
 }
