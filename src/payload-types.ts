@@ -222,6 +222,8 @@ export interface Member {
   paymentScreenshotLink?: string | null;
   referrerName?: string | null;
   notes?: string | null;
+  googleId?: string | null;
+  lastVerificationEmailSentAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -484,6 +486,8 @@ export interface MembersSelect<T extends boolean = true> {
   paymentScreenshotLink?: T;
   referrerName?: T;
   notes?: T;
+  googleId?: T;
+  lastVerificationEmailSentAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
