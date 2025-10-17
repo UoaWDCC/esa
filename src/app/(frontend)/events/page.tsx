@@ -5,7 +5,7 @@ import EventCard from '@/features/events/components/EventCard';
 import { EventData } from '@/types/EventData';
 import { useEvents } from '@/features/events/data/tanstack/useEvents';
 import { setupEvents } from '@/features/events/utils/setupEvents';
-import NoEvents from "@/features/events/components/NoEvents";
+import NoEvents from '@/features/events/components/NoEvents';
 import Image from 'next/image';
 
 export default function Events() {
@@ -18,10 +18,9 @@ export default function Events() {
     setupEvents(parsedEvents, upcomingEvents, pastEvents);
 
     return (
-        <div className="relative text-white overflow-hidden lg:px-[13%] md:px-[10%] px-[6%] py-28">
-
+        <div className="relative text-white overflow-hidden lg:px-[13%] md:px-[10%] px-[6%] py-28 ">
             {/* Background star */}
-            <div className="absolute bottom-[-10%] right-[-20%] -z-10 overflow-hidden">
+            <div className="absolute -bottom-50 -right-85 -z-10 ">
                 <Image
                     src="/images/signup/background_star.png"
                     alt="background star red"
@@ -41,29 +40,35 @@ export default function Events() {
             <div className="mt-25 flex flex-col relative z-20 items-center md:items-start">
                 <Title className="mb-10">UPCOMING</Title>
                 <div className="flex flex-col items-center space-y-10 w-full">
-                    {upcomingEvents.length === 0 ?
-                        <NoEvents /> :
-                        upcomingEvents.slice(0, 2).map((event, index) => (
-                            <EventCard key={event._id} event={event} even={index % 2 === 0} />
-                        ))
-                    }
+                    {upcomingEvents.length === 0 ? (
+                        <NoEvents />
+                    ) : (
+                        upcomingEvents
+                            .slice(0, 2)
+                            .map((event, index) => (
+                                <EventCard key={event._id} event={event} even={index % 2 === 0} />
+                            ))
+                    )}
                 </div>
             </div>
 
             <div className="mt-20 flex flex-col relative z-20 items-center md:items-start">
                 <Title className="mb-10">LATEST</Title>
                 <div className="flex flex-col items-center space-y-10 w-full">
-                    {pastEvents.length === 0 ?
-                        <NoEvents /> :
-                        pastEvents.slice(0, 2).map((event, index) => (
-                            <EventCard
-                                key={event._id}
-                                event={event}
-                                even={index % 2 === 0}
-                                isPast={true}
-                            />
-                        ))
-                    }
+                    {pastEvents.length === 0 ? (
+                        <NoEvents />
+                    ) : (
+                        pastEvents
+                            .slice(0, 2)
+                            .map((event, index) => (
+                                <EventCard
+                                    key={event._id}
+                                    event={event}
+                                    even={index % 2 === 0}
+                                    isPast={true}
+                                />
+                            ))
+                    )}
                 </div>
             </div>
         </div>
