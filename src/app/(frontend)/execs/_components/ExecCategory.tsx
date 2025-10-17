@@ -2,6 +2,7 @@ import React from 'react';
 import ExecCard from './ExecCard';
 import { Exec } from '../page';
 import Title from '@/components/ui/Title';
+import Image from 'next/image';
 
 type ExecCategoryProps = {
     title?: string;
@@ -12,6 +13,7 @@ type ExecCategoryProps = {
 export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps) {
     return (
         <div className="flex flex-col pb-8 items-center w-full">
+
             <div className="relative mx-auto text-center mb-6 inline-flex flex-col items-center">
                 <Title className="my-5">{title}</Title>
                 <p className="mt-3 text-sm max-w-[80%] sm:max-w-[60%] xl:max-w-[40%] mx-auto">
@@ -29,6 +31,28 @@ export default function ExecCategory({ title, blurb, execs }: ExecCategoryProps)
                     </div>
                 ))}
             </div>
+
+            {/* Background star */}
+            <div className="absolute bottom-[-40%] left-[-20%] -z-10 overflow-hidden">
+                <Image
+                    src="/images/signup/background_star.png"
+                    alt="background star red"
+                    width={700}
+                    height={700}
+                    className="w-[650px]"
+                />
+            </div>
+
+            <div className="absolute bottom-[-130%] lg:bottom-[-250%] right-[-15%] lg:right-[-10%] -z-10 overflow-hidden">
+                <Image
+                    src="/images/signup/background_star.png"
+                    alt="background star red"
+                    width={700}
+                    height={700}
+                    className="w-[450px] deg-[40]"
+                />
+            </div>
+
         </div>
     );
 }

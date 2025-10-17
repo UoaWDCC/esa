@@ -6,7 +6,7 @@ import { EventData } from '@/types/EventData';
 import { useEvents } from '@/features/events/data/tanstack/useEvents';
 import { setupEvents } from '@/features/events/utils/setupEvents';
 import NoEvents from "@/features/events/components/NoEvents";
-
+import Image from 'next/image';
 
 export default function Events() {
     const { data: parsedEvents } = useEvents();
@@ -19,6 +19,18 @@ export default function Events() {
 
     return (
         <div className="relative text-white overflow-hidden lg:px-[13%] md:px-[10%] px-[6%] py-28">
+
+            {/* Background star */}
+            <div className="absolute bottom-[-10%] right-[-20%] -z-10 overflow-hidden">
+                <Image
+                    src="/images/signup/background_star.png"
+                    alt="background star red"
+                    width={700}
+                    height={700}
+                    className="w-[700px]"
+                />
+            </div>
+
             {/* Title/body text */}
             <h2 className="text-primary-red text-center"> Our Events </h2>
 

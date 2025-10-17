@@ -43,6 +43,18 @@ export default function MeetExecs() {
 
     return (
         <div className="flex flex-col items-center justify-center gap-10 relative pt-8 pb-8 md:min-h-screen md:pt-25 md:pb-20 overflow-hidden">
+            
+            {/* Background star */}
+            <div className="absolute bottom-[-15%] left-[-20%] -z-10 overflow-hidden">
+                <Image
+                    src="/images/signup/background_star_white.png"
+                    alt="background star white"
+                    width={700}
+                    height={700}
+                    className="w-[400px] md:w-[600px] lg:w-[700px]"
+                />
+            </div>
+            
             <h3 className="bg-primary-red-400 rounded-2xl px-10 py-2 md:px-6 md:py-1 text-center">
                 Meet The Execs
             </h3>

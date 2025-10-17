@@ -76,6 +76,7 @@ export interface Config {
     roles: Role;
     execRoleCategories: ExecRoleCategory;
     categories: Category;
+    galleryImages: GalleryImage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -91,6 +92,7 @@ export interface Config {
     roles: RolesSelect<false> | RolesSelect<true>;
     execRoleCategories: ExecRoleCategoriesSelect<false> | ExecRoleCategoriesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    galleryImages: GalleryImagesSelect<false> | GalleryImagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -296,6 +298,20 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleryImages".
+ */
+export interface GalleryImage {
+  id: string;
+  image: string | Media;
+  eventName: string;
+  eventDate: string;
+  pinColour: 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'orange' | 'pink' | 'teal' | 'brown' | 'gray';
+  variation: 'small' | 'large';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -336,6 +352,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: string | Category;
+      } | null)
+    | ({
+        relationTo: 'galleryImages';
+        value: string | GalleryImage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -512,6 +532,19 @@ export interface ExecRoleCategoriesSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   categoryName?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleryImages_select".
+ */
+export interface GalleryImagesSelect<T extends boolean = true> {
+  image?: T;
+  eventName?: T;
+  eventDate?: T;
+  pinColour?: T;
+  variation?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -11,7 +11,7 @@ export default function WhoAreWe() {
                 alt="top left frame"
                 width={60}
                 height={60}
-                className="absolute hidden md:block right-50 -bottom-20 w-[5.5%] max-[1600px]:right-35 max-[1180px]:right-20"
+                className="absolute hidden md:block right-50 -bottom-20 w-[5.5%] max-[1600px]:right-35 max-[1600px]:-bottom-15 max-[1180px]:right-30 max-[1024px]:right-20"
             />
 
             {/* top left frame */}
@@ -20,11 +20,11 @@ export default function WhoAreWe() {
                 alt="bottom right frame"
                 width={60}
                 height={60}
-                className="absolute hidden md:block -top-14 left-50 scale-x-[-1] scale-y-[-1] w-[5.5%] -rotate-18 max-[1600px]:left-35 max-[1180px]:left-20"
+                className="absolute hidden md:block -top-14 left-45 scale-x-[-1] scale-y-[-1] w-[5.5%] -rotate-18 max-[1600px]:left-35 max-[1180px]:left-30 max-[1024px]:left-15"
             />
 
             {/* main box component */}
-            <div className="flex items-center justify-center py-9 px-10 md:px-[8%] md:pl-[5%] md:py-[5%] gap-6 rounded-[3.5em] md:rounded-[6em] bg-primary-white">
+            <div className="flex items-center justify-center py-9 px-10 md:px-[8%] md:pl-[5%] lg:py-[5%] md:py-[5%] gap-6 rounded-[3.5em] md:rounded-[6em] bg-primary-white">
                 {/* background */}
                 <div className="absolute inset-0 bg-[url('/images/home/liquid_marbling_background.png')] bg-cover bg-center opacity-7 rounded-[3.5em] md:rounded-[5em] border lg:mx-[15%] md:mx-[10%] mx-[6%]" />
 
@@ -36,14 +36,14 @@ export default function WhoAreWe() {
                     height={0}
                     style={{ width: "100%", height: "auto" }}
                     sizes="100vw"
-                    className="hidden md:block min-w-70 max-w-120"
+                    className="hidden md:block min-w-70 max-w-100"
                 />
 
                 {/* Right side text */}
                 <div className="z-10 flex flex-col items-center gap-4 mb-auto">
                     <div className="relative">
                         {/* title */}
-                        <h3 className="bg-primary-red-400 rounded-xl text-white px-5 py-2 mt-[15%] mb-[4%]">
+                        <h3 className="bg-primary-red-400 rounded-xl text-white px-5 py-2 mt-[10%] mb-[4%] whitespace-nowrap max-[1130px]:!text-2xl max-[870px]:!text-xl max-[810px]:!text-lg max-[766px]:!text-2xl max-[450px]:!text-sm !text-3xl">
                             Who are we?
                         </h3>
                         {/* arrow */}
@@ -54,18 +54,10 @@ export default function WhoAreWe() {
                             height={105}
                             className="absolute top-[6rem] max-[1820px]:left-[-8rem] max-[1482px]:left-[-6rem] left-[-10rem] block w-[35%] max-[1820px]:w-[28%] max-[1482px]:w-[20%] max-[1310px]:hidden"
                         />
-                        {/* mobile arrow */}
-                        <Image
-                            src="/images/home/arrow3.svg"
-                            alt="arrow3.svg"
-                            width={39}
-                            height={100}
-                            className="absolute top-[7rem] left-[-2.5rem] md:hidden z-50"
-                        />
                     </div>
 
                     {/* description */}
-                    <p className="max-w-72 mb-[4%] text-center text-black leading-6">
+                    <p className="max-w-72 xl:max-w-76 mb-[4%] text-center text-black leading-6 xl:!text-2xl">
                         ESA Social Club is your go-to community for fun, connection and a little
                         friendly competition.
                     </p>
@@ -134,12 +126,12 @@ export default function WhoAreWe() {
                             />
                         </div>
                     </div>
-                    <div className="flex flex-col w-full tracking-widest gap-4">
-                        <p className="text-black mb-[4%]">
+                    <div className="flex flex-col w-full tracking-widest gap-4 ml-0 lg:ml-[7%]">
+                        <p className="text-black mb-[4%] xl:!text-2xl max-[1130px]:!text-sm max-[766px]:!text-sm">
                             Whether you&apos;re here to smash it at sports day, chill at pool night,
                             or game it out at arcade night — we’ve got you.
                         </p>
-                        <p className="text-black">
+                        <p className="text-black xl:!text-2xl max-[1130px]:!text-sm max-[766px]:!text-sm">
                             ESA firmly believes that university life is not just about academic
                             studies … but it’s also about having fun, and meeting new friends!
                         </p>
