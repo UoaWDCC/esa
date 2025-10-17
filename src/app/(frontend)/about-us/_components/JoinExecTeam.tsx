@@ -17,24 +17,23 @@ export default function JoinExecTeam() {
 
             <div className="flex flex-col md:items-start items-center text-center md:text-left lg:ml-[13%] md:m-[10%] mx-[6%] lg:w-[45%] w-[full] gap-20 relative z-10">
                 {/* First Half of text */}
-                <div className="flex flex-col gap-3 md:gap-5">
-                    <h3 className="hidden md:block">Join our Exec Team</h3>
-                    <h1 className="block mb-4 md:hidden max-w-[24rem] leading-none">
-                        Join Our Exec Team
-                    </h1>
-                    <p className="text-2xl md:text-xl tracking-[0.15em] max-w-[24rem] mx-auto md:max-w-full md:mx-0">
-                        ESA is a social club is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry&apos;s standard dummy text ESA
-                        is a social club is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum
+                <div className="flex flex-col gap-5">
+                    <h3>Join our Exec Team</h3>
+                    <p className="tracking-[0.15em]">
+                        Are you passionate about creating fun, inclusive events and making a real
+                        impact on campus?
                     </p>
                 </div>
 
                 {/* Second Half of text */}
-                <div className="flex flex-col gap-2 md:gap-5">
-                    <p className="text-2xl md:text-xl tracking-[0.15em] max-w-[24rem] mx-auto md:max-w-full md:mx-0">
-                        ESA is a social club is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum
+                <div className="flex flex-col gap-4">
+                    <p className="tracking-[0.15em]">
+                        Join the ESA’s executive team and help us bring students together to
+                        celebrate culture, connect, and grow.
+                    </p>
+                    <p className="tracking-[0.15em]">
+                        Develop leadership skills, connect with like minded individuals, and make
+                        lasting memories!
                     </p>
                 </div>
 
