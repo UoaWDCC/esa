@@ -23,7 +23,7 @@ export default function parseExecs(execs: Exec[]): ExecData[] {
 
         return {
             _id: doc.id,
-            name: doc.name,
+            name: `${doc.firstName} ${doc.lastName}`,
             ethnicity: doc.ethnicity,
             role: doc.role,
             degree: doc.degree,
