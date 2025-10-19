@@ -17,6 +17,84 @@ export interface ExecRoleCategoryData {
   categoryDescription?: string;
 }
 
+export type SortedExec = {
+  id: string;
+  firstName?: string;
+  lastName?: string;
+  role?: string;
+  about?: string;
+  imageUrl?: string;
+  tilt?: boolean;
+};
+
+export type SortedCategory = {
+  categoryId?: string;
+  title: string;
+  description?: string;
+  execs: SortedExec[];
+};
+
+export function buildSortedCategories(parsed: ExecRoleCategoryData[], allExecs?: any[]): SortedCategory[] {
+  const map = new Map<string, SortedCategory>();
+  const assigned = new Set<string>();
+
+  for (const p of parsed) {
+    const catId = p.categoryId ?? 'uncategorised';
+    const catKey = `${catId}::${p.categoryName ?? 'Uncategorised'}`;
+    if (!map.has(catKey)) {
+      map.set(catKey, {
+        categoryId: p.categoryId,
+        title: p.categoryName ?? 'Uncategorised',
+        description: p.categoryDescription ?? '',
+        execs: [],
+      });
+    }
+
+    if (!p.execId) continue;
+    assigned.add(String(p.execId));
+
+    map.get(catKey)!.execs.push({
+      id: String(p.execId),
+      firstName: p.execFirstName ?? '',
+      lastName: p.execLastName ?? '',
+      role: p.roleName ?? '',
+      about: p.execAbout ?? '',
+      imageUrl: p.execImage ?? '',
+      tilt: Math.random() < 0.5,
+    });
+  }
+
+  if (Array.isArray(allExecs)) {
+    const unassignedKey = `unassigned::Unassigned`;
+    for (const e of allExecs) {
+      const id = String(e._id ?? e.id ?? '');
+      if (!id || assigned.has(id)) continue;
+
+      if (!map.has(unassignedKey)) {
+        map.set(unassignedKey, {
+          categoryId: undefined,
+          title: 'Unassigned',
+          description: '',
+          execs: [],
+        });
+      }
+
+      map.get(unassignedKey)!.execs.push({
+        id,
+        firstName: e.firstName ?? (e.name ? String(e.name).split(' ')[0] : ''),
+        lastName: e.lastName ?? (e.name ? String(e.name).split(' ').slice(1).join(' ') : ''),
+        role: e.role ?? '',
+        about: e.about ?? '',
+        imageUrl:
+          e.image && typeof e.image === 'object' ? e.image.url ?? e.image.src ?? '' : typeof e.image === 'string' ? e.image : '',
+        tilt: Math.random() < 0.5,
+      });
+    }
+  }
+
+  return Array.from(map.values()).sort((a, b) => a.title.localeCompare(b.title));
+}
+
 export default function parseExecRoleCategory(items: any[]): ExecRoleCategoryData[] {
   if (!Array.isArray(items)) return [];
 
