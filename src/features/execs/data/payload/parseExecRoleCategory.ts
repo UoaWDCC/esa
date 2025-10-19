@@ -92,7 +92,23 @@ export function buildSortedCategories(parsed: ExecRoleCategoryData[], allExecs?:
     }
   }
 
-  return Array.from(map.values()).sort((a, b) => a.title.localeCompare(b.title));
+  // presidents/copresidents go to top, interns go to bottom, inbetween sorted alphabetical
+  const isPresidentCategory = (title = '') => /\b(co[-\s]?president|presidents)\b/i.test(String(title));
+  const isInternCategory = (title = '') => /\b(interns?|internship)\b/i.test(String(title));
+
+  return Array.from(map.values()).sort((a, b) => {
+    const aIsPres = isPresidentCategory(a.title);
+    const bIsPres = isPresidentCategory(b.title);
+    if (aIsPres && !bIsPres) return -1;
+    if (bIsPres && !aIsPres) return 1;
+
+    const aIsIntern = isInternCategory(a.title);
+    const bIsIntern = isInternCategory(b.title);
+    if (aIsIntern && !bIsIntern) return 1; // interns go to bottom
+    if (bIsIntern && !aIsIntern) return -1;
+
+    return a.title.localeCompare(b.title);
+  });
 }
 
 export default function parseExecRoleCategory(items: any[]): ExecRoleCategoryData[] {
