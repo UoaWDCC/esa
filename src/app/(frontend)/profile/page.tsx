@@ -158,17 +158,17 @@ export default function Profile() {
 
             <hr className="w-[90%] h-[2px] bg-white opacity-50 my-4 mx-auto"></hr>
 
-            <h2 className="text-primary-white text-start translate-x-[19%] mt-8">
-                {watch('firstName') || 'firstname'}
-                <br />
-                {watch('lastName') || 'lastname'}
-            </h2>
-
             {/* Profile Edit Form */}
             <div className="justify-center px-8">
+                <h2 className="text-primary-white text-start mt-8max-w-3xl mx-auto">
+                    {watch('firstName') || 'firstname'}
+                    <br />
+                    {watch('lastName') || 'lastname'}
+                </h2>
+
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="max-w-2xl bg-primary-grey mx-auto justify-center gap-4 mt-8 m-4"
+                    className="max-w-3xl mx-auto justify-center gap-4 mt-8 m-4w-full"
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 w-full">
                         <FormInput
@@ -269,7 +269,7 @@ export default function Profile() {
                         </div>
                         <Button
                             type="button"
-                            className={`border bg-primary-grey hover:bg-[#272727] border-white rounded-full w-fit flex items-center gap-x-2 select-none z-10 ${!isDirty ? 'invisible' : ''}`}
+                            className={`border bg-primary-grey/80 hover:bg-[#272727] border-white rounded-full w-fit flex items-center gap-x-2 select-none z-10 ${!isDirty ? 'invisible' : ''}`}
                             variant={null}
                             onClick={() => reset()}
                             disabled={isSubmitting}

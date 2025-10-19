@@ -61,7 +61,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
                     ref={ref}
                     defaultValue={placeholder ? '' : undefined}
                     className={cn(
-                        'border border-white rounded-2xl py-1.5 px-3 bg-transparent',
+                        'border border-white rounded-2xl py-1.5 px-3 bg-primary-grey/80',
                         className,
                     )}
                     {...rest}
@@ -72,7 +72,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
                         </option>
                     )}
                     {options.map((option) => (
-                        <option key={option.value} value={option.value} className="text-black">
+                        <option key={option.value} value={option.value} className="text-white">
                             {option.label}
                         </option>
                     ))}
