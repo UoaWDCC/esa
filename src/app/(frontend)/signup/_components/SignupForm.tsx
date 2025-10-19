@@ -12,7 +12,12 @@ import { Button } from '@/components/ui/Button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ArrowUp from '@/components/icons/ArrowUp';
 
-export default function SignupForm() {
+interface SignupFormProps {
+    email?: string;
+    token?: string;
+}
+
+export default function SignupForm({ email, token }: SignupFormProps) {
     const [step, setStep] = useState(1);
     const Arr = ['', ''];
 
@@ -28,6 +33,8 @@ export default function SignupForm() {
             timestamp: new Date(),
             membershipPayment: 'Stripe',
             paymentScreenshotLink: 'N/A',
+            email: email ?? '',
+            token: token ?? '',
         },
     });
 
@@ -125,8 +132,9 @@ export default function SignupForm() {
                                     placeholder="Enter Here"
                                     {...register('email')}
                                     error={errors.email}
-                                    className="w-full placeholder:text-gray"
+                                    className={"w-full placeholder:text-gray " + (!!email ? 'bg-primary-grey-light' : '')}
                                     required={true}
+                                    readOnly={!!email}
                                 />
                                 <div className="md:flex md:justify-between">
                                     <FormSelect

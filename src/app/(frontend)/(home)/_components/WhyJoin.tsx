@@ -1,3 +1,5 @@
+'use client'
+
 // Import React and Next.js Image component
 import React from 'react';
 import Image from 'next/image';
@@ -5,8 +7,11 @@ import Image from 'next/image';
 // Import global styles (including Tailwind)
 import '@/styles/global.css';
 import { Button } from '@/components/ui/Button';
+import { signIn, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 const WhyJoin = () => {
+    const { status } = useSession();
     return (
         // Root container with background image and content overlay
         <div
@@ -44,8 +49,8 @@ const WhyJoin = () => {
 
                 {/* Join button */}
                 <div className="flex flex-col items-start mt-15 ">
-                    <Button href="/signup" className="px-8 py-3.25 z-10">
-                        Join the ESA Family!
+                    <Button onClick={() => status === 'authenticated' ? redirect("/events") : signIn('google') } className="px-8 py-3.25 z-10">
+                        {status === 'authenticated' ? "Check Out Our Events!" : "Join the ESA Family!"}
                     </Button>
                 </div>
             </div>

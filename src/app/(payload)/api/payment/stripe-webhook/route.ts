@@ -6,6 +6,7 @@ import payloadConfig from '@payload-config';
 
 // T3 env
 import { env } from 'config/serverEnv';
+import { verifyVerificationToken } from '@/lib/jwt/verificationToken';
 
 const stripe = new Stripe(env.STRIPE_SECRET_KEY!, {
     apiVersion: '2025-06-30.basil',
@@ -63,6 +64,13 @@ export async function POST(req: Request) {
             return new Response('Invalid member data', { status: 400 });
         }
 
+        // If there is a token, verify it and extract googleId
+        let googleId: string = '';
+        if (parseResult.data.token) {
+            const verified = verifyVerificationToken(parseResult.data.token);
+            googleId = verified?.googleId || '';
+        }
+
         // Cast the parsed data to the Member type, excluding the id and timestamps
         // This is safe because we validated the data against the schema
         const memberData: Omit<Member, 'id' | 'createdAt' | 'updatedAt'> = {
@@ -81,6 +89,7 @@ export async function POST(req: Request) {
             paymentScreenshotLink: parseResult.data.paymentScreenshotLink || '',
             referrerName: parseResult.data.referrerName || '',
             notes: parseResult.data.notes || '',
+            googleId: googleId
         };
 
         try {
