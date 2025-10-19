@@ -307,7 +307,7 @@ export interface GalleryImage {
   eventName: string;
   eventDate: string;
   pinColour: 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'orange' | 'pink' | 'teal' | 'brown' | 'gray';
-  variation: 'small' | 'large';
+  variation: 'mobile' | 'small' | 'large';
   updatedAt: string;
   createdAt: string;
 }

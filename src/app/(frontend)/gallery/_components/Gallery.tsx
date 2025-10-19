@@ -18,9 +18,9 @@ export default function Gallery() {
             if (window.innerWidth >= 1024) {
                 setItemsPerPage(9); // lg has 3x3 grid
             } else if (window.innerWidth >= 768) {
-                setItemsPerPage(4); // md has 2x2 grid
+                setItemsPerPage(9); // md has 2x2 grid
             } else {
-                setItemsPerPage(2); //sm has 1x2 grid
+                setItemsPerPage(9); //sm has 1x2 grid
             }
             setCurrentPage(1); // Reset to first page on resize
         };
@@ -75,7 +75,7 @@ export default function Gallery() {
                         src="/images/gallery/board.png"
                         alt="Gallery Board Background"
                         fill
-                        className="object-fill"
+                        className="hidden md:block object-fill"
                         draggable={false}
                         priority
                     />
@@ -85,7 +85,7 @@ export default function Gallery() {
                             initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 1 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[5vh] place-items-center relative z-10"
+                            className="grid grid-cols-3 gap-[5vh] md:gap-[5vh] place-items-center relative z-10"
                         >
                             {getCurrentItems().map((polaroid: PolaroidProps, index: number) => (
                                 <motion.div
