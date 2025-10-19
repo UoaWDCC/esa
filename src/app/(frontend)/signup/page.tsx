@@ -1,7 +1,13 @@
+'use client'
+
+import { useSearchParams } from 'next/navigation';
 import SignupForm from './_components/SignupForm';
 import Image from 'next/image';
 
 export default function SignupPage() {
+    const searchParams = useSearchParams();
+    const email = searchParams.get('email') ?? undefined;
+    const token = searchParams.get('token') ?? undefined;
     return (
         <div className="relative flex flex-col mx-auto items-center container">
             <div className="relative flex flex-col my-30 space-y-4 items-center justify-center">

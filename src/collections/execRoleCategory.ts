@@ -1,10 +1,8 @@
 import type { CollectionConfig } from 'payload';
 
-{
-    /* many-to-many relationship between execs, roles, and categories */
-}
-export const execRoleCategories: CollectionConfig = {
-    slug: 'execRoleCategories',
+// many-to-many relationship between execs, roles, and categories
+export const execRoleCategory: CollectionConfig = {
+    slug: 'execRoleCategory',
     access: {
         read: () => true,
     },
@@ -29,3 +27,8 @@ export const execRoleCategories: CollectionConfig = {
         },
     ],
 };
+
+// add this alias so imports that expect `execRoleCategories` succeed
+export const execRoleCategories = execRoleCategory;
+
+export default execRoleCategory;

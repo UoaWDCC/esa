@@ -2,8 +2,14 @@
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
+import { signIn, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { useAuthenticatedMember } from '@/features/members/data/tanstack/useAuthenticatedMember';
 
 const Hero = () => {
+    const { status } = useSession();
+    const member = useAuthenticatedMember();
+
     return (
         <div className="h-[700px] md:min-h-screen relative overflow-hidden">
             {/* Black Background */}
@@ -29,11 +35,14 @@ const Hero = () => {
                     />
                     <div className="transform -translate-y-14 lg:-translate-y-[-15%] md:-translate-y-[-20%]">
                         {/* Subtitle */}
-                        <p className="text-white mb-6 font-smeltex-medium max-w-md">
+                        <p className= {"text-white font-smeltex-medium max-w-md " + (status === 'authenticated' ? "-mt-3" : "mb-6")}>
                             Your go-to university social club.
                         </p>
-                        <Button href="/signup" size="lg">
-                            Join the ESA Family!
+                        <p className="text-white mb-3 font-smeltex-medium">
+                            {status === 'authenticated' && member?.firstName ? `Welcome, ${member?.firstName}!` : ""}
+                        </p>
+                        <Button onClick={() => status === 'authenticated' ? redirect("/events") : signIn('google') } size="lg">
+                            {status === 'authenticated' ? "Check Out Our Events!" : "Join the ESA Family!"}
                         </Button>
                     </div>
                 </div>
