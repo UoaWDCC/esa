@@ -74,7 +74,7 @@ export interface Config {
     members: Member;
     execs: Exec;
     roles: Role;
-    execRoleCategories: ExecRoleCategory;
+    execRoleCategory: ExecRoleCategory;
     categories: Category;
     galleryImages: GalleryImage;
     'payload-locked-documents': PayloadLockedDocument;
@@ -90,7 +90,7 @@ export interface Config {
     members: MembersSelect<false> | MembersSelect<true>;
     execs: ExecsSelect<false> | ExecsSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
-    execRoleCategories: ExecRoleCategoriesSelect<false> | ExecRoleCategoriesSelect<true>;
+    execRoleCategory: ExecRoleCategorySelect<false> | ExecRoleCategorySelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     galleryImages: GalleryImagesSelect<false> | GalleryImagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -276,7 +276,7 @@ export interface Role {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "execRoleCategories".
+ * via the `definition` "execRoleCategory".
  */
 export interface ExecRoleCategory {
   id: string;
@@ -293,6 +293,7 @@ export interface ExecRoleCategory {
 export interface Category {
   id: string;
   categoryName: string;
+  categoryDescription: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -346,7 +347,7 @@ export interface PayloadLockedDocument {
         value: string | Role;
       } | null)
     | ({
-        relationTo: 'execRoleCategories';
+        relationTo: 'execRoleCategory';
         value: string | ExecRoleCategory;
       } | null)
     | ({
@@ -517,9 +518,9 @@ export interface RolesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "execRoleCategories_select".
+ * via the `definition` "execRoleCategory_select".
  */
-export interface ExecRoleCategoriesSelect<T extends boolean = true> {
+export interface ExecRoleCategorySelect<T extends boolean = true> {
   exec?: T;
   role?: T;
   category?: T;
@@ -532,6 +533,7 @@ export interface ExecRoleCategoriesSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   categoryName?: T;
+  categoryDescription?: T;
   updatedAt?: T;
   createdAt?: T;
 }

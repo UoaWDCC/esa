@@ -7,7 +7,8 @@ type ExecCardProps = {
 };
 
 export default function ExecCard({ exec, tiltLeft }: ExecCardProps) {
-    const { name, role, about } = exec;
+    const { role, about, firstName, lastName } = exec as any;
+    const name = (exec as any).name ?? `${firstName ?? ''} ${lastName ?? ''}`.trim();
     const tiltDeg = tiltLeft ? '-3deg' : '3deg';
 
     return (
