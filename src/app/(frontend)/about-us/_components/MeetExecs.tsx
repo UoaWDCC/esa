@@ -2,10 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image';
-import TopTear from './TopTear';
-import BotTear from './BotTear';
 import ExecCard from './ExecCard';
-import ExecPolaroid from './ExecPolaroid';
 import { Button } from '@/components/ui/Button';
 import { useExecs } from '@/features/execs/data/tanstack/useExecs';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -22,8 +19,8 @@ export default function MeetExecs() {
         return importantExecs.map((e, idx) => ({
             id: e._id as string | undefined,
             index: idx,
-            name: e.name,
-            role: e.role,
+            firstName: e.firstName,
+            lastName: e.lastName,
             about: e.about,
             image: typeof e.image === 'string' ? e.image : ((e.image as any)?.src ?? ''),
         }));
@@ -65,8 +62,8 @@ export default function MeetExecs() {
                     <ExecCard
                         key={exec.id}
                         index={exec.index}
-                        name={exec.name}
-                        role={exec.role}
+                        firstName={exec.firstName}
+                        lastName={exec.lastName}
                         about={exec.about}
                         image={exec.image}
                     />

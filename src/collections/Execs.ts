@@ -30,14 +30,6 @@ export const Execs: CollectionConfig = {
             },
         },
         {
-            name: 'role',
-            type: 'text',
-            required: true,
-            admin: {
-                description: 'Role/position of the executive',
-            },
-        },
-        {
             name: 'ethnicity',
             type: 'text',
             required: true,

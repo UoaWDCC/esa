@@ -15,5 +15,11 @@ export const Categories: CollectionConfig = {
             type: 'text',
             required: true,
         },
+        {
+            name: 'categoryDescription',
+            label: "Exec Team Category Description",
+            type: 'textarea',
+            required: true,
+        },
     ],
 };
