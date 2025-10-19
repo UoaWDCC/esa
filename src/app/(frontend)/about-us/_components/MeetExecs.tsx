@@ -146,16 +146,6 @@ export default function MeetExecs() {
                         />
                     </div>
                 ))}
-                {/* Background star */}
-                <div className="absolute -bottom-120 -left-80 hidden md:block -z-10 overflow-hidden">
-                    <Image
-                        src="/images/signup/background_star_white.png"
-                        alt="background star white"
-                        width={700}
-                        height={700}
-                        className="w-[400px] md:w-[600px] lg:w-[700px]"
-                    />
-                </div>
                 <div className="absolute -right-80 -top-50 hidden md:block -z-10 overflow-hidden">
                     <Image
                         src="/images/signup/background_star.png"
