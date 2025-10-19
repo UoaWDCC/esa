@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function GalleryPage() {
     return (
-        <div className="relative flex flex-col px-0 md:px-[8%] py-28 items-center min-h-screen min-w-full overflow-hidden container">
+        <div className="relative flex flex-col px-0 md:px-[6%] py-28 items-center min-h-screen min-w-full overflow-hidden container">
             <h2 className="text-primary-red px-[20vw]">Gallery</h2>
             <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
                 <p className="text-primary-white mb-2">View our event images here!</p>
