@@ -8,7 +8,7 @@ import FormSelect from '@/components/ui/FormSelect';
 import { Button } from '@/components/ui/Button';
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function Profile() {
@@ -43,7 +43,7 @@ export default function Profile() {
         if (status === 'unauthenticated') {
             // eslint-disable-next-line no-console
             console.log('Not authenticated — redirecting to /');
-            router.replace('/');
+            // router.replace('/');
         }
     }, [status, router]);
 
@@ -119,10 +119,10 @@ export default function Profile() {
     return (
         <div className="relative text-white overflow-hidden lg:px-[13%] md:px-[10%] px-[6%] py-28">
             {/* Debug panel - remove when fixed */}
-            <div className="fixed top-2 right-2 z-50 bg-black/70 text-white p-2 rounded-md text-xs">
+            {/* <div className="fixed top-2 right-2 z-50 bg-black/70 text-white p-2 rounded-md text-xs">
                 <div>auth status: {status}</div>
                 <div>email: {session?.user?.email ?? 'none'}</div>
-            </div>
+            </div> */}
 
             <div className="absolute left-0 top-230 w-full -z-10">
                 <Image
@@ -253,9 +253,23 @@ export default function Profile() {
                         textarea
                     />  
                     <div className="flex justify-end gap-x-4 mt-4">
+                        <div className="mr-auto">
+                            {/* signout */}
+                            <Button
+                                type="button"
+                                className="bg-primary-red hover:bg-[#e63d37] rounded-full w-fit flex items-center gap-x-2 select-none z-10"
+                                variant={null}
+                                onClick={() => {
+                                    // redirect via NextAuth
+                                    signOut({ callbackUrl: '/' });
+                                }}
+                            >
+                                Sign Out
+                            </Button>
+                        </div>
                         <Button
                             type="button"
-                            className={`border bg-primary-grey border-white rounded-full w-fit flex items-center gap-x-2 select-none z-10 ${!isDirty ? 'invisible' : ''}`}
+                            className={`border bg-primary-grey hover:bg-[#272727] border-white rounded-full w-fit flex items-center gap-x-2 select-none z-10 ${!isDirty ? 'invisible' : ''}`}
                             variant={null}
                             onClick={() => reset()}
                             disabled={isSubmitting}
