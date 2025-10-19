@@ -34,7 +34,7 @@ export default function Events() {
             <h2 className="text-primary-red text-center"> Our Events </h2>
 
             <div className="w-full mx-auto text-center text-primary-white flex flex-col items-center tracking-widest">
-                <p className="text-primary-white mb-2">View our next and previous events here!</p>
+                <p className="text-primary-white mb-2">Catch up on our past events and see what&apos;s coming next!</p>
             </div>
 
             <div className="mt-25 flex flex-col relative z-20 items-center md:items-start">

@@ -18,8 +18,9 @@ export default function AboutUs() {
                     <h3 className="hidden md:block">About Us</h3>
                     <h1 className="block mb-4 md:hidden">About Us</h1>
                     <p className="text-2xl md:text-xl tracking-[0.15em] max-w-[24rem] mx-auto md:max-w-full md:mx-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.
+                        ESA brings students together to connect, share, and celebrate culture.
+                        Whether you're from an Eastern background or just curious, everyone’s
+                        welcome to join the fun!
                     </p>
                     {/* Mobile Mascot Image (separate one to put in the flex-col structure) */}
                     <Image

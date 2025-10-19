@@ -129,7 +129,7 @@ export default function MeetExecs() {
                 />
             </div>
 
-            <h3 className="bg-primary-red-400 rounded-2xl px-10 py-2 md:px-6 md:py-1 text-center">
+            <h3 className="bg-primary-red-400 rounded-2xl px-10 py-2 md:px-6 md:py-1 text-center max-[470px]:!text-xl">
                 Meet The Execs
             </h3>
             {/* Original grid of cards */}
