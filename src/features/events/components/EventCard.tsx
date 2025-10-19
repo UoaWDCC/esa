@@ -195,7 +195,7 @@ export default function EventCard({
                 <Button
                     variant="clear"
                     size="sm"
-                    className="flex justify-center gap-3 px-4 py-2 whitespace-nowrap"
+                    className="flex justify-center gap-3 px-4 py-2 whitespace-nowrap bg-primary-grey/80"
                     onClick={() => setExpanded(!expanded)}
                     aria-expanded={expanded}
                     >
