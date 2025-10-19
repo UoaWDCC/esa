@@ -134,7 +134,7 @@ export default function MeetExecs() {
             </h3>
 
             {/* Original grid of cards */}
-            <div className="hidden w-full md:flex flex-wrap justify-center gap-5">
+            <div className="hidden w-full md:flex flex-wrap justify-center gap-5 min-[1490px]:px-[12%]">
                 {normalized.map((exec) => (
                     <div key={exec.id} className="flex flex-col items-center">
                         <ExecCard
