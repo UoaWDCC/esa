@@ -119,7 +119,7 @@ export default function MeetExecs() {
     return (
         <div className="flex flex-col items-center justify-center gap-10 relative pt-8 pb-8 md:min-h-screen md:pt-25 md:pb-20 overflow-hidden">
             {/* Background star */}
-            <div className="absolute bottom-[-15%] left-[-20%] -z-10 overflow-hidden">
+            <div className="hidden md:block absolute bottom-[-15%] left-[-20%] -z-10 overflow-hidden">
                 <Image
                     src="/images/signup/background_star_white.png"
                     alt="background star white"
