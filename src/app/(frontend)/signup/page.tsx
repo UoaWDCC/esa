@@ -13,7 +13,7 @@ export default function SignupPage() {
             <div className="relative flex flex-col my-30 space-y-4 items-center justify-center">
                 <h2 className="underline">Join us!</h2>
                 <p>Fill out our quick sign-up form below:</p>
-                <SignupForm />
+                <SignupForm email={email} token={token}/>
             </div>
 
             {/* Background star */}
