@@ -13,9 +13,6 @@ export const PIN_COLOURS = {
     gray: '#808080',
 } as const;
 
-{
-    /* The mobile variation is used for mobile response in the mobile polaroid layout, it is not a valid field in payload */
-}
 export const VARIATIONS = {
     small: {
         dimensions: ' aspect-[290/260] md:w-[25vw] lg:w-[17vw]',
