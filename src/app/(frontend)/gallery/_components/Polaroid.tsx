@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Pin from './Pin';
 import { PIN_COLOURS, VARIATIONS } from '@/types/GalleryImageData';
 import { GalleryImageData } from '@/types/GalleryImageData';
-import { useState } from 'react';
 
 // To change options for pinColour and variation, edit src/types/GalleryImageData.ts
 export interface PolaroidProps extends GalleryImageData {
