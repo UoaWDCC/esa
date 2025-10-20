@@ -12,7 +12,7 @@ export async function POST(req: Request) {
         const signupData = await req.json();
 
         // Hopefully this works on deployment. If redirects don't work, we can use a different method to get the origin.
-        const origin = env.BASE_URL || 'https://esa.wdcc.co.nz';
+        const origin = env.BASE_URL;
 
         const session = await stripe.checkout.sessions.create({
             mode: 'payment',
