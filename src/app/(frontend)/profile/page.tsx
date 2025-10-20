@@ -160,7 +160,7 @@ export default function Profile() {
 
             {/* Profile Edit Form */}
             <div className="justify-center px-8">
-                <h2 className="text-primary-white text-start mt-8max-w-3xl mx-auto">
+                <h2 className="text-primary-white text-start mt-8 max-w-3xl mx-auto">
                     {watch('firstName') || 'firstname'}
                     <br />
                     {watch('lastName') || 'lastname'}
@@ -168,7 +168,7 @@ export default function Profile() {
 
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="max-w-3xl mx-auto justify-center gap-4 mt-8 m-4w-full"
+                    className="max-w-3xl mx-auto justify-center gap-4 mt-8 m-4 w-full"
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 w-full">
                         <FormInput
