@@ -96,7 +96,7 @@ export default function SignupForm({ email, token }: SignupFormProps) {
         <div className="flex flex-col justify-center px-8">
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="border-white border rounded-[4rem] flex items-center justify-center bg-primary-grey"
+                className="border-white border rounded-[4rem] flex items-center justify-center bg-primary-grey/80"
             >
                 <AnimatePresence mode="wait">
                     {step === 1 && (
