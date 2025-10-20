@@ -17,16 +17,12 @@ export const PIN_COLOURS = {
     /* The mobile variation is used for mobile response in the mobile polaroid layout, it is not a valid field in payload */
 }
 export const VARIATIONS = {
-    mobile: {
-        dimensions: 'w-[20vw] aspect-[370/320]',
-        imageSize: '50px',
-    },
     small: {
-        dimensions: 'w-[42vw] aspect-[290/260] md:w-[27vw] lg:w-[17vw]',
+        dimensions: ' aspect-[290/260] md:w-[25vw] lg:w-[17vw]',
         imageSize: '260px',
     },
     large: {
-        dimensions: 'w-[45vw] aspect-[370/320] md:w-[30vw] lg:w-[20vw]',
+        dimensions: 'aspect-[370/320] md:w-[27.5vw] lg:w-[20vw]',
         imageSize: '370px',
     },
 } as const;
