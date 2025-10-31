@@ -186,7 +186,8 @@ export default function Profile() {
             placeholder="Enter Here"
             {...register('email')}
             error={errors.email}
-            className="w-full placeholder:text-gray"
+            className="w-full placeholder:text-gray bg-primary-grey-light"
+            disabled
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 w-full">
