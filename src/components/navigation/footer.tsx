@@ -1,5 +1,5 @@
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
-import { SiLinktree } from "react-icons/si";
+import { SiLinktree } from 'react-icons/si';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -104,10 +104,10 @@ function Footer() {
                             className="object-contain"
                         />
                     </div>
-                    <div className="text-md md:text-lg text-white leading-tight text-start font-reservoir-grunge">
-                        Eastern Students
-                        <br />
-                        Association
+                    <div className="w-[50%] md:w-auto">
+                        <a className="text-sm md:text-lg text-white leading-tight text-start font-reservoir-grunge">
+                            Eastern Students <br /> Association
+                        </a>
                     </div>
                 </div>
             </div>
