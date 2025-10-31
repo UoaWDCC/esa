@@ -67,12 +67,9 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                 console.error('Failed to load Packery:', error);
             });
     }, [baseSize]);
-    
+
     return (
-        <div
-            className="relative h-[24rem] pt-8 inline-block ml-4 select-none overflow-visible"
-            ref={containerRef}
-        >
+        <div className="relative h-[24rem] pt-8 inline-block ml-4 select-none" ref={containerRef}>
             {sponsors.map((sponsor, index) => {
                 const size = baseSize * sponsor.importance;
 
@@ -105,7 +102,7 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
                                 height={size}
                                 width={size}
                                 alt={sponsor.logo.alt || sponsor.name}
-                                className="scale-105 object-cover rounded-full select-none overflow-hidden"
+                                className="scale-105 object-cover rounded-full select-none"
                             />
                         </div>
                     </Link>
@@ -132,4 +129,3 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
         </div>
     );
 }
-
