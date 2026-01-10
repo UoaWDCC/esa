@@ -117,35 +117,35 @@ export default function EventCard({
                                 {!event.locked ? event.title : 'Locked Event'}
                             </h4>
                             <div className="flex justify-between gap-x-5">
-                                <div className="relative w-[185px] md:w-full h-[231px] md:h-[520px] rounded-3xl overflow-hidden shadow-lg">
-                                    <Image
-                                        src={event.image}
-                                        alt={event.imageAlt}
-                                        fill
-                                        priority
-                                        className={`object-cover ${event.locked ? 'blur-sm' : ''}`}
-                                        draggable={false}
-                                    />
-                                    {event.locked && (
+                                <div className="relative aspect-[3/4] w-[185px] md:w-80 shrink-0 rounded-3xl overflow-hidden shadow-lg">
                                         <Image
-                                            src="/images/home/lock.png"
-                                            alt="Locked"
-                                            width={80}
-                                            height={80}
+                                            src={event.image}
+                                            alt={event.imageAlt}
+                                            fill
+                                            priority
+                                            className={`object-cover ${event.locked ? 'blur-sm' : ''}`}
                                             draggable={false}
-                                            className="absolute inset-0 m-auto z-10"
                                         />
-                                    )}
+                                        {event.locked && (
+                                            <Image
+                                                src="/images/home/lock.png"
+                                                alt="Locked"
+                                                width={80}
+                                                height={80}
+                                                draggable={false}
+                                                className="absolute inset-0 m-auto z-10"
+                                            />
+                                        )}
+                                    </div>
+                                    <EventInfo
+                                        event={event}
+                                        dateString={dateString}
+                                        className="md:hidden"
+                                    />
                                 </div>
-                                <EventInfo
-                                    event={event}
-                                    dateString={dateString}
-                                    className="md:hidden"
-                                />
-                            </div>
 
-                            {/* Right panel matches image height */}
-                            <div className="flex flex-col w-full h-full md:h-[520px] rounded-3xl !bg-transparent !border-none">
+                                {/* Right panel matches image height */}
+                                <div className="flex flex-col w-full h-full md:h-[520px] rounded-3xl !bg-transparent !border-none">
                                 <div>
                                     <div className="hidden md:flex justify-between items-center">
                                         <h4 className="font-bold leading-tight">
@@ -191,14 +191,14 @@ export default function EventCard({
             <div
                 className={`mt-3 md:justify-end ${even ? 'justify-end' : 'justify-start'} flex`}
                 style={{ display: isSeeMoreVisible ? 'flex' : 'none' }}
-                >
+            >
                 <Button
                     variant="clear"
                     size="sm"
                     className="flex justify-center gap-3 px-4 py-2 whitespace-nowrap bg-primary-grey/80"
                     onClick={() => setExpanded(!expanded)}
                     aria-expanded={expanded}
-                    >
+                >
                     {expanded ? 'See less' : 'See more'}
                     {expanded ? <ChevronUp strokeWidth={2.5} /> : <ChevronDown strokeWidth={2.5} />}
                 </Button>

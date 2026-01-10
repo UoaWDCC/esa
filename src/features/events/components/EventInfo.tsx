@@ -26,9 +26,11 @@ export default function EventInfo({ event, className, dateString }: { event: Eve
                 <span className="flex flex-row items-center whitespace-nowrap">
                     <DollarSign /> {event.nonMemberPrice} (Non-Members)
                 </span>
-                <span className="flex flex-row items-center whitespace-nowrap">
-                    <MapPin className="mr-1" />
+                <span className="flex items-start">
+                  <MapPin className="mt-0.5 mr-1 shrink-0"/>
+                  <span className="break-words">
                     {event.location}
+                  </span>
                 </span>
             </div>
         </div>
