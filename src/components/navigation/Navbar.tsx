@@ -97,7 +97,7 @@ export default function Navbar() {
                                 animate={{ x: 1 }}
                                 exit={{ x: -150 }}
                                 transition={{ duration: 0.1 }}
-                                className="absolute -top-[7px] -left-[1px] mt-2 w-40 rounded-lg bg-primary-grey-light z-40"
+                                className="absolute -top-[8px] -left-[1px] mt-2 w-40 rounded-lg bg-primary-grey-light z-40"
                             >
                                 <div className="flex flex-col pt-18 pb-4 px-5 space-y-3 font-roboto-mono text-primary-white">
                                     {links.map((link) => (
