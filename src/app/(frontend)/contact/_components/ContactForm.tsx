@@ -52,17 +52,6 @@ export default function ContactForm() {
 
     return (
         <div className="text-center text-primary-white flex flex-col items-center w-full">
-            {/* Background star */}
-            <div className="absolute bottom-0 -right-50 -z-10 overflow-hidden">
-                <Image
-                    src="/images/signup/background_star.png"
-                    alt="background star red"
-                    width={700}
-                    height={700}
-                    className="w-[650px]"
-                />
-            </div>
-
             <h3 className="underline underline-offset-4 mb-2">Let’s have a chat!</h3>
             <p className="mb-6 max-w-[60%]">
                 We’d love to hear from you! You can contact us with the form below or send us an
