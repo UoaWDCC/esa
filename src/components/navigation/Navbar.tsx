@@ -39,7 +39,7 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Navbar */}
-            <nav className="hidden md:flex z-50 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1.2rem] text-primary-white justify-between items-center bg-primary-grey-light w-[90%] max-w-[1100px] px-18 lg:px-28 rounded-full gap-4 py-1">
+            <nav className="hidden md:flex z-100 fixed top-5 left-1/2 transform -translate-x-1/2 bg-primary-black font-roboto-mono text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-primary-white justify-between items-center bg-primary-grey-light w-[65%] md:w-[70%] lg:w-[75%] xl:w-[80%] 2xl:w-[85%] max-w-[550px] md:max-w-[650px] lg:max-w-[750px] xl:max-w-[900px] 2xl:max-w-[1100px] px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-18 rounded-full gap-1 md:gap-1 lg:gap-2 xl:gap-3 2xl:gap-4 py-1">
                 <Link href="/events" className="hover:text-accent transition-colors">
                     EVENTS
                 </Link>
@@ -59,7 +59,7 @@ export default function Navbar() {
 
             {/* Mobile Navbar */}
             <>
-                <div className="fixed top-4 left-3 z-50 md:hidden">
+                <div className="fixed top-4 left-3 z-100 md:hidden">
                     <AnimatePresence mode="wait" initial={false}>
                         {isOpen ? (
                             <motion.button

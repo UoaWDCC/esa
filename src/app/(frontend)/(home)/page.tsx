@@ -3,7 +3,7 @@ import Sponsors from '@/app/(frontend)/(home)/_components/Sponsors';
 import Hero from '@/app/(frontend)/(home)/_components/Hero';
 import WhoAreWe from '@/app/(frontend)/(home)/_components/WhoAreWe';
 import WhyJoin from '@/app/(frontend)/(home)/_components/WhyJoin';
-import Events from '@/app/(frontend)/(home)/_components/Events/Events';
+import Events from '@/features/events/components/Events';
 import TextMarquee from '@/app/(frontend)/(home)/_components/Marquees/TextMarquee';
 import PlainMarquee from '@/app/(frontend)/(home)/_components/Marquees/PlainMarquee';
 
@@ -20,7 +20,6 @@ export default function HomePage() {
                         textBg="bg-white"
                         textColor="text-primary-red-800"
                         wrapperClassName="skew-y-10 md:skew-y-6 origin-left"
-                        
                     />
                     <TextMarquee
                         text={'Established in 1998'}

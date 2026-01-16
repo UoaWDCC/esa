@@ -2,12 +2,15 @@ import React from 'react';
 import 'src/styles/global.css';
 import Footer from '../../components/navigation/footer';
 import Navbar from '../../components/navigation/Navbar';
-import {QueryProvider} from "@/lib/tanstack/query-provider";
+import LoginButton from '../../components/navigation/LoginButton';
+import { QueryProvider } from '@/lib/tanstack/query-provider';
+import SessionWrapper from './SessionWrapper';
 
 // SEO metadata
 export const metadata = {
-    description: "Connect, compete, and make lasting memories with the Eastern Students Association. We're a social club bringing students together through events, sports, and campus life at the University of Auckland.",
-    title: "Eastern Students Association",
+    description:
+        "Connect, compete, and make lasting memories with the Eastern Students Association. We're a social club bringing students together through events, sports, and campus life at the University of Auckland.",
+    title: 'Eastern Students Association',
     keywords: [
         'Eastern Students Association',
         'ESA Club',
@@ -17,39 +20,42 @@ export const metadata = {
         'Auckland clubs',
         'uni sports',
         'student social club',
-      ],
-      openGraph: {
-        title: "Eastern Students Association",
-        description: "Connect, compete, and make lasting memories with the Eastern Students Association. We're a social club bringing students together through events, sports, and campus life at the University of Auckland.",
-        url: "https://esa.wdcc.co.nz",
-        siteName: "Eastern Students Association",
+    ],
+    openGraph: {
+        title: 'Eastern Students Association',
+        description:
+            "Connect, compete, and make lasting memories with the Eastern Students Association. We're a social club bringing students together through events, sports, and campus life at the University of Auckland.",
+        url: 'https://esa.wdcc.co.nz',
+        siteName: 'Eastern Students Association',
         images: [
-          {
-            url: "https://esa.wdcc.co.nz/images/logo/esa_logo.png",
-            width: 261,
-            height: 261,
-            alt: "Eastern Students Association logo",
-          },
+            {
+                url: 'https://esa.wdcc.co.nz/images/logo/esa_logo.png',
+                width: 261,
+                height: 261,
+                alt: 'Eastern Students Association logo',
+            },
         ],
-        locale: "en_NZ",
-        type: "website",
-      },
-      icons: {
+        locale: 'en_NZ',
+        type: 'website',
+    },
+    icons: {
         icon: '/images/logo/esa_logo.png',
-      },
+    },
 };
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
     const { children } = props;
-
     return (
         <html lang="en">
             <body className="min-h-screen flex flex-col">
-                <Navbar />
-                <main className="grow">
-                    <QueryProvider>{children}</QueryProvider>
-                </main>
-                <Footer />
+                <SessionWrapper>
+                    <Navbar />
+                    <LoginButton />
+                    <main className="grow overflow-hidden">
+                        <QueryProvider>{children}</QueryProvider>
+                    </main>
+                    <Footer />
+                </SessionWrapper>
             </body>
         </html>
     );

@@ -3,6 +3,8 @@ import { addDataAndFileToRequest } from 'payload';
 import { Member } from '@/payload-types';
 import Papa from 'papaparse';
 import { isTier3 } from '@/access/isTier3';
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/auth/authOptions';
 
 export const Members: CollectionConfig = {
     slug: 'members',
@@ -12,7 +14,21 @@ export const Members: CollectionConfig = {
     access: {
         read: () => true,
         create: isTier3,
-        update: isTier3,
+        update: async ({ req }) => {
+            const { user } = req;
+
+            if (user?.roles?.includes('tier3')) return true;
+
+            const session = await getServerSession(authOptions)
+            const authEmail = session?.user?.email;
+
+            // If the authenticated user's email matches the email of the member being updated, allow update
+            if (authEmail == req.data?.email) {
+                return true;
+            }
+
+            return false;
+        },
         delete: isTier3,
     },
     endpoints: [
@@ -227,13 +243,28 @@ export const Members: CollectionConfig = {
             name: 'notes',
             type: 'textarea',
         },
+        {
+            name: 'googleId',
+            type: 'text',
+            admin: {
+                hidden: true,
+            },
+            unique: true,
+        },
+        {
+            name: 'lastVerificationEmailSentAt',
+            type: 'date',
+            admin: {
+                hidden: true,
+            }
+        }
     ],
     hooks: {
         // Ensure that duplicate emails are not allowed within the same year
-        // This hook runs before creating or updating a member
+        // This hook runs before creating a member (updates are ignored)
         beforeChange: [
             async ({ data, req, operation }) => {
-                if (operation === 'create' || operation === 'update') {
+                if (operation === 'create') {
                     const { email, timestamp } = data;
 
                     if (!email || !timestamp) return;
@@ -256,12 +287,7 @@ export const Members: CollectionConfig = {
                         },
                     });
 
-                    const isUpdate = operation === 'update' && data?.id;
-
-                    if (
-                        existing.docs.length > 0 &&
-                        (!isUpdate || existing.docs[0].id !== data.id)
-                    ) {
+                    if (existing.docs.length > 0) {
                         throw new Error(
                             `A member with email "${email}" has already registered in ${year}.`,
                         );

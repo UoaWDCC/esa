@@ -74,8 +74,9 @@ export interface Config {
     members: Member;
     execs: Exec;
     roles: Role;
-    execRoleCategories: ExecRoleCategory;
+    execRoleCategory: ExecRoleCategory;
     categories: Category;
+    galleryImages: GalleryImage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -89,8 +90,9 @@ export interface Config {
     members: MembersSelect<false> | MembersSelect<true>;
     execs: ExecsSelect<false> | ExecsSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
-    execRoleCategories: ExecRoleCategoriesSelect<false> | ExecRoleCategoriesSelect<true>;
+    execRoleCategory: ExecRoleCategorySelect<false> | ExecRoleCategorySelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    galleryImages: GalleryImagesSelect<false> | GalleryImagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -222,6 +224,8 @@ export interface Member {
   paymentScreenshotLink?: string | null;
   referrerName?: string | null;
   notes?: string | null;
+  googleId?: string | null;
+  lastVerificationEmailSentAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -274,7 +278,7 @@ export interface Role {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "execRoleCategories".
+ * via the `definition` "execRoleCategory".
  */
 export interface ExecRoleCategory {
   id: string;
@@ -291,6 +295,21 @@ export interface ExecRoleCategory {
 export interface Category {
   id: string;
   categoryName: string;
+  categoryDescription: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleryImages".
+ */
+export interface GalleryImage {
+  id: string;
+  image: string | Media;
+  eventName: string;
+  eventDate: string;
+  pinColour: 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'orange' | 'pink' | 'teal' | 'brown' | 'gray';
+  variation: 'small' | 'large';
   updatedAt: string;
   createdAt: string;
 }
@@ -330,12 +349,16 @@ export interface PayloadLockedDocument {
         value: string | Role;
       } | null)
     | ({
-        relationTo: 'execRoleCategories';
+        relationTo: 'execRoleCategory';
         value: string | ExecRoleCategory;
       } | null)
     | ({
         relationTo: 'categories';
         value: string | Category;
+      } | null)
+    | ({
+        relationTo: 'galleryImages';
+        value: string | GalleryImage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -468,6 +491,8 @@ export interface MembersSelect<T extends boolean = true> {
   paymentScreenshotLink?: T;
   referrerName?: T;
   notes?: T;
+  googleId?: T;
+  lastVerificationEmailSentAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -497,9 +522,9 @@ export interface RolesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "execRoleCategories_select".
+ * via the `definition` "execRoleCategory_select".
  */
-export interface ExecRoleCategoriesSelect<T extends boolean = true> {
+export interface ExecRoleCategorySelect<T extends boolean = true> {
   exec?: T;
   role?: T;
   category?: T;
@@ -512,6 +537,20 @@ export interface ExecRoleCategoriesSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   categoryName?: T;
+  categoryDescription?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleryImages_select".
+ */
+export interface GalleryImagesSelect<T extends boolean = true> {
+  image?: T;
+  eventName?: T;
+  eventDate?: T;
+  pinColour?: T;
+  variation?: T;
   updatedAt?: T;
   createdAt?: T;
 }

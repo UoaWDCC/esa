@@ -6,7 +6,7 @@ import { EventData } from '@/types/EventData';
 import { Button } from '@/components/ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArrowUp from '@/components/icons/ArrowUp';
-import EventInfo from '@/app/(frontend)/(home)/_components/Events/EventInfo';
+import EventInfo from '@/features/events/components/EventInfo';
 import SquigglyArrow from '@/components/icons/SquigglyArrow';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -45,10 +45,12 @@ export default function EventCard({
                         }`}
                     >
                         <div className="flex flex-col flex-1">
-                            <h4 className="md:hidden">{event.title}</h4>
+                            <h4 className="md:hidden max-[500px]:!text-xl">
+                                {!event.locked ? event.title : 'Locked Event'}
+                            </h4>
                             <h4 className="hidden md:block">{days[date.getDay()]}</h4>
-                            <h4>{dateString}</h4>
-                            <p className="md:hidden text-wrap">
+                            <h4 className="max-[500px]:!text-xl">{dateString}</h4>
+                            <p className="md:hidden text-wrap max-[500px]:!text-sm">
                                 {!event.locked
                                     ? event.description
                                     : 'This is a locked upcoming event, come back another time to find out what it is! 👀'}
@@ -65,7 +67,7 @@ export default function EventCard({
                         </div>
 
                         {/* Poster with fixed aspect ratio */}
-                        <div className="relative w-40 h-50 md:w-[246px] md:h-auto md:aspect-[178/123] overflow-hidden rounded-3xl">
+                        <div className="relative w-40 h-50 md:w-[246px] md:h-auto md:aspect-[178/123] overflow-hidden rounded-3xl max-[500px]:max-w-[120px]">
                             <Image
                                 src={event.image}
                                 alt={event.imageAlt}
@@ -185,20 +187,18 @@ export default function EventCard({
                 )}
             </AnimatePresence>
 
-            {expanded && <hr className="mt-5" />}
-
             {/* Toggle button */}
             <div
                 className={`mt-3 md:justify-end ${even ? 'justify-end' : 'justify-start'} flex`}
                 style={{ display: isSeeMoreVisible ? 'flex' : 'none' }}
-            >
+                >
                 <Button
                     variant="clear"
                     size="sm"
-                    className="flex justify-center gap-3 px-4 py-2 whitespace-nowrap"
+                    className="flex justify-center gap-3 px-4 py-2 whitespace-nowrap bg-primary-grey/80"
                     onClick={() => setExpanded(!expanded)}
                     aria-expanded={expanded}
-                >
+                    >
                     {expanded ? 'See less' : 'See more'}
                     {expanded ? <ChevronUp strokeWidth={2.5} /> : <ChevronDown strokeWidth={2.5} />}
                 </Button>
