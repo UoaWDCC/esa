@@ -13,8 +13,8 @@ type PayloadSponsor = {
 };
 
 type CafeProps = {
-    isActive?: boolean; // controlled: when true the folder is considered active/open
-    onActivate?: (active: boolean) => void; // notify parent when toggled
+    isActive?: boolean;
+    onActivate?: (active: boolean) => void;
 };
 
 export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
@@ -28,7 +28,6 @@ export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
 
     const sponsors = useFetchSponsors();
 
-    // keep internal state in sync when parent controls isActive
     useEffect(() => {
         if (typeof isActive === 'boolean') setIsExpanded(!!isActive);
     }, [isActive]);
@@ -42,30 +41,35 @@ export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
         return () => document.removeEventListener('keydown', onKey);
     }, [isExpanded]);
 
-    // inline expansion: when expanded, the content will be displayed in the same folder body
+    // --- Conditional animation classes ---
+    const tabAnimationClasses = !isExpanded
+        ? 'group-hover:translate-x-1 group-hover:-translate-y-2 group-hover:shadow-xl group-active:-translate-y-7 group-active:scale-110'
+        : '';
 
-    // Regular folder view
+    const bodyAnimationClasses = !isExpanded
+        ? 'group-hover:translate-x-0 group-hover:-translate-y-3 group-hover:shadow-xl group-active:-translate-y-8 group-active:shadow-2xl'
+        : '';
+
     return (
         <div
-            className="relative group cursor-pointer transition-all duration-500 ease-out"
+            className={`relative group cursor-pointer transition-all duration-500 ease-out`}
             onClick={handleClick}
         >
-            {/* Angled tab - responsive */}
+            {/* Angled tab */}
             <div
-                className="w-40 sm:w-56 md:w-[300px] h-10 sm:h-11 md:h-12 bg-[#4A5AFF] flex items-center px-2 sm:px-4 justify-center ml-2 sm:ml-4 md:ml-8 lg:ml-32 transition-all duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-2 group-hover:shadow-xl group-active:-translate-y-7 group-active:scale-110"
-                style={{
-                    clipPath: 'polygon(20px 0, calc(100% - 20px) 0, 100% 100%, 0 100%)',
-                }}
+                className={`w-40 sm:w-56 md:w-[300px] h-10 sm:h-11 md:h-12 bg-[#4A5AFF] flex items-center px-2 sm:px-4 justify-center ml-2 sm:ml-4 md:ml-8 lg:ml-32 transition-all duration-300 ease-in-out ${tabAnimationClasses}`}
+                style={{ clipPath: 'polygon(20px 0, calc(100% - 20px) 0, 100% 100%, 0 100%)' }}
             >
-                {/* Text positioned over the angled tab - responsive text */}
                 <span className="text-white font-bold text-xs sm:text-sm md:text-xl">
                     <span className="hidden sm:inline">Cafe & Drinks</span>
                     <span className="sm:hidden">Cafe</span>
                 </span>
             </div>
 
-            {/* Main folder body - responsive height */}
-            <div className="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#4A5AFF] p-4 no-scrollbar overflow-y-auto transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:-translate-y-3 group-hover:shadow-xl group-active:-translate-y-8 group-active:shadow-2xl">
+            {/* Main folder body */}
+            <div
+                className={`w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[800px] bg-[#4A5AFF] p-4 no-scrollbar overflow-y-auto transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
+            >
                 {isExpanded ? (
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
                         {sponsors && sponsors.length > 0 ? (
@@ -90,6 +94,7 @@ export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
     );
 }
 
+// --- Fetch sponsors hook ---
 function useFetchSponsors() {
     const [sponsors, setSponsors] = useState<PayloadSponsor[] | null>(null);
 
@@ -98,13 +103,10 @@ function useFetchSponsors() {
 
         async function fetchSponsors() {
             try {
-                // Payload collection slug is `sponsor` (singular) so the REST endpoint is `/api/sponsor`.
-                // Try that first, fall back to `/api/sponsors` if needed.
-                let res = await fetch('/api/sponsor');
-                if (!res.ok) {
-                    res = await fetch('/api/sponsors');
-                }
+                let res = await fetch('/api/sponsor?limit=100&pagination=false');
+                if (!res.ok) res = await fetch('/api/sponsors');
                 if (!res.ok) return;
+
                 const json = await res.json();
                 const docs = json.docs || json.result || json;
                 const mapped = (docs || []).map((d: unknown) => {
