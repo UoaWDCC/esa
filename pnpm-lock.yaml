@@ -116,6 +116,9 @@ importers:
       swc:
         specifier: ^1.0.11
         version: 1.0.11(chokidar@3.6.0)
+      swiper:
+        specifier: ^12.0.3
+        version: 12.0.3
       tailwind-merge:
         specifier: ^3.3.0
         version: 3.3.0
@@ -4408,6 +4411,10 @@ packages:
 
   swc@1.0.11:
     resolution: {integrity: sha512-YbG4eija7g/ajQ0lu4P2WPgKt5zCm743VgKn+buBrXXo1IETftO2r/8VdBPhv8wpTyg3CO+VU1z2wHuL4iohmw==}
+
+  swiper@12.0.3:
+    resolution: {integrity: sha512-BHd6U1VPEIksrXlyXjMmRWO0onmdNPaTAFduzqR3pgjvi7KfmUCAm/0cj49u2D7B0zNjMw02TSeXfinC1hDCXg==}
+    engines: {node: '>= 4.7.0'}
 
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
@@ -9958,6 +9965,8 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
       - chokidar
+
+  swiper@12.0.3: {}
 
   tabbable@6.2.0: {}
 

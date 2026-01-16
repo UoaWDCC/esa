@@ -68,25 +68,27 @@ export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
 
             {/* Main folder body */}
             <div
-                className={`w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[800px] bg-[#4A5AFF] p-4 no-scrollbar overflow-y-auto transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
+                className={`w-full h-[600px] bg-[#4A5AFF] p-4 transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
             >
                 {isExpanded ? (
-                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
-                        {sponsors && sponsors.length > 0 ? (
-                            sponsors
-                                .filter((s) => s.type === 'cafe-drinks' || !s.type)
-                                .map((s) => (
-                                    <SponsorCard
-                                        key={s.id}
-                                        name={s.name}
-                                        location={s.location}
-                                        offer={s.deal || ''}
-                                        logo={s.logo?.url}
-                                    />
-                                ))
-                        ) : (
-                            <div className="text-white">No sponsors found.</div>
-                        )}
+                    <div className="w-full h-[750px] p-8 rounded-2xl no-scrollbar overflow-y-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
+                            {sponsors && sponsors.length > 0 ? (
+                                sponsors
+                                    .filter((s) => s.type === 'cafe-drinks' || !s.type)
+                                    .map((s) => (
+                                        <SponsorCard
+                                            key={s.id}
+                                            name={s.name}
+                                            location={s.location}
+                                            offer={s.deal || ''}
+                                            logo={s.logo?.url}
+                                        />
+                                    ))
+                            ) : (
+                                <div className="text-white">No sponsors found.</div>
+                            )}
+                        </div>
                     </div>
                 ) : null}
             </div>

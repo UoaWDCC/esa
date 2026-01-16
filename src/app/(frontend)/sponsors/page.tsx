@@ -25,19 +25,27 @@ export default function Sponsors() {
             <div className="relative w-full h-330 mt-[350px]">
                 {/* Each component positioned absolutely with different top values */}
                 <div className="absolute top-0 w-full z-5">
-                    <CafeDrinksFolder onActivate={(id) => setActiveFolder(id ? 'cafe' : null)} />
+                    <CafeDrinksFolder
+                        onActivate={(active) => setActiveFolder(active ? 'cafe' : null)}
+                    />
                 </div>
 
                 <div className="absolute top-[200px] w-full z-10">
-                    <RestaurantsFolder />
+                    <RestaurantsFolder
+                        onActivate={(active) => setActiveFolder(active ? 'restaurants' : null)}
+                    />
                 </div>
 
                 <div className="absolute top-[400px] w-full z-15">
-                    <EntertainmentFolder />
+                    <EntertainmentFolder
+                        onActivate={(active) => setActiveFolder(active ? 'entertainment' : null)}
+                    />
                 </div>
 
                 <div className="absolute top-[600px] w-full z-20">
-                    <RetailOtherFolder />
+                    <RetailOtherFolder
+                        onActivate={(active) => setActiveFolder(active ? 'retail' : null)}
+                    />
                 </div>
 
                 <div className="absolute top-[800px] w-full z-25">
@@ -47,16 +55,32 @@ export default function Sponsors() {
         );
     }
 
-    // This one shows only the active folder that is clicked
+    // Focused mode: show only the active folder
     return (
         <div className="w-full mt-56" ref={focusedRef}>
             {activeFolder === 'cafe' && (
-                <div>
-                    <CafeDrinksFolder
-                        isActive
-                        onActivate={(id) => setActiveFolder(id ? 'cafe-drinks' : null)}
-                    />
-                </div>
+                <CafeDrinksFolder
+                    isActive
+                    onActivate={(active) => setActiveFolder(active ? 'cafe' : null)}
+                />
+            )}
+            {activeFolder === 'restaurants' && (
+                <RestaurantsFolder
+                    isActive
+                    onActivate={(active) => setActiveFolder(active ? 'restaurants' : null)}
+                />
+            )}
+            {activeFolder === 'entertainment' && (
+                <EntertainmentFolder
+                    isActive
+                    onActivate={(active) => setActiveFolder(active ? 'entertainment' : null)}
+                />
+            )}
+            {activeFolder === 'retail' && (
+                <RetailOtherFolder
+                    isActive
+                    onActivate={(active) => setActiveFolder(active ? 'retail' : null)}
+                />
             )}
         </div>
     );
