@@ -65,7 +65,7 @@ export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
             </div>
 
             {/* Main folder body - responsive height */}
-            <div className="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#4A5AFF] p-4 overflow-y-auto transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:-translate-y-3 group-hover:shadow-xl group-active:-translate-y-8 group-active:shadow-2xl">
+            <div className="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#4A5AFF] p-4 no-scrollbar overflow-y-auto transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:-translate-y-3 group-hover:shadow-xl group-active:-translate-y-8 group-active:shadow-2xl">
                 {isExpanded ? (
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
                         {sponsors && sponsors.length > 0 ? (

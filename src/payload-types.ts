@@ -176,7 +176,7 @@ export interface Sponsor {
   logo: string | Media;
   location?: string | null;
   deal?: string | null;
-  type?: ('cafe-drinks' | 'entertainment' | 'restaurants' | 'retail') | null;
+  type?: ('cafe-drinks' | 'entertainment' | 'restaurant' | 'Retail Other') | null;
   importance: number;
   updatedAt: string;
   createdAt: string;

@@ -37,8 +37,9 @@ export default function SponsorCard({ name, location, offer, logo, logoAlt }: Sp
                         />
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-center">
-                        <p className="text-black truncate">
+                    {/* Inner div squishes the text inwards */}
+                    <div className="flex-1 flex flex-col justify-center pr-20">
+                        <p className="text-black">
                             {name} {location && `(${location})`}
                         </p>
                         <div className="mt-1 text-black">{offer}</div>

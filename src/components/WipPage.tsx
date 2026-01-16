@@ -14,8 +14,8 @@ export default function WipPage() {
                     You&apos;ve come across a work-in-progress-page!
                 </p>
                 <p className="text-primary-white mb-1">
-                    This website is currently under development and
-                    we are working on implementing this page.
+                    This website is currently under development and we are working on implementing
+                    this page.
                 </p>
             </div>
 

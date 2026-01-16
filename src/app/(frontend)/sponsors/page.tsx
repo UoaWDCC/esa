@@ -49,12 +49,12 @@ export default function Sponsors() {
 
     // This one shows only the active folder that is clicked
     return (
-        <div className="w-full px-4 mt-56" ref={focusedRef}>
+        <div className="w-full mt-56" ref={focusedRef}>
             {activeFolder === 'cafe' && (
                 <div>
                     <CafeDrinksFolder
                         isActive
-                        onActivate={(id) => setActiveFolder(id ? 'cafe' : null)}
+                        onActivate={(id) => setActiveFolder(id ? 'cafe-drinks' : null)}
                     />
                 </div>
             )}

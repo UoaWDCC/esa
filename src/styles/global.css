@@ -1,110 +1,145 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-  font-family: "Reservoir Grunge";
-  font-style: normal;
-  display: swap;
-  src: url("/fonts/RESEGRG_.TTF") format("truetype")
+    font-family: 'Reservoir Grunge';
+    font-style: normal;
+    display: swap;
+    src: url('/fonts/RESEGRG_.TTF') format('truetype');
 }
 
 @font-face {
-  font-family: "Waytoon";
-  font-style: normal;
-  display: swap;
-  src: url("/fonts/Waytoon.otf") format("truetype");
+    font-family: 'Waytoon';
+    font-style: normal;
+    display: swap;
+    src: url('/fonts/Waytoon.otf') format('truetype');
 }
 
 @font-face {
-  font-family: "Smeltex Medium";
-  font-style: normal;
-  display: swap;
-  src: url("/fonts/Smeltex-Medium.otf") format("truetype")
+    font-family: 'Smeltex Medium';
+    font-style: normal;
+    display: swap;
+    src: url('/fonts/Smeltex-Medium.otf') format('truetype');
 }
 
 @font-face {
-  font-family: "Super Jellyfish";
-  font-style: normal;
-  display: swap;
-  src: url("/fonts/Super-Jellyfish.ttf") format("truetype")
+    font-family: 'Super Jellyfish';
+    font-style: normal;
+    display: swap;
+    src: url('/fonts/Super-Jellyfish.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "RobotoMono Regular";
-  font-style: normal;
-  display: swap;
-  src: url("/fonts/RobotoMono-Regular.ttf") format("truetype")
+    font-family: 'RobotoMono Regular';
+    font-style: normal;
+    display: swap;
+    src: url('/fonts/RobotoMono-Regular.ttf') format('truetype');
+}
+
+@utility no-scrollbar {
+    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
 
 @theme {
-  --font-reservoir-grunge: "Reservoir Grunge", sans-serif;
-  --font-smeltex-medium: "Smeltex Medium", sans-serif;
-  --font-super-jellyfish: "Super Jellyfish", sans-serif;
-  --font-roboto-mono: "RobotoMono Regular", monospace;
-  --font-waytoon: "Waytoon", sans-serif;
+    --font-reservoir-grunge: 'Reservoir Grunge', sans-serif;
+    --font-smeltex-medium: 'Smeltex Medium', sans-serif;
+    --font-super-jellyfish: 'Super Jellyfish', sans-serif;
+    --font-roboto-mono: 'RobotoMono Regular', monospace;
+    --font-waytoon: 'Waytoon', sans-serif;
 
-  --color-primary-red: #D3312A; /* red */
-  --color-primary-red-400: #871F1B; /* Slightly Darker red */
-  --color-primary-red-800: #651714; /* Dark red */
-  --color-primary-white: #EBE9E6; /* white */
-  --color-primary-grey: #161514; /* dark grey */
-  --color-primary-grey-light: #404040; /* light grey */
-  --color-primary-blue: #0C1E34; /* dark blue */
+    --color-primary-red: #d3312a; /* red */
+    --color-primary-red-400: #871f1b; /* Slightly Darker red */
+    --color-primary-red-800: #651714; /* Dark red */
+    --color-primary-white: #ebe9e6; /* white */
+    --color-primary-grey: #161514; /* dark grey */
+    --color-primary-grey-light: #404040; /* light grey */
+    --color-primary-blue: #0c1e34; /* dark blue */
 
-  --color-accent: #FFC857; /* yellow */
-  --color-accent-light: #FFDC94; /* light yellow */
-  --color-accent-dark: #BE8715; /* dark yellow */
+    --color-accent: #ffc857; /* yellow */
+    --color-accent-light: #ffdc94; /* light yellow */
+    --color-accent-dark: #be8715; /* dark yellow */
 }
 
 /* default global styles */
 :root {
-  font-family: var(--font-smeltex-medium);
-  color: var(--color-primary-white);
-  background-color: var(--color-primary-grey);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  --radius: 0.625rem; --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --card: oklch(1 0 0); --card-foreground: oklch(0.145 0 0); --popover: oklch(1 0 0); --popover-foreground: oklch(0.145 0 0); --primary: oklch(0.205 0 0); --primary-foreground: oklch(0.985 0 0); --secondary: oklch(0.97 0 0); --secondary-foreground: oklch(0.205 0 0); --muted: oklch(0.97 0 0); --muted-foreground: oklch(0.556 0 0); --accent: oklch(0.97 0 0); --accent-foreground: oklch(0.205 0 0); --destructive: oklch(0.577 0.245 27.325); --border: oklch(0.922 0 0); --input: oklch(0.922 0 0); --ring: oklch(0.708 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
-  /* font sizes calculated using https://utopia.fyi/type/calculator?c=360,18,1.2,1240,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-  --step--2: clamp(0.7035rem, 0.8131rem + -0.1414vw, 0.7813rem);
-  --step--1: clamp(0.9375rem, 0.9374rem + 0.0004vw, 0.9377rem);
-  --step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
-  --step-1: clamp(1.35rem, 1.2206rem + 0.575vw, 1.6663rem);
-  --step-2: clamp(1.50rem, 1.25rem + 1.0929vw, 2.2211rem);
-  --step-3: clamp(1.944rem, 1.5281rem + 1.8486vw, 2.9607rem);
-  --step-4: clamp(1.45rem, 1.2rem + 2.9343vw, 3.9467rem);
-  --step-5: clamp(2.7994rem, 1.7924rem + 4.4755vw, 5.2609rem);
+    font-family: var(--font-smeltex-medium);
+    color: var(--color-primary-white);
+    background-color: var(--color-primary-grey);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+    /* font sizes calculated using https://utopia.fyi/type/calculator?c=360,18,1.2,1240,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+    --step--2: clamp(0.7035rem, 0.8131rem + -0.1414vw, 0.7813rem);
+    --step--1: clamp(0.9375rem, 0.9374rem + 0.0004vw, 0.9377rem);
+    --step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+    --step-1: clamp(1.35rem, 1.2206rem + 0.575vw, 1.6663rem);
+    --step-2: clamp(1.5rem, 1.25rem + 1.0929vw, 2.2211rem);
+    --step-3: clamp(1.944rem, 1.5281rem + 1.8486vw, 2.9607rem);
+    --step-4: clamp(1.45rem, 1.2rem + 2.9343vw, 3.9467rem);
+    --step-5: clamp(2.7994rem, 1.7924rem + 4.4755vw, 5.2609rem);
 }
 
 h1 {
-  font-family: var(--font-reservoir-grunge);
-  font-size: var(--step-4);
+    font-family: var(--font-reservoir-grunge);
+    font-size: var(--step-4);
 }
 
 h2 {
-  font-family: var(--font-reservoir-grunge);
-  font-size: var(--step-3);
+    font-family: var(--font-reservoir-grunge);
+    font-size: var(--step-3);
 }
 
 h3 {
-  font-family: var(--font-reservoir-grunge);
-  font-size: var(--step-2);
+    font-family: var(--font-reservoir-grunge);
+    font-size: var(--step-2);
 }
 
 h4 {
-  font-size: var(--step-1);
+    font-size: var(--step-1);
 }
 
 p {
-  font-size: var(--step-0);
-  line-height: 1.5rem;
+    font-size: var(--step-0);
+    line-height: 1.5rem;
 }
 
 /* SHADCN STUFF DO NOT WORRY ABOUT IT!! */
 
 @theme inline {
-  --color-destructive: var(--destructive);
+    --color-destructive: var(--destructive);
 }
