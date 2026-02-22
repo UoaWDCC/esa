@@ -19,7 +19,7 @@ export default function GuideFolder() {
 
             {/* Main folder body */}
             <div
-                className="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#DC6EA1]"
+                className="w-full h-[600px] sm:h-[600px] md:h-[500px] lg:h-[550px] bg-[#DC6EA1]"
                 style={{
                     boxShadow: '0 -6px 20px rgba(0, 0, 0, 0.25), 0 -2px 8px rgba(0, 0, 0, 0.15)',
                 }}

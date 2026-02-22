@@ -68,10 +68,10 @@ export default function CafeDrinksFolder({ isActive, onActivate }: CafeProps) {
 
             {/* Main folder body */}
             <div
-                className={`w-full h-[600px] bg-[#4A5AFF] p-4 transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
+                className={`w-full h-[650px] bg-[#4A5AFF] p-4 transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
             >
                 {isExpanded ? (
-                    <div className="w-full h-[750px] p-8 rounded-2xl no-scrollbar overflow-y-auto">
+                    <div className="w-full h-[600px] p-8 rounded-2xl no-scrollbar overflow-y-auto">
                         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
                             {sponsors && sponsors.length > 0 ? (
                                 sponsors

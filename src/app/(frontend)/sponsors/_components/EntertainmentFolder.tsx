@@ -70,13 +70,13 @@ export default function EntertainmentFolder({ isActive, onActivate }: Entertainm
 
             {/* Main folder body */}
             <div
-                className={`relative z-0 w-full h-[600px] sm:h-[450px] md:h-[500px] lg:h-[800px] bg-[#ED433B] p-4 overflow-y-auto transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
+                className={`relative z-0 w-full h-[600px] sm:h-[450px] md:h-[500px] lg:h-[650px] bg-[#ED433B] p-4 overflow-y-auto transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
                 style={{
                     boxShadow: '0 -6px 30px rgba(0, 0, 0, 0.4), 0 -2px 8px rgba(0, 0, 0, 0.3)',
                 }}
             >
                 {isExpanded && (
-                    <div className="w-full h-full p-8 rounded-2xl no-scrollbar overflow-y-auto">
+                    <div className="w-full h-[500px] p-8 rounded-2xl no-scrollbar overflow-y-auto">
                         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
                             {sponsors && sponsors.length > 0 ? (
                                 sponsors

@@ -68,7 +68,7 @@ export default function RetailOtherFolder({ isActive, onActivate }: RetailProps)
 
             {/* Main folder body */}
             <div
-                className={`w-full h-[600px] sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#55A077] p-4 transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
+                className={`w-full h-[600px] sm:h-[450px] md:h-[500px] lg:h-[650px] bg-[#55A077] p-4 transition-all duration-300 ease-in-out ${bodyAnimationClasses}`}
                 style={{
                     boxShadow: '0 -6px 30px rgba(0, 0, 0, 0.4), 0 -2px 8px rgba(0, 0, 0, 0.3)',
                 }}
