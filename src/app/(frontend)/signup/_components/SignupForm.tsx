@@ -139,7 +139,7 @@ export default function SignupForm({ email, token }: SignupFormProps) {
                                     required={true}
                                     readOnly={!!email}
                                 />
-                                <div className="md:flex md:justify-between">
+                                <div className="md:flex md:justify-between gap-x-15">
                                     <FormSelect
                                         label="Year of Study"
                                         placeholder="Choose Dropdown"
@@ -155,7 +155,7 @@ export default function SignupForm({ email, token }: SignupFormProps) {
                                         required={true}
                                     />
                                     <FormInput
-                                        label="UoA UPI or AUT Network Login"
+                                        label="UoA UPI or AUT Login"
                                         placeholder="UPI/Login"
                                         {...register('upi')}
                                         error={errors.upi}

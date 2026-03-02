@@ -80,8 +80,8 @@ const FormInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormInputPr
 
                 <p
                     className={cn(
-                        'px-3 text-sm transition-all duration-200',
-                        error ? 'text-red-500 min-h-5' : 'h-0 invisible',
+                        'px-3 mt-1 text-xs leading-4 break-words min-h-4',
+                        error ? 'text-red-500' : 'invisible',
                     )}
                 >
                     {error?.message}

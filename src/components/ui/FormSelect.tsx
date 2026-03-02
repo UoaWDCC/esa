@@ -79,8 +79,8 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
                 </select>
                 <p
                     className={cn(
-                        'px-3 transition-all duration-200 h-5',
-                        error ? 'text-red-500 visible' : 'invisible',
+                        'px-3 mt-1 text-xs leading-4 break-words min-h-4',
+                        error ? 'text-red-500' : 'invisible',
                     )}
                 >
                     {error?.message}
