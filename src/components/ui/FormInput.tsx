@@ -15,7 +15,10 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const FormInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormInputProps>(
-    ({ label, placeholder, error, className, tooltip, showTooltip, required, textarea, ...rest }, ref) => {
+    (
+        { label, placeholder, error, className, tooltip, showTooltip, required, textarea, ...rest },
+        ref,
+    ) => {
         const [isHovered, setIsHovered] = useState(false);
         return (
             <div className="mb-2">
@@ -77,8 +80,8 @@ const FormInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormInputPr
 
                 <p
                     className={cn(
-                        'px-3 transition-all duration-200 h-5',
-                        error ? 'text-red-500 visible' : 'invisible',
+                        'px-3 text-sm transition-all duration-200',
+                        error ? 'text-red-500 min-h-5' : 'h-0 invisible',
                     )}
                 >
                     {error?.message}

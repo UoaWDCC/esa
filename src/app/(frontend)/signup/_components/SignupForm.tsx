@@ -132,7 +132,10 @@ export default function SignupForm({ email, token }: SignupFormProps) {
                                     placeholder="Enter Here"
                                     {...register('email')}
                                     error={errors.email}
-                                    className={"w-full placeholder:text-gray " + (!!email ? 'bg-primary-grey-light' : '')}
+                                    className={
+                                        'w-full placeholder:text-gray ' +
+                                        (!!email ? 'bg-primary-grey-light' : '')
+                                    }
                                     required={true}
                                     readOnly={!!email}
                                 />
@@ -152,13 +155,13 @@ export default function SignupForm({ email, token }: SignupFormProps) {
                                         required={true}
                                     />
                                     <FormInput
-                                        label="UPI"
-                                        placeholder="Enter your UPI"
+                                        label="UoA UPI or AUT Network Login"
+                                        placeholder="UPI/Login"
                                         {...register('upi')}
                                         error={errors.upi}
                                         className="w-full placeholder:text-gray"
                                         showTooltip={true}
-                                        tooltip='The characters before the @ in your UoA email address or "000" if you are from AUT'
+                                        tooltip="For example, erat123(UoA) and erat1234(AUT) otherwise leave blank"
                                     />
                                 </div>
 

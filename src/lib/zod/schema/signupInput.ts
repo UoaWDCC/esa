@@ -25,10 +25,8 @@ export const signupSchema = z.object({
         .or(z.literal('')),
     upi: z
         .string()
-        .regex(/^[a-z]{3,4}\d{3}$/, 'UPI must be 3 or 4 lowercase letters followed by 3 digits')
-        .optional()
-        .or(z.literal(''))
-        .or(z.literal('000')),
+        .regex(/^([a-z]{3,4}\d{3,4})?$/, 'UPI/AUT Network must be 3-4 letters + 3-4 digits')
+        .optional(),
     yearOfStudy: z.enum(['1st Year', '2nd Year', '3rd Year', '4th Year+'], {
         errorMap: () => ({ message: 'Please select a valid year of study' }),
     }),
