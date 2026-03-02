@@ -179,7 +179,7 @@ export default function SignupForm({ email, token }: SignupFormProps) {
                             <div className="flex justify-end items-center pl-2 md:pl-5">
                                 <button
                                     type="button"
-                                    className="h-fit hover:cursor-pointer"
+                                    className="h-fit hover:cursor-pointer animate-pulse"
                                     onClick={async () => {
                                         const valid = await trigger([
                                             'firstName',
@@ -192,7 +192,7 @@ export default function SignupForm({ email, token }: SignupFormProps) {
                                         if (valid) setStep(2);
                                     }}
                                 >
-                                    <ChevronRight className="w-10 h-10 md:w-[45px] md:h-[45px]" />
+                                    <ChevronRight className="w-10 h-10 md:w-[45px] md:h-[45px] text-white" />
                                 </button>
                             </div>
                         </motion.div>
