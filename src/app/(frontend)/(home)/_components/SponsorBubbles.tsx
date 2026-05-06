@@ -12,6 +12,7 @@ export interface SponsorProps {
 
 export default function SponsorBubbles({ sponsors }: SponsorProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const packeryRef = useRef<any>(null);
     const [baseSize, setBaseSize] = useState(60);
     // State to track which sponsor is hovered for tooltip display
     const [hoveredSponsor, setHoveredSponsor] = useState<{
@@ -21,17 +22,13 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
     } | null>(null);
 
     useEffect(() => {
-        // Hide tooltip on scroll
         const handleScroll = () => {
-            if (hoveredSponsor) {
-                setHoveredSponsor(null);
-            }
+            setHoveredSponsor((current) => (current ? null : current));
         };
 
-        // Cleanup function to remove event listener
         window.addEventListener('scroll', handleScroll, true);
         return () => window.removeEventListener('scroll', handleScroll, true);
-    }, [hoveredSponsor]);
+    }, []);
 
     useEffect(() => {
         function handleResize() {
@@ -49,23 +46,30 @@ export default function SponsorBubbles({ sponsors }: SponsorProps) {
 
     useEffect(() => {
         // Import Packery client side as needs client functionality. As any as idk how to deal with TypeScript error as Packery wasn't made for TypeScript
+        let cancelled = false;
+
         import('packery' as any)
             .then((PackeryModule) => {
+                if (cancelled || !containerRef.current) return;
                 const Packery = PackeryModule.default;
-
-                if (containerRef.current) {
-                    // Initialize Packery (Used for packing in the circles together)
-                    new Packery(containerRef.current, {
-                        itemSelector: '.grid-item', // Class name for items
-                        stamp: '.stamp',
-                        gutter: 20, // Space between items
-                        horizontal: true, // Enable horizontal layout
-                    });
-                }
+                packeryRef.current = new Packery(containerRef.current, {
+                    itemSelector: '.grid-item',
+                    stamp: '.stamp',
+                    gutter: 20,
+                    horizontal: true,
+                });
             })
             .catch((error) => {
                 console.error('Failed to load Packery:', error);
             });
+
+        return () => {
+            cancelled = true;
+            if (packeryRef.current) {
+                packeryRef.current.destroy();
+                packeryRef.current = null;
+            }
+        };
     }, [baseSize]);
 
     return (
