@@ -16,6 +16,10 @@ export const env = createEnv({
         GOOGLE_CLIENT_SECRET: z.string().min(1),
         RESEND_API_KEY: z.string().min(1),
         BASE_URL: z.string().url().default('https://esa.wdcc.co.nz'),
+        // CloudFront distribution hostname serving the media bucket, e.g.
+        // d111111abcdef8.cloudfront.net. When unset, media falls back to being
+        // proxied through /api/media/file/*.
+        MEDIA_CDN_HOSTNAME: z.string().optional(),
     },
     experimental__runtimeEnv: process.env,
     skipValidation: true

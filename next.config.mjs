@@ -13,6 +13,21 @@ const nextConfig = {
     // lint and type checking. Vercel runs a full `next build`, so preserve that skip.
     eslint: { ignoreDuringBuilds: true },
     typescript: { ignoreBuildErrors: true },
+
+    // Media is served from CloudFront (see src/collections/Storage.ts), so the
+    // image optimiser needs that host allow-listed. Empty when unset, which
+    // leaves media on the /api/media/file/* proxy.
+    images: {
+        remotePatterns: process.env.MEDIA_CDN_HOSTNAME
+            ? [
+                  {
+                      protocol: 'https',
+                      hostname: process.env.MEDIA_CDN_HOSTNAME,
+                      pathname: '/media/**',
+                  },
+              ]
+            : [],
+    },
 };
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });
