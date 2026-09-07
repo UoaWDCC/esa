@@ -1,10 +1,11 @@
 'use client'
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import SignupForm from './_components/SignupForm';
 import Image from 'next/image';
 
-export default function SignupPage() {
+function SignupPageContent() {
     const searchParams = useSearchParams();
     const email = searchParams.get('email') ?? undefined;
     const token = searchParams.get('token') ?? undefined;
@@ -37,5 +38,13 @@ export default function SignupPage() {
                 />
             </div>
         </div>
+    );
+}
+
+export default function SignupPage() {
+    return (
+        <Suspense>
+            <SignupPageContent />
+        </Suspense>
     );
 }

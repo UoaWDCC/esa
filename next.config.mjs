@@ -8,6 +8,11 @@ await jiti.import('./src/config/clientEnv.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // Your Next.js config here
+
+    // Fly built with `next build --experimental-build-mode compile`, which skipped
+    // lint and type checking. Vercel runs a full `next build`, so preserve that skip.
+    eslint: { ignoreDuringBuilds: true },
+    typescript: { ignoreBuildErrors: true },
 };
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });

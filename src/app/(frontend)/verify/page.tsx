@@ -1,9 +1,9 @@
 'use client'
 
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
-export default function VerifyPage() {
+function VerifyPageContent() {
     const router = useRouter();
 
     const searchParams = useSearchParams();
@@ -49,5 +49,13 @@ export default function VerifyPage() {
                 Return to Home
             </a>
         </div>
+    );
+}
+
+export default function VerifyPage() {
+    return (
+        <Suspense>
+            <VerifyPageContent />
+        </Suspense>
     );
 }

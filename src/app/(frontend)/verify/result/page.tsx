@@ -1,9 +1,9 @@
 'use client';
 
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
-export default function VerifyResultsPage() {
+function VerifyResultsPageContent() {
     const searchParams = useSearchParams();
     const status = searchParams.get('status');
 
@@ -43,3 +43,10 @@ export default function VerifyResultsPage() {
     );
 }
 
+export default function VerifyResultsPage() {
+    return (
+        <Suspense>
+            <VerifyResultsPageContent />
+        </Suspense>
+    );
+}
